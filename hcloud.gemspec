@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.executables   = []
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency "http"
   spec.add_runtime_dependency "zeitwerk"
 
   spec.add_development_dependency "byebug"

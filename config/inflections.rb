@@ -2,4 +2,5 @@
 
 HCloud.loader.inflector.inflect(
   "hcloud" => "HCloud",
+  "http" => "HTTP",
 )
