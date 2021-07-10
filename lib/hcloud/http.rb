@@ -24,6 +24,7 @@ module HCloud
 
       response
         .parse(:json)
+        .deep_symbolize_keys
     end
 
     private

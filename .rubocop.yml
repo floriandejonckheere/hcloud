@@ -27,6 +27,9 @@ Metrics/BlockLength:
     - "*.gemspec"
     - spec/**/*.rb
 
+RSpec/ExampleLength:
+  Enabled: false
+
 RSpec/FilePath:
   Enabled: false
 

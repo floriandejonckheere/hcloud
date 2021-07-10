@@ -7,11 +7,12 @@ RSpec.describe HCloud::HTTP do
     it "performs a HTTP GET request" do
       stub = stub_request(:get, "https://endpoint/api")
         .with(query: { one: "two" })
-        .to_return(body: "{}")
+        .to_return(body: { foo: "bar" }.to_json)
 
-      http.get("api", one: "two")
+      response = http.get("api", one: "two")
 
       expect(stub).to have_been_requested
+      expect(response).to eq({ foo: "bar" })
     end
   end
 end
