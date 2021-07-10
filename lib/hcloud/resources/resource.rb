@@ -21,6 +21,14 @@ module HCloud
         .fetch(resource_name.to_sym)
     end
 
+    def self.all
+      # TODO: pagination
+      client
+        .get("/#{resource_name.pluralize}")
+        .fetch(resource_name.pluralize.to_sym)
+        .map { |attrs| new attrs }
+    end
+
     def self.resource_name
       name.demodulize.underscore
     end
