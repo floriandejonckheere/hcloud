@@ -31,6 +31,9 @@ client = HCloud::Client.new(token: "my_access_token")
 
 # Set client as default connection
 HCloud::Client.connection = client
+
+# Find SSH key by ID
+ssh_key = HCloud::SSHKey.find(3399402)
 ```
 
 ## Development

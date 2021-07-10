@@ -3,10 +3,29 @@
 module HCloud
   class Resource
     include ActiveModel::Attributes
+    include ActiveModel::AttributeAssignment
 
-    protected
+    def initialize(attributes = {})
+      super()
 
-    def client
+      assign_attributes(attributes) if attributes
+    end
+
+    def inspect
+      "#<#{self.class} #{attributes.filter_map { |name, value| "#{name}: #{value || 'nil'}" }.join(', ')}>"
+    end
+
+    def self.find(id)
+      new client
+        .get("/#{resource_name.pluralize}/#{id}")
+        .fetch(resource_name.to_sym)
+    end
+
+    def self.resource_name
+      name.demodulize.underscore
+    end
+
+    def self.client
       HCloud::Client.connection
     end
   end

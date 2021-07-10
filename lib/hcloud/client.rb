@@ -11,6 +11,10 @@ module HCloud
       @endpoint = endpoint
     end
 
+    delegate :get, to: :http
+
+    private
+
     def http
       @http ||= HTTP.new(access_token, endpoint)
     end

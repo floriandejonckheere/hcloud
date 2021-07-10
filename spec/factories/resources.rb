@@ -3,7 +3,7 @@
 require "base64"
 
 FactoryBot.define do
-  factory :ssh_key do
+  factory :ssh_key, class: "HCloud::SSHKey" do
     id { FFaker::Guid.guid }
     name { FFaker::Lorem.word }
     public_key { "ssh-rsa #{Base64.encode64(FFaker::Lorem.sentence)}" }
