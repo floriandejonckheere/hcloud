@@ -11,6 +11,10 @@ module HCloud
       assign_attributes(attributes) if attributes
     end
 
+    def save; end
+
+    def delete; end
+
     def inspect
       "#<#{self.class} #{attributes.filter_map { |name, value| "#{name}: #{value || 'nil'}" }.join(', ')}>"
     end
@@ -22,11 +26,19 @@ module HCloud
     end
 
     def self.all
-      # TODO: pagination
-      client
-        .get("/#{resource_name.pluralize}")
-        .fetch(resource_name.pluralize.to_sym)
-        .map { |attrs| new attrs }
+      Collection.new do |params|
+        response = client
+          .get("/#{resource_name.pluralize}", params)
+
+        data = response
+          .fetch(resource_name.pluralize.to_sym)
+          .map { |attrs| new attrs }
+
+        meta = response
+          .fetch(:meta)
+
+        [data, meta]
+      end
     end
 
     def self.resource_name
@@ -36,5 +48,7 @@ module HCloud
     def self.client
       HCloud::Client.connection
     end
+
+    delegate :client, :resource_name, to: :class
   end
 end

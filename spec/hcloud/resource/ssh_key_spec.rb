@@ -22,7 +22,8 @@ RSpec.describe HCloud::SSHKey do
   describe ".all" do
     it "returns instances of the resource" do
       stub_request(:get, "https://api.hetzner.cloud/v1/ssh_keys")
-        .to_return(body: { ssh_keys: [resource.attributes] }.to_json)
+        .with(query: { page: 1, per_page: 50 })
+        .to_return(body: { ssh_keys: [resource.attributes], meta: { pagination: { total_entries: 1 } } }.to_json)
 
       models = described_class.all
 
