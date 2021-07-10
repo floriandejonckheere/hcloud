@@ -5,5 +5,10 @@ require "bundler/setup"
 
 require "hcloud"
 
+require "dotenv"
+Dotenv.load
+
+HCloud::Client.connection = HCloud::Client.new(access_token: ENV.fetch("HCLOUD_TOKEN"))
+
 require "irb"
 IRB.start(__FILE__)
