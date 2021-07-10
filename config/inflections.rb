@@ -5,3 +5,7 @@ HCloud.loader.inflector.inflect(
   "ssh_key" => "SSHKey",
   "http" => "HTTP",
 )
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.acronym "JSON"
+end
