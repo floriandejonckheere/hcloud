@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Florian Dejonckheere"]
   spec.email         = ["florian@floriandejonckheere.be"]
 
-  spec.summary       = "Ruby library for Hetzner Cloud API"
+  spec.summary       = "Ruby library wrapping the Hetzner Cloud API"
   spec.description   = "Native Ruby integration with the Hetzner Cloud API"
   spec.homepage      = "https://github.com/floriandejonckheere/hcloud"
   spec.license       = "MIT"
