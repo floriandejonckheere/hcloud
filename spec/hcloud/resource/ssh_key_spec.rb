@@ -7,6 +7,17 @@ RSpec.describe HCloud::SSHKey do
     expect(described_class.new.labels).to eq({})
   end
 
+  describe "#delete" do
+    it "deletes the resource" do
+      stub_request(:delete, "https://api.hetzner.cloud/v1/ssh_keys/#{resource.id}")
+        .to_return(body: {}.to_json)
+
+      resource.delete
+
+      expect(resource).to be_deleted
+    end
+  end
+
   describe ".find" do
     it "returns an instance of the resource" do
       stub_request(:get, "https://api.hetzner.cloud/v1/ssh_keys/#{resource.id}")

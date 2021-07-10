@@ -11,7 +11,7 @@ module HCloud
       @endpoint = endpoint
     end
 
-    delegate :get, to: :http
+    delegate :get, :delete, to: :http
 
     private
 

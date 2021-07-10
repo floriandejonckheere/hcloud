@@ -11,9 +11,16 @@ module HCloud
       assign_attributes(attributes) if attributes
     end
 
-    def save; end
+    def delete
+      client
+        .delete("/#{resource_name.pluralize}/#{id}")
 
-    def delete; end
+      @deleted = true
+    end
+
+    def deleted?
+      !!@deleted
+    end
 
     def inspect
       "#<#{self.class} #{attributes.filter_map { |name, value| "#{name}: #{value || 'nil'}" }.join(', ')}>"
