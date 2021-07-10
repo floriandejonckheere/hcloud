@@ -21,6 +21,18 @@ Or install it yourself as:
 
     $ gem install hcloud
 
+## Usage
+
+```
+require "hcloud"
+
+# Create a new client
+client = HCloud::Client.new(token: "my_access_token")
+
+# Set client as default connection
+HCloud::Client.connection = client
+```
+
 ## Development
 
 To release a new version, update the version number in `lib/hcloud/version.rb`, update the changelog, commit the files and create a git tag starting with `v`, and push it to the repository.
