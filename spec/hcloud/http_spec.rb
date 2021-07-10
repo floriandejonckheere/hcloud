@@ -41,4 +41,14 @@ RSpec.describe HCloud::HTTP do
       expect(response).to eq({ foo: "bar" })
     end
   end
+
+  describe "#delete" do
+    it "performs a HTTP DELETE request" do
+      stub = stub_request(:delete, "https://endpoint/api")
+
+      http.delete("api")
+
+      expect(stub).to have_been_requested
+    end
+  end
 end

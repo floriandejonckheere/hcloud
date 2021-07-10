@@ -51,6 +51,16 @@ module HCloud
         .deep_symbolize_keys
     end
 
+    def delete(path)
+      response = http
+        .delete(url_for(path))
+
+      raise Errors::NotFoundError, response if response.code == 404
+      raise Errors::APIError, response unless response.status.success?
+
+      nil
+    end
+
     private
 
     def http
