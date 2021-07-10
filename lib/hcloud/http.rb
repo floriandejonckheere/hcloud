@@ -6,11 +6,11 @@ require "http"
 
 module HCloud
   class HTTP
-    attr_reader :endpoint, :access_token, :logger, :timeout
+    attr_reader :access_token, :endpoint, :logger, :timeout
 
-    def initialize(endpoint, access_token, logger = Logger.new("/dev/null"), timeout = 10)
-      @endpoint = endpoint
+    def initialize(access_token, endpoint, logger = Logger.new("/dev/null"), timeout = 10)
       @access_token = access_token
+      @endpoint = endpoint
       @logger = logger
       @timeout = timeout
     end

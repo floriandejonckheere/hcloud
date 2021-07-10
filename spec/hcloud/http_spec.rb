@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::HTTP do
-  subject(:http) { described_class.new("https://endpoint/", "access_token") }
+  subject(:http) { described_class.new("access_token", "https://endpoint/") }
 
   describe "#get" do
     it "performs a HTTP GET request" do
