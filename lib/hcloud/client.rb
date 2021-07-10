@@ -6,7 +6,7 @@ module HCloud
 
     attr_reader :access_token, :endpoint
 
-    def initialize(access_token:, endpoint: "https://api.hetzner.cloud/")
+    def initialize(access_token:, endpoint: "https://api.hetzner.cloud/v1")
       @access_token = access_token
       @endpoint = endpoint
     end

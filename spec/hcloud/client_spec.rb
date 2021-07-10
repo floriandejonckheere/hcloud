@@ -8,7 +8,7 @@ RSpec.describe HCloud::Client do
   end
 
   it "has a default endpoint" do
-    expect(client.endpoint).to eq "https://api.hetzner.cloud/"
+    expect(client.endpoint).to eq "https://api.hetzner.cloud/v1"
   end
 
   it "has a default connection" do
