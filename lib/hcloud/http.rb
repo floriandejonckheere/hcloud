@@ -27,6 +27,18 @@ module HCloud
         .deep_symbolize_keys
     end
 
+    def put(path, body = {})
+      response = http
+        .put(url_for(path), json: body)
+
+      raise Errors::NotFoundError, response if response.code == 404
+      raise Errors::APIError, response unless response.status.success?
+
+      response
+        .parse(:json)
+        .deep_symbolize_keys
+    end
+
     private
 
     def http
