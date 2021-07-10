@@ -7,6 +7,6 @@ module HCloud
     attribute :public_key
     attribute :fingerprint
     attribute :labels, default: -> { {} }
-    attribute :created, :time
+    attribute :created, :datetime
   end
 end
