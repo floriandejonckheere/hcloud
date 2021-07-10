@@ -28,4 +28,17 @@ RSpec.describe HCloud::HTTP do
       expect(response).to eq({ foo: "bar" })
     end
   end
+
+  describe "#post" do
+    it "performs a HTTP POST request" do
+      stub = stub_request(:post, "https://endpoint/api")
+        .with(body: { one: "two" })
+        .to_return(body: { foo: "bar" }.to_json)
+
+      response = http.post("api", one: "two")
+
+      expect(stub).to have_been_requested
+      expect(response).to eq({ foo: "bar" })
+    end
+  end
 end
