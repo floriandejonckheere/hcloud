@@ -19,46 +19,52 @@ module HCloud
       response = http
         .get(url_for(path), params: params)
 
-      raise Errors::NotFoundError, response if response.code == 404
-      raise Errors::APIError, response unless response.status.success?
-
-      response
+      data = response
         .parse(:json)
         .deep_symbolize_keys
+
+      raise Error, "#{response.code}: #{data.dig(:error, :message)}" unless response.status.success?
+
+      data
     end
 
     def put(path, body = {})
       response = http
         .put(url_for(path), json: body)
 
-      raise Errors::NotFoundError, response if response.code == 404
-      raise Errors::APIError, response unless response.status.success?
-
-      response
+      data = response
         .parse(:json)
         .deep_symbolize_keys
+
+      raise Error, "#{response.code}: #{data.dig(:error, :message)}" unless response.status.success?
+
+      data
     end
 
     def post(path, body = {})
       response = http
         .post(url_for(path), json: body)
 
-      raise Errors::NotFoundError, response if response.code == 404
-      raise Errors::APIError, response unless response.status.success?
-
-      response
+      data = response
         .parse(:json)
         .deep_symbolize_keys
+
+      raise Error, "#{response.code}: #{data.dig(:error, :message)}" unless response.status.success?
+
+      data
     end
 
     def delete(path)
       response = http
         .delete(url_for(path))
 
-      raise Errors::NotFoundError, response if response.code == 404
-      raise Errors::APIError, response unless response.status.success?
+      data = response
+        .parse(:json)
+        .deep_symbolize_keys
 
-      nil
+      raise Error, "#{response.code}: #{data.dig(:error, :message)}" unless response.status.success?
+
+      data
     end
 
     private
