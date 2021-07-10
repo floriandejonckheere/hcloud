@@ -27,6 +27,10 @@ Metrics/BlockLength:
     - "*.gemspec"
     - spec/**/*.rb
 
+Metrics/MethodLength:
+  Exclude:
+    - spec/**/*.rb
+
 RSpec/ExampleLength:
   Enabled: false
 
