@@ -2,13 +2,17 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
+require "logger"
 
 require "hcloud"
 
 require "dotenv"
 Dotenv.load
 
-HCloud::Client.connection = HCloud::Client.new(access_token: ENV.fetch("HCLOUD_TOKEN"))
+logger = Logger.new($stdout)
+logger.level = :info
+
+HCloud::Client.connection = HCloud::Client.new(access_token: ENV.fetch("HCLOUD_TOKEN"), logger: logger)
 
 require "irb"
 IRB.start(__FILE__)

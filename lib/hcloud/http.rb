@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
-require "logger"
-
 require "http"
 
 module HCloud
   class HTTP
     attr_reader :access_token, :endpoint, :logger, :timeout
 
-    def initialize(access_token, endpoint, logger = Logger.new("/dev/null"), timeout = 10)
+    def initialize(access_token, endpoint, logger, timeout = 10)
       @access_token = access_token
       @endpoint = endpoint
       @logger = logger
