@@ -11,6 +11,12 @@ module HCloud
       assign_attributes(attributes) if attributes
     end
 
+    def create
+      assign_attributes client
+        .post("/#{resource_name.pluralize}", attributes.slice(*creatable_attributes.map(&:to_s)))
+        .fetch(resource_name.to_sym)
+    end
+
     def delete
       client
         .delete("/#{resource_name.pluralize}/#{id}")
@@ -18,8 +24,12 @@ module HCloud
       @deleted = true
     end
 
+    def created?
+      created.present?
+    end
+
     def deleted?
-      !!@deleted
+      @deleted.present?
     end
 
     def inspect

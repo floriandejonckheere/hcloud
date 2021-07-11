@@ -36,6 +36,8 @@ HCloud::Client.connection = client
 ssh_key = HCloud::SSHKey.find(3399402)
 ```
 
+The gem does little validation on your input or behaviour, and expects you to use it in a sane way.
+
 ## Development
 
 To release a new version, update the version number in `lib/hcloud/version.rb`, update the changelog, commit the files and create a git tag starting with `v`, and push it to the repository.

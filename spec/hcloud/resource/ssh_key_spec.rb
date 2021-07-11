@@ -7,6 +7,21 @@ RSpec.describe HCloud::SSHKey do
     expect(described_class.new.labels).to eq({})
   end
 
+  describe "#create" do
+    subject(:resource) { build(:ssh_key, id: nil, created: nil) }
+
+    it "creates the resource" do
+      stub_request(:post, "https://api.hetzner.cloud/v1/ssh_keys")
+        .with(body: resource.attributes.slice(*resource.creatable_attributes.map(&:to_s)))
+        .to_return(body: { ssh_key: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
+
+      resource.create
+
+      expect(resource.id).to eq 1
+      expect(resource).to be_created
+    end
+  end
+
   describe "#delete" do
     it "deletes the resource" do
       stub_request(:delete, "https://api.hetzner.cloud/v1/ssh_keys/#{resource.id}")
