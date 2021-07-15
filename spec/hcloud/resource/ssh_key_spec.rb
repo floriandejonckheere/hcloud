@@ -22,6 +22,18 @@ RSpec.describe HCloud::SSHKey do
     end
   end
 
+  describe "#update" do
+    it "updates the resource" do
+      stub_request(:put, "https://api.hetzner.cloud/v1/ssh_keys/#{resource.id}")
+        .with(body: resource.attributes.slice(*resource.updatable_attributes.map(&:to_s)))
+        .to_return(body: { ssh_key: resource.attributes.merge(name: "my_name") }.to_json)
+
+      resource.update
+
+      expect(resource.name).to eq "my_name"
+    end
+  end
+
   describe "#delete" do
     it "deletes the resource" do
       stub_request(:delete, "https://api.hetzner.cloud/v1/ssh_keys/#{resource.id}")

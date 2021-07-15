@@ -12,5 +12,9 @@ module HCloud
     def creatable_attributes
       [:name, :public_key, :labels]
     end
+
+    def updatable_attributes
+      [:name, :labels]
+    end
   end
 end

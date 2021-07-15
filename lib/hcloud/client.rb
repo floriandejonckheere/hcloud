@@ -14,7 +14,7 @@ module HCloud
       @logger = logger
     end
 
-    delegate :get, :post, :delete, to: :http
+    delegate :get, :put, :post, :delete, to: :http
 
     private
 

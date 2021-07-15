@@ -17,6 +17,12 @@ module HCloud
         .fetch(resource_name.to_sym)
     end
 
+    def update
+      assign_attributes client
+        .put("/#{resource_name.pluralize}/#{id}", attributes.slice(*updatable_attributes.map(&:to_s)))
+        .fetch(resource_name.to_sym)
+    end
+
     def delete
       client
         .delete("/#{resource_name.pluralize}/#{id}")
