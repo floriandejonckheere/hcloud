@@ -32,8 +32,24 @@ client = HCloud::Client.new(token: "my_access_token")
 # Set client as default connection
 HCloud::Client.connection = client
 
-# Find SSH key by ID
+# Create resource
+ssh_key = HCloud::SSHKey.new(name: "My SSH key", public_key: "ssh-rsa ...")
+ssh_key.create
+ssh_key.created?
+# => true
+
+# Find resource by ID
 ssh_key = HCloud::SSHKey.find(3399402)
+
+# Update resource
+ssh_key.updatable_attributes # => [:name, :labels]
+ssh_key.name = "New name"
+ssh_key.update
+
+# Delete resource
+ssh_key.delete
+ssh_key.deleted?
+# => true
 ```
 
 The gem does little validation on your input or behaviour, and expects you to use it in a sane way.
