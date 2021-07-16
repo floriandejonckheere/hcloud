@@ -18,6 +18,8 @@
 
 require "webmock/rspec"
 
+require "dotenv/load"
+
 require "hcloud"
 
 Dir[File.join(__dir__, "support/**/*.rb")].sort.each { |f| require f }
