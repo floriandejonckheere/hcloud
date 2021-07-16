@@ -39,7 +39,7 @@ module HCloud
     end
 
     def inspect
-      "#<#{self.class} #{attributes.filter_map { |name, value| "#{name}: #{value || 'nil'}" }.join(', ')}>"
+      "#<#{self.class} #{attributes.filter_map { |name, value| "#{name}: #{value.inspect}" }.join(', ')}>"
     end
 
     def self.find(id)
