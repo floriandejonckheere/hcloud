@@ -27,7 +27,7 @@ Or install it yourself as:
 require "hcloud"
 
 # Create a new client
-client = HCloud::Client.new(token: "my_access_token")
+client = HCloud::Client.new(access_token: "my_access_token")
 
 # Set client as default connection
 HCloud::Client.connection = client
