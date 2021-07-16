@@ -6,6 +6,8 @@ on:
       - '*'
     tags:
       - '*'
+  schedule:
+    - cron: '0 7 * * 1' # Run every monday at 07:00 UTC
 
 jobs:
   build:
@@ -41,7 +43,12 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Test
-        run: bundle exec rspec --profile 10 --format progress
+        run: |
+          if [[ "$EVENT_NAME" == "schedule" ]]; then
+              bundle exec rspec --format progress --tag integration
+          else
+              bundle exec rspec --profile 10 --format progress
+          fi
 
       - name: Lint
         run: bundle exec rubocop --config .rubocop.yml --parallel --display-cop-names
