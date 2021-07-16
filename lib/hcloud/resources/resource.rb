@@ -38,6 +38,14 @@ module HCloud
       @deleted.present?
     end
 
+    def creatable_attributes
+      []
+    end
+
+    def updatable_attributes
+      []
+    end
+
     def inspect
       "#<#{self.class} #{attributes.filter_map { |name, value| "#{name}: #{value.inspect}" }.join(', ')}>"
     end
