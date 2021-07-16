@@ -4,17 +4,28 @@ module HCloud
   class Collection
     include Enumerable
 
-    attr_accessor :page, :previous_page, :next_page, :last_page, :per_page, :total_entries, :proc, :sort_by
+    attr_accessor :page, :previous_page, :next_page, :last_page, :per_page, :total_entries, :proc
+
+    attr_reader :sort_by, :filter_by
 
     def initialize(&block)
       @proc = block
 
       @page = 1
       @per_page = 50
+
+      @sort_by = nil
+      @filter_by = {}
     end
 
     def sort(*sort_by)
       @sort_by = sort_by
+
+      self
+    end
+
+    def where(**filter_by)
+      @filter_by = filter_by
 
       self
     end
@@ -51,6 +62,7 @@ module HCloud
         page: page,
         per_page: per_page,
         sort: sort_by,
+        **filter_by,
       }
     end
   end
