@@ -69,6 +69,18 @@ RSpec.describe HCloud::SSHKey do
       expect(models.first).to be_a described_class
       expect(models.first.attributes).to eq resource.attributes
     end
+
+    it "returns sorted instances" do
+      stub_request(:get, "https://api.hetzner.cloud/v1/ssh_keys?sort=name:asc&sort=id:desc")
+        .with(query: { page: 1, per_page: 50 })
+        .to_return(body: { ssh_keys: [resource.attributes], meta: { pagination: { total_entries: 1 } } }.to_json)
+
+      models = described_class.all.sort(name: :asc, id: :desc)
+
+      expect(models.count).to eq 1
+      expect(models.first).to be_a described_class
+      expect(models.first.attributes).to eq resource.attributes
+    end
   end
 
   describe "integration test", integration: true, order: :defined do

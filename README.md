@@ -32,6 +32,12 @@ client = HCloud::Client.new(access_token: "my_access_token")
 # Set client as default connection
 HCloud::Client.connection = client
 
+# List resources
+ssh_keys = HCloud::SSHKey.all
+
+# List resources (sorted)
+ssh_keys = HCloud::SSHKey.all.sort(id: :asc, name: :desc)
+
 # Create resource
 ssh_key = HCloud::SSHKey.new(name: "My SSH key", public_key: "ssh-rsa ...")
 ssh_key.create

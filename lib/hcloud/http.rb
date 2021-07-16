@@ -15,7 +15,7 @@ module HCloud
 
     def get(path, params = {})
       response = http
-        .get(url_for(path), params: params)
+        .get(url_for(path), params: transform_params(params))
 
       data = response
         .parse(:json)
@@ -78,6 +78,23 @@ module HCloud
 
     def url_for(path)
       "#{endpoint}#{path}"
+    end
+
+    def transform_params(params)
+      params
+        .transform_values do |value|
+        # Don't transform if value is single argument: { sort: :id }
+        next value unless value.respond_to?(:each)
+
+        value.map do |element|
+          # Don't transform if element is single argument: { sort: [:id] }
+          next element unless element.respond_to?(:each)
+
+          # Join elements with : { sort: [id: :asc] }
+          element.to_a.join(":")
+        end
+      end
+        .compact
     end
   end
 end
