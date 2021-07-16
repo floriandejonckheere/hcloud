@@ -54,7 +54,17 @@ ssh_key.deleted?
 
 The gem does little validation on your input or behaviour, and expects you to use it in a sane way.
 
-## Development
+## Testing
+
+```ssh
+# Run test suite (without integration tests)
+bundle exec rspec
+
+# Run integration tests
+bundle exec rspec --tag integration
+```
+
+## Releasing
 
 To release a new version, update the version number in `lib/hcloud/version.rb`, update the changelog, commit the files and create a git tag starting with `v`, and push it to the repository.
 Github Actions will automatically run the test suite, build the `.gem` file and push it to [rubygems.org](https://rubygems.org).
