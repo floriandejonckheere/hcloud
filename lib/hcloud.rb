@@ -20,7 +20,7 @@ module HCloud
       require root.join("config/inflections.rb")
 
       # Collapse resources
-      loader.collapse(root.join("lib/hcloud/resources"))
+      loader.collapse(root.join("lib/hcloud/resources"), root.join("lib/hcloud/entities"))
 
       loader.setup
       loader.eager_load
