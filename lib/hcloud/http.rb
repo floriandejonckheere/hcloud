@@ -56,11 +56,11 @@ module HCloud
       response = http
         .delete(url_for(path))
 
+      return if response.status.success?
+
       data = response
         .parse(:json)
         .deep_symbolize_keys
-
-      return data if response.status.success?
 
       raise Errors.const_get(data.dig(:error, :code).camelize), data.dig(:error, :message)
     end

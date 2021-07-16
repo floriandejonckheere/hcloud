@@ -4,6 +4,8 @@ module HCloud
   module Errors
     class Error < StandardError; end
 
+    class Unauthorized < Error; end
+
     class Forbidden < Error; end
 
     class InvalidInput < Error; end
