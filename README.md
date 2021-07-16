@@ -60,6 +60,37 @@ ssh_key.deleted?
 
 The gem does little validation on your input or behaviour, and expects you to use it in a sane way.
 
+## Features
+
+Not all Hetzner Cloud API endpoints have been implemented yet.
+
+| Resource              | State           |
+|-----------------------|-----------------|
+| Actions               | Not implemented |
+| Certificates          | Not implemented |
+| Certificate Actions   | Not implemented |
+| Datacenters           | Not implemented |
+| Firewalls             | Not implemented |
+| Firewall Actions      | Not implemented |
+| Floating IPs          | Not implemented |
+| Floating IP Actions   | Not implemented |
+| Images                | Not implemented |
+| Image Actions         | Not implemented |
+| ISOs                  | Not implemented |
+| Load Balancers        | Not implemented |
+| Load Balancer Actions | Not implemented |
+| Load Balancer Types   | Not implemented |
+| Locations             | Not implemented |
+| Networks              | Not implemented |
+| Network Actions       | Not implemented |
+| Pricing               | Not implemented |
+| Servers               | Not implemented |
+| Server Actions        | Not implemented |
+| Server Types          | Not implemented |
+| SSH Keys              | Implemented     |
+| Volumes               | Not implemented |
+| Volume Actions        | Not implemented |
+
 ## Testing
 
 ```ssh
