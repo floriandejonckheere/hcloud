@@ -15,7 +15,7 @@ RSpec.configure do |config|
 
   config.after(:context, integration: true) do
     # Delete all created instances
-    described_class.all.each(&:delete)
+    described_class.all.each { |i| i.try(:delete) }
 
     # Unset client
     HCloud::Client.connection = @client
