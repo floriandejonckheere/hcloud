@@ -2,6 +2,8 @@
 
 module HCloud
   class ServerType < Resource
+    include Queryable
+
     attribute :id, :integer
     attribute :name
     attribute :description
@@ -16,8 +18,5 @@ module HCloud
     attribute :prices, :price, array: true
 
     attribute :deprecated, :boolean
-
-    # TODO: Split up Resource into read-only and read-write resources
-    def delete; end
   end
 end
