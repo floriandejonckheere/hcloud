@@ -2,7 +2,7 @@
 
 module HCloud
   class ServerType < Resource
-    include Queryable
+    queryable
 
     attribute :id, :integer
     attribute :name

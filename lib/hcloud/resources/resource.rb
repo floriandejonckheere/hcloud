@@ -5,6 +5,8 @@ module HCloud
     include ActiveModel::Attributes
     include ActiveModel::AttributeAssignment
 
+    include Concerns
+
     def initialize(attributes = {})
       super()
 

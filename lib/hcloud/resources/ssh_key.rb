@@ -2,10 +2,10 @@
 
 module HCloud
   class SSHKey < Resource
-    include Queryable
-    include Creatable
-    include Updatable
-    include Deletable
+    queryable
+    creatable
+    updatable
+    deletable
 
     attribute :id, :integer
     attribute :name
