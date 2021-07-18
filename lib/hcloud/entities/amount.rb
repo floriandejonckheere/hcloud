@@ -2,7 +2,7 @@
 
 module HCloud
   class Amount < Entity
-    attribute :gross
-    attribute :net
+    attribute :gross, :decimal
+    attribute :net, :decimal
   end
 end
