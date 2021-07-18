@@ -11,10 +11,12 @@ RSpec.describe HCloud::Location, integration: true, order: :defined do
     locations = described_class.all.where(name: "fsn1")
 
     expect(locations.count).to eq 1
+    expect(locations.first.id).to eq 1
+  end
 
-    location = locations.first
+  it "finds resources" do
+    location = described_class.find(1)
 
-    expect(location.id).to eq 1
     expect(location.name).to eq "fsn1"
     expect(location.description).to eq "Falkenstein DC Park 1"
 
