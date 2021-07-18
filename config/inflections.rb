@@ -5,6 +5,7 @@ HCloud.loader.inflector.inflect(
   "ssh_key" => "SSHKey",
   "http" => "HTTP",
   "iso" => "ISO",
+  "iso_type" => "ISOType",
 )
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
