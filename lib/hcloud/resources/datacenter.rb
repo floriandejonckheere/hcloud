@@ -1,6 +1,29 @@
 # frozen_string_literal: true
 
 module HCloud
+  ##
+  # Represents a datacenter
+  #
+  # == List all datacenters
+  #
+  #     HCloud::Datacenter.all
+  #     # => [#<HCloud::Datacenter id: 2, ...>, ...]
+  #
+  # == Search datacenters
+  #
+  #     HCloud::Datacenter.all.where(name: "nbg1-dc8")
+  #     # => #<HCloud::Datacenter id: 2, ...>
+  #
+  # == Find datacenter by ID
+  #
+  #     HCloud::Datacenter.find(2)
+  #     # => #<HCloud::Datacenter id: 2, ...>
+  #
+  # == Get datacenter recommendation
+  #
+  #     HCloud::Datacenter.recommendation
+  #     # => #<HCloud::Datacenter id: 2, ...>
+  #
   class Datacenter < Resource
     queryable
 

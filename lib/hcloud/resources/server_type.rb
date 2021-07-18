@@ -1,6 +1,24 @@
 # frozen_string_literal: true
 
 module HCloud
+  ##
+  # Represents a server type
+  #
+  # == List all server types
+  #
+  #     HCloud::ServerType.all
+  #     # => [#<HCloud::ServerType id: 1, ...>, ...]
+  #
+  # == Search server types
+  #
+  #     HCloud::ServerType.all.where(name: "cx11")
+  #     # => #<HCloud::ServerType id: 1, ...>
+  #
+  # == Find server type by ID
+  #
+  #     HCloud::ServerType.find(1)
+  #     # => #<HCloud::ServerType id: 1, ...>
+  #
   class ServerType < Resource
     queryable
 

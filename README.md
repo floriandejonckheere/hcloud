@@ -56,6 +56,8 @@ ssh_key.update
 ssh_key.delete
 ssh_key.deleted?
 # => true
+
+# For detailed usage of resources, refer to the class documentation
 ```
 
 The gem does little validation on your input or behaviour, and expects you to use it in a sane way.

@@ -1,6 +1,24 @@
 # frozen_string_literal: true
 
 module HCloud
+  ##
+  # Represents a location
+  #
+  # == List all locations
+  #
+  #     HCloud::Location.all
+  #     # => [#<HCloud::Location id: 1, ...>, ...]
+  #
+  # == Search locations
+  #
+  #     HCloud::Location.all.where(name: "nbg1")
+  #     # => #<HCloud::Location id: 1, ...>
+  #
+  # == Find location by ID
+  #
+  #     HCloud::Location.find(1)
+  #     # => #<HCloud::Location id: 1, ...>
+  #
   class Location < Resource
     queryable
 
