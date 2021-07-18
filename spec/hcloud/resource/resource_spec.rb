@@ -5,18 +5,16 @@ RSpec.describe HCloud::Resource do
 
   let(:resource_class) do
     Class.new(described_class) do
-      include HCloud::Queryable
-      include HCloud::Creatable
-      include HCloud::Updatable
-      include HCloud::Deletable
+      queryable
+      creatable
+      updatable
+      deletable
 
       attribute :id, :integer
       attribute :name
       attribute :description
 
       attribute :labels, default: -> { {} }
-
-      attribute :created, :datetime
 
       def creatable_attributes
         [:name, :description, :labels]

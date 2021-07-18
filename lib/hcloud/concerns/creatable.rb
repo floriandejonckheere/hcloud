@@ -5,6 +5,8 @@ module HCloud
     extend ActiveSupport::Concern
 
     included do
+      attribute :created, :datetime
+
       def create
         assign_attributes client
           .post("/#{resource_name.pluralize}", attributes.slice(*creatable_attributes.map(&:to_s)))

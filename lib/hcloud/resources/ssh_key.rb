@@ -63,8 +63,6 @@ module HCloud
 
     attribute :labels, default: -> { {} }
 
-    attribute :created, :datetime
-
     def creatable_attributes
       [:name, :public_key, :labels]
     end
