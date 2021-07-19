@@ -74,6 +74,15 @@ RSpec.describe HCloud::Resource do
     end
   end
 
+  describe "#reload" do
+    it "reloads the resource" do
+      stub_request(:get, "https://api.hetzner.cloud/v1/resources/#{resource.id}")
+        .to_return(body: { resource: resource.attributes.merge(name: "new_name") }.to_json)
+
+      expect(resource.reload.name).to eq "new_name"
+    end
+  end
+
   describe ".find" do
     it "returns an instance of the resource" do
       stub_request(:get, "https://api.hetzner.cloud/v1/resources/#{resource.id}")

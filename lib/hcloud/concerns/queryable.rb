@@ -4,6 +4,16 @@ module HCloud
   module Queryable
     extend ActiveSupport::Concern
 
+    included do
+      def reload
+        assign_attributes client
+          .get("/#{resource_name.pluralize}/#{id}")
+          .fetch(resource_name.to_sym)
+
+        self
+      end
+    end
+
     class_methods do
       def find(id)
         new client
