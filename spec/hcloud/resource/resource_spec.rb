@@ -40,7 +40,7 @@ RSpec.describe HCloud::Resource do
 
     it "creates the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/resources")
-        .with(body: resource.attributes.slice(*resource.creatable_attributes.map(&:to_s)))
+        .with(body: resource.creatable_params)
         .to_return(body: { resource: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
 
       resource.create
