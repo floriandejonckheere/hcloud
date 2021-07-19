@@ -3,7 +3,7 @@
 RSpec.describe HCloud::Volume, integration: true, order: :defined do
   id_one, id_two = nil
 
-  it "creates a resource" do
+  it "creates a volume" do
     volume = described_class.new(name: "first_volume", size: 10, format: "ext4", automount: false, location: { name: "fsn1" })
 
     volume.create
@@ -14,7 +14,7 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
     id_one = volume.id
   end
 
-  it "creates another resource" do
+  it "creates another volume" do
     volume = described_class.new(name: "second_volume", size: 10, format: "ext4", automount: false, location: { name: "nbg1" })
 
     volume.create
@@ -25,7 +25,7 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
     id_two = volume.id
   end
 
-  it "finds a resource" do
+  it "finds a volume" do
     volume = described_class.find(id_one)
 
     expect(volume.name).to eq "first_volume"
@@ -39,28 +39,28 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
     expect(volume.server).to be_nil
   end
 
-  it "lists resources" do
+  it "lists volumes" do
     volumes = described_class.all
 
     expect(volumes.count).to eq 2
     expect(volumes.map(&:id)).to match_array [id_one, id_two]
   end
 
-  it "sorts resources" do
+  it "sorts volumes" do
     volumes = described_class.all.sort(name: :desc)
 
     expect(volumes.count).to eq 2
     expect(volumes.map(&:id)).to eq [id_two, id_one]
   end
 
-  it "filters resources" do
+  it "filters volumes" do
     volumes = described_class.all.where(name: "first_volume")
 
     expect(volumes.count).to eq 1
     expect(volumes.first.id).to eq id_one
   end
 
-  it "updates a resource" do
+  it "updates a volume" do
     volume = described_class.find(id_one)
 
     volume.name = "other_volume"
@@ -72,7 +72,7 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
     expect(volume.name).to eq "other_volume"
   end
 
-  it "deletes a resource" do
+  it "deletes a volume" do
     volume = described_class.find(id_one)
 
     volume.delete

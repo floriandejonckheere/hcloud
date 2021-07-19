@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::Location, integration: true, order: :defined do
-  it "lists resources" do
+  it "lists locations" do
     locations = described_class.all
 
     expect(locations.count).to be > 1
   end
 
-  it "filters resources" do
+  it "filters locations" do
     locations = described_class.all.where(name: "fsn1")
 
     expect(locations.count).to eq 1
     expect(locations.first.id).to eq 1
   end
 
-  it "finds resources" do
+  it "finds locations" do
     location = described_class.find(1)
 
     expect(location.name).to eq "fsn1"

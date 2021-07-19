@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::ISO, integration: true, order: :defined do
-  it "lists resources" do
+  it "lists ISOs" do
     isos = described_class.all
 
     expect(isos.count).to be > 1
   end
 
-  it "filters resources" do
+  it "filters ISOs" do
     isos = described_class.all.where(name: "debian-10.10.0-amd64-netinst.iso")
 
     expect(isos.count).to eq 1
     expect(isos.first.id).to eq 7631
   end
 
-  it "finds resources" do
+  it "finds ISOs" do
     iso = described_class.find(7631)
 
     expect(iso.name).to eq "debian-10.10.0-amd64-netinst.iso"

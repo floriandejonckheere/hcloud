@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::ServerType, integration: true, order: :defined do
-  it "lists resources" do
+  it "lists server types" do
     server_types = described_class.all
 
     expect(server_types.count).to be > 1
   end
 
-  it "filters resources" do
+  it "filters server types" do
     server_types = described_class.all.where(name: "cx11")
 
     expect(server_types.count).to eq 1
     expect(server_types.first.id).to eq 1
   end
 
-  it "finds resources" do
+  it "finds server types" do
     server_type = described_class.find(1)
 
     expect(server_type.name).to eq "cx11"

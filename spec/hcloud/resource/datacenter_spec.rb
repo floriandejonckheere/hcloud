@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::Datacenter, integration: true, order: :defined do
-  it "lists resources" do
+  it "lists datacenters" do
     datacenters = described_class.all
 
     expect(datacenters.count).to be > 1
   end
 
-  it "filters resources" do
+  it "filters datacenters" do
     datacenters = described_class.all.where(name: "nbg1-dc3")
 
     expect(datacenters.count).to eq 1
     expect(datacenters.first.id).to eq 2
   end
 
-  it "finds resources" do
+  it "finds datacenters" do
     datacenter = described_class.find(2)
 
     expect(datacenter.name).to eq "nbg1-dc3"

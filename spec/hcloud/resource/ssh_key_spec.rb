@@ -6,7 +6,7 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
 
   id_one, id_two = nil
 
-  it "creates a resource" do
+  it "creates a SSH key" do
     ssh_key = described_class.new(name: "First SSH Key", public_key: file_one)
 
     ssh_key.create
@@ -17,7 +17,7 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
     id_one = ssh_key.id
   end
 
-  it "creates another resource" do
+  it "creates another SSH key" do
     ssh_key = described_class.new(name: "Second SSH Key", public_key: file_two)
 
     ssh_key.create
@@ -28,35 +28,35 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
     id_two = ssh_key.id
   end
 
-  it "finds a resource" do
+  it "finds an SSH key" do
     ssh_key = described_class.find(id_one)
 
     expect(ssh_key.name).to eq "First SSH Key"
     expect(ssh_key.public_key).to eq file_one
   end
 
-  it "lists resources" do
+  it "lists SSH keys" do
     ssh_keys = described_class.all
 
     expect(ssh_keys.count).to eq 2
     expect(ssh_keys.map(&:id)).to match_array [id_one, id_two]
   end
 
-  it "sorts resources" do
+  it "sorts SSH keys" do
     ssh_keys = described_class.all.sort(name: :desc)
 
     expect(ssh_keys.count).to eq 2
     expect(ssh_keys.map(&:id)).to eq [id_two, id_one]
   end
 
-  it "filters resources" do
+  it "filters SSH keys" do
     ssh_keys = described_class.all.where(name: "First SSH Key")
 
     expect(ssh_keys.count).to eq 1
     expect(ssh_keys.first.id).to eq id_one
   end
 
-  it "updates a resource" do
+  it "updates a SSH key" do
     ssh_key = described_class.find(id_one)
 
     ssh_key.name = "My Other SSH Key"
@@ -68,7 +68,7 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
     expect(ssh_key.name).to eq "My Other SSH Key"
   end
 
-  it "deletes a resource" do
+  it "deletes a SSH key" do
     ssh_key = described_class.find(id_one)
 
     ssh_key.delete
