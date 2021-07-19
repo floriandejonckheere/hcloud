@@ -41,3 +41,5 @@ ActiveModel::Type.register(:location, HCloud::ResourceType.Type("HCloud::Locatio
 ActiveModel::Type.register(:price, HCloud::ResourceType.Type("HCloud::Price"))
 ActiveModel::Type.register(:protection, HCloud::ResourceType.Type("HCloud::Protection"))
 ActiveModel::Type.register(:server_type, HCloud::ResourceType.Type("HCloud::ServerType"))
+ActiveModel::Type.register(:ssh_key, HCloud::ResourceType.Type("HCloud::SSHKey"))
+ActiveModel::Type.register(:volume, HCloud::ResourceType.Type("HCloud::Volume"))
