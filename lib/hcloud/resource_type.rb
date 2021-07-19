@@ -9,6 +9,8 @@ module HCloud
     end
 
     def cast(value)
+      return if value.blank?
+
       case value
       when klass
         value
