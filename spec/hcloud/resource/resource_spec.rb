@@ -17,6 +17,8 @@ RSpec.describe HCloud::Resource do
 
       attribute :labels, default: -> { {} }
 
+      action :resize
+
       def creatable_attributes
         [:name, :description, :labels]
       end
@@ -149,6 +151,16 @@ RSpec.describe HCloud::Resource do
       actions = resource.actions.find(1)
 
       expect(actions.command).to eq "create_resource"
+    end
+
+    it "creates an action" do
+      stub_request(:post, "https://api.hetzner.cloud/v1/resources/#{resource.id}/actions/resize")
+        .with(body: { size: 100 })
+        .to_return(body: { action: { id: 1, command: "resize" } }.to_json)
+
+      action = resource.resize(size: 100)
+
+      expect(action.command).to eq "resize"
     end
   end
 end
