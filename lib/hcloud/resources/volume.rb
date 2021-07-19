@@ -77,6 +77,27 @@ module HCloud
   #     HCloud::Volume.find(1).actions.find(1)
   #     # => #<HCloud::Action id: 1, ...>
   #
+  # = Volume-specific actions
+  # == Attach a volume to a server
+  #
+  #     HCloud::Volume.find(1).attach(server: 1)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Detach a volume from a server
+  #
+  #     HCloud::Volume.find(1).detach
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Resize volume
+  #
+  #     HCloud::Volume.find(1).resize(size: 100)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Change protection
+  #
+  #     HCloud::Volume.find(1).change_protection(delete: true)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   class Volume < Resource
     actionable
     queryable
@@ -104,6 +125,13 @@ module HCloud
     attribute :labels, default: -> { {} }
 
     alias automount? automount
+
+    action :attach
+    action :detach
+
+    action :resize
+
+    action :change_protection
 
     def creatable_attributes
       [:name, :format, :size, :server, :automount, :labels, { location: :name }]

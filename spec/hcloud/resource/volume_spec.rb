@@ -99,11 +99,39 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
     expect(action.command).to eq "create_volume"
     expect(action.started).not_to be_nil
 
-    # Creation was not instantaneous
-    # expect(action.finished).not_to be_nil
-    # expect(action.progress).to eq 100
+    sleep 1
+    action.reload
 
-    # expect(action.status).to eq "success"
-    # expect(action.error).to be_nil
+    expect(action.finished).not_to be_nil
+    expect(action.progress).to eq 100
+
+    expect(action.status).to eq "success"
+    expect(action.error).to be_nil
+  end
+
+  xit "attaches a volume"
+
+  xit "detaches a volume"
+
+  it "resizes the volume" do
+    volume = described_class.find(id_two)
+
+    volume.resize(size: 11)
+
+    sleep 1
+    volume.reload
+
+    expect(volume.size).to eq 11
+  end
+
+  it "changes protection" do
+    volume = described_class.find(id_two)
+
+    volume.change_protection(delete: true)
+
+    sleep 1
+    volume.reload
+
+    expect(volume.protection).to be_delete
   end
 end
