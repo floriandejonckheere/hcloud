@@ -5,6 +5,7 @@ RSpec.describe HCloud::Resource do
 
   let(:resource_class) do
     Class.new(described_class) do
+      actionable
       queryable
       creatable
       updatable
@@ -117,6 +118,28 @@ RSpec.describe HCloud::Resource do
       models = resource_class.all.where(name: "aaa")
 
       expect(models.count).to eq 1
+    end
+  end
+
+  describe "actions" do
+    it "lists all actions" do
+      stub_request(:get, "https://api.hetzner.cloud/v1/resources/#{resource.id}/actions")
+        .with(query: { page: 1, per_page: 50 })
+        .to_return(body: { actions: [{ id: 1, command: "create_resource" }], meta: { pagination: { total_entries: 1 } } }.to_json)
+
+      actions = resource.actions
+
+      expect(actions.count).to eq 1
+      expect(actions.first.id).to eq 1
+    end
+
+    it "finds an action" do
+      stub_request(:get, "https://api.hetzner.cloud/v1/resources/#{resource.id}/actions/1")
+        .to_return(body: { action: { id: 1, command: "create_resource" } }.to_json)
+
+      actions = resource.actions.find(1)
+
+      expect(actions.command).to eq "create_resource"
     end
   end
 end

@@ -4,11 +4,11 @@ module HCloud
   module Concerns
     extend ActiveSupport::Concern
 
-    included do
-      include Associatable
-    end
-
     class_methods do
+      def actionable
+        include Actionable
+      end
+
       def queryable
         include Queryable
       end
