@@ -35,5 +35,7 @@ module HCloud
     class Unsupported < Error; end
 
     class TokenReadonly < Error; end
+
+    class NoSpaceLeftInLocation < Error; end
   end
 end
