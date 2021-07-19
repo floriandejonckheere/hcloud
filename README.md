@@ -99,7 +99,7 @@ Not all Hetzner Cloud API endpoints have been implemented yet.
 # Run test suite (without integration tests)
 bundle exec rspec
 
-# Run integration tests
+# Run integration tests (WARNING: THIS WILL DESTROY **ALL** RESOURCES AFTER EACH RUN)
 bundle exec rspec --tag integration
 ```
 
