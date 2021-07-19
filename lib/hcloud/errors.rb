@@ -10,7 +10,7 @@ module HCloud
 
     class InvalidInput < Error; end
 
-    class JSON < Error; end
+    class JSONError < Error; end
 
     class Locked < Error; end
 
@@ -22,9 +22,9 @@ module HCloud
 
     class ResourceUnavailable < Error; end
 
-    class Service < Error; end
+    class ServiceError < Error; end
 
-    class Uniqueness < Error; end
+    class UniquenessError < Error; end
 
     class Protected < Error; end
 
@@ -32,7 +32,7 @@ module HCloud
 
     class Conflict < Error; end
 
-    class Unsupported < Error; end
+    class UnsupportedError < Error; end
 
     class TokenReadonly < Error; end
 
