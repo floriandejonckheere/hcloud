@@ -50,7 +50,35 @@ module HCloud
   #     volume.deleted?
   #     # => true
   #
+  # = Actions
+  # == List actions
+  #
+  #     actions = HCloud::Volume.find(1).actions
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  # == Sort actions
+  #
+  #     HCloud::Volume.find(1).actions.sort(finished: :desc)
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  #     HCloud::Volume.find(1).actions.sort(:command, finished: :asc)
+  #     # => [#<HCloud::Actions id: 1, ...>, ...]
+  #
+  # == Search actions
+  #
+  #     HCloud::Volume.find(1).actions.where(command: "create_volume")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     HCloud::Volume.find(1).actions.where(status: "success")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Find action by ID
+  #
+  #     HCloud::Volume.find(1).actions.find(1)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   class Volume < Resource
+    actionable
     queryable
     creatable
     updatable

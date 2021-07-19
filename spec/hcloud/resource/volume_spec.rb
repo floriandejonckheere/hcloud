@@ -3,6 +3,8 @@
 RSpec.describe HCloud::Volume, integration: true, order: :defined do
   id_one, id_two = nil
 
+  action_id_one = nil
+
   it "creates a volume" do
     volume = described_class.new(name: "first_volume", size: 10, format: "ext4", automount: false, location: { name: "fsn1" })
 
@@ -80,5 +82,28 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
     expect(volume).to be_deleted
 
     expect { described_class.find(id_one) }.to raise_error HCloud::Errors::NotFound
+  end
+
+  it "lists actions" do
+    actions = described_class.find(id_two).actions
+
+    expect(actions.count).to eq 1
+    expect(actions.first.command).to eq "create_volume"
+
+    action_id_one = actions.first.id
+  end
+
+  it "finds action" do
+    action = described_class.find(id_two).actions.find(action_id_one)
+
+    expect(action.command).to eq "create_volume"
+    expect(action.started).not_to be_nil
+
+    # Creation was not instantaneous
+    # expect(action.finished).not_to be_nil
+    # expect(action.progress).to eq 100
+
+    # expect(action.status).to eq "success"
+    # expect(action.error).to be_nil
   end
 end
