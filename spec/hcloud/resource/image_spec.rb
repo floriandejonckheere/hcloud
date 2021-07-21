@@ -84,4 +84,13 @@ RSpec.describe HCloud::Image, integration: true, order: :defined do
 
   # TODO: deletes an image
   xit "deletes an image"
+
+  # TODO: list actions
+  xit "lists actions"
+
+  # TODO: finds action
+  xit "finds action"
+
+  # TODO: changes protection
+  xit "changes protection"
 end

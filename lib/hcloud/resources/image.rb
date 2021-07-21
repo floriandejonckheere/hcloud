@@ -47,7 +47,38 @@ module HCloud
   #     image.deleted?
   #     # => true
   #
-  # TODO: actions
+  # = Actions
+  # == List actions
+  #
+  #     actions = HCloud::Image.find(1).actions
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  # == Sort actions
+  #
+  #     HCloud::Image.find(1).actions.sort(finished: :desc)
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  #     HCloud::Image.find(1).actions.sort(:command, finished: :asc)
+  #     # => [#<HCloud::Actions id: 1, ...>, ...]
+  #
+  # == Search actions
+  #
+  #     HCloud::Image.find(1).actions.where(command: "change_protection")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     HCloud::Image.find(1).actions.where(status: "success")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Find action by ID
+  #
+  #     HCloud::Image.find(1).actions.find(1)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # = Image-specific actions
+  # == Change protection
+  #
+  #     HCloud::Image.find(1).change_protection(delete: true)
+  #     # => #<HCloud::Action id: 1, ...>
   #
   class Image < Resource
     actionable
@@ -86,6 +117,8 @@ module HCloud
     attribute :rapid_deploy
 
     attribute :labels, default: -> { {} }
+
+    action :change_protection
 
     def created?
       created.present?
