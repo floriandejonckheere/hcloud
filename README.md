@@ -23,7 +23,7 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 require "hcloud"
 
 # Create a new client
