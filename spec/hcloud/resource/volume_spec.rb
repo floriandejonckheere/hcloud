@@ -6,7 +6,7 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
   action_id_one = nil
 
   it "creates a volume" do
-    volume = described_class.new(name: "first_volume", size: 10, format: "ext4", automount: false, location: { name: "fsn1" })
+    volume = described_class.new(name: "first_volume", size: 10, format: "ext4", automount: false, location: "fsn1")
 
     volume.create
 
@@ -17,7 +17,7 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
   end
 
   it "creates another volume" do
-    volume = described_class.new(name: "second_volume", size: 10, format: "ext4", automount: false, location: { name: "nbg1" })
+    volume = described_class.new(name: "second_volume", size: 10, format: "ext4", automount: false, location: "nbg1")
 
     volume.create
 
@@ -109,8 +109,10 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
     expect(action.error).to be_nil
   end
 
+  # TODO: attaches a volume
   xit "attaches a volume"
 
+  # TODO: detaches a volume
   xit "detaches a volume"
 
   it "resizes the volume" do

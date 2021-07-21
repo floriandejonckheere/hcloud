@@ -8,18 +8,26 @@ module HCloud
       super()
     end
 
+    # rubocop:disable Metrics/CyclomaticComplexity
     def cast(value)
       return if value.blank?
 
       case value
-      when klass
+      when klass # Class
         value
-      when Array
-        value.map { |v| klass.new(v) }
-      else
+      when Integer # ID
+        klass.new(id: value)
+      when String # Name
+        klass.new(name: value)
+      when Array # List
+        value.map { |v| cast(v) }
+      when Hash # Attribute hash
         klass.new(value)
+      else
+        raise ArgumentError, "cannot cast value: #{value} for type #{class_name}"
       end
     end
+    # rubocop:enable Metrics/CyclomaticComplexity
 
     def klass
       @klass ||= class_name.constantize

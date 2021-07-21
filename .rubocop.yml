@@ -27,8 +27,7 @@ Metrics/BlockLength:
     - spec/**/*.rb
 
 Metrics/MethodLength:
-  Exclude:
-    - spec/**/*.rb
+  Enabled: false
 
 RSpec/ExampleLength:
   Enabled: false
