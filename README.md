@@ -32,20 +32,12 @@ client = HCloud::Client.new(access_token: "my_access_token")
 # Set client as default connection
 HCloud::Client.connection = client
 
-# List resources
-ssh_keys = HCloud::SSHKey.all
-
-# List resources (sorted)
-ssh_keys = HCloud::SSHKey.all.sort(id: :asc, name: :desc)
-
 # Create resource
 ssh_key = HCloud::SSHKey.new(name: "My SSH key", public_key: "ssh-rsa ...")
 ssh_key.create
-ssh_key.created?
-# => true
 
 # Find resource by ID
-ssh_key = HCloud::SSHKey.find(3399402)
+ssh_key = HCloud::SSHKey.find(1)
 
 # Update resource
 ssh_key.updatable_attributes # => [:name, :labels]
@@ -58,6 +50,12 @@ ssh_key.deleted?
 # => true
 
 # For detailed usage of resources, refer to the class documentation
+
+# When specifying associated resources, you can either use an instance of the resource, an integer as ID or a string as name.
+# The following calls are equivalent:
+server = HCloud::Server.new(name: "my_server", location: "fsn", ...)
+server = HCloud::Server.new(name: "my_server", location: 1, ...)
+server = HCloud::Server.new(name: "my_server", location: Location.new(name: "fsn"), ...)
 ```
 
 The gem does little validation on your input or behaviour, and expects you to use it in a sane way.
