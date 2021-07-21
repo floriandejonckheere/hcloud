@@ -3,12 +3,14 @@
 RSpec.describe HCloud::Action, integration: true, order: :defined do
   id_one, id_two = nil
 
+  # TODO: finds an action
   xit "finds an action" do
     action = described_class.find(id_one)
 
     expect(action.status).to eq "success"
   end
 
+  # TODO: lists actions
   xit "lists actions" do
     actions = described_class.all
 
@@ -16,6 +18,7 @@ RSpec.describe HCloud::Action, integration: true, order: :defined do
     expect(actions.map(&:id)).to match_array []
   end
 
+  # TODO: sorts actions
   xit "sorts actions" do
     actions = described_class.all.sort(status: :asc)
 
@@ -23,6 +26,7 @@ RSpec.describe HCloud::Action, integration: true, order: :defined do
     expect(actions.map(&:id)).to eq [id_two, id_one]
   end
 
+  # TODO: filters actions
   xit "filters actions" do
     actions = described_class.all.where(status: "success")
 

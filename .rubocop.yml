@@ -29,6 +29,9 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Enabled: false
 
+RSpec/BeforeAfterAll:
+  Enabled: false
+
 RSpec/ExampleLength:
   Enabled: false
 
