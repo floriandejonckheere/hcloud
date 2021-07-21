@@ -40,7 +40,7 @@ module HCloud
   # == Update volume
   #
   #     volume = HCloud::Volume.find(1)
-  #     volume.name = "Another volume"
+  #     volume.name = "another_volume"
   #     volume.update
   #
   # == Delete volume
