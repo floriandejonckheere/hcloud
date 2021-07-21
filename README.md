@@ -91,7 +91,7 @@ Not all Hetzner Cloud API endpoints have been implemented yet.
 | Server Types          | Implemented     |
 | SSH Keys              | Implemented     |
 | Volumes               | Implemented     |
-| Volume Actions        | Not implemented |
+| Volume Actions        | Implemented     |
 
 ## Testing
 
