@@ -46,6 +46,7 @@ end
 ActiveModel::Type.register(:amount, HCloud::ResourceType.Type("HCloud::Amount"))
 ActiveModel::Type.register(:datacenter, HCloud::ResourceType.Type("HCloud::Datacenter"))
 ActiveModel::Type.register(:datacenter_server_type, HCloud::ResourceType.Type("HCloud::DatacenterServerType"))
+ActiveModel::Type.register(:dns_pointer, HCloud::ResourceType.Type("HCloud::DNSPointer"))
 ActiveModel::Type.register(:error, HCloud::ResourceType.Type("HCloud::Error"))
 ActiveModel::Type.register(:iso, HCloud::ResourceType.Type("HCloud::ISO"))
 ActiveModel::Type.register(:location, HCloud::ResourceType.Type("HCloud::Location"))
