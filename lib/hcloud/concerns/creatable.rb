@@ -27,7 +27,7 @@ module HCloud
 
         attributes
           .slice(*resource_attributes.map(&:to_s))
-          .merge(nested_attributes.reduce(&:merge)&.map { |k, v| [k, send(k).send(v)] }.to_h)
+          .merge(nested_attributes.reduce(&:merge)&.map { |k, v| [k, send(k)&.send(v)] }.to_h)
           .compact
       end
     end
