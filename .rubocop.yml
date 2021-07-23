@@ -47,6 +47,9 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: true
 
+Style/HashAsLastArrayItem:
+  EnforcedStyle: no_braces
+
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     default: "()"

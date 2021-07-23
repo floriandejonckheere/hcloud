@@ -134,7 +134,7 @@ module HCloud
     action :change_protection
 
     def creatable_attributes
-      [:name, :format, :size, :server, :automount, :labels, { location: :name }]
+      [:name, :format, :size, :server, :automount, :labels, location: :name]
     end
 
     def updatable_attributes
