@@ -131,7 +131,7 @@ module HCloud
     action :change_protection
 
     def creatable_attributes
-      [:name, :description, :type, :labels, home_location: :name, server: :name]
+      [:name, :description, :type, :labels, home_location: [:id, :name], server: [:id, :name]]
     end
 
     def updatable_attributes
