@@ -5,7 +5,10 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
 
   action_id_one = nil
 
-  after(:all) { described_class.all.each(&:delete) }
+  after(:all) do
+    described_class.all.each { |m| m.change_protection(delete: false) }
+    described_class.all.each(&:delete)
+  end
 
   it "creates a volume" do
     volume = described_class.new(name: "first_volume", size: 10, format: "ext4", automount: false, location: "fsn1")
