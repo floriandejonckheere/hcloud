@@ -37,5 +37,7 @@ module HCloud
     class TokenReadonly < Error; end
 
     class NoSpaceLeftInLocation < Error; end
+
+    class PlacementError < Error; end
   end
 end
