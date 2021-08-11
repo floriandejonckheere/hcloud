@@ -7,10 +7,13 @@ Native Ruby integration with the Hetzner Cloud API.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Since there is already a gem on RubyGems with the name `hcloud`, this gem is not published.
+To use it, add this line to your application's Gemfile:
 
 ```ruby
-gem "hcloud"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+gem "hcloud", github: "floriandejonckheere/hcloud"
 ```
 
 And then execute:
