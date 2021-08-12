@@ -35,9 +35,9 @@ module HCloud
 
     # rubocop:disable Naming/MethodName
     def self.Type(class_name)
-      Class.new(ResourceType) do
-        self.class_name = class_name
-      end
+      Class
+        .new(ResourceType) { self.class_name = class_name }
+        .tap { |klass| HCloud.const_set(:"#{class_name.demodulize}Type", klass) }
     end
     # rubocop:enable Naming/MethodName
   end
