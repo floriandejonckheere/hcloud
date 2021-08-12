@@ -15,24 +15,24 @@ module HCloud
       return if value.blank?
 
       case value
-      when klass # Class
+      when resource_class # Class
         value
       when Integer # ID
-        klass.new(id: value)
+        resource_class.new(id: value)
       when String # Name
-        klass.new(name: value)
+        resource_class.new(name: value)
       when Array # List
         value.map { |v| cast(v) }
       when Hash # Attribute hash
-        klass.new(value)
+        resource_class.new(value)
       else
         raise ArgumentError, "cannot cast value: #{value} for type #{class_name}"
       end
     end
     # rubocop:enable Metrics/CyclomaticComplexity
 
-    def klass
-      @klass ||= class_name.constantize
+    def resource_class
+      @resource_class ||= class_name.constantize
     end
 
     alias array? array
