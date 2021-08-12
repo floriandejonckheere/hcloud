@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 module HCloud
-  class ResourceType < ActiveModel::Type::Value
+  class ResourceType
     class_attribute :class_name
 
-    def initialize(...)
-      super()
+    attr_reader :array
+
+    def initialize(array: false)
+      @array = array
     end
 
     # rubocop:disable Metrics/CyclomaticComplexity
@@ -32,6 +34,10 @@ module HCloud
     def klass
       @klass ||= class_name.constantize
     end
+
+    alias array? array
+
+    def assert_valid_value(_); end
 
     # rubocop:disable Naming/MethodName
     def self.Type(class_name)
