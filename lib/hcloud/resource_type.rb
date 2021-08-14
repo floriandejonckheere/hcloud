@@ -12,19 +12,19 @@ module HCloud
 
     # rubocop:disable Metrics/CyclomaticComplexity
     def cast(value)
-      return if value.blank?
-
       case value
+      when nil, []
+        array? ? [] : nil
       when resource_class # Class
         value
       when Integer # ID
         resource_class.new(id: value)
       when String # Name
         resource_class.new(name: value)
-      when Array # List
-        value.map { |v| cast(v) }
       when Hash # Attribute hash
         resource_class.new(value)
+      when Array # List
+        value.map { |v| cast(v) }
       else
         raise ArgumentError, "cannot cast value: #{value} for type #{class_name}"
       end

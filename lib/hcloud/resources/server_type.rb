@@ -33,7 +33,7 @@ module HCloud
     attribute :cpu_type
     attribute :storage_type
 
-    attribute :prices, :price, array: true
+    attribute :prices, :price, array: true, default: []
 
     attribute :deprecated, :boolean
 

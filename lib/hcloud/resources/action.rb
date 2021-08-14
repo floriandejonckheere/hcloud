@@ -44,6 +44,6 @@ module HCloud
     attribute :error, :error
 
     # TODO: return array of resources
-    attribute :resources, array: true
+    attribute :resources, array: true, default: []
   end
 end

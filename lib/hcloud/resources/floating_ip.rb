@@ -108,7 +108,7 @@ module HCloud
 
     attribute :type
     attribute :ip
-    attribute :dns_ptr, :dns_pointer, array: true
+    attribute :dns_ptr, :dns_pointer, array: true, default: []
 
     attribute :blocked, :boolean
 
