@@ -20,7 +20,6 @@ RSpec.describe HCloud::Image, integration: true, order: :defined do
     expect(image.protection).not_to be_delete
 
     expect(image.bound_to).to eq nil
-
     expect(image.created_from).to eq nil
 
     expect(image).to be_created

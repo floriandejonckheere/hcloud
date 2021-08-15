@@ -87,7 +87,7 @@ Not all Hetzner Cloud API endpoints have been implemented yet.
 | Networks              | Not implemented |
 | Network Actions       | Not implemented |
 | Pricing               | Not implemented |
-| Servers               | Not implemented |
+| Servers               | Partially implemented |
 | Server Actions        | Not implemented |
 | Server Types          | Implemented     |
 | SSH Keys              | Implemented     |

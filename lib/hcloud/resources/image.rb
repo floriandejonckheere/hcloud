@@ -103,11 +103,8 @@ module HCloud
 
     attribute :protection, :protection
 
-    # TODO: return Server object
-    attribute :bound_to, :integer
-
-    # TODO: return Server object
-    attribute :created_from
+    attribute :bound_to, :server
+    attribute :created_from, :server
 
     # Explicitly specify created attribute, because resource is not Creatable
     attribute :created, :datetime
