@@ -48,6 +48,8 @@ module HCloud
         # Increment page
         @page += 1
       end
+
+      self
     end
 
     def count

@@ -4,12 +4,20 @@ RSpec.describe HCloud::Collection do
   subject(:collection) { described_class.new { |params| proc(params) } }
 
   describe "#each" do
-    it "returns an enumerator" do
-      expect(collection.each).to be_a Enumerator
-    end
-
     it "iterates over the pages" do
       expect { |block| collection.each(&block) }.to yield_control.exactly(175).times
+    end
+
+    context "when given a block" do
+      it "returns the collection" do
+        expect(collection.each(&:to_s)).to eq collection
+      end
+    end
+
+    context "when given no arguments" do
+      it "returns an enumerator" do
+        expect(collection.each).to be_a Enumerator
+      end
     end
   end
 
