@@ -119,6 +119,14 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
     expect { described_class.find(id_one) }.to raise_error HCloud::Errors::NotFound
   end
 
+  it "retrieves metrics" do
+    server = described_class.find(id_two)
+
+    metrics = server.metrics(type: :cpu, from: 1.minute.ago, to: 1.second.ago)
+
+    expect(metrics).not_to be_nil
+  end
+
   xit "lists actions" do
     actions = described_class.find(id_two).actions
 

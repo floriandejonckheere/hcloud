@@ -51,8 +51,16 @@ module HCloud
   #     server.deleted?
   #     # => true
   #
+  # == Get metrics
+  #
+  #     server = HCloud::Server.find(1)
+  #     server.metrics(type: :cpu, from: 2.minutes.ago, to: 1.minute.ago)
+  #     # => #<HCloud::Metrics ...>
+  #
+  #     server.metrics(type: [:cpu, :disk, :network], from: 2.minutes.ago, to: 1.minute.ago, step: 60)
+  #     # => #<HCloud::Metrics ...>
+  #
   # TODO: actions
-  # TODO: metrics
   # TODO: return root_password if ssh_keys is empty
   #
   class Server < Resource
@@ -113,6 +121,12 @@ module HCloud
     alias rescue_enabled? rescue_enabled
 
     alias locked? locked
+
+    def metrics(type:, from:, to:, step: nil)
+      Metrics.new client
+        .get("/servers/#{id}/metrics", type: type.join(","), start: from, end: to, step: step)
+        .fetch(:metrics)
+    end
 
     def creatable_attributes
       [:name, :automount, :start_after_create, :user_data, :labels, datacenter: [:id, :name], image: [:id, :name], location: [:id, :name], server_type: [:id, :name], ssh_keys: [:id, :name], firewalls: :id, networks: :id, volumes: :id]
