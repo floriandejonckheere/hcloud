@@ -27,6 +27,12 @@ RSpec.describe HCloud::Collection do
     end
   end
 
+  describe "#empty?" do
+    it "returns false" do
+      expect(collection).not_to be_empty
+    end
+  end
+
   def proc(params)
     page = {
       1 => (0..49),
