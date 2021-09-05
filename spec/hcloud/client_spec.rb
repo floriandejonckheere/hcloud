@@ -10,4 +10,10 @@ RSpec.describe HCloud::Client do
   it "has a default endpoint" do
     expect(client.endpoint).to eq "https://api.hetzner.cloud/v1"
   end
+
+  describe ".connection" do
+    it "raises when no client has been configured" do
+      expect { described_class.connection.get }.to raise_error ArgumentError
+    end
+  end
 end

@@ -3,8 +3,21 @@
 require "logger"
 
 module HCloud
+  class NilConnection
+    def raise_error(...)
+      raise ArgumentError, "no default client configured, set HCloud::Client.connection to an instance of HCloud::Client"
+    end
+
+    alias get raise_error
+    alias put raise_error
+    alias post raise_error
+    alias delete raise_error
+  end
+
   class Client
     class_attribute :connection
+
+    self.connection = NilConnection.new
 
     attr_reader :access_token, :endpoint, :logger
 
