@@ -10,17 +10,27 @@ module HCloud
 
     class InvalidInput < Error; end
 
+    class IPNotAvailable < Error; end
+
     class JSONError < Error; end
 
     class Locked < Error; end
 
+    class NetworksOverlap < Error; end
+
+    class NoSubnetAvailable < Error; end
+
     class NotFound < Error; end
+
+    class PlacementError < Error; end
 
     class RateLimitExceeded < Error; end
 
     class ResourceLimitExceeded < Error; end
 
     class ResourceUnavailable < Error; end
+
+    class ServerAlreadyAttached < Error; end
 
     class ServiceError < Error; end
 
