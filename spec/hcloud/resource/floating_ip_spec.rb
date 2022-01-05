@@ -129,7 +129,7 @@ RSpec.describe HCloud::FloatingIP, integration: true, order: :defined do
     actions = described_class.find(id_two).actions.sort(command: :asc)
 
     expect(actions.count).to eq 2
-    expect(actions.map(&:command)).to match_array(%w(change_dns_ptr change_protection))
+    expect(actions.map(&:command)).to match_array(["change_dns_ptr", "change_protection"])
 
     action_id_one = actions.first.id
   end
