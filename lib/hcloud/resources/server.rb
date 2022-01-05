@@ -127,7 +127,7 @@ module HCloud
 
     def metrics(type:, from:, to:, step: nil)
       Metrics.new client
-        .get("/servers/#{id}/metrics", type: type.join(","), start: from, end: to, step: step)
+        .get("/servers/#{id}/metrics", type: Array(type).join(","), start: from.iso8601, end: to.iso8601, step: step)
         .fetch(:metrics)
     end
 
