@@ -15,9 +15,17 @@ RSpec.configure do |config|
 
     # Enable real HTTP connections
     WebMock.allow_net_connect!
+
+    # Clean up cloud resources
+    HCloud::Server.all.each(&:delete)
+    HCloud::SSHKey.all.each(&:delete)
   end
 
   config.after(:context, integration: true) do
+    # Clean up cloud resources
+    HCloud::Server.all.each(&:delete)
+    HCloud::SSHKey.all.each(&:delete)
+
     # Unset client
     HCloud::Client.connection = @client
 
