@@ -2,7 +2,7 @@
 
 module HCloud
   class ResourceType
-    class_attribute :class_name
+    class_attribute :resource_class_name
 
     attr_reader :array
 
@@ -26,13 +26,13 @@ module HCloud
       when Array # List
         value.map { |v| cast(v) }
       else
-        raise ArgumentError, "cannot cast value: #{value} for type #{class_name}"
+        raise ArgumentError, "cannot cast value: #{value} for type #{resource_class_name}"
       end
     end
     # rubocop:enable Metrics/CyclomaticComplexity
 
     def resource_class
-      @resource_class ||= class_name.constantize
+      @resource_class ||= resource_class_name.constantize
     end
 
     alias array? array
@@ -42,8 +42,8 @@ module HCloud
     # rubocop:disable Naming/MethodName
     def self.Type(class_name)
       Class
-        .new(ResourceType) { self.class_name = class_name }
-        .tap { |klass| HCloud.const_set(:"#{class_name.demodulize}Type", klass) }
+        .new(ResourceType) { self.resource_class_name = class_name }
+        .tap { |klass| HCloud.const_set(:"#{class_name.demodulize}ResourceType", klass) }
     end
     # rubocop:enable Naming/MethodName
   end

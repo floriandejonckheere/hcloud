@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::ResourceType do
-  subject(:resource_type) { described_class.new.tap { |k| k.class_name = "OpenStruct" } }
+  subject(:resource_type) { described_class.new.tap { |k| k.resource_class_name = "OpenStruct" } }
 
   it "casts nil to nil" do
     expect(resource_type.cast(nil)).to eq nil
@@ -36,7 +36,7 @@ RSpec.describe HCloud::ResourceType do
   end
 
   context "when resource is an array type" do
-    subject(:resource_type) { described_class.new(array: true).tap { |k| k.class_name = "OpenStruct" } }
+    subject(:resource_type) { described_class.new(array: true).tap { |k| k.resource_class_name = "OpenStruct" } }
 
     it "casts nil to an empty array" do
       expect(resource_type.cast(nil)).to eq []
