@@ -60,6 +60,7 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
     expect(server.primary_disk_size).to eq 20
 
     expect(server.protection).not_to be_delete
+    expect(server.protection).not_to be_rebuild
 
     expect(server).not_to be_locked
     expect(server).not_to be_rescue_enabled
