@@ -65,7 +65,7 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
     expect(server).not_to be_locked
     expect(server).not_to be_rescue_enabled
 
-    # TODO: expect(server.image).not_to be_nil
+    expect(server.image).not_to be_nil
 
     # TODO: expect(server.public_net).not_to be_nil
     # TODO: expect(server.private_net).not_to be_nil
