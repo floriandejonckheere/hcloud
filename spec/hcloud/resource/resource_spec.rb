@@ -97,6 +97,19 @@ RSpec.describe HCloud::Resource do
     end
   end
 
+  describe ".create" do
+    it "creates the resource" do
+      stub_request(:post, "https://api.hetzner.cloud/v1/resources")
+        .with(body: { name: "my_resource", description: "my_description", labels: {}, children: [] })
+        .to_return(body: { resource: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
+
+      resource = resource_class.create(name: "my_resource", description: "my_description")
+
+      expect(resource.id).to eq 1
+      expect(resource).to be_created
+    end
+  end
+
   describe ".find" do
     it "returns an instance of the resource" do
       stub_request(:get, "https://api.hetzner.cloud/v1/resources/#{resource.id}")

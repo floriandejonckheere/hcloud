@@ -39,6 +39,9 @@ HCloud::Client.connection = client
 ssh_key = HCloud::SSHKey.new(name: "My SSH key", public_key: "ssh-rsa ...")
 ssh_key.create
 
+# Alternate syntax:
+ssh_key = HCloud::SSHKey.create(name: "My SSH key", public_key: "ssh-rsa ...")
+
 # Find resource by ID
 ssh_key = HCloud::SSHKey.find(1)
 

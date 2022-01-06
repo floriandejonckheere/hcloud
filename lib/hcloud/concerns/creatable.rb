@@ -33,5 +33,12 @@ module HCloud
       end
       # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity
     end
+
+    class_methods do
+      def create(**attributes)
+        new(attributes)
+          .tap(&:create)
+      end
+    end
   end
 end
