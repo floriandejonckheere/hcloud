@@ -3,6 +3,13 @@
 require "base64"
 
 FactoryBot.define do
+  factory :placement_group, class: "HCloud::PlacementGroup" do
+    id { FFaker::Random.rand(111_111_111..999_999_999) }
+    name { FFaker::Lorem.word }
+    type { "spread" }
+    labels { { production: true } }
+  end
+
   factory :ssh_key, class: "HCloud::SSHKey" do
     id { FFaker::Random.rand(111_111_111..999_999_999) }
     name { FFaker::Lorem.word }

@@ -32,6 +32,8 @@ module HCloud
 
     class ServerAlreadyAttached < Error; end
 
+    class ServerError < Error; end
+
     class ServiceError < Error; end
 
     class UniquenessError < Error; end

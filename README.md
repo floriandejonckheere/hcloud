@@ -89,6 +89,7 @@ Not all Hetzner Cloud API endpoints have been implemented yet.
 | Locations             | Implemented     |
 | Networks              | Not implemented |
 | Network Actions       | Not implemented |
+| Placement Groups      | Implemented     |
 | Pricing               | Not implemented |
 | Servers               | Partially implemented |
 | Server Actions        | Not implemented |
