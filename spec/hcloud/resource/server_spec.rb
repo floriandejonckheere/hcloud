@@ -7,11 +7,6 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
 
   ssh_key_id = nil
 
-  after(:all) do
-    described_class.all.each(&:delete)
-    HCloud::SSHKey.all.each(&:delete)
-  end
-
   it "creates an SSH key" do
     ssh_key = HCloud::SSHKey.new(name: "SSH Key", public_key: file_one)
     ssh_key.create
@@ -128,58 +123,5 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
     metrics = server.metrics(type: :cpu, from: 1.minute.ago, to: 1.second.ago)
 
     expect(metrics).not_to be_nil
-  end
-
-  xit "lists actions" do
-    actions = described_class.find(id_two).actions
-
-    expect(actions.count).to eq 1
-    expect(actions.first.command).to eq "create_server"
-
-    _action_id_one = actions.first.id
-  end
-
-  xit "finds action" do
-    action = described_class.find(id_two).actions.find(action_id_one)
-
-    expect(action.command).to eq "create_server"
-    expect(action.started).not_to be_nil
-
-    sleep 1
-    action.reload
-
-    expect(action.finished).not_to be_nil
-    expect(action.progress).to eq 100
-
-    expect(action.status).to eq "success"
-    expect(action.error).to be_nil
-  end
-
-  # TODO: attaches a server
-  xit "attaches a server"
-
-  # TODO: detaches a server
-  xit "detaches a server"
-
-  xit "resizes the server" do
-    server = described_class.find(id_two)
-
-    server.resize(size: 11)
-
-    sleep 1
-    server.reload
-
-    expect(server.size).to eq 11
-  end
-
-  xit "changes protection" do
-    server = described_class.find(id_two)
-
-    server.change_protection(delete: true)
-
-    sleep 1
-    server.reload
-
-    expect(server.protection).to be_delete
   end
 end

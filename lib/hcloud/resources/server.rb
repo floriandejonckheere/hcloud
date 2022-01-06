@@ -64,6 +64,7 @@ module HCloud
   # TODO: return root_password if ssh_keys is empty
   #
   class Server < Resource
+    actionable
     queryable
     creatable
     updatable
@@ -124,6 +125,40 @@ module HCloud
     alias rescue_enabled? rescue_enabled
 
     alias locked? locked
+
+    action :add_to_placement_group
+    action :remove_from_placement_group
+
+    action :attach_iso
+    action :detach_iso
+
+    action :attach_to_network
+    action :detach_from_network
+
+    action :change_alias_ips
+    action :change_dns_ptr
+
+    action :change_protection
+    action :change_type
+    action :create_image
+
+    action :enable_backup
+    action :disable_backup
+
+    action :enable_rescue
+    action :disable_rescue
+
+    action :poweron
+    action :poweroff
+    action :reboot
+    action :reset
+    action :shutdown
+
+    action :reset_password
+
+    action :rebuild
+
+    action :request_console
 
     def metrics(type:, from:, to:, step: nil)
       Metrics.new client
