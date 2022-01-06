@@ -30,7 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "zeitwerk"
 
   spec.add_development_dependency "byebug"
-  spec.add_development_dependency "debase"
   spec.add_development_dependency "dotenv"
   spec.add_development_dependency "factory_bot"
   spec.add_development_dependency "ffaker"
