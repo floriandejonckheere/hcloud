@@ -13,6 +13,8 @@ module HCloud
       assign_attributes(attributes) if attributes
     end
 
+    delegate :[], to: :attributes
+
     def inspect
       "#<#{self.class} #{attributes.filter_map { |name, value| "#{name}: #{value.inspect}" }.join(', ')}>"
     end
