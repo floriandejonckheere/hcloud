@@ -107,8 +107,7 @@ module HCloud
     attribute :public_net
     attribute :private_net
 
-    # TODO: placement group resource
-    attribute :placement_group
+    attribute :placement_group, :placement_group
 
     attribute :iso, :iso
 
