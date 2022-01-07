@@ -6,8 +6,6 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
 
   id_one, id_two = nil
 
-  after(:all) { described_class.all.each(&:delete) }
-
   it "creates a SSH key" do
     ssh_key = described_class.new(name: "First SSH Key", public_key: file_one)
 
