@@ -4,7 +4,7 @@ RSpec.describe HCloud::PlacementGroup, integration: true, order: :defined do
   id_one, id_two = nil
 
   it "creates a placement group" do
-    placement_group = described_class.new(name: "First placement group", type: "spread")
+    placement_group = described_class.new(name: "first_placement_group", type: "spread")
 
     placement_group.create
 
@@ -15,7 +15,7 @@ RSpec.describe HCloud::PlacementGroup, integration: true, order: :defined do
   end
 
   it "creates another placement group" do
-    placement_group = described_class.new(name: "Second placement group", type: "spread")
+    placement_group = described_class.new(name: "second_placement_group", type: "spread")
 
     placement_group.create
 
@@ -28,7 +28,7 @@ RSpec.describe HCloud::PlacementGroup, integration: true, order: :defined do
   it "finds an placement group" do
     placement_group = described_class.find(id_one)
 
-    expect(placement_group.name).to eq "First placement group"
+    expect(placement_group.name).to eq "first_placement_group"
     expect(placement_group.type).to eq "spread"
   end
 
@@ -48,7 +48,7 @@ RSpec.describe HCloud::PlacementGroup, integration: true, order: :defined do
   end
 
   it "filters placement groups" do
-    placement_groups = described_class.all.where(name: "First placement group")
+    placement_groups = described_class.all.where(name: "first_placement_group")
 
     expect(placement_groups.count).to eq 1
     expect(placement_groups.first.id).to eq id_one
@@ -57,13 +57,13 @@ RSpec.describe HCloud::PlacementGroup, integration: true, order: :defined do
   it "updates a placement group" do
     placement_group = described_class.find(id_one)
 
-    placement_group.name = "My other placement group"
+    placement_group.name = "my_other_placement_group"
 
     placement_group.update
 
     placement_group = described_class.find(id_one)
 
-    expect(placement_group.name).to eq "My other placement group"
+    expect(placement_group.name).to eq "my_other_placement_group"
   end
 
   it "deletes a placement group" do

@@ -7,7 +7,7 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
   id_one, id_two = nil
 
   it "creates a SSH key" do
-    ssh_key = described_class.new(name: "First SSH Key", public_key: file_one)
+    ssh_key = described_class.new(name: "first_ssh_key", public_key: file_one)
 
     ssh_key.create
 
@@ -18,7 +18,7 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
   end
 
   it "creates another SSH key" do
-    ssh_key = described_class.new(name: "Second SSH Key", public_key: file_two)
+    ssh_key = described_class.new(name: "second_ssh_key", public_key: file_two)
 
     ssh_key.create
 
@@ -31,7 +31,7 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
   it "finds an SSH key" do
     ssh_key = described_class.find(id_one)
 
-    expect(ssh_key.name).to eq "First SSH Key"
+    expect(ssh_key.name).to eq "first_ssh_key"
     expect(ssh_key.public_key).to eq file_one
   end
 
@@ -50,7 +50,7 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
   end
 
   it "filters SSH keys" do
-    ssh_keys = described_class.all.where(name: "First SSH Key")
+    ssh_keys = described_class.all.where(name: "first_ssh_key")
 
     expect(ssh_keys.count).to eq 1
     expect(ssh_keys.first.id).to eq id_one
@@ -59,13 +59,13 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
   it "updates a SSH key" do
     ssh_key = described_class.find(id_one)
 
-    ssh_key.name = "My Other SSH Key"
+    ssh_key.name = "my_other_ssh_key"
 
     ssh_key.update
 
     ssh_key = described_class.find(id_one)
 
-    expect(ssh_key.name).to eq "My Other SSH Key"
+    expect(ssh_key.name).to eq "my_other_ssh_key"
   end
 
   it "deletes a SSH key" do
