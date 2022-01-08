@@ -46,4 +46,12 @@ RSpec.describe HCloud::ResourceType do
       expect(resource_type.cast([])).to eq []
     end
   end
+
+  describe "a type registration exists for every resource" do
+    HCloud::Resource.subclasses.each do |subclass|
+      it "has a type registration for #{subclass}" do
+        expect { ActiveModel::Type.lookup subclass.name.demodulize.underscore.to_sym }.not_to raise_error
+      end
+    end
+  end
 end
