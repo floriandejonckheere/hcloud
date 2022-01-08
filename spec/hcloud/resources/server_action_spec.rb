@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::Server, integration: true, order: :defined do
-  server = nil
+  server, placement_group = nil
 
   before(:all) do
     ssh_key = HCloud::SSHKey.create(name: "SSH Key", public_key: File.read(HCloud.root.join("spec/fixtures/one.pub")))
@@ -14,18 +14,48 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
   end
 
   it "finds action" do
-    action_id = server.actions.last.id
+    action_id = server.actions.sort(started: :desc).last.id
 
     action = server.actions.find(action_id)
 
-    expect(action.command).to eq "create_server"
+    expect(action.command).to eq "start_server"
     expect(action.started).not_to be_nil
   end
 
-  # TODO: add to placement group
-  xit "adds to a placement group"
-  # TODO: remove from placement group
-  xit "removes from a placement group"
+  it "powers off" do
+    sleep_until_unlocked(server)
+
+    action = server.poweroff
+
+    sleep_until(action) { action.status == "success" }
+
+    expect(server.status).to eq "off"
+  end
+
+  it "adds to a placement group" do
+    placement_group = HCloud::PlacementGroup.create(name: "Placement Group", type: "spread")
+
+    server.add_to_placement_group(placement_group: placement_group)
+
+    server.reload
+    expect(server.placement_group).to eq placement_group
+  end
+
+  it "removes from a placement group" do
+    server.remove_from_placement_group(placement_group: placement_group)
+
+    server.reload
+
+    expect(server.placement_group).to be_nil
+  end
+
+  it "powers on" do
+    server.poweron
+
+    sleep_until(server) { |s| s.status == "running" }
+
+    expect(server.status).to eq "running"
+  end
 
   # TODO: attach ISO
   xit "attaches an ISO"
@@ -69,10 +99,6 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
   # TODO: disable rescue
   xit "disables rescue"
 
-  # TODO: poweron
-  xit "powers on"
-  # TODO: poweroff
-  xit "powers off"
   # TODO: reboot
   xit "reboots"
   # TODO: reset
