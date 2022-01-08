@@ -19,7 +19,7 @@ module HCloud
   #
   # == Search floating IPs
   #
-  #     HCloud::FloatingIP.all.where(name: "cx11")
+  #     HCloud::FloatingIP.all.where(name: "my_floating_ip")
   #     # => #<HCloud::FloatingIP id: 1, ...>
   #
   # == Find floating IP by ID
@@ -33,6 +33,9 @@ module HCloud
   #     floating IP.create
   #     floating IP.created?
   #     # => true
+  #
+  #     firewall = HCloud::FloatingIP.create(name: "my_floating_ip")
+  #     # => #<HCloud::FloatingIP id: 1, ...>
   #
   # == Update floating IP
   #

@@ -32,15 +32,18 @@ module HCloud
   #
   # == Create SSH key
   #
-  #     ssh_key = HCloud::SSHKey.new(name: "My SSH key", public_key: File.read("id_rsa.pub"))
+  #     ssh_key = HCloud::SSHKey.new(name: "my_ssh_key", public_key: File.read("id_rsa.pub"))
   #     ssh_key.create
   #     ssh_key.created?
   #     # => true
   #
+  #     firewall = HCloud::SSHKey.create(name: "my_ssh_key", public_key: File.read("id_rsa.pub"))
+  #     # => #<HCloud::SSHKey id: 1, ...>
+  #
   # == Update SSH key
   #
   #     ssh_key = HCloud::SSHKey.find(1)
-  #     ssh_key.name = "Another SSH key"
+  #     ssh_key.name = "another_ssh_key"
   #     ssh_key.update
   #
   # == Delete SSH key

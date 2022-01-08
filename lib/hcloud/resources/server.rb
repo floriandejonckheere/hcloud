@@ -19,7 +19,7 @@ module HCloud
   #
   # == Search servers
   #
-  #     HCloud::Server.all.where(name: "cx11")
+  #     HCloud::Server.all.where(name: "my_server")
   #     # => #<HCloud::Server id: 1, ...>
   #
   #     HCloud::Server.all.where(status: "running")
@@ -33,15 +33,18 @@ module HCloud
   # == Create server
   #
   #     user_data = File.read("user_data.yml")
-  #     server = HCloud::Server.new(name: "my_server", image: "my_image", server_type: "cx11")
+  #     server = HCloud::Server.new(name: "my_server", image: "debian-11", server_type: "cx11")
   #     server.create
   #     server.created?
   #     # => true
   #
+  #     firewall = HCloud::Server.create(name: "my_server", image: "debian-11", server_type: "cx11")
+  #     # => #<HCloud::Server id: 1, ...>
+  #
   # == Update server
   #
   #     server = HCloud::Server.find(1)
-  #     server.name = "another_serve"
+  #     server.name = "another_server"
   #     server.update
   #
   # == Delete server

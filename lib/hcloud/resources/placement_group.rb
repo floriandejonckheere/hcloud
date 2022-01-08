@@ -19,7 +19,7 @@ module HCloud
   #
   # == Search placement groups
   #
-  #     HCloud::PlacementGroup.all.where(name: "My placement group")
+  #     HCloud::PlacementGroup.all.where(name: "my_placement_group")
   #     # => #<HCloud::PlacementGroup id: 2, ...>
   #
   # == Find placement group by ID
@@ -29,15 +29,18 @@ module HCloud
   #
   # == Create placement group
   #
-  #     placement_group = HCloud::PlacementGroup.new(name: "My placement group", type: "spread")
+  #     placement_group = HCloud::PlacementGroup.new(name: "my_placement_group", type: "spread")
   #     placement_group.create
   #     placement_group.created?
   #     # => true
   #
+  #     firewall = HCloud::PlacementGroup.create(name: "my_placement_group")
+  #     # => #<HCloud::PlacementGroup id: 1, ...>
+  #
   # == Update placement group
   #
   #     placement_group = HCloud::PlacementGroup.find(1)
-  #     placement_group.name = "Another placement group"
+  #     placement_group.name = "another_placement_group"
   #     placement_group.update
   #
   # == Delete placement group
