@@ -86,13 +86,13 @@ module HCloud
     attribute :location, :location
 
     # TODO: use only for creation
-    attribute :ssh_keys, :ssh_key, array: true, default: []
+    attribute :ssh_keys, :ssh_key, array: true, default: -> { [] }
 
     # TODO: use only for creation
-    attribute :firewalls, array: true, default: []
+    attribute :firewalls, array: true, default: -> { [] }
 
     # TODO: use only for creation
-    attribute :networks, array: true, default: []
+    attribute :networks, array: true, default: -> { [] }
 
     attribute :datacenter, :datacenter
 
@@ -117,9 +117,9 @@ module HCloud
     attribute :labels, default: -> { {} }
 
     # TODO: load balancer resource
-    attribute :load_balancers, array: true, default: []
+    attribute :load_balancers, array: true, default: -> { [] }
 
-    attribute :volumes, :volume, array: true, default: []
+    attribute :volumes, :volume, array: true, default: -> { [] }
 
     attribute :locked
     attribute :rescue_enabled

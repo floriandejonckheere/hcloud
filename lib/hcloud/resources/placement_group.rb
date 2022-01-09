@@ -60,7 +60,7 @@ module HCloud
     attribute :name
     attribute :type
 
-    attribute :servers, :server, array: true, default: []
+    attribute :servers, :server, array: true, default: -> { [] }
 
     attribute :labels, default: -> { {} }
 

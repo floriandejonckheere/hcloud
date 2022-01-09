@@ -29,7 +29,7 @@ RSpec.describe HCloud::Resource do
       attribute :name
       attribute :description
       attribute :child, :child
-      attribute :children, :child, array: true, default: []
+      attribute :children, :child, array: true, default: -> { [] }
 
       attribute :sibling, :sibling
 
