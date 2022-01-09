@@ -25,6 +25,10 @@ module HCloud
       }
     end
 
+    def ==(other)
+      id && id == other.id
+    end
+
     def self.resource_name
       name.demodulize.underscore
     end
