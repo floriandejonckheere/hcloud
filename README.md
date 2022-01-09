@@ -64,7 +64,9 @@ server = HCloud::Server.new(name: "my_server", location: 1, ...)
 server = HCloud::Server.new(name: "my_server", location: Location.new(name: "fsn"), ...)
 ```
 
-The gem does little validation on your input or behaviour, and expects you to use it in a sane way.
+The gem aims to provide a simple, object-oriented interface to the Hetzner Cloud API.
+It does not aim to be an authoritative source of information, and as such does little validation on your input data or behaviour.
+It expects you to use it in a sane way.
 
 ## Features
 
