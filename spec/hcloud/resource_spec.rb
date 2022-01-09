@@ -7,6 +7,13 @@ end
 
 ActiveModel::Type.register(:child, HCloud::ResourceType.Type("Child"))
 
+class Sibling < HCloud::Entity
+  attribute :name
+  attribute :child, :child
+end
+
+ActiveModel::Type.register(:sibling, HCloud::ResourceType.Type("Sibling"))
+
 RSpec.describe HCloud::Resource do
   subject(:resource) { resource_class.new }
 
@@ -24,12 +31,14 @@ RSpec.describe HCloud::Resource do
       attribute :child, :child
       attribute :children, :child, array: true, default: []
 
+      attribute :sibling, :sibling
+
       attribute :labels, default: -> { {} }
 
       action :resize
 
       def creatable_attributes
-        [:name, :description, :labels, child: :name, children: [:id, :name]]
+        [:name, :description, :labels, :sibling, child: :name, children: [:id, :name]]
       end
 
       def updatable_attributes
@@ -48,14 +57,16 @@ RSpec.describe HCloud::Resource do
   end
 
   describe "#create" do
-    subject(:resource) { resource_class.new(id: nil, name: "my_resource", description: "my_description", created: nil, child: child1, children: [child0, child1]) }
+    subject(:resource) { resource_class.new(id: nil, name: "my_resource", description: "my_description", created: nil, sibling: sibling, child: child1, children: [child0, child1]) }
 
     let(:child0) { Child.new(id: 1) }
     let(:child1) { Child.new(name: "name1") }
 
+    let(:sibling) { Sibling.new(name: "sibling", child: child0) }
+
     it "creates the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/resources")
-        .with(body: { name: "my_resource", description: "my_description", labels: {}, child: "name1", children: [1, nil] })
+        .with(body: { name: "my_resource", description: "my_description", labels: {}, sibling: { name: "sibling", child: { id: 1 } }, child: "name1", children: [1, nil] })
         .to_return(body: { resource: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
 
       resource.create
