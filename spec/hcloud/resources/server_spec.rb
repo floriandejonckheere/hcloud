@@ -15,7 +15,7 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
   end
 
   it "creates a server" do
-    server = described_class.new(name: "first", image: "debian-9", server_type: "cx11", location: "nbg1", ssh_keys: [ssh_key_id])
+    server = described_class.new(name: "first", image: "debian-11", server_type: "cx11", location: "nbg1", ssh_keys: [ssh_key_id])
 
     server.create
 
@@ -26,7 +26,7 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
   end
 
   it "creates another server" do
-    server = described_class.new(name: "second", image: "debian-9", server_type: "cx11", location: "fsn1", ssh_keys: [ssh_key_id])
+    server = described_class.new(name: "second", image: "debian-11", server_type: "cx11", location: "fsn1", ssh_keys: [ssh_key_id])
 
     server.create
 

@@ -4,7 +4,7 @@ RSpec.describe HCloud::Image, integration: true, order: :defined do
   it "finds an image" do
     image = described_class.find(2)
 
-    expect(image.name).to eq "debian-9"
+    expect(image.name).to eq "debian-11"
     expect(image.description).to eq "Debian 9"
 
     expect(image.type).to eq "system"
@@ -72,7 +72,7 @@ RSpec.describe HCloud::Image, integration: true, order: :defined do
   end
 
   it "filters images" do
-    images = described_class.all.where(name: "debian-9")
+    images = described_class.all.where(name: "debian-11")
 
     expect(images.count).to eq 1
     expect(images.first.id).to eq 2

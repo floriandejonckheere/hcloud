@@ -5,7 +5,7 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
 
   before(:all) do
     ssh_key = HCloud::SSHKey.create(name: "SSH Key", public_key: File.read(HCloud.root.join("spec/fixtures/one.pub")))
-    server = described_class.create(name: "server", image: "debian-9", server_type: "cx11", location: "nbg1", ssh_keys: [ssh_key])
+    server = described_class.create(name: "server", image: "debian-11", server_type: "cx11", location: "nbg1", ssh_keys: [ssh_key])
   end
 
   it "lists actions" do
