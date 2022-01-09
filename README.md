@@ -72,33 +72,33 @@ It expects you to use it in a sane way.
 
 Not all Hetzner Cloud API endpoints have been implemented yet.
 
-| Resource              | State           |
-|-----------------------|-----------------|
-| Actions               | Implemented     |
-| Certificates          | Not implemented |
-| Certificate Actions   | Not implemented |
-| Datacenters           | Implemented     |
-| Firewalls             | Not implemented |
-| Firewall Actions      | Not implemented |
-| Floating IPs          | Implemented     |
-| Floating IP Actions   | Implemented     |
-| Images                | Implemented     |
-| Image Actions         | Implemented     |
-| ISOs                  | Implemented     |
-| Load Balancers        | Not implemented |
-| Load Balancer Actions | Not implemented |
-| Load Balancer Types   | Not implemented |
-| Locations             | Implemented     |
-| Networks              | Not implemented |
-| Network Actions       | Not implemented |
-| Placement Groups      | Implemented     |
-| Pricing               | Not implemented |
+| Resource              | State                 |
+|-----------------------|-----------------------|
+| Actions               | Implemented           |
+| Certificates          | Not implemented       |
+| Certificate Actions   | Not implemented       |
+| Datacenters           | Implemented           |
+| Firewalls             | Not implemented       |
+| Firewall Actions      | Not implemented       |
+| Floating IPs          | Implemented           |
+| Floating IP Actions   | Implemented           |
+| Images                | Implemented           |
+| Image Actions         | Implemented           |
+| ISOs                  | Implemented           |
+| Load Balancers        | Not implemented       |
+| Load Balancer Actions | Not implemented       |
+| Load Balancer Types   | Not implemented       |
+| Locations             | Implemented           |
+| Networks              | Not implemented       |
+| Network Actions       | Not implemented       |
+| Placement Groups      | Implemented           |
+| Pricing               | Not implemented       |
 | Servers               | Partially implemented |
-| Server Actions        | Not implemented |
-| Server Types          | Implemented     |
-| SSH Keys              | Implemented     |
-| Volumes               | Implemented     |
-| Volume Actions        | Implemented     |
+| Server Actions        | Not implemented       |
+| Server Types          | Implemented           |
+| SSH Keys              | Implemented           |
+| Volumes               | Implemented           |
+| Volume Actions        | Implemented           |
 
 ## Testing
 
