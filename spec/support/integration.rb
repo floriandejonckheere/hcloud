@@ -4,6 +4,12 @@ RSpec.configure do |config|
   logger = Logger.new($stdout)
   logger.level = ENV.fetch("LOG_LEVEL", "warn")
 
+  config.around(:context, integration: true) do |example|
+    cassette_name = example.metadata[:example_group][:full_description].demodulize.underscore
+
+    VCR.use_cassette(cassette_name, record: :new_episodes) { example.run }
+  end
+
   config.before(:context, integration: true) do
     @client = HCloud::Client.connection
 
