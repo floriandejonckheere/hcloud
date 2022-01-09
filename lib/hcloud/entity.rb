@@ -14,5 +14,10 @@ module HCloud
     def inspect
       "#<#{self.class} #{attributes.filter_map { |name, value| "#{name}: #{value.inspect}" }.join(', ')}>"
     end
+
+    def to_h
+      attributes
+        .transform_values { |v| v.try(:to_h) || v }
+    end
   end
 end
