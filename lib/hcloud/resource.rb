@@ -19,6 +19,12 @@ module HCloud
       "#<#{self.class} #{attributes.filter_map { |name, value| "#{name}: #{value.inspect}" }.join(', ')}>"
     end
 
+    def to_h
+      {
+        id: id,
+      }
+    end
+
     def self.resource_name
       name.demodulize.underscore
     end

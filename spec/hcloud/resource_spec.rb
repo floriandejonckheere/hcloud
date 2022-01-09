@@ -97,6 +97,12 @@ RSpec.describe HCloud::Resource do
     end
   end
 
+  describe "#to_h" do
+    it "serializes the identifier" do
+      expect(resource.to_h).to eq({ id: resource.id })
+    end
+  end
+
   describe ".create" do
     it "creates the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/resources")
