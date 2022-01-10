@@ -39,8 +39,7 @@ RSpec.describe HCloud::PlacementGroup, integration: true, order: :defined do
     expect(placement_groups.map(&:id)).to match_array [id_one, id_two]
   end
 
-  # FIXME: HCloud API returns 500 when using sort parameter on this endpoint
-  xit "sorts placement groups" do
+  it "sorts placement groups" do
     placement_groups = described_class.all.sort(name: :desc)
 
     expect(placement_groups.count).to eq 2
