@@ -28,12 +28,16 @@ RSpec.describe CoreExt::SendWrap do
   context "when subject is a hash" do
     subject(:object) { { foo: "bar" } }
 
-    it "sends a message to the objects in the hash" do
-      expect(object.send_wrap(:to_sym)).to eq({ foo: :bar })
+    it "sends a message to the object" do
+      expect(object.send_wrap(:to_s)).to eq "{:foo=>\"bar\"}"
     end
 
-    it "sends a message and arguments to the objects" do
-      expect(object.send_wrap(:try, :to_sym)).to eq({ foo: :bar })
+    it "does not send a message to the objects in the hash" do
+      expect { object.send_wrap(:to_sym) }.to raise_error NoMethodError
+    end
+
+    it "does not send a message and arguments to the objects" do
+      expect(object.send_wrap(:try, :to_sym)).to eq nil
     end
   end
 end
