@@ -13,7 +13,7 @@ RSpec.describe CoreExt::SendWrap do
     end
   end
 
-  context "when subject is an enumerable" do
+  context "when subject is an array" do
     subject(:object) { ["string"] }
 
     it "sends a message to the objects in the enumerable" do
