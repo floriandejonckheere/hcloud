@@ -3,17 +3,16 @@
 ![Continuous Integration](https://github.com/floriandejonckheere/hcloud/workflows/Continuous%20Integration/badge.svg)
 ![Release](https://img.shields.io/github/v/release/floriandejonckheere/hcloud?label=Latest%20release)
 
-Native Ruby integration with the Hetzner Cloud API.
+Unofficial Ruby integration with the [Hetzner Cloud API](https://docs.hetzner.cloud/).
 
 ## Installation
 
-Since there is already a gem on RubyGems with the name `hcloud`, this gem is not published.
-To use it, add this line to your application's Gemfile:
+Add this line to your application's Gemfile:
 
 ```ruby
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "hcloud", github: "floriandejonckheere/hcloud"
+gem "hetznercloud"
 ```
 
 And then execute:

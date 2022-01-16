@@ -3,7 +3,7 @@
 require_relative "lib/hcloud/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "hcloud"
+  spec.name          = "hetznercloud"
   spec.version       = HCloud::VERSION
   spec.authors       = ["Florian Dejonckheere"]
   spec.email         = ["florian@floriandejonckheere.be"]
