@@ -24,6 +24,8 @@ module HCloud
 
     class ActionFailed < Error; end
     class Conflict < Error; end
+    class FirewallAlreadyApplied < Error; end
+    class FirewallAlreadyRemoved < Error; end
     class FirewallResourceNotFound < Error; end
     class Forbidden < Error; end
     class IPNotAvailable < Error; end

@@ -50,9 +50,31 @@ module HCloud
   #     firewall.deleted?
   #     # => true
   #
-  # TODO: firewall actions
+  # == Apply a firewall to resources
+  #
+  #     firewall = HCloud::Firewall.find(1)
+  #     server = HCloud::Server.find(1)
+  #
+  #     firewall.apply_to_resources(apply_to: [{ type: "server", server: { id: server.id } }])
+  #     # => #<HCloud::Action ...>
+  #
+  # == Remove a firewall from resources
+  #
+  #     firewall = HCloud::Firewall.find(1)
+  #     server = HCloud::Server.find(1)
+  #
+  #     firewall.remove_from_resources(remove_from: [{ type: "server", server: { id: server.id } }])
+  #     # => #<HCloud::Action ...>
+  #
+  # == Set firewall rules
+  #
+  #     firewall = HCloud::Firewall.find(1)
+  #
+  #     firewall.set_rules(rules: [{ direction: "in", protocol: "tcp", ... }])
+  #     # => #<HCloud::Action ...>
   #
   class Firewall < Resource
+    actionable
     queryable
     creatable
     updatable
@@ -68,6 +90,10 @@ module HCloud
     attribute :rules, :rule, array: true, default: -> { [] }
 
     attribute :labels, default: -> { {} }
+
+    action :apply_to_resources
+    action :remove_from_resources
+    action :set_rules
 
     def creatable_attributes
       [:name, :labels, :apply_to, :rules]

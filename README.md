@@ -78,7 +78,7 @@ Not all Hetzner Cloud API endpoints have been implemented yet.
 | Certificate Actions   | Not implemented       |
 | Datacenters           | Implemented           |
 | Firewalls             | Implemented           |
-| Firewall Actions      | Not implemented       |
+| Firewall Actions      | Implemented           |
 | Floating IPs          | Implemented           |
 | Floating IP Actions   | Implemented           |
 | Images                | Implemented           |
