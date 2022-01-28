@@ -19,8 +19,7 @@ RSpec.describe HCloud::Errors::Error do
 
       error = described_class.new(data)
 
-      expect(error.code).to eq "uniqueness_error"
-      expect(error.message).to eq "SSH key with the same fingerprint already exists"
+      expect(error.message).to include "SSH key with the same fingerprint already exists"
       expect(error.full_messages).to include "public_key SSH key with the same fingerprint already exists"
     end
 
@@ -40,8 +39,7 @@ RSpec.describe HCloud::Errors::Error do
 
       error = described_class.new(data)
 
-      expect(error.code).to eq "invalid_input"
-      expect(error.message).to eq "invalid input in field 'broken_field': is too long"
+      expect(error.message).to include "invalid input in field 'broken_field': is too long"
       expect(error.full_messages).to include "broken_field is too long"
     end
 
@@ -61,8 +59,7 @@ RSpec.describe HCloud::Errors::Error do
 
       error = described_class.new(data)
 
-      expect(error.code).to eq "invalid_input"
-      expect(error.message).to eq "invalid input in field 'broken_field': is too long"
+      expect(error.message).to include "invalid input in field 'broken_field': is too long"
       expect(error.full_messages).to include(
         "broken_field is too long",
         "broken_field is invalid",
@@ -85,8 +82,7 @@ RSpec.describe HCloud::Errors::Error do
 
       error = described_class.new(data)
 
-      expect(error.code).to eq "invalid_input"
-      expect(error.message).to eq "invalid input in fields 'name', 'server_type', 'source_server', 'image'"
+      expect(error.message).to include "invalid input in fields 'name', 'server_type', 'source_server', 'image'"
       expect(error.full_messages).to include(
         "name Missing data for required field.",
         "server_type Missing data for required field.",

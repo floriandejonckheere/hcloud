@@ -23,7 +23,7 @@ module HCloud
 
       return data if response.status.success?
 
-      raise Errors::Error, data[:error]
+      raise Errors.const_get(data.dig(:error, :code).camelize), data[:error]
     end
 
     def put(path, body = {})
@@ -36,7 +36,7 @@ module HCloud
 
       return data if response.status.success?
 
-      raise Errors::Error, data[:error]
+      raise Errors.const_get(data.dig(:error, :code).camelize), data[:error]
     end
 
     def post(path, body = {})
@@ -49,7 +49,7 @@ module HCloud
 
       return data if response.status.success?
 
-      raise Errors::Error, data[:error]
+      raise Errors.const_get(data.dig(:error, :code).camelize), data[:error]
     end
 
     def delete(path)
@@ -62,7 +62,7 @@ module HCloud
         .parse(:json)
         .deep_symbolize_keys
 
-      raise Errors::Error, data[:error]
+      raise Errors.const_get(data.dig(:error, :code).camelize), data[:error]
     end
 
     private

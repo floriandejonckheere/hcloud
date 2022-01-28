@@ -6,16 +6,14 @@ module HCloud
       attr_reader :data
 
       def initialize(data = {})
-        super(data[:message])
-
         @data = data
-      end
 
-      def code
-        data[:code] || self.class.name.demodulize.underscore
+        super [data[:message], full_messages&.join("\n")].compact.join("\n\n")
       end
 
       def full_messages
+        return unless data[:details]
+
         data[:details][:fields].flat_map do |field|
           Array(field.fetch(:messages, data[:message])).map do |detail|
             "#{field[:name]} #{detail}"
