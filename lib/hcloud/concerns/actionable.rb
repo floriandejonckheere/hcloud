@@ -19,9 +19,14 @@ module HCloud
         action_names << name.to_s
 
         define_method(name) do |**params|
-          Action.new client
+          response = client
             .post("/#{resource_name.pluralize}/#{id}/actions/#{name}", params)
-            .fetch(:action)
+
+          if response.key?(:actions)
+            response[:actions].map { |r| Action.new r }
+          else
+            Action.new response[:action]
+          end
         end
       end
     end
