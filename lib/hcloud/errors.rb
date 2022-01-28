@@ -2,9 +2,30 @@
 
 module HCloud
   module Errors
+    class Error < StandardError
+      attr_reader :data
+
+      def initialize(data = {})
+        super(data[:message])
+
+        @data = data
+      end
+
+      def code
+        data[:code] || self.class.name.demodulize.underscore
+      end
+
+      def full_messages
+        data[:details][:fields].flat_map do |field|
+          Array(field.fetch(:messages, data[:message])).map do |detail|
+            "#{field[:name]} #{detail}"
+          end
+        end
+      end
+    end
+
     class ActionFailed < Error; end
     class Conflict < Error; end
-    class Error < StandardError; end
     class FirewallResourceNotFound < Error; end
     class Forbidden < Error; end
     class IPNotAvailable < Error; end
