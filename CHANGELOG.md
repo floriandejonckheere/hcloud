@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 - Implemented Networks
+- Implemented Network Actions
 
 ## HCloud v1.1.0
 

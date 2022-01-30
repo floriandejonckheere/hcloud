@@ -89,7 +89,7 @@ Not all Hetzner Cloud API endpoints have been implemented yet.
 | Load Balancer Types   | Not implemented       |
 | Locations             | Implemented           |
 | Networks              | Implemented           |
-| Network Actions       | Not implemented       |
+| Network Actions       | Implemented           |
 | Placement Groups      | Implemented           |
 | Pricing               | Not implemented       |
 | Servers               | Partially implemented |

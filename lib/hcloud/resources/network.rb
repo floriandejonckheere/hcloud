@@ -66,6 +66,14 @@ module HCloud
 
     attribute :labels, default: -> { {} }
 
+    action :change_protection
+
+    action :add_route
+    action :add_subnet
+    action :change_ip_range
+    action :delete_route
+    action :delete_subnet
+
     def creatable_attributes
       [:name, :labels, :ip_range, :routes, :subnets]
     end
