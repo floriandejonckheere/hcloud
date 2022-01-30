@@ -19,7 +19,7 @@ module HCloud
   #
   # == Search firewalls
   #
-  #     HCloud::Firewall.all.where(name: "my_irewall")
+  #     HCloud::Firewall.all.where(name: "my_firewall")
   #     # => #<HCloud::Firewall id: 1, ...>
   #
   # == Find firewall by ID
