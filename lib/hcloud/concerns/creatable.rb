@@ -29,7 +29,7 @@ module HCloud
 
         attributes
           .slice(*simple_attributes.map(&:to_s))
-          .transform_values { |v| v&.send_wrap(:try, :to_h) || v&.send_wrap(:to_s) }
+          .transform_values { |v| v&.send_wrap { |o| o.try(:to_h) || o } || v&.send_wrap(:to_s) }
           .merge(nested_attributes.reduce(&:merge)&.map { |k, v| [k.to_s, Array(v).filter_map { |w| send(k)&.send_wrap(w) }.first] }.to_h)
           .compact
       end

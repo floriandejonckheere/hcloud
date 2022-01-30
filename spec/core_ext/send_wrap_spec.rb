@@ -11,6 +11,10 @@ RSpec.describe CoreExt::SendWrap do
     it "sends a message and arguments to the object" do
       expect(object.send_wrap(:try, :to_sym)).to eq :string
     end
+
+    it "yields the object to the block" do
+      expect(object.send_wrap { |o| o.try(:to_h) || o }).to eq "string"
+    end
   end
 
   context "when subject is an array" do
@@ -22,6 +26,10 @@ RSpec.describe CoreExt::SendWrap do
 
     it "sends a message and arguments to the objects" do
       expect(object.send_wrap(:try, :to_sym)).to eq [:string]
+    end
+
+    it "yields the objects in the enumerable to the block" do
+      expect(object.send_wrap { |o| o.try(:to_h) || o }).to eq ["string"]
     end
   end
 
@@ -38,6 +46,10 @@ RSpec.describe CoreExt::SendWrap do
 
     it "does not send a message and arguments to the objects" do
       expect(object.send_wrap(:try, :to_sym)).to be_nil
+    end
+
+    it "yields the object to the block" do
+      expect(object.send_wrap { |o| o.try(:to_h) || o }).to eq({ foo: "bar" })
     end
   end
 end
