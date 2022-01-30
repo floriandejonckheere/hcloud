@@ -62,8 +62,8 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
 
     expect(server.image).not_to be_nil
 
-    # TODO: expect(server.public_net).not_to be_nil
-    # TODO: expect(server.private_net).not_to be_nil
+    expect(server.public_net).not_to be_nil
+    expect(server.private_net).not_to be_nil
 
     # TODO: expect(server.placement_group).not_to be_nil
 

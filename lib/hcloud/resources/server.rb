@@ -106,9 +106,8 @@ module HCloud
 
     attribute :image, :image
 
-    # TODO: network resource
-    attribute :public_net
-    attribute :private_net
+    attribute :public_net, :public_net
+    attribute :private_net, :private_net
 
     attribute :placement_group, :placement_group
 

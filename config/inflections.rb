@@ -6,6 +6,8 @@ HCloud.loader.inflector.inflect(
   "ssh_key" => "SSHKey",
   "floating_ip" => "FloatingIP",
   "http" => "HTTP",
+  "ipv4" => "IPv4",
+  "ipv6" => "IPv6",
   "ip_not_available" => "IPNotAvailable",
   "iso" => "ISO",
   "iso_type" => "ISOType",
