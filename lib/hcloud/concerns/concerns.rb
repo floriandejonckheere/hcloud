@@ -24,6 +24,10 @@ module HCloud
       def deletable
         include Deletable
       end
+
+      def singleton
+        include Singleton
+      end
     end
   end
 end
