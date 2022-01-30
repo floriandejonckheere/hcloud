@@ -27,5 +27,11 @@ RSpec.describe HCloud::Entity do
     it "serializes the attributes" do
       expect(entity.to_h.symbolize_keys).to include(type: "child", child: { id: 1 })
     end
+
+    it "omits empty attributes" do
+      entity.child = nil
+
+      expect(entity.to_h.symbolize_keys).not_to include(:child)
+    end
   end
 end

@@ -18,6 +18,7 @@ module HCloud
     def to_h
       attributes
         .transform_values { |v| v.try(:to_h) || v }
+        .compact_blank
     end
   end
 end
