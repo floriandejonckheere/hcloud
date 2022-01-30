@@ -43,6 +43,7 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
 
     expect(server.server_type.name).to eq "cx11"
 
+    # TODO: compare actual value of attributes
     expect(server.status).not_to be_nil
 
     expect(server.backup_window).to be_nil
@@ -65,7 +66,7 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
     expect(server.public_net).not_to be_nil
     expect(server.private_net).not_to be_nil
 
-    # TODO: expect(server.placement_group).not_to be_nil
+    expect(server.placement_group).to be_nil
 
     expect(server.iso).to be_nil
 
