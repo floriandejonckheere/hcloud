@@ -15,12 +15,21 @@ RSpec.describe HCloud::HTTP do
       expect(response).to eq({ foo: "bar" })
     end
 
-    it "raises an error" do
+    it "raises a client error" do
       stub = stub_request(:get, "https://endpoint/api")
         .with(query: { one: "two" })
         .to_return(status: 422, body: { error: { code: "invalid_input", message: "Invalid Input" } }.to_json)
 
       expect { http.get("api", one: "two") }.to raise_error HCloud::Errors::InvalidInput
+      expect(stub).to have_been_requested
+    end
+
+    it "raises a server error" do
+      stub = stub_request(:get, "https://endpoint/api")
+        .with(query: { one: "two" })
+        .to_return(status: 503, body: nil)
+
+      expect { http.get("api", one: "two") }.to raise_error HCloud::Errors::ServerError
       expect(stub).to have_been_requested
     end
   end
@@ -37,12 +46,21 @@ RSpec.describe HCloud::HTTP do
       expect(response).to eq({ foo: "bar" })
     end
 
-    it "raises an error" do
+    it "raises a client error" do
       stub = stub_request(:put, "https://endpoint/api")
         .with(body: { one: "two" })
         .to_return(status: 422, body: { error: { code: "invalid_input", message: "Invalid Input" } }.to_json)
 
       expect { http.put("api", one: "two") }.to raise_error HCloud::Errors::InvalidInput
+      expect(stub).to have_been_requested
+    end
+
+    it "raises a server error" do
+      stub = stub_request(:put, "https://endpoint/api")
+        .with(body: { one: "two" })
+        .to_return(status: 503, body: nil)
+
+      expect { http.put("api", one: "two") }.to raise_error HCloud::Errors::ServerError
       expect(stub).to have_been_requested
     end
   end
@@ -59,12 +77,21 @@ RSpec.describe HCloud::HTTP do
       expect(response).to eq({ foo: "bar" })
     end
 
-    it "raises an error" do
+    it "raises a client error" do
       stub = stub_request(:post, "https://endpoint/api")
         .with(body: { one: "two" })
         .to_return(status: 422, body: { error: { code: "invalid_input", message: "Invalid Input" } }.to_json)
 
       expect { http.post("api", one: "two") }.to raise_error HCloud::Errors::InvalidInput
+      expect(stub).to have_been_requested
+    end
+
+    it "raises a server error" do
+      stub = stub_request(:post, "https://endpoint/api")
+        .with(body: { one: "two" })
+        .to_return(status: 503, body: nil)
+
+      expect { http.post("api", one: "two") }.to raise_error HCloud::Errors::ServerError
       expect(stub).to have_been_requested
     end
   end
@@ -78,11 +105,19 @@ RSpec.describe HCloud::HTTP do
       expect(stub).to have_been_requested
     end
 
-    it "raises an error" do
+    it "raises a client error" do
       stub = stub_request(:delete, "https://endpoint/api")
         .to_return(status: 422, body: { error: { code: "invalid_input", message: "Invalid Input" } }.to_json)
 
       expect { http.delete("api") }.to raise_error HCloud::Errors::InvalidInput
+      expect(stub).to have_been_requested
+    end
+
+    it "raises a server error" do
+      stub = stub_request(:delete, "https://endpoint/api")
+        .to_return(status: 503, body: nil)
+
+      expect { http.delete("api") }.to raise_error HCloud::Errors::ServerError
       expect(stub).to have_been_requested
     end
   end

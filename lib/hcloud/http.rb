@@ -17,6 +17,8 @@ module HCloud
       response = http
         .get(url_for(path), params: transform_params(params))
 
+      raise Errors::ServerError, response if response.status.server_error?
+
       data = response
         .parse(:json)
         .deep_symbolize_keys
@@ -30,6 +32,8 @@ module HCloud
       response = http
         .put(url_for(path), json: body)
 
+      raise Errors::ServerError, response if response.status.server_error?
+
       data = response
         .parse(:json)
         .deep_symbolize_keys
@@ -42,6 +46,8 @@ module HCloud
     def post(path, body = {})
       response = http
         .post(url_for(path), json: body)
+
+      raise Errors::ServerError, response if response.status.server_error?
 
       data = response
         .parse(:json)
@@ -57,6 +63,8 @@ module HCloud
         .delete(url_for(path))
 
       return if response.status.success?
+
+      raise Errors::ServerError, response if response.status.server_error?
 
       data = response
         .parse(:json)
