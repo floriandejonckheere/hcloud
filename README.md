@@ -109,6 +109,30 @@ bundle exec rspec
 bundle exec rspec --tag integration
 ```
 
+## Debugging
+
+### Logging
+
+When using the gem in your code, you can pass a `logger:` argument to `HCloud::Client`:
+
+```ruby
+logger = Logger.new("log/http.log")
+logger.level = :debug
+
+client = HCloud::Client.new(access_token: "my_access_token", logger: logger)
+```
+
+When executing the test suite, set `LOG_LEVEL` environment variable to `debug` in order to see HTTP requests.
+
+### Endpoint
+
+`HCloud::Client` also accepts an alternate endpoint:
+
+
+```ruby
+client = HCloud::Client.new(access_token: "my_access_token", endpoint: "https://myproxy/v1")
+```
+
 ## Releasing
 
 To release a new version, update the version number in `lib/hcloud/version.rb`, update the changelog, commit the files and create a git tag starting with `v`, and push it to the repository.
