@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+
+- Implemented Networks
+
 ## HCloud v1.1.0
 
 - Implemented Firewall Actions
