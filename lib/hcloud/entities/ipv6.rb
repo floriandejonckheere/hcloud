@@ -6,5 +6,7 @@ module HCloud
     attribute :dns_ptr, :dns_pointer, array: true, default: -> { [] }
     attribute :id, :integer
     attribute :ip
+
+    alias blocked? blocked
   end
 end

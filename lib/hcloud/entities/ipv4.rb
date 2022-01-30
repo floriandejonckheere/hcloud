@@ -6,5 +6,7 @@ module HCloud
     attribute :dns_ptr
     attribute :id, :integer
     attribute :ip
+
+    alias blocked? blocked
   end
 end
