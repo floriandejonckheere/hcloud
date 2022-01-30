@@ -3,8 +3,6 @@
 RSpec.describe HCloud::Volume, integration: true, order: :defined do
   id_one, id_two = nil
 
-  action_id_one = nil
-
   after(:all) do
     described_class.all.each { |m| m.change_protection(delete: false) }
     described_class.all.each(&:delete)
@@ -87,58 +85,5 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
     expect(volume).to be_deleted
 
     expect { described_class.find(id_one) }.to raise_error HCloud::Errors::NotFound
-  end
-
-  it "lists actions" do
-    actions = described_class.find(id_two).actions
-
-    expect(actions.count).to eq 1
-    expect(actions.first.command).to eq "create_volume"
-
-    action_id_one = actions.first.id
-  end
-
-  it "finds action" do
-    action = described_class.find(id_two).actions.find(action_id_one)
-
-    expect(action.command).to eq "create_volume"
-    expect(action.started).not_to be_nil
-
-    sleep 1
-    action.reload
-
-    expect(action.finished).not_to be_nil
-    expect(action.progress).to eq 100
-
-    expect(action.status).to eq "success"
-    expect(action.error).to be_nil
-  end
-
-  # TODO: attaches a volume
-  xit "attaches a volume"
-
-  # TODO: detaches a volume
-  xit "detaches a volume"
-
-  it "resizes the volume" do
-    volume = described_class.find(id_two)
-
-    volume.resize(size: 11)
-
-    sleep 1
-    volume.reload
-
-    expect(volume.size).to eq 11
-  end
-
-  it "changes protection" do
-    volume = described_class.find(id_two)
-
-    volume.change_protection(delete: true)
-
-    sleep 1
-    volume.reload
-
-    expect(volume.protection).to be_delete
   end
 end

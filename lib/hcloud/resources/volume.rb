@@ -83,7 +83,7 @@ module HCloud
   # = Resource-specific actions
   # == Attach a volume to a server
   #
-  #     HCloud::Volume.find(1).attach(server: 1)
+  #     HCloud::Volume.find(1).attach(server: 1, automount: false)
   #     # => #<HCloud::Action id: 1, ...>
   #
   # == Detach a volume from a server
@@ -93,7 +93,7 @@ module HCloud
   #
   # == Resize volume
   #
-  #     HCloud::Volume.find(1).resize(size: 100)
+  #     HCloud::Volume.find(1).resize(size: 25)
   #     # => #<HCloud::Action id: 1, ...>
   #
   # == Change protection
