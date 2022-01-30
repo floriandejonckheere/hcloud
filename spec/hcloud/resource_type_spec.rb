@@ -4,11 +4,11 @@ RSpec.describe HCloud::ResourceType do
   subject(:resource_type) { described_class.new.tap { |k| k.resource_class_name = "OpenStruct" } }
 
   it "casts nil to nil" do
-    expect(resource_type.cast(nil)).to eq nil
+    expect(resource_type.cast(nil)).to be_nil
   end
 
   it "casts empty array to nil" do
-    expect(resource_type.cast([])).to eq nil
+    expect(resource_type.cast([])).to be_nil
   end
 
   it "casts resource class to resource class" do

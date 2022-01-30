@@ -37,7 +37,7 @@ RSpec.describe CoreExt::SendWrap do
     end
 
     it "does not send a message and arguments to the objects" do
-      expect(object.send_wrap(:try, :to_sym)).to eq nil
+      expect(object.send_wrap(:try, :to_sym)).to be_nil
     end
   end
 end

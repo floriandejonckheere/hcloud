@@ -10,17 +10,17 @@ RSpec.describe HCloud::Image, integration: true, order: :defined do
     expect(image.type).to eq "system"
     expect(image.status).to eq "available"
 
-    expect(image.build_id).to eq nil
+    expect(image.build_id).to be_nil
     expect(image.disk_size).to eq 5
-    expect(image.image_size).to eq nil
+    expect(image.image_size).to be_nil
 
     expect(image.os_flavor).to eq "debian"
     expect(image.os_version).to eq "9"
 
     expect(image.protection).not_to be_delete
 
-    expect(image.bound_to).to eq nil
-    expect(image.created_from).to eq nil
+    expect(image.bound_to).to be_nil
+    expect(image.created_from).to be_nil
 
     expect(image).to be_created
     expect(image).not_to be_deleted
@@ -38,18 +38,18 @@ RSpec.describe HCloud::Image, integration: true, order: :defined do
     expect(image.type).to eq "app"
     expect(image.status).to eq "available"
 
-    expect(image.build_id).to eq nil
+    expect(image.build_id).to be_nil
     expect(image.disk_size).to eq 20
-    expect(image.image_size).to eq nil
+    expect(image.image_size).to be_nil
 
     expect(image.os_flavor).to eq "ubuntu"
     expect(image.os_version).to eq "unknown"
 
     expect(image.protection).not_to be_delete
 
-    expect(image.bound_to).to eq nil
+    expect(image.bound_to).to be_nil
 
-    expect(image.created_from).to eq nil
+    expect(image.created_from).to be_nil
 
     expect(image).to be_created
     expect(image).not_to be_deleted
