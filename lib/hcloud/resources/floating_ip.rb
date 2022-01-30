@@ -77,7 +77,7 @@ module HCloud
   #     HCloud::FloatingIP.find(1).actions.find(1)
   #     # => #<HCloud::Action id: 1, ...>
   #
-  # = Floating IP-specific actions
+  # = Resource-specific actions
   # == Assign a floating IP to a server
   #
   #     HCloud::FloatingIP.find(1).assign(server: 1)
@@ -119,8 +119,7 @@ module HCloud
 
     attribute :protection, :protection
 
-    # TODO: return Server object
-    attribute :server, :integer
+    attribute :server, :server
 
     attribute :labels, default: -> { {} }
 

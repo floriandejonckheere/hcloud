@@ -42,6 +42,64 @@ module HCloud
   #     network.deleted?
   #     # => true
   #
+  # = Actions
+  # == List actions
+  #
+  #     actions = HCloud::FloatingIP.find(1).actions
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  # == Sort actions
+  #
+  #     HCloud::FloatingIP.find(1).actions.sort(finished: :desc)
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  #     HCloud::FloatingIP.find(1).actions.sort(:command, finished: :asc)
+  #     # => [#<HCloud::Actions id: 1, ...>, ...]
+  #
+  # == Search actions
+  #
+  #     HCloud::FloatingIP.find(1).actions.where(command: "assign_floating_ip")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     HCloud::FloatingIP.find(1).actions.where(status: "success")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Find action by ID
+  #
+  #     HCloud::FloatingIP.find(1).actions.find(1)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # = Resource-specific actions
+  # == Change protection
+  #
+  #     HCloud::Network.find(1).change_protection(delete: true)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Add a route
+  #
+  #     HCloud::Network.find(1).add_route(destination: "10.100.1.0/24", gateway: "10.0.1.1")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Add a subnet
+  #
+  #     HCloud::Network.find(1).add_subnet(ip_range: "10.0.1.0/24", network_zone: "eu-central", type: "cloud")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Change the IP range
+  #
+  #     HCloud::Network.find(1).change_ip_range(ip_range: "10.0.0.0/15")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Delete a route
+  #
+  #     HCloud::Network.find(1).delete_route(destination: "10.100.1.0/24", gateway: "10.0.1.1")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Delete a subnet
+  #
+  #     HCloud::Network.find(1).delete_subnet(ip_range: "10.0.1.0/24", network_zone: "eu-central", type: "cloud")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   class Network < Resource
     actionable
     queryable

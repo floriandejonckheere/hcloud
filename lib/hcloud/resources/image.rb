@@ -74,7 +74,7 @@ module HCloud
   #     HCloud::Image.find(1).actions.find(1)
   #     # => #<HCloud::Action id: 1, ...>
   #
-  # = Image-specific actions
+  # = Resource-specific actions
   # == Change protection
   #
   #     HCloud::Image.find(1).change_protection(delete: true)

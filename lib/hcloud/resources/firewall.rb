@@ -50,6 +50,34 @@ module HCloud
   #     firewall.deleted?
   #     # => true
   #
+  # = Actions
+  # == List actions
+  #
+  #     actions = HCloud::Firewall.find(1).actions
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  # == Sort actions
+  #
+  #     HCloud::Firewall.find(1).actions.sort(finished: :desc)
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  #     HCloud::Firewall.find(1).actions.sort(:command, finished: :asc)
+  #     # => [#<HCloud::Actions id: 1, ...>, ...]
+  #
+  # == Search actions
+  #
+  #     HCloud::Firewall.find(1).actions.where(command: "set_rules")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     HCloud::Firewall.find(1).actions.where(status: "success")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Find action by ID
+  #
+  #     HCloud::Firewall.find(1).actions.find(1)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # = Resource-specific actions
   # == Apply a firewall to resources
   #
   #     firewall = HCloud::Firewall.find(1)

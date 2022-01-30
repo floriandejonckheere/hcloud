@@ -80,7 +80,7 @@ module HCloud
   #     HCloud::Volume.find(1).actions.find(1)
   #     # => #<HCloud::Action id: 1, ...>
   #
-  # = Volume-specific actions
+  # = Resource-specific actions
   # == Attach a volume to a server
   #
   #     HCloud::Volume.find(1).attach(server: 1)
@@ -122,8 +122,7 @@ module HCloud
     attribute :location, :location
     attribute :protection, :protection
 
-    # TODO: return Server object
-    attribute :server, :integer
+    attribute :server, :server
 
     attribute :labels, default: -> { {} }
 
