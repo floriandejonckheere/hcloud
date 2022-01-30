@@ -4,6 +4,7 @@
 
 - Implemented Networks
 - Implemented Network Actions
+- Implemented Pricing
 
 ## HCloud v1.1.0
 
