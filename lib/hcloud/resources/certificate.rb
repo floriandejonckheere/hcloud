@@ -53,7 +53,43 @@ module HCloud
   #     certificate.deleted?
   #     # => true
   #
+  # = Actions
+  # == List actions
+  #
+  #     actions = HCloud::Certificate.find(1).actions
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  # == Sort actions
+  #
+  #     HCloud::Certificate.find(1).actions.sort(finished: :desc)
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  #     HCloud::Certificate.find(1).actions.sort(:command, finished: :asc)
+  #     # => [#<HCloud::Actions id: 1, ...>, ...]
+  #
+  # == Search actions
+  #
+  #     HCloud::Certificate.find(1).actions.where(command: "set_rules")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     HCloud::Certificate.find(1).actions.where(status: "success")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Find action by ID
+  #
+  #     HCloud::Certificate.find(1).actions.find(1)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # = Resource-specific actions
+  # == Retry issuance or renewal
+  #
+  #     certificate = HCloud::Certificate.find(1)
+  #
+  #     certificate.retry
+  #     # => #<HCloud::Action ...>
+  #
   class Certificate < Resource
+    actionable
     queryable
     creatable
     updatable
@@ -81,6 +117,8 @@ module HCloud
     attribute :used_by, :used_by, array: true, default: -> { [] }
 
     attribute :labels, default: -> { {} }
+
+    action :retry
 
     def creatable_attributes
       [:name, :labels, :type, :private_key, :certificate, :domain_names]

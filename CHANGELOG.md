@@ -6,6 +6,7 @@
 - Implemented Network Actions
 - Implemented Pricing
 - Implemented Certificates
+- Implemented Certificate Actions
 
 ## HCloud v1.1.0
 
