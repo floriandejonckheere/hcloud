@@ -6,6 +6,8 @@ module HCloud
 
     included do
       def reload
+        raise Errors::MissingIDError unless id
+
         assign_attributes client
           .get("/#{resource_name.pluralize}/#{id}")
           .fetch(resource_name.to_sym)
@@ -16,6 +18,8 @@ module HCloud
 
     class_methods do
       def find(id)
+        raise Errors::MissingIDError unless id
+
         new client
           .get("/#{resource_name.pluralize}/#{id}")
           .fetch(resource_name.to_sym)

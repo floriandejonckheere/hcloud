@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::Queryable do
-  subject(:resource) { ExampleResource.new }
+  subject(:resource) { ExampleResource.new(id: 1) }
 
   describe "#reload" do
+    it "raises when no id was present" do
+      resource.id = nil
+
+      expect { ExampleResource.find(nil) }.to raise_error HCloud::Errors::MissingIDError
+    end
+
     it "reloads the resource" do
       stub_request(:get, "https://api.hetzner.cloud/v1/examples/#{resource.id}")
         .to_return(body: { example: resource.attributes.merge(name: "new_name") }.to_json)
@@ -13,6 +19,10 @@ RSpec.describe HCloud::Queryable do
   end
 
   describe ".find" do
+    it "raises when no id was given" do
+      expect { ExampleResource.find(nil) }.to raise_error HCloud::Errors::MissingIDError
+    end
+
     it "returns an instance of the resource" do
       stub_request(:get, "https://api.hetzner.cloud/v1/examples/#{resource.id}")
         .to_return(body: { example: resource.attributes }.to_json)

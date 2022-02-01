@@ -15,7 +15,6 @@ module HCloud
       @root ||= Pathname.new(File.expand_path(File.join("..", ".."), __FILE__))
     end
 
-    # rubocop:disable Metrics/AbcSize
     def setup
       @loader = Zeitwerk::Loader.for_gem
 
@@ -35,7 +34,6 @@ module HCloud
       loader.setup
       loader.eager_load
     end
-    # rubocop:enable Metrics/AbcSize
   end
 end
 

@@ -53,5 +53,7 @@ module HCloud
     class Unauthorized < Error; end
     class UniquenessError < Error; end
     class UnsupportedError < Error; end
+
+    class MissingIDError < Error; end
   end
 end

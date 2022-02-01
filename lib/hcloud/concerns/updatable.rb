@@ -6,6 +6,8 @@ module HCloud
 
     included do
       def update
+        raise Errors::MissingIDError unless id
+
         assign_attributes client
           .put("/#{resource_name.pluralize}/#{id}", updatable_params)
           .fetch(resource_name.to_sym)

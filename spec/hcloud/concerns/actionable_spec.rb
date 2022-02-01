@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::Actionable do
-  subject(:resource) { ExampleResource.new }
+  subject(:resource) { ExampleResource.new(id: 1) }
 
   describe "#actions" do
     it "lists all actions" do
@@ -22,6 +22,14 @@ RSpec.describe HCloud::Actionable do
       actions = resource.actions.find(1)
 
       expect(actions.command).to eq "create_resource"
+    end
+  end
+
+  describe "#resize" do
+    it "raises when no id was present" do
+      resource.id = nil
+
+      expect { resource.resize(size: 100) }.to raise_error HCloud::Errors::MissingIDError
     end
 
     it "creates an action" do

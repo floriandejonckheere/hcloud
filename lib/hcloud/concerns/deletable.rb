@@ -6,6 +6,8 @@ module HCloud
 
     included do
       def delete
+        raise Errors::MissingIDError unless id
+
         client
           .delete("/#{resource_name.pluralize}/#{id}")
 

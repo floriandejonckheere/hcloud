@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::Updatable do
-  subject(:resource) { ExampleResource.new }
+  subject(:resource) { ExampleResource.new(id: 1) }
 
   describe "#update" do
+    it "raises when no id was present" do
+      resource.id = nil
+
+      expect { resource.update }.to raise_error HCloud::Errors::MissingIDError
+    end
+
     it "updates the resource" do
       stub_request(:put, "https://api.hetzner.cloud/v1/examples/#{resource.id}")
         .with(body: resource.attributes.slice(*resource.updatable_attributes.map(&:to_s)))
