@@ -71,6 +71,7 @@ ActiveModel::Type.register(:image_price, HCloud::ResourceType.Type("HCloud::Imag
 ActiveModel::Type.register(:ipv4, HCloud::ResourceType.Type("HCloud::IPv4"))
 ActiveModel::Type.register(:ipv6, HCloud::ResourceType.Type("HCloud::IPv6"))
 ActiveModel::Type.register(:iso, HCloud::ResourceType.Type("HCloud::ISO"))
+ActiveModel::Type.register(:load_balancer_type, HCloud::ResourceType.Type("HCloud::LoadBalancerType"))
 ActiveModel::Type.register(:load_balancer_type_price, HCloud::ResourceType.Type("HCloud::LoadBalancerTypePrice"))
 ActiveModel::Type.register(:location, HCloud::ResourceType.Type("HCloud::Location"))
 ActiveModel::Type.register(:network, HCloud::ResourceType.Type("HCloud::Network"))

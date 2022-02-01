@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+
+- Implemented Load Balancer Types
+
 ## HCloud v1.2.0
 
 - Implemented Networks
