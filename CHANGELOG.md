@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## HCloud v1.2.0
 
 - Implemented Networks
 - Implemented Network Actions
