@@ -13,9 +13,8 @@ RSpec.describe HCloud::Creatable do
 
     it "creates the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/examples")
-        .with(body: { name: "my_resource", description: "my_description", labels: {}, sibling: { name: "sibling", child: { id: 1 } }, child: "name1", children: [1, nil] })
+        .with(body: { name: "my_resource", description: "my_description", sibling: { name: "sibling", child: { id: 1 } }, child: "name1", children: [1, nil] })
         .to_return(body: { example: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
-
       resource.create
 
       expect(resource.id).to eq 1
@@ -26,7 +25,7 @@ RSpec.describe HCloud::Creatable do
   describe ".create" do
     it "creates the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/examples")
-        .with(body: { name: "my_resource", description: "my_description", labels: {}, children: [] })
+        .with(body: { name: "my_resource", description: "my_description" })
         .to_return(body: { example: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
 
       resource = ExampleResource.create(name: "my_resource", description: "my_description")
