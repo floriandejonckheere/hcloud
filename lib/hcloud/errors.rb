@@ -42,9 +42,9 @@ module HCloud
     class PlacementError < Error; end
     class Protected < Error; end
     class RateLimitExceeded < Error; end
+    class ResourceInUse < Error; end
     class ResourceLimitExceeded < Error; end
     class ResourceUnavailable < Error; end
-    class ResourceInUse < Error; end
     class ServerAlreadyAdded < Error; end
     class ServerAlreadyAttached < Error; end
     class ServerError < Error; end
