@@ -64,7 +64,6 @@ module HCloud
   #     # => #<HCloud::Metrics ...>
   #
   # TODO: actions
-  # TODO: return root_password if ssh_keys is empty
   #
   class Server < Resource
     actionable
@@ -94,6 +93,8 @@ module HCloud
 
     # TODO: use only for creation
     attribute :networks, array: true, default: -> { [] }
+
+    attribute :root_password
 
     attribute :datacenter, :datacenter
 
