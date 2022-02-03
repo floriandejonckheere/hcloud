@@ -1,49 +1,52 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::ResourceType do
-  subject(:resource_type) { described_class.new.tap { |k| k.resource_class_name = "OpenStruct" } }
+  let(:example_type) { ActiveModel::Type.lookup(:example_resource) }
+  let(:sibling_type) { ActiveModel::Type.lookup(:sibling) }
 
   it "casts nil to nil" do
-    expect(resource_type.cast(nil)).to be_nil
+    expect(example_type.cast(nil)).to be_nil
   end
 
   it "casts empty array to nil" do
-    expect(resource_type.cast([])).to be_nil
+    expect(example_type.cast([])).to be_nil
   end
 
   it "casts resource class to resource class" do
-    expect(resource_type.cast(OpenStruct.new(id: 3))).to eq OpenStruct.new(id: 3)
+    expect(example_type.cast(ExampleResource.new(id: 3))).to eq ExampleResource.new(id: 3)
   end
 
   it "casts integer to resource class" do
-    expect(resource_type.cast(3)).to eq OpenStruct.new(id: 3)
+    expect(example_type.cast(3)).to eq ExampleResource.new(id: 3)
   end
 
   it "casts string to resource class" do
-    expect(resource_type.cast("my_name")).to eq OpenStruct.new(name: "my_name")
+    # We need to compare attributes here, because the default equality matcher will return false when no ID is present
+    expect(example_type.cast("my_name").attributes).to eq ExampleResource.new(name: "my_name").attributes
+    expect(sibling_type.cast("my_type").attributes).to eq Sibling.new(type: "my_type").attributes
   end
 
   it "casts hash to resource class" do
-    expect(resource_type.cast({ id: 3, name: "my_name" })).to eq OpenStruct.new(id: 3, name: "my_name")
+    expect(example_type.cast({ id: 3, name: "my_name" })).to eq ExampleResource.new(id: 3, name: "my_name")
   end
 
   it "casts array to array of resource class" do
-    expect(resource_type.cast([1, 2])).to eq [OpenStruct.new(id: 1), OpenStruct.new(id: 2)]
+    expect(example_type.cast([1, 2])).to eq [ExampleResource.new(id: 1), ExampleResource.new(id: 2)]
   end
 
   it "does not cast different classes" do
-    expect { resource_type.cast(Set.new) }.to raise_error ArgumentError
+    expect { example_type.cast(Set.new) }.to raise_error ArgumentError
   end
 
   context "when resource is an array type" do
-    subject(:resource_type) { described_class.new(array: true).tap { |k| k.resource_class_name = "OpenStruct" } }
+    subject(:example_type) { described_class.new(array: true).tap { |k| k.resource_class_name = "ExampleResource" } }
 
     it "casts nil to an empty array" do
-      expect(resource_type.cast(nil)).to eq []
+      expect(example_type.cast(nil)).to eq []
     end
 
     it "casts empty array to an empty array" do
-      expect(resource_type.cast([])).to eq []
+      expect(example_type.cast([])).to eq []
     end
   end
 

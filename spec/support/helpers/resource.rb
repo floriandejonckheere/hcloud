@@ -8,7 +8,7 @@ end
 ActiveModel::Type.register(:child, HCloud::ResourceType.Type("Child"))
 
 class Sibling < HCloud::Entity
-  attribute :name
+  attribute :type
   attribute :child, :child
 end
 
