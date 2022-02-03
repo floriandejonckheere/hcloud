@@ -117,8 +117,7 @@ module HCloud
 
     attribute :servers, :server, array: true, default: -> { [] }
 
-    # TODO: load balancer resource
-    attribute :load_balancers, array: true, default: -> { [] }
+    attribute :load_balancers, :load_balancer, array: true, default: -> { [] }
 
     attribute :protection, :protection
 
