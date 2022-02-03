@@ -25,6 +25,10 @@ module HCloud
         include Deletable
       end
 
+      def meterable
+        include Meterable
+      end
+
       def singleton
         include Singleton
       end

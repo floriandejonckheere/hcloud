@@ -72,6 +72,7 @@ module HCloud
     creatable
     updatable
     deletable
+    meterable
 
     attribute :id, :integer
     attribute :name
@@ -159,12 +160,6 @@ module HCloud
     action :rebuild
 
     action :request_console
-
-    def metrics(type:, from:, to:, step: nil)
-      Metrics.new client
-        .get("/servers/#{id}/metrics", type: Array(type).join(","), start: from.iso8601, end: to.iso8601, step: step)
-        .fetch(:metrics)
-    end
 
     def creatable_attributes
       [:name, :automount, :start_after_create, :user_data, :labels, datacenter: [:id, :name], image: [:id, :name], location: [:id, :name], server_type: [:id, :name], ssh_keys: [:id, :name], firewalls: :id, networks: :id, volumes: :id]

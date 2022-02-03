@@ -64,6 +64,7 @@ module HCloud
     creatable
     updatable
     deletable
+    meterable
 
     attribute :id, :integer
     attribute :name
@@ -94,12 +95,6 @@ module HCloud
     attribute :protection, :protection
 
     attribute :labels, default: -> { {} }
-
-    def metrics(type:, from:, to:, step: nil)
-      Metrics.new client
-        .get("/load_balancers/#{id}/metrics", type: Array(type).join(","), start: from.iso8601, end: to.iso8601, step: step)
-        .fetch(:metrics)
-    end
 
     def creatable_attributes
       [:name, :labels, :algorithm, :network_zone, :public_interface, :services, :targets, load_balancer_type: [:id, :name], location: [:id, :name], network: [:id, :name]]

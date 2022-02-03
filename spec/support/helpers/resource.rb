@@ -20,6 +20,7 @@ class ExampleResource < HCloud::Resource
   creatable
   updatable
   deletable
+  meterable
 
   attribute :id, :integer
   attribute :name
