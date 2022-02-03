@@ -112,7 +112,7 @@ module HCloud
     attribute :name
 
     attribute :applied_to, :applied_to, array: true, default: -> { [] }
-    # Only used for creation
+    # TODO: use only for creation
     attribute :apply_to, :apply_to, array: true, default: -> { [] }
 
     attribute :rules, :rule, array: true, default: -> { [] }

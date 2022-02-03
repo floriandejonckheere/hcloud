@@ -79,11 +79,11 @@ module HCloud
 
     attribute :location, :location
 
-    # Only used for creation
+    # TODO: use only for creation
     attribute :network_zone
-    # Only used for creation
+    # TODO: use only for creation
     attribute :network, :network
-    # Only used for creation
+    # TODO: use only for creation
     attribute :public_interface, :boolean
 
     attribute :private_net, :load_balancer_private_net
