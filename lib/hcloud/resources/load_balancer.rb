@@ -29,26 +29,35 @@ module HCloud
   #
   # == Create load balancer
   #
-  #     load balancer = HCloud::LoadBalancer.new(name: "my_load_balancer", algorithm: { type: "round_robin" }, load_balancer_type: "lb11", location: "nbg1")
-  #     load balancer.create
-  #     load balancer.created?
+  #     load_balancer = HCloud::LoadBalancer.new(name: "my_load_balancer", algorithm: { type: "round_robin" }, load_balancer_type: "lb11", location: "nbg1")
+  #     load_balancer.create
+  #     load_balancer.created?
   #     # => true
   #
-  #     load balancer = HCloud::LoadBalancer.create(name: "my_load_balancer", algorithm: { type: "round_robin" }, load_balancer_type: "lb11", location: "nbg1")
+  #     load_balancer = HCloud::LoadBalancer.create(name: "my_load_balancer", algorithm: { type: "round_robin" }, load_balancer_type: "lb11", location: "nbg1")
   #     # => #<HCloud::LoadBalancer id: 1, ...>
   #
   # == Update load balancer
   #
-  #     load balancer = HCloud::LoadBalancer.find(1)
-  #     load balancer.name = "another_load balancer"
-  #     load balancer.update
+  #     load_balancer = HCloud::LoadBalancer.find(1)
+  #     load_balancer.name = "another_load_balancer"
+  #     load_balancer.update
   #
   # == Delete load balancer
   #
-  #     load balancer = HCloud::LoadBalancer.find(1)
-  #     load balancer.delete
-  #     load balancer.deleted?
+  #     load_balancer = HCloud::LoadBalancer.find(1)
+  #     load_balancer.delete
+  #     load_balancer.deleted?
   #     # => true
+  #
+  # == Get metrics
+  #
+  #     load_balancer = HCloud::LoadBalancer.find(1)
+  #     load_balancer.metrics(type: :bandwidth, from: 2.minutes.ago, to: 1.minute.ago)
+  #     # => #<HCloud::Metrics ...>
+  #
+  #     load_balancer.metrics(type: [:connections_per_second, :requests_per_second], from: 2.minutes.ago, to: 1.minute.ago, step: 60)
+  #     # => #<HCloud::Metrics ...>
   #
   class LoadBalancer < Resource
     queryable
@@ -85,6 +94,12 @@ module HCloud
     attribute :protection, :protection
 
     attribute :labels, default: -> { {} }
+
+    def metrics(type:, from:, to:, step: nil)
+      Metrics.new client
+        .get("/load_balancers/#{id}/metrics", type: Array(type).join(","), start: from.iso8601, end: to.iso8601, step: step)
+        .fetch(:metrics)
+    end
 
     def creatable_attributes
       [:name, :labels, :algorithm, :network_zone, :public_interface, :services, :targets, load_balancer_type: [:id, :name], location: [:id, :name], network: [:id, :name]]

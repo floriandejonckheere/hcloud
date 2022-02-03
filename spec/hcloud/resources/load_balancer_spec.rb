@@ -93,4 +93,12 @@ RSpec.describe HCloud::LoadBalancer, integration: true, order: :defined do
 
     expect { described_class.find(id_one) }.to raise_error HCloud::Errors::NotFound
   end
+
+  it "retrieves metrics" do
+    load_balancer = described_class.find(id_two)
+
+    metrics = load_balancer.metrics(type: :bandwidth, from: 1.minute.ago, to: 1.second.ago)
+
+    expect(metrics).not_to be_nil
+  end
 end
