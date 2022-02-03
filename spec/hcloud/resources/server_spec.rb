@@ -43,13 +43,12 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
 
     expect(server.server_type.name).to eq "cx11"
 
-    # TODO: compare actual value of attributes
-    expect(server.status).not_to be_nil
+    expect(server.status).to eq "initializing"
 
     expect(server.backup_window).to be_nil
     expect(server.datacenter.location.name).to eq "nbg1"
 
-    expect(server.included_traffic).not_to be_nil
+    expect(server.included_traffic).not_to be_zero
     expect(server.ingoing_traffic).to be_nil
     expect(server.outgoing_traffic).to be_nil
 
@@ -61,10 +60,10 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
     expect(server).not_to be_locked
     expect(server).not_to be_rescue_enabled
 
-    expect(server.image).not_to be_nil
+    expect(server.image.name).to eq "debian-11"
 
-    expect(server.public_net).not_to be_nil
-    expect(server.private_net).not_to be_nil
+    expect(server.public_net.ipv4).not_to be_blocked
+    expect(server.private_net).to be_nil
 
     expect(server.placement_group).to be_nil
 
