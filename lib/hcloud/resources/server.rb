@@ -120,8 +120,8 @@ module HCloud
 
     attribute :volumes, :volume, array: true, default: -> { [] }
 
-    attribute :locked
-    attribute :rescue_enabled
+    attribute :locked, :boolean
+    attribute :rescue_enabled, :boolean
 
     alias rescue_enabled? rescue_enabled
 
