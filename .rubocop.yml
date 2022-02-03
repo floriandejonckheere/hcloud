@@ -50,9 +50,6 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: true
 
-Style/OpenStructUse:
-  Enabled: false
-
 Style/HashAsLastArrayItem:
   EnforcedStyle: no_braces
 
