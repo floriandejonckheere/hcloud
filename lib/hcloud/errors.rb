@@ -23,15 +23,18 @@ module HCloud
     end
 
     class ActionFailed < Error; end
+    class CloudResourceIPNotAllowed < Error; end
     class Conflict < Error; end
     class FirewallAlreadyApplied < Error; end
     class FirewallAlreadyRemoved < Error; end
     class FirewallResourceNotFound < Error; end
     class Forbidden < Error; end
     class IPNotAvailable < Error; end
+    class IPNotOwned < Error; end
     class IncompatibleNetworkType < Error; end
     class InvalidInput < Error; end
     class JSONError < Error; end
+    class LoadBalancerNotAttachedToNetwork < Error; end
     class Locked < Error; end
     class Maintenance < Error; end
     class NetworksOverlap < Error; end
@@ -45,10 +48,14 @@ module HCloud
     class ResourceInUse < Error; end
     class ResourceLimitExceeded < Error; end
     class ResourceUnavailable < Error; end
+    class RobotUnavailable < Error; end
     class ServerAlreadyAdded < Error; end
     class ServerAlreadyAttached < Error; end
     class ServerError < Error; end
+    class ServerNotAttachedToNetwork < Error; end
     class ServiceError < Error; end
+    class SourcePortAlreadyUsed < Error; end
+    class TargetAlreadyDefined < Error; end
     class TokenReadonly < Error; end
     class Unauthorized < Error; end
     class UniquenessError < Error; end

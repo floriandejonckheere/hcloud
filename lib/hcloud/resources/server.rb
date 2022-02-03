@@ -115,8 +115,7 @@ module HCloud
 
     attribute :labels, default: -> { {} }
 
-    # TODO: load balancer resource
-    attribute :load_balancers, array: true, default: -> { [] }
+    attribute :load_balancers, :load_balancer, array: true, default: -> { [] }
 
     attribute :volumes, :volume, array: true, default: -> { [] }
 

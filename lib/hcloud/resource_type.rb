@@ -19,8 +19,12 @@ module HCloud
         value
       when Integer # ID
         resource_class.new(id: value)
-      when String # Name
-        resource_class.new(name: value)
+      when String # Name or Type
+        if resource_class.attribute_names.include?("name")
+          resource_class.new(name: value)
+        else
+          resource_class.new(type: value)
+        end
       when Hash # Attribute hash
         resource_class.new(value)
       when Array # List
@@ -52,6 +56,7 @@ module HCloud
 end
 
 ActiveModel::Type.register(:action, HCloud::ResourceType.Type("HCloud::Action"))
+ActiveModel::Type.register(:algorithm, HCloud::ResourceType.Type("HCloud::Algorithm"))
 ActiveModel::Type.register(:amount, HCloud::ResourceType.Type("HCloud::Amount"))
 ActiveModel::Type.register(:applied_to, HCloud::ResourceType.Type("HCloud::AppliedTo"))
 ActiveModel::Type.register(:applied_to_resource, HCloud::ResourceType.Type("HCloud::AppliedToResource"))
@@ -66,11 +71,18 @@ ActiveModel::Type.register(:firewall, HCloud::ResourceType.Type("HCloud::Firewal
 ActiveModel::Type.register(:floating_ip, HCloud::ResourceType.Type("HCloud::FloatingIP"))
 ActiveModel::Type.register(:floating_ip_price, HCloud::ResourceType.Type("HCloud::FloatingIPPrice"))
 ActiveModel::Type.register(:floating_ip_prices, HCloud::ResourceType.Type("HCloud::FloatingIPPrices"))
+ActiveModel::Type.register(:health_check, HCloud::ResourceType.Type("HCloud::HealthCheck"))
+ActiveModel::Type.register(:health_check_http, HCloud::ResourceType.Type("HCloud::HealthCheckHTTP"))
+ActiveModel::Type.register(:health_status, HCloud::ResourceType.Type("HCloud::HealthStatus"))
 ActiveModel::Type.register(:image, HCloud::ResourceType.Type("HCloud::Image"))
 ActiveModel::Type.register(:image_price, HCloud::ResourceType.Type("HCloud::ImagePrice"))
 ActiveModel::Type.register(:ipv4, HCloud::ResourceType.Type("HCloud::IPv4"))
 ActiveModel::Type.register(:ipv6, HCloud::ResourceType.Type("HCloud::IPv6"))
 ActiveModel::Type.register(:iso, HCloud::ResourceType.Type("HCloud::ISO"))
+ActiveModel::Type.register(:label_selector, HCloud::ResourceType.Type("HCloud::LabelSelector"))
+ActiveModel::Type.register(:load_balancer, HCloud::ResourceType.Type("HCloud::LoadBalancer"))
+ActiveModel::Type.register(:load_balancer_private_net, HCloud::ResourceType.Type("HCloud::LoadBalancerPrivateNet"))
+ActiveModel::Type.register(:load_balancer_public_net, HCloud::ResourceType.Type("HCloud::LoadBalancerPublicNet"))
 ActiveModel::Type.register(:load_balancer_type, HCloud::ResourceType.Type("HCloud::LoadBalancerType"))
 ActiveModel::Type.register(:load_balancer_type_price, HCloud::ResourceType.Type("HCloud::LoadBalancerTypePrice"))
 ActiveModel::Type.register(:location, HCloud::ResourceType.Type("HCloud::Location"))
@@ -87,8 +99,13 @@ ActiveModel::Type.register(:server, HCloud::ResourceType.Type("HCloud::Server"))
 ActiveModel::Type.register(:server_backup_price, HCloud::ResourceType.Type("HCloud::ServerBackupPrice"))
 ActiveModel::Type.register(:server_type, HCloud::ResourceType.Type("HCloud::ServerType"))
 ActiveModel::Type.register(:server_type_price, HCloud::ResourceType.Type("HCloud::ServerTypePrice"))
+ActiveModel::Type.register(:service, HCloud::ResourceType.Type("HCloud::Service"))
+ActiveModel::Type.register(:service_http, HCloud::ResourceType.Type("HCloud::ServiceHTTP"))
 ActiveModel::Type.register(:ssh_key, HCloud::ResourceType.Type("HCloud::SSHKey"))
 ActiveModel::Type.register(:subnet, HCloud::ResourceType.Type("HCloud::Subnet"))
+ActiveModel::Type.register(:target, HCloud::ResourceType.Type("HCloud::Target"))
+ActiveModel::Type.register(:targets, HCloud::ResourceType.Type("HCloud::Targets"))
+ActiveModel::Type.register(:target_ip, HCloud::ResourceType.Type("HCloud::TargetIP"))
 ActiveModel::Type.register(:traffic_price, HCloud::ResourceType.Type("HCloud::TrafficPrice"))
 ActiveModel::Type.register(:used_by, HCloud::ResourceType.Type("HCloud::UsedBy"))
 ActiveModel::Type.register(:volume, HCloud::ResourceType.Type("HCloud::Volume"))

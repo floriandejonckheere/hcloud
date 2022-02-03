@@ -8,7 +8,7 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
   ssh_key_id = nil
 
   it "creates an SSH key" do
-    ssh_key = HCloud::SSHKey.new(name: "SSH Key", public_key: file_one)
+    ssh_key = HCloud::SSHKey.new(name: "ssh_key", public_key: file_one)
     ssh_key.create
 
     ssh_key_id = ssh_key.id
@@ -99,13 +99,13 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
   it "updates a server" do
     server = described_class.find(id_one)
 
-    server.name = "first-server"
+    server.name = "third"
 
     server.update
 
     server = described_class.find(id_one)
 
-    expect(server.name).to eq "first-server"
+    expect(server.name).to eq "third"
   end
 
   it "deletes a server" do

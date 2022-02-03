@@ -84,9 +84,9 @@ Not all Hetzner Cloud API endpoints have been implemented yet.
 | Images                | Implemented           |
 | Image Actions         | Implemented           |
 | ISOs                  | Implemented           |
-| Load Balancers        | Not implemented       |
+| Load Balancers        | Implemented           |
 | Load Balancer Actions | Not implemented       |
-| Load Balancer Types   | Not implemented       |
+| Load Balancer Types   | Implemented           |
 | Locations             | Implemented           |
 | Networks              | Implemented           |
 | Network Actions       | Implemented           |

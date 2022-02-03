@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+- Implemented Load Balancers
 - Implemented Load Balancer Types
 
 ## HCloud v1.2.0

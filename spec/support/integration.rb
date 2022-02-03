@@ -35,6 +35,7 @@ RSpec.configure do |config|
 
     # Clean up cloud resources
     HCloud::Certificate.all.each(&:delete)
+    HCloud::LoadBalancer.all.each(&:delete)
     HCloud::Server.all.each(&:delete)
     HCloud::Network.all.each(&:delete)
     HCloud::PlacementGroup.all.each(&:delete)
