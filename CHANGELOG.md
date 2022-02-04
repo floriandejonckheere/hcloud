@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## HCloud v1.3.0
 
 - Implemented Load Balancers
 - Implemented Load Balancer Types
