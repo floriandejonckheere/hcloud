@@ -1,5 +1,9 @@
 # Changelog
 
+## HCloud v1.3.1
+
+- Add missing Server#user_data
+
 ## HCloud v1.3.0
 
 - Implemented Load Balancers

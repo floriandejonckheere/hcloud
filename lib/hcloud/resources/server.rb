@@ -33,7 +33,7 @@ module HCloud
   # == Create server
   #
   #     user_data = File.read("user_data.yml")
-  #     server = HCloud::Server.new(name: "my_server", image: "debian-11", server_type: "cx11")
+  #     server = HCloud::Server.new(name: "my_server", image: "debian-11", server_type: "cx11", user_data: user_data)
   #     server.create
   #     server.created?
   #     # => true
@@ -81,6 +81,9 @@ module HCloud
     attribute :status
 
     attribute :backup_window
+
+    # TODO: use only for creation
+    attribute :user_data
 
     # TODO: use only for creation
     attribute :location, :location
