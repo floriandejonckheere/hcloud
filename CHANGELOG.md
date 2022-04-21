@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Add additional primary IP mismatch errors:
+  - `PrimaryIPAssigned`
+  - `PrimaryIPDatacenterMismatch`
+  - `PrimaryIPVersionMismatch`
+
 ## HCloud v1.3.1
 
 - Add missing Server#user_data

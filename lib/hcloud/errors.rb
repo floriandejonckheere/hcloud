@@ -43,6 +43,9 @@ module HCloud
     class NotFound < Error; end
     class PlacementError < Error; end
     class PlacementError < Error; end
+    class PrimaryIPAssigned < Error; end
+    class PrimaryIPDatacenterMismatch < Error; end
+    class PrimaryIPVersionMismatch < Error; end
     class Protected < Error; end
     class RateLimitExceeded < Error; end
     class ResourceInUse < Error; end
