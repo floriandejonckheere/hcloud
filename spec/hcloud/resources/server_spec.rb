@@ -11,6 +11,8 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
     ssh_key = HCloud::SSHKey.new(name: "ssh_key", public_key: file_one)
     ssh_key.create
 
+    expect(ssh_key).to be_created
+
     ssh_key_id = ssh_key.id
   end
 

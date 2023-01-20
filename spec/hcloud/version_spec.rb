@@ -2,6 +2,6 @@
 
 RSpec.describe HCloud do
   it "has a version number" do
-    expect(HCloud::VERSION).not_to be nil
+    expect(HCloud::VERSION).not_to be_nil
   end
 end
