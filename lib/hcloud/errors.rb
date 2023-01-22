@@ -44,6 +44,7 @@ module HCloud
     class PlacementError < Error; end
     class PlacementError < Error; end
     class PrimaryIPAssigned < Error; end
+    class PrimaryIPAlreadyAssigned < Error; end
     class PrimaryIPDatacenterMismatch < Error; end
     class PrimaryIPVersionMismatch < Error; end
     class Protected < Error; end
@@ -57,6 +58,7 @@ module HCloud
     class ServerError < Error; end
     class ServerHasIPv4 < Error; end
     class ServerHasIPv6 < Error; end
+    class ServerIsLoadBalancerTarget < Error; end
     class ServerNotAttachedToNetwork < Error; end
     class ServerNotStopped < Error; end
     class ServiceError < Error; end

@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Implemented Primary IPs
+- Implemented Primary IP Actions
 - Allow calling `#update` with additional attributes to be updated
 - Return the resource when calling `#create`, `#update` or `#delete`
 - Add additional primary IP mismatch errors:

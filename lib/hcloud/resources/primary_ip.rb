@@ -53,7 +53,56 @@ module HCloud
   #     primary IP.deleted?
   #     # => true
   #
+  # = Actions
+  # == List actions
+  #
+  #     actions = HCloud::PrimaryIP.find(1).actions
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  # == Sort actions
+  #
+  #     HCloud::PrimaryIP.find(1).actions.sort(finished: :desc)
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  #     HCloud::PrimaryIP.find(1).actions.sort(:command, finished: :asc)
+  #     # => [#<HCloud::Actions id: 1, ...>, ...]
+  #
+  # == Search actions
+  #
+  #     HCloud::PrimaryIP.find(1).actions.where(command: "assign_primary_ip")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     HCloud::PrimaryIP.find(1).actions.where(status: "success")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Find action by ID
+  #
+  #     HCloud::PrimaryIP.find(1).actions.find(1)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # = Resource-specific actions
+  # == Assign a primary IP to a server
+  #
+  #     HCloud::PrimaryIP.find(1).assign(assignee_id: 1, assignee_type: "server")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Unassign a primary IP from a server
+  #
+  #     HCloud::PrimaryIP.find(1).unassign
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Change reverse DNS entry
+  #
+  #     HCloud::PrimaryIP.find(1).change_dns_ptr(dns_ptr: "server.example.com", ip: "1.2.3.4")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Change protection
+  #
+  #     HCloud::PrimaryIP.find(1).change_protection(delete: true)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   class PrimaryIP < Resource
+    actionable
     queryable
     creatable
     updatable
@@ -80,6 +129,13 @@ module HCloud
 
     alias auto_delete? auto_delete
     alias blocked? blocked
+
+    action :assign
+    action :unassign
+
+    action :change_dns_ptr
+
+    action :change_protection
 
     def creatable_attributes
       [:name, :type, :assignee_id, :assignee_type, :auto_delete, :labels, datacenter: [:id, :name]]

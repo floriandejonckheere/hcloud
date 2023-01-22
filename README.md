@@ -89,7 +89,7 @@ Not all Hetzner Cloud API endpoints have been implemented yet.
 | Load Balancer Types   | Implemented           |
 | Locations             | Implemented           |
 | Primary IPs           | Implemented           |
-| Primary IP Actions    | Not implemented       |
+| Primary IP Actions    | Implemented           |
 | Networks              | Implemented           |
 | Network Actions       | Implemented           |
 | Placement Groups      | Implemented           |

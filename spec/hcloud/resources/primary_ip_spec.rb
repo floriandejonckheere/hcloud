@@ -93,4 +93,60 @@ RSpec.describe HCloud::PrimaryIP, integration: true, order: :defined do
 
     expect { described_class.find(id_one) }.to raise_error HCloud::Errors::NotFound
   end
+
+  describe "actions" do
+    # TODO: assign a primary IP
+    xit "assigns a primary IP"
+
+    # TODO: unassign a primary IP
+    xit "unassigns a primary IP"
+
+    it "changes reverse DNS pointer" do
+      primary_ip = described_class.find(id_two)
+
+      primary_ip.change_dns_ptr(dns_ptr: "server.example.com", ip: primary_ip.dns_ptr.first.ip)
+
+      sleep 2
+
+      primary_ip.reload
+
+      expect(primary_ip.dns_ptr.first.dns_ptr).to eq "server.example.com"
+    end
+
+    it "changes protection" do
+      primary_ip = described_class.find(id_two)
+
+      primary_ip.change_protection(delete: true)
+
+      sleep 1
+      primary_ip.reload
+
+      expect(primary_ip.protection).to be_delete
+    end
+
+    it "lists actions" do
+      actions = described_class.find(id_two).actions.sort(command: :asc)
+
+      expect(actions.count).to eq 2
+      expect(actions.map(&:command)).to match_array(["change_dns_ptr", "change_protection"])
+
+      action_id_one = actions.first.id
+    end
+
+    it "finds action" do
+      action = described_class.find(id_two).actions.find(action_id_one)
+
+      expect(action.command).to eq "change_dns_ptr"
+      expect(action.started).not_to be_nil
+
+      sleep 1
+      action.reload
+
+      expect(action.finished).not_to be_nil
+      expect(action.progress).to eq 100
+
+      expect(action.status).to eq "success"
+      expect(action.error).to be_nil
+    end
+  end
 end
