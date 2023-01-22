@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## HCloud v1.4.0 (2023-01-22)
 
 - Implemented Primary IPs
 - Implemented Primary IP Actions
