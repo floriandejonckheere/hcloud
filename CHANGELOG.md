@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Allow calling `#update` with additional attributes to be updated
 - Add additional primary IP mismatch errors:
   - `PrimaryIPAssigned`
   - `PrimaryIPDatacenterMismatch`
@@ -9,7 +10,7 @@
 
 ## HCloud v1.3.1
 
-- Add missing Server#user_data
+- Add missing `Server#user_data`
 
 ## HCloud v1.3.0
 

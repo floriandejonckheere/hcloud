@@ -5,8 +5,10 @@ module HCloud
     extend ActiveSupport::Concern
 
     included do
-      def update
+      def update(**attributes)
         raise Errors::MissingIDError unless id
+
+        assign_attributes attributes
 
         assign_attributes client
           .put("/#{resource_name.pluralize}/#{id}", updatable_params)
