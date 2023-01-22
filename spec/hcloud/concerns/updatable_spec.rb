@@ -29,5 +29,13 @@ RSpec.describe HCloud::Updatable do
 
       expect(resource.name).to eq "my_name"
     end
+
+    it "returns the resource" do
+      stub_request(:put, "https://api.hetzner.cloud/v1/examples/#{resource.id}")
+        .with(body: resource.attributes.slice(*resource.updatable_attributes.map(&:to_s)))
+        .to_return(body: { example: resource.attributes.merge(name: "my_name") }.to_json)
+
+      expect(resource.update).to be_a described_class
+    end
   end
 end

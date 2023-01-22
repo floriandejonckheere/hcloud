@@ -18,5 +18,12 @@ RSpec.describe HCloud::Deletable do
 
       expect(resource).to be_deleted
     end
+
+    it "returns the resource" do
+      stub_request(:delete, "https://api.hetzner.cloud/v1/examples/#{resource.id}")
+        .to_return(body: {}.to_json)
+
+      expect(resource.delete).to be_a described_class
+    end
   end
 end

@@ -12,6 +12,8 @@ module HCloud
           .delete("/#{resource_name.pluralize}/#{id}")
 
         @deleted = true
+
+        self
       end
 
       def deleted?

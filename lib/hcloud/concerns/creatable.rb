@@ -12,6 +12,8 @@ module HCloud
           .post("/#{resource_name.pluralize}", creatable_params)
           .tap { |r| r[resource_name.to_sym].merge!(r.slice(:root_password)) }
           .fetch(resource_name.to_sym)
+
+        self
       end
 
       def created?
