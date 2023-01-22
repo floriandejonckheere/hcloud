@@ -11,16 +11,16 @@
   - `PrimaryIPDatacenterMismatch`
   - `PrimaryIPVersionMismatch`
 
-## HCloud v1.3.1
+## HCloud v1.3.1 (2022-02-06)
 
 - Add missing `Server#user_data`
 
-## HCloud v1.3.0
+## HCloud v1.3.0 (2022-02-04)
 
 - Implemented Load Balancers
 - Implemented Load Balancer Types
 
-## HCloud v1.2.0
+## HCloud v1.2.0 (2022-02-01)
 
 - Implemented Networks
 - Implemented Network Actions
@@ -28,10 +28,10 @@
 - Implemented Certificates
 - Implemented Certificate Actions
 
-## HCloud v1.1.0
+## HCloud v1.1.0 (2022-01-30)
 
 - Implemented Firewall Actions
 
-## HCloud v1.0.0
+## HCloud v1.0.0 (2022-01-16)
 
 Initial release
