@@ -16,7 +16,7 @@ module HCloud
     end
 
     def setup
-      @loader = Zeitwerk::Loader.for_gem
+      @loader = Zeitwerk::Loader.for_gem(warn_on_extra_files: false)
 
       # Register inflections
       require root.join("config/inflections.rb")
