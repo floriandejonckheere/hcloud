@@ -55,7 +55,10 @@ module HCloud
     class ServerAlreadyAdded < Error; end
     class ServerAlreadyAttached < Error; end
     class ServerError < Error; end
+    class ServerHasIPv4 < Error; end
+    class ServerHasIPv6 < Error; end
     class ServerNotAttachedToNetwork < Error; end
+    class ServerNotStopped < Error; end
     class ServiceError < Error; end
     class SourcePortAlreadyUsed < Error; end
     class TargetAlreadyDefined < Error; end

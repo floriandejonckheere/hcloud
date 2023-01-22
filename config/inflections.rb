@@ -14,6 +14,7 @@ HCloud.loader.inflector.inflect(
   "ipv6" => "IPv6",
   "iso" => "ISO",
   "iso_type" => "ISOType",
+  "primary_ip" => "PrimaryIP",
   "service_http" => "ServiceHTTP",
   "ssh_key" => "SSHKey",
   "target_ip" => "TargetIP",
@@ -23,6 +24,8 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym "DNS"
   inflect.acronym "HTTP"
   inflect.acronym "IP"
+  inflect.acronym "IPv4"
+  inflect.acronym "IPv6"
   inflect.acronym "ISO"
   inflect.acronym "JSON"
 end
