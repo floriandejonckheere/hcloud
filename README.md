@@ -71,35 +71,35 @@ It expects you to use it in a sane way.
 
 Not all Hetzner Cloud API endpoints have been implemented yet.
 
-| Resource              | State                 |
-|-----------------------|-----------------------|
-| Actions               | Implemented           |
-| Certificates          | Implemented           |
-| Certificate Actions   | Implemented           |
-| Datacenters           | Implemented           |
-| Firewalls             | Implemented           |
-| Firewall Actions      | Implemented           |
-| Floating IPs          | Implemented           |
-| Floating IP Actions   | Implemented           |
-| Images                | Implemented           |
-| Image Actions         | Implemented           |
-| ISOs                  | Implemented           |
-| Load Balancers        | Implemented           |
-| Load Balancer Actions | Not implemented       |
-| Load Balancer Types   | Implemented           |
-| Locations             | Implemented           |
-| Primary IPs           | Implemented           |
-| Primary IP Actions    | Implemented           |
-| Networks              | Implemented           |
-| Network Actions       | Implemented           |
-| Placement Groups      | Implemented           |
-| Pricing               | Implemented           |
-| Servers               | Partially implemented |
-| Server Actions        | Not implemented       |
-| Server Types          | Implemented           |
-| SSH Keys              | Implemented           |
-| Volumes               | Implemented           |
-| Volume Actions        | Implemented           |
+| Resource                                                       | State                 |
+|----------------------------------------------------------------|-----------------------|
+| [Actions](lib/hcloud/resources/action.rb)                      | Implemented           |
+| [Certificates](lib/hcloud/resources/certificate.rb)            | Implemented           |
+| [Certificate Actions](lib/hcloud/resources/certificate.rb)     | Implemented           |
+| [Datacenters](lib/hcloud/resources/datacenter.rb)              | Implemented           |
+| [Firewalls](lib/hcloud/resources/firewall.rb)                  | Implemented           |
+| [Firewall Actions](lib/hcloud/resources/firewall.rb)           | Implemented           |
+| [Floating IPs](lib/hcloud/resources/floating_ip.rb)            | Implemented           |
+| [Floating IP Actions](lib/hcloud/resources/floating_ip.rb)     | Implemented           |
+| [Images](lib/hcloud/resources/image.rb)                        | Implemented           |
+| [Image Actions](lib/hcloud/resources/image.rb)                 | Implemented           |
+| [ISOs](lib/hcloud/resources/iso.rb)                            | Implemented           |
+| [Load Balancers](lib/hcloud/resources/load_balancer.rb)        | Implemented           |
+| [Load Balancer Actions](lib/hcloud/resources/load_balancer.rb) | Not implemented       |
+| [Load Balancer Types](lib/hcloud/resources/load_balancer.rb)   | Implemented           |
+| [Locations](lib/hcloud/resources/location.rb)                  | Implemented           |
+| [Primary IPs](lib/hcloud/resources/primary_ip.rb)              | Implemented           |
+| [Primary IP Actions](lib/hcloud/resources/primary_ip.rb)       | Implemented           |
+| [Networks](lib/hcloud/resources/network.rb)                    | Implemented           |
+| [Network Actions](lib/hcloud/resources/network.rb)             | Implemented           |
+| [Placement Groups](lib/hcloud/resources/placement_group.rb)    | Implemented           |
+| [Pricing](lib/hcloud/resources/pricing.rb)                     | Implemented           |
+| [Servers](lib/hcloud/resources/server.rb)                      | Partially implemented |
+| [Server Actions](lib/hcloud/resources/server.rb)               | Not implemented       |
+| [Server Types](lib/hcloud/resources/server_type.rb)            | Implemented           |
+| [SSH Keys](lib/hcloud/resources/ssh_key.rb)                    | Implemented           |
+| [Volumes](lib/hcloud/resources/volume.rb)                      | Implemented           |
+| [Volume Actions](lib/hcloud/resources/volume.rb)               | Implemented           |
 
 ## Testing
 
