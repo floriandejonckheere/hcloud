@@ -1,0 +1,24 @@
+hostname: cloud
+instance-id: 12345
+public-ipv4: 123.123.123.123
+availability-zone: fsn1-dc8
+region: eu-central
+private-networks:
+  - ip: 10.0.0.2
+    alias_ips: [10.0.0.3, 10.0.0.4]
+    interface_num: 1
+    mac_address: 86:00:00:2a:7d:e0
+    network_id: 1234
+    network_name: nw-test1
+    network: 10.0.0.0/8
+    subnet: 10.0.0.0/24
+    gateway: 10.0.0.1
+  - ip: 192.168.0.2
+    alias_ips: []
+    interface_num: 2
+    mac_address: 86:00:00:2a:7d:e1
+    network_id: 4321
+    network_name: nw-test2
+    network: 192.168.0.0/16
+    subnet: 192.168.0.0/24
+    gateway: 192.168.0.1

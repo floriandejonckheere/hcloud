@@ -100,6 +100,8 @@ Not all Hetzner Cloud API endpoints have been implemented yet.
 | [SSH Keys](lib/hcloud/resources/ssh_key.rb)                    | Implemented           |
 | [Volumes](lib/hcloud/resources/volume.rb)                      | Implemented           |
 | [Volume Actions](lib/hcloud/resources/volume.rb)               | Implemented           |
+|                                                                |                       |
+| [Metadata](lib/hcloud/resources/metadata.rb)                   | Implemented           |
 
 ## Testing
 

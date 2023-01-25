@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Add pricing for Primary IPs
+- Add server Metadata resource
 
 ## HCloud v1.4.0 (2023-01-22)
 
