@@ -21,6 +21,8 @@ module HCloud
 
     attribute :load_balancer_types, :load_balancer_type_price, array: true, default: -> { [] }
 
+    attribute :primary_ips, :primary_ip_prices, array: true, default: -> { [] }
+
     attribute :server_backup, :server_backup_price
 
     attribute :server_types, :server_type_price, array: true, default: -> { [] }

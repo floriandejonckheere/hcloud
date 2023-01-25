@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add pricing for Primary IPs
+
 ## HCloud v1.4.0 (2023-01-22)
 
 - Implemented Primary IPs

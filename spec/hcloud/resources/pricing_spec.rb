@@ -16,6 +16,13 @@ RSpec.describe HCloud::Pricing, integration: true, order: :defined do
     expect(floating_ip.price_monthly.gross.to_f).not_to be_zero
     expect(floating_ip.price_monthly.net.to_f).not_to be_zero
 
+    # Primary IPs
+    expect(pricing.primary_ips).not_to be_empty
+
+    primary_ip = pricing.primary_ips.find { |p| p.type == "ipv4" }.prices.find { |price| price.location == "fsn1" }
+    expect(primary_ip.price_monthly.gross.to_f).not_to be_zero
+    expect(primary_ip.price_monthly.net.to_f).not_to be_zero
+
     # Image
     expect(pricing.image.price_per_gb_month.gross.to_f).not_to be_zero
     expect(pricing.image.price_per_gb_month.net.to_f).not_to be_zero

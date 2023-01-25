@@ -91,6 +91,7 @@ ActiveModel::Type.register(:placement_group, HCloud::ResourceType.Type("HCloud::
 ActiveModel::Type.register(:price, HCloud::ResourceType.Type("HCloud::Price"))
 ActiveModel::Type.register(:pricing, HCloud::ResourceType.Type("HCloud::Pricing"))
 ActiveModel::Type.register(:primary_ip, HCloud::ResourceType.Type("HCloud::PrimaryIP"))
+ActiveModel::Type.register(:primary_ip_prices, HCloud::ResourceType.Type("HCloud::PrimaryIPPrices"))
 ActiveModel::Type.register(:private_net, HCloud::ResourceType.Type("HCloud::PrivateNet"))
 ActiveModel::Type.register(:protection, HCloud::ResourceType.Type("HCloud::Protection"))
 ActiveModel::Type.register(:public_net, HCloud::ResourceType.Type("HCloud::PublicNet"))
