@@ -69,7 +69,7 @@ It expects you to use it in a sane way.
 
 ## Features
 
-Not all Hetzner Cloud API endpoints have been implemented yet.
+The following table lists the Hetzner Cloud API endpoints that are currently implemented.
 
 | Resource                                                       | State                 |
 |----------------------------------------------------------------|-----------------------|
@@ -103,6 +103,12 @@ Not all Hetzner Cloud API endpoints have been implemented yet.
 |                                                                |                       |
 | [Metadata](lib/hcloud/resources/metadata.rb)                   | Implemented           |
 
+### Pagination
+
+Paginated resources are wrapped in a `HCloud::Collection` that automatically fetches the next page when needed.
+The collection acts as a (lazy) enumerator.
+Call `to_a` to fetch all pages and parse all resources.
+
 ## Testing
 
 ```ssh
@@ -131,7 +137,6 @@ When executing the test suite, set `LOG_LEVEL` environment variable to `debug` i
 ### Endpoint
 
 `HCloud::Client` also accepts an alternate endpoint:
-
 
 ```ruby
 client = HCloud::Client.new(access_token: "my_access_token", endpoint: "https://myproxy/v1")
