@@ -19,6 +19,7 @@ HCloud.loader.inflector.inflect(
   "service_http" => "ServiceHTTP",
   "ssh_key" => "SSHKey",
   "target_ip" => "TargetIP",
+  "yaml" => "YAML",
 )
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
@@ -29,4 +30,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym "IPv6"
   inflect.acronym "ISO"
   inflect.acronym "JSON"
+  inflect.acronym "YAML"
 end
