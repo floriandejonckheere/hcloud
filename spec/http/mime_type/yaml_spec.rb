@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::MimeType::YAML do
+RSpec.describe HTTP::MimeType::YAML do
   subject(:adapter) { described_class.new }
 
   it "parses YAML requests" do

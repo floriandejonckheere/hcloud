@@ -2,9 +2,9 @@
 
 require "yaml"
 
-module HCloud
+module HTTP
   module MimeType
-    class YAML < ::HTTP::MimeType::Adapter
+    class YAML < Adapter
       def encode(obj)
         return obj.to_yaml if obj.respond_to?(:to_yaml)
 
@@ -19,5 +19,5 @@ module HCloud
   end
 end
 
-HTTP::MimeType.register_adapter "application/x-yaml", HCloud::MimeType::YAML
+HTTP::MimeType.register_adapter "application/x-yaml", HTTP::MimeType::YAML
 HTTP::MimeType.register_alias "application/x-yaml", :yaml
