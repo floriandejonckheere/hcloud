@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/CyclomaticComplexity,Metrics/AbcSize
 module HCloud
   class ResourceType
     class_attribute :resource_class_name
@@ -10,7 +11,6 @@ module HCloud
       @array = array
     end
 
-    # rubocop:disable Metrics/CyclomaticComplexity
     def cast(value)
       case value
       when nil, []
@@ -35,7 +35,6 @@ module HCloud
         raise ArgumentError, "cannot cast value: #{value} for type #{resource_class_name}"
       end
     end
-    # rubocop:enable Metrics/CyclomaticComplexity
 
     def resource_class
       @resource_class ||= resource_class_name.constantize
@@ -54,8 +53,32 @@ module HCloud
         .tap { |klass| HCloud.const_set(:"#{class_name.demodulize}ResourceType", klass) }
     end
     # rubocop:enable Naming/MethodName
+
+    class GenericType < ResourceType
+      def cast(value)
+        case value
+        when nil, []
+          array? ? [] : nil
+        when HCloud::Resource # Class
+          value
+        when Hash # Attribute hash
+          ActiveModel::Type
+            .lookup(value.fetch(:type).to_sym)
+            .cast(value.except(:type))
+        when Array # List
+          raise ArgumentError, "cannot cast value: #{value} for generic type" unless array?
+
+          value.map { |v| cast(v) }
+        else
+          raise ArgumentError, "cannot cast value: #{value} for generic type"
+        end
+      rescue KeyError => e
+        raise ArgumentError, "cannot cast value: #{value} for generic type: #{e.message}"
+      end
+    end
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity,Metrics/AbcSize
 
 ActiveModel::Type.register(:action, HCloud::ResourceType.Type("HCloud::Action"))
 ActiveModel::Type.register(:algorithm, HCloud::ResourceType.Type("HCloud::Algorithm"))
@@ -99,6 +122,7 @@ ActiveModel::Type.register(:private_net, HCloud::ResourceType.Type("HCloud::Priv
 ActiveModel::Type.register(:private_network, HCloud::ResourceType.Type("HCloud::PrivateNetwork"))
 ActiveModel::Type.register(:protection, HCloud::ResourceType.Type("HCloud::Protection"))
 ActiveModel::Type.register(:public_net, HCloud::ResourceType.Type("HCloud::PublicNet"))
+ActiveModel::Type.register(:resource, HCloud::ResourceType::GenericType)
 ActiveModel::Type.register(:route, HCloud::ResourceType.Type("HCloud::Route"))
 ActiveModel::Type.register(:rule, HCloud::ResourceType.Type("HCloud::Rule"))
 ActiveModel::Type.register(:server, HCloud::ResourceType.Type("HCloud::Server"))

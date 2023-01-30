@@ -57,4 +57,64 @@ RSpec.describe HCloud::ResourceType do
       end
     end
   end
+
+  describe "generic type" do
+    let(:resource_type) { ActiveModel::Type.lookup(:resource) }
+
+    it "casts nil to nil" do
+      expect(resource_type.cast(nil)).to be_nil
+    end
+
+    it "casts empty array to nil" do
+      expect(resource_type.cast([])).to be_nil
+    end
+
+    it "casts resource class to resource class" do
+      expect(resource_type.cast(ExampleResource.new(id: 3))).to eq ExampleResource.new(id: 3)
+    end
+
+    it "does not cast integer" do
+      expect { resource_type.cast(3) }.to raise_error ArgumentError
+    end
+
+    it "does not cast string" do
+      expect { resource_type.cast("my_name") }.to raise_error ArgumentError
+    end
+
+    it "casts hash with id and type to resource class" do
+      expect(resource_type.cast({ id: 3, type: "example_resource" })).to eq ExampleResource.new(id: 3, name: "my_name")
+    end
+
+    it "does not cast hash with id and unknown type" do
+      expect { resource_type.cast({ id: 3, type: "unknown" }) }.to raise_error ArgumentError
+    end
+
+    it "does not cast hash" do
+      expect { resource_type.cast({ id: 3 }) }.to raise_error ArgumentError
+    end
+
+    it "does not cast array of hash with id and type" do
+      expect { resource_type.cast([{ id: 1, type: "example_resource" }, { id: 2, type: "example_resource" }]) }.to raise_error ArgumentError
+    end
+
+    it "does not cast array of hash" do
+      expect { resource_type.cast([{ id: 1 }, { id: 2 }]) }.to raise_error ArgumentError
+    end
+
+    it "does not cast different classes" do
+      expect { resource_type.cast(Set.new) }.to raise_error ArgumentError
+    end
+
+    context "when resource is an array type" do
+      subject(:resource_type) { ActiveModel::Type.lookup(:resource).class.new(array: true) }
+
+      it "casts nil to an empty array" do
+        expect(resource_type.cast(nil)).to eq []
+      end
+
+      it "casts empty array to an empty array" do
+        expect(resource_type.cast([])).to eq []
+      end
+    end
+  end
 end
