@@ -72,6 +72,7 @@ module HCloud
     updatable
     deletable
     meterable
+    labelable
 
     attribute :id, :integer
     attribute :name
@@ -117,8 +118,6 @@ module HCloud
     attribute :placement_group, :placement_group
 
     attribute :iso, :iso
-
-    attribute :labels, default: -> { {} }
 
     attribute :load_balancers, :load_balancer, array: true, default: -> { [] }
 

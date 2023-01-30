@@ -65,6 +65,7 @@ module HCloud
     updatable
     deletable
     meterable
+    labelable
 
     attribute :id, :integer
     attribute :name
@@ -93,8 +94,6 @@ module HCloud
     attribute :targets, :target, array: true, default: -> { [] }
 
     attribute :protection, :protection
-
-    attribute :labels, default: -> { {} }
 
     def creatable_attributes
       [:name, :labels, :algorithm, :network_zone, :public_interface, :services, :targets, load_balancer_type: [:id, :name], location: [:id, :name], network: [:id, :name]]

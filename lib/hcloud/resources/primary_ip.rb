@@ -107,6 +107,7 @@ module HCloud
     creatable
     updatable
     deletable
+    labelable
 
     attribute :id, :integer
     attribute :name
@@ -124,8 +125,6 @@ module HCloud
     attribute :datacenter, :datacenter
 
     attribute :protection, :protection
-
-    attribute :labels, default: -> { {} }
 
     alias auto_delete? auto_delete
     alias blocked? blocked

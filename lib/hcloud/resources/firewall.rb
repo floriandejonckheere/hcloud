@@ -107,6 +107,7 @@ module HCloud
     creatable
     updatable
     deletable
+    labelable
 
     attribute :id, :integer
     attribute :name
@@ -116,8 +117,6 @@ module HCloud
     attribute :apply_to, :apply_to, array: true, default: -> { [] }
 
     attribute :rules, :rule, array: true, default: -> { [] }
-
-    attribute :labels, default: -> { {} }
 
     action :apply_to_resources
     action :remove_from_resources

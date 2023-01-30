@@ -58,13 +58,12 @@ module HCloud
     creatable
     updatable
     deletable
+    labelable
 
     attribute :id, :integer
     attribute :name
     attribute :public_key
     attribute :fingerprint
-
-    attribute :labels, default: -> { {} }
 
     def creatable_attributes
       [:name, :public_key, :labels]

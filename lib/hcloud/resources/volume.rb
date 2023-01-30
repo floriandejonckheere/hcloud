@@ -107,6 +107,7 @@ module HCloud
     creatable
     updatable
     deletable
+    labelable
 
     attribute :id, :integer
     attribute :name
@@ -123,8 +124,6 @@ module HCloud
     attribute :protection, :protection
 
     attribute :server, :server
-
-    attribute :labels, default: -> { {} }
 
     alias automount? automount
 

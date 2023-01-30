@@ -55,14 +55,13 @@ module HCloud
     creatable
     updatable
     deletable
+    labelable
 
     attribute :id, :integer
     attribute :name
     attribute :type
 
     attribute :servers, :server, array: true, default: -> { [] }
-
-    attribute :labels, default: -> { {} }
 
     def creatable_attributes
       [:name, :type, :labels]

@@ -85,6 +85,7 @@ module HCloud
     queryable
     updatable
     deletable
+    labelable
 
     attribute :id, :integer
     attribute :name
@@ -112,8 +113,6 @@ module HCloud
     attribute :deprecated, :datetime
 
     attribute :rapid_deploy
-
-    attribute :labels, default: -> { {} }
 
     action :change_protection
 

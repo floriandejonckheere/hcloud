@@ -106,6 +106,7 @@ module HCloud
     creatable
     updatable
     deletable
+    labelable
 
     attribute :id, :integer
     attribute :name
@@ -120,8 +121,6 @@ module HCloud
     attribute :load_balancers, :load_balancer, array: true, default: -> { [] }
 
     attribute :protection, :protection
-
-    attribute :labels, default: -> { {} }
 
     action :change_protection
 

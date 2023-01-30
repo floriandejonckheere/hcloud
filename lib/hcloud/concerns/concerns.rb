@@ -32,6 +32,10 @@ module HCloud
       def singleton
         include Singleton
       end
+
+      def labelable
+        include Labelable
+      end
     end
   end
 end

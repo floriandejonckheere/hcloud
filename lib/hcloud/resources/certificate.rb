@@ -94,6 +94,7 @@ module HCloud
     creatable
     updatable
     deletable
+    labelable
 
     attribute :id, :integer
     attribute :name
@@ -115,8 +116,6 @@ module HCloud
 
     # TODO: dynamically return resource classes
     attribute :used_by, :used_by, array: true, default: -> { [] }
-
-    attribute :labels, default: -> { {} }
 
     action :retry
 
