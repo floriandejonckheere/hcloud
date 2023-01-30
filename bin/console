@@ -12,7 +12,7 @@ Dotenv.load
 logger = Logger.new($stdout)
 logger.level = ENV.fetch("LOG_LEVEL", "info")
 
-HCloud::Client.connection = HCloud::Client.new(access_token: ENV.fetch("HCLOUD_TOKEN"), logger: logger)
+HCloud::Client.connection = HCloud::Client.new(access_token: ENV.fetch("HCLOUD_TOKEN"), logger: logger, rate_limit: true)
 
 require "irb"
 IRB.start(__FILE__)

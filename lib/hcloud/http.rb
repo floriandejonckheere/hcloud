@@ -4,12 +4,13 @@ require "http"
 
 module HCloud
   class HTTP
-    attr_reader :access_token, :endpoint, :logger, :timeout
+    attr_reader :access_token, :endpoint, :logger, :rate_limit, :timeout
 
-    def initialize(access_token, endpoint, logger, timeout = 10)
+    def initialize(access_token, endpoint, logger, rate_limit = false, timeout = 10)
       @access_token = access_token
       @endpoint = endpoint
       @logger = logger
+      @rate_limit = rate_limit
       @timeout = timeout
     end
 
@@ -80,6 +81,7 @@ module HCloud
         .headers(accept: "application/json", user_agent: "#{HCloud::NAME}/#{HCloud::VERSION}")
         .timeout(timeout)
         .use(logging: { logger: logger })
+        .then { |h| rate_limit ? h.use(:rate_limiter) : h }
         .encoding("utf-8")
         .auth("Bearer #{access_token}")
     end

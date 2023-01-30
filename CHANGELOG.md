@@ -4,6 +4,7 @@
 
 - Add pricing for Primary IPs
 - Add server Metadata resource
+- Add support for rate limits
 
 ## HCloud v1.4.0 (2023-01-22)
 

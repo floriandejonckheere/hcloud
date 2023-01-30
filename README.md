@@ -109,6 +109,43 @@ Paginated resources are wrapped in a `HCloud::Collection` that automatically fet
 The collection acts as a (lazy) enumerator.
 Call `to_a` to fetch all pages and parse all resources.
 
+### Rate limiting
+
+From the [documentation](https://docs.hetzner.cloud/#rate-limiting):
+
+> The default limit is 3600 requests per hour and per Project.
+> The number of remaining requests increases gradually.
+> For example, when your limit is 3600 requests per hour, the number of remaining requests will increase by 1 every second.
+
+The client is able to handle the rate limiting by delaying the requests if necessary and executing them whenever possible.
+To enable this behaviour, pass `rate_limit: true` as argument to `HCloud::Client.new`.
+Client calls will block until possible to execute and then return.
+
+```ruby
+client = HCloud::Client.new(access_token: "my_token", rate_limit: true)
+
+# At least one request has to be made to enable the rate limiter
+client.rate_limiter.limit # => nil
+client.rate_limiter.remaining # => nil
+client.rate_limiter.reset # => nil
+
+HCloud::Server.create(...)
+
+client.rate_limiter.limit # => 3600
+client.rate_limiter.remaining # => 3599
+client.rate_limiter.reset # => 2023-01-01 00:00:00 +0100
+
+# Make a bunch of requests
+
+client.rate_limiter.remaining # => 0
+
+servers = HCloud::Server.all # Will block until remaining requests have regenerated (1 second by default) and then execute
+ssh_keys = HCloud::SSHKey.all # Will block until remaining requests have regenerated (1 second by default) and then execute
+```
+
+Since rate limits are per hour and per project, using multiple clients at the same time will interfere with the rate limiting mechanism.
+To prevent this, wrap client calls in a loop that retries the call after it fails with a `HCloud::RateLimitExceeded` error.
+
 ## Testing
 
 ```ssh
