@@ -30,8 +30,8 @@ RSpec.describe HCloud::ResourceType do
     expect(example_type.cast({ id: 3, name: "my_name" })).to eq ExampleResource.new(id: 3, name: "my_name")
   end
 
-  it "casts array to array of resource class" do
-    expect(example_type.cast([1, 2])).to eq [ExampleResource.new(id: 1), ExampleResource.new(id: 2)]
+  it "does not cast array" do
+    expect { example_type.cast([1, 2]) }.to raise_error ArgumentError
   end
 
   it "does not cast different classes" do

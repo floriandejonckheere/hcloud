@@ -28,6 +28,8 @@ module HCloud
       when Hash # Attribute hash
         resource_class.new(value)
       when Array # List
+        raise ArgumentError, "cannot cast value: #{value} for type #{resource_class_name}" unless array?
+
         value.map { |v| cast(v) }
       else
         raise ArgumentError, "cannot cast value: #{value} for type #{resource_class_name}"
