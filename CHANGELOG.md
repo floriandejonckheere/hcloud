@@ -5,6 +5,7 @@
 - Add pricing for Primary IPs
 - Add server Metadata resource
 - Add support for rate limits
+- `Action#resources` now returns a list of resources instead of a list of hashes
 
 ## HCloud v1.4.0 (2023-01-22)
 
