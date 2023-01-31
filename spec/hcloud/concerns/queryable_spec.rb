@@ -68,5 +68,20 @@ RSpec.describe HCloud::Queryable do
       expect(models.count).to eq 1
     end
   end
+
+  describe ".first, .last, .count, .where, .sort, .each, .empty?, .any?" do
+    it "delegates to .all" do
+      stub_request(:get, "https://api.hetzner.cloud/v1/examples")
+        .with(query: { page: 1, per_page: 50 })
+        .to_return(body: { examples: [resource.attributes.merge(id: 1), resource.attributes.merge(id: 2)], meta: { pagination: { total_entries: 2, last_page: 1 } } }.to_json)
+
+      expect(ExampleResource.first.id).to eq 1
+      expect(ExampleResource.last.id).to eq 2
+      expect(ExampleResource.count).to eq 2
+      expect(ExampleResource.each.to_a.map(&:id)).to eq [1, 2]
+      expect(ExampleResource).not_to be_empty
+      expect(ExampleResource).to be_any
+    end
+  end
 end
 # frozen_string_literal: true

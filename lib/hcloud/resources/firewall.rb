@@ -11,15 +11,15 @@ module HCloud
   #
   # == Sort firewalls
   #
-  #     HCloud::Firewall.all.sort(name: :desc)
+  #     HCloud::Firewall.sort(name: :desc)
   #     # => [#<HCloud::Firewall id: 1, ...>, ...]
   #
-  #     HCloud::Firewall.all.sort(:id, name: :asc)
+  #     HCloud::Firewall.sort(:id, name: :asc)
   #     # => [#<HCloud::Firewall id: 1, ...>, ...]
   #
   # == Search firewalls
   #
-  #     HCloud::Firewall.all.where(name: "my_firewall")
+  #     HCloud::Firewall.where(name: "my_firewall")
   #     # => #<HCloud::Firewall id: 1, ...>
   #
   # == Find firewall by ID

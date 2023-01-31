@@ -11,21 +11,21 @@ module HCloud
   #
   # == Sort images
   #
-  #     HCloud::Image.all.sort(name: :desc)
+  #     HCloud::Image.sort(name: :desc)
   #     # => [#<HCloud::Image id: 1, ...>, ...]
   #
-  #     HCloud::Image.all.sort(:id, name: :asc)
+  #     HCloud::Image.sort(:id, name: :asc)
   #     # => [#<HCloud::Image id: 1, ...>, ...]
   #
   # == Search images
   #
-  #     HCloud::Image.all.where(name: "my_image")
+  #     HCloud::Image.where(name: "my_image")
   #     # => #<HCloud::Image id: 1, ...>
   #
-  #     HCloud::Image.all.where(status: "available", include_deprecated: false)
+  #     HCloud::Image.where(status: "available", include_deprecated: false)
   #     # => #<HCloud::Image id: 1, ...>
   #
-  #     HCloud::Image.all.where(type: "backup", bound_to: 1)
+  #     HCloud::Image.where(type: "backup", bound_to: 1)
   #     # => #<HCloud::Image id: 1, ...>
   #
   # == Find image by ID

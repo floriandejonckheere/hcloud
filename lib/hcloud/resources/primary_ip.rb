@@ -11,18 +11,18 @@ module HCloud
   #
   # == Sort primary IPs
   #
-  #     HCloud::PrimaryIP.all.sort(id: :asc)
+  #     HCloud::PrimaryIP.sort(id: :asc)
   #     # => [#<HCloud::PrimaryIP id: 1, ...>, ...]
   #
-  #     HCloud::PrimaryIP.all.sort(:id, created: :asc)
+  #     HCloud::PrimaryIP.sort(:id, created: :asc)
   #     # => [#<HCloud::PrimaryIP id: 1, ...>, ...]
   #
   # == Search primary IPs
   #
-  #     HCloud::PrimaryIP.all.where(name: "my_primary_ip")
+  #     HCloud::PrimaryIP.where(name: "my_primary_ip")
   #     # => #<HCloud::PrimaryIP id: 1, ...>
   #
-  #     HCloud::PrimaryIP.all.where(ip: "1.2.3.4")
+  #     HCloud::PrimaryIP.where(ip: "1.2.3.4")
   #     # => #<HCloud::PrimaryIP id: 1, ...>
   #
   # == Find primary IP by ID

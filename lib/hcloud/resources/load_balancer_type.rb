@@ -11,7 +11,7 @@ module HCloud
   #
   # == Search load balancer types
   #
-  #     HCloud::LoadBalancerType.all.where(name: "cx11")
+  #     HCloud::LoadBalancerType.where(name: "cx11")
   #     # => #<HCloud::LoadBalancerType id: 1, ...>
   #
   # == Find load balancer type by ID

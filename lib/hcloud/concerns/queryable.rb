@@ -17,6 +17,8 @@ module HCloud
     end
 
     class_methods do
+      delegate :first, :last, :count, :where, :sort, :each, :empty?, :any?, to: :all
+
       def find(id)
         raise Errors::MissingIDError unless id
 

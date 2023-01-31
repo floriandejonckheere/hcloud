@@ -11,15 +11,15 @@ module HCloud
   #
   # == Sort placement groups
   #
-  #     HCloud::PlacementGroup.all.sort(name: :desc)
+  #     HCloud::PlacementGroup.sort(name: :desc)
   #     # => [#<HCloud::PlacementGroup id: 1, ...>, ...]
   #
-  #     HCloud::PlacementGroup.all.sort(:id, name: :asc)
+  #     HCloud::PlacementGroup.sort(:id, name: :asc)
   #     # => [#<HCloud::PlacementGroup id: 1, ...>, ...]
   #
   # == Search placement groups
   #
-  #     HCloud::PlacementGroup.all.where(name: "my_placement_group")
+  #     HCloud::PlacementGroup.where(name: "my_placement_group")
   #     # => #<HCloud::PlacementGroup id: 2, ...>
   #
   # == Find placement group by ID

@@ -11,18 +11,18 @@ module HCloud
   #
   # == Sort volumes
   #
-  #     HCloud::Volume.all.sort(name: :desc)
+  #     HCloud::Volume.sort(name: :desc)
   #     # => [#<HCloud::Volume id: 1, ...>, ...]
   #
-  #     HCloud::Volume.all.sort(:id, name: :asc)
+  #     HCloud::Volume.sort(:id, name: :asc)
   #     # => [#<HCloud::Volume id: 1, ...>, ...]
   #
   # == Search volumes
   #
-  #     HCloud::Volume.all.where(name: "my_volume")
+  #     HCloud::Volume.where(name: "my_volume")
   #     # => #<HCloud::Volume id: 1, ...>
   #
-  #     HCloud::Volume.all.where(status: "available")
+  #     HCloud::Volume.where(status: "available")
   #     # => #<HCloud::Volume id: 1, ...>
   #
   # == Find volume by ID

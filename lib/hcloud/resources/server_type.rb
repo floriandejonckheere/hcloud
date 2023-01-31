@@ -11,7 +11,7 @@ module HCloud
   #
   # == Search server types
   #
-  #     HCloud::ServerType.all.where(name: "cx11")
+  #     HCloud::ServerType.where(name: "cx11")
   #     # => #<HCloud::ServerType id: 1, ...>
   #
   # == Find server type by ID

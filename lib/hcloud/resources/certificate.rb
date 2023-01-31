@@ -11,18 +11,18 @@ module HCloud
   #
   # == Sort certificates
   #
-  #     HCloud::Certificate.all.sort(name: :desc)
+  #     HCloud::Certificate.sort(name: :desc)
   #     # => [#<HCloud::Certificate id: 1, ...>, ...]
   #
-  #     HCloud::Certificate.all.sort(:id, name: :asc)
+  #     HCloud::Certificate.sort(:id, name: :asc)
   #     # => [#<HCloud::Certificate id: 1, ...>, ...]
   #
   # == Search certificates
   #
-  #     HCloud::Certificate.all.where(name: "my_certificate")
+  #     HCloud::Certificate.where(name: "my_certificate")
   #     # => #<HCloud::Certificate id: 1, ...>
   #
-  #     HCloud::Certificate.all.where(type: "uploaded")
+  #     HCloud::Certificate.where(type: "uploaded")
   #     # => #<HCloud::Certificate id: 1, ...>
   #
   # == Find certificate by ID

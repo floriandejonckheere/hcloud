@@ -11,18 +11,18 @@ module HCloud
   #
   # == Sort actions
   #
-  #     HCloud::Action.all.sort(command: :desc)
+  #     HCloud::Action.sort(command: :desc)
   #     # => [#<HCloud::Action id: 1, ...>, ...]
   #
-  #     HCloud::Action.all.sort(:id, command: :asc)
+  #     HCloud::Action.sort(:id, command: :asc)
   #     # => [#<HCloud::Action id: 1, ...>, ...]
   #
   # == Search actions
   #
-  #     HCloud::Action.all.where(command: "my_action")
+  #     HCloud::Action.where(command: "my_action")
   #     # => #<HCloud::Action id: 1, ...>
   #
-  #     HCloud::Action.all.where(status: "success")
+  #     HCloud::Action.where(status: "success")
   #     # => #<HCloud::Action id: 1, ...>
   #
   # == Find action by ID

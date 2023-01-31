@@ -11,15 +11,15 @@ module HCloud
   #
   # == Sort load balancers
   #
-  #     HCloud::LoadBalancer.all.sort(name: :desc)
+  #     HCloud::LoadBalancer.sort(name: :desc)
   #     # => [#<HCloud::LoadBalancer id: 1, ...>, ...]
   #
-  #     HCloud::LoadBalancer.all.sort(:id, name: :asc)
+  #     HCloud::LoadBalancer.sort(:id, name: :asc)
   #     # => [#<HCloud::LoadBalancer id: 1, ...>, ...]
   #
   # == Search load balancers
   #
-  #     HCloud::LoadBalancer.all.where(name: "my_load_balancer")
+  #     HCloud::LoadBalancer.where(name: "my_load_balancer")
   #     # => #<HCloud::LoadBalancer id: 1, ...>
   #
   # == Find load balancer by ID

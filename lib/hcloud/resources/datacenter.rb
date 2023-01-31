@@ -11,7 +11,7 @@ module HCloud
   #
   # == Search datacenters
   #
-  #     HCloud::Datacenter.all.where(name: "fsn1-dc8")
+  #     HCloud::Datacenter.where(name: "fsn1-dc8")
   #     # => #<HCloud::Datacenter id: 2, ...>
   #
   # == Find datacenter by ID

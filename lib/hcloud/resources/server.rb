@@ -11,18 +11,18 @@ module HCloud
   #
   # == Sort servers
   #
-  #     HCloud::Server.all.sort(name: :desc)
+  #     HCloud::Server.sort(name: :desc)
   #     # => [#<HCloud::Server id: 1, ...>, ...]
   #
-  #     HCloud::Server.all.sort(:id, name: :asc)
+  #     HCloud::Server.sort(:id, name: :asc)
   #     # => [#<HCloud::Server id: 1, ...>, ...]
   #
   # == Search servers
   #
-  #     HCloud::Server.all.where(name: "my_server")
+  #     HCloud::Server.where(name: "my_server")
   #     # => #<HCloud::Server id: 1, ...>
   #
-  #     HCloud::Server.all.where(status: "running")
+  #     HCloud::Server.where(status: "running")
   #     # => #<HCloud::Server id: 1, ...>
   #
   # == Find server by ID

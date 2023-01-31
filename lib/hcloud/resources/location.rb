@@ -11,7 +11,7 @@ module HCloud
   #
   # == Search locations
   #
-  #     HCloud::Location.all.where(name: "fsn1")
+  #     HCloud::Location.where(name: "fsn1")
   #     # => #<HCloud::Location id: 1, ...>
   #
   # == Find location by ID

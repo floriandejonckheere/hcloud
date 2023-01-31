@@ -11,18 +11,18 @@ module HCloud
   #
   # == Sort SSH keys
   #
-  #     HCloud::SSHKey.all.sort(name: :desc)
+  #     HCloud::SSHKey.sort(name: :desc)
   #     # => [#<HCloud::SSHKey id: 1, ...>, ...]
   #
-  #     HCloud::SSHKey.all.sort(:id, name: :asc)
+  #     HCloud::SSHKey.sort(:id, name: :asc)
   #     # => [#<HCloud::SSHKey id: 1, ...>, ...]
   #
   # == Search SSH keys
   #
-  #     HCloud::SSHKey.all.where(name: "cx11")
+  #     HCloud::SSHKey.where(name: "cx11")
   #     # => #<HCloud::SSHKey id: 1, ...>
   #
-  #     HCloud::SSHKey.all.where(fingerprint: "B6:6C:CD:DA:A2:24:43:39:98:80:0F:F5:51:17:7E")
+  #     HCloud::SSHKey.where(fingerprint: "B6:6C:CD:DA:A2:24:43:39:98:80:0F:F5:51:17:7E")
   #     # => #<HCloud::SSHKey id: 1, ...>
   #
   # == Find SSH key by ID

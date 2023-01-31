@@ -11,15 +11,15 @@ module HCloud
   #
   # == Sort floating IPs
   #
-  #     HCloud::FloatingIP.all.sort(id: :asc)
+  #     HCloud::FloatingIP.sort(id: :asc)
   #     # => [#<HCloud::FloatingIP id: 1, ...>, ...]
   #
-  #     HCloud::FloatingIP.all.sort(:id, created: :asc)
+  #     HCloud::FloatingIP.sort(:id, created: :asc)
   #     # => [#<HCloud::FloatingIP id: 1, ...>, ...]
   #
   # == Search floating IPs
   #
-  #     HCloud::FloatingIP.all.where(name: "my_floating_ip")
+  #     HCloud::FloatingIP.where(name: "my_floating_ip")
   #     # => #<HCloud::FloatingIP id: 1, ...>
   #
   # == Find floating IP by ID

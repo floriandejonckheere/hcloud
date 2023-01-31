@@ -11,7 +11,7 @@ module HCloud
   #
   # == Search ISOs
   #
-  #     HCloud::ISO.all.where(name: "debian-10.10.0-amd64-netinst.iso")
+  #     HCloud::ISO.where(name: "debian-10.10.0-amd64-netinst.iso")
   #     # => #<HCloud::ISO id: 7631, ...>
   #
   # == Find ISO by ID

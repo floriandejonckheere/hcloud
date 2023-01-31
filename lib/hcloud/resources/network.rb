@@ -11,7 +11,7 @@ module HCloud
   #
   # == Search networks
   #
-  #     HCloud::Network.all.where(name: "my_network")
+  #     HCloud::Network.where(name: "my_network")
   #     # => #<HCloud::Network id: 1, ...>
   #
   # == Find network by ID

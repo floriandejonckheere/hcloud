@@ -7,6 +7,7 @@
 - Add support for rate limits
 - `Action#resources` now returns a list of resources instead of a list of hashes
 - Separate server protection entity from other protection entity (only server protection includes `rebuild`)
+- Add shorthand methods for `.first`, `.last`, `.count`, `.where`, `.sort`, `.each`, and `.empty?` on resource
 
 ## HCloud v1.4.0 (2023-01-22)
 
