@@ -25,6 +25,9 @@ module HCloud
   #     HCloud::SSHKey.where(fingerprint: "B6:6C:CD:DA:A2:24:43:39:98:80:0F:F5:51:17:7E")
   #     # => #<HCloud::SSHKey id: 1, ...>
   #
+  #     HCloud::SSHKey.where(label_selector: { environment: "production" })
+  #     # => #<HCloud::SSHKey id: 1, ...>
+  #
   # == Find SSH key by ID
   #
   #     HCloud::SSHKey.find(1)

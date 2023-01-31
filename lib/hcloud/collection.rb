@@ -6,7 +6,7 @@ module HCloud
 
     attr_accessor :page, :previous_page, :next_page, :last_page, :per_page, :total_entries, :proc
 
-    attr_reader :sort_by, :filter_by
+    attr_reader :sort_by, :filter_by, :label_selector
 
     def initialize(&block)
       @proc = block
@@ -24,8 +24,9 @@ module HCloud
       self
     end
 
-    def where(**filter_by)
+    def where(label_selector: nil, **filter_by)
       @filter_by = filter_by
+      @label_selector = label_selector
 
       self
     end
@@ -70,6 +71,7 @@ module HCloud
         page: page,
         per_page: per_page,
         sort: sort_by,
+        label_selector: label_selector&.map { |k, v| "#{k}=#{v}" }&.join(","),
         **filter_by,
       }
     end

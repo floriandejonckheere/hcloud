@@ -14,6 +14,9 @@ module HCloud
   #     HCloud::Network.where(name: "my_network")
   #     # => #<HCloud::Network id: 1, ...>
   #
+  #     HCloud::Network.where(label_selector: { environment: "production" })
+  #     # => #<HCloud::Network id: 1, ...>
+  #
   # == Find network by ID
   #
   #     HCloud::Network.find(1)

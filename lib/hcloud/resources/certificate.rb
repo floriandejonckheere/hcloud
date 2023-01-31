@@ -25,6 +25,9 @@ module HCloud
   #     HCloud::Certificate.where(type: "uploaded")
   #     # => #<HCloud::Certificate id: 1, ...>
   #
+  #     HCloud::Certificate.where(label_selector: { environment: "production" })
+  #     # => #<HCloud::Certificate id: 1, ...>
+  #
   # == Find certificate by ID
   #
   #     HCloud::Certificate.find(1)
