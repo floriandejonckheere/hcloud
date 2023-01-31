@@ -108,7 +108,7 @@ module HCloud
 
     attribute :primary_disk_size, :integer
 
-    attribute :protection, :protection
+    attribute :protection, :server_protection
 
     attribute :image, :image
 
