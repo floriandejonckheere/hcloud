@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## HCloud v1.5.0 (2023-02-01)
 
 - Add pricing for Primary IPs
 - Add server Metadata resource
