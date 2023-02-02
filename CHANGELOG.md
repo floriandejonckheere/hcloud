@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add `Unavailable` error class
+
 ## HCloud v1.5.0 (2023-02-01)
 
 - Add pricing for Primary IPs

@@ -66,6 +66,7 @@ module HCloud
     class TargetAlreadyDefined < Error; end
     class TokenReadonly < Error; end
     class Unauthorized < Error; end
+    class Unavailable < Error; end
     class UniquenessError < Error; end
     class UnsupportedError < Error; end
 
