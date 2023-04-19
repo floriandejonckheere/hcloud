@@ -28,7 +28,9 @@ module HCloud
       @filter_by = filter_by
       @label_selector = label_selector
 
-      self
+      self.select do |resource|
+        filter_by.all? { |k, v| resource[k.to_s] == v }
+      end
     end
 
     def each(&block)
