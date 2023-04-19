@@ -26,6 +26,7 @@ module HCloud
     attribute :name
     attribute :description
 
+    attribute :architecture
     attribute :cores, :integer
     attribute :disk, :integer
     attribute :memory, :integer
