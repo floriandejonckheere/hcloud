@@ -48,7 +48,7 @@ RSpec.describe HCloud::Volume, integration: true, order: :defined do
     volumes = described_class.all
 
     expect(volumes.count).to eq 2
-    expect(volumes.map(&:id)).to match_array [id_one, id_two]
+    expect(volumes.map(&:id)).to contain_exactly(id_one, id_two)
   end
 
   it "sorts volumes" do

@@ -10,7 +10,7 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
 
   it "lists actions" do
     expect(server.actions.count).to eq 2
-    expect(server.actions.map(&:command)).to match_array ["start_server", "create_server"]
+    expect(server.actions.map(&:command)).to contain_exactly("start_server", "create_server")
   end
 
   it "finds action" do

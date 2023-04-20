@@ -82,7 +82,7 @@ RSpec.describe HCloud::Server, integration: true, order: :defined do
     servers = described_class.all
 
     expect(servers.count).to eq 2
-    expect(servers.map(&:id)).to match_array [id_one, id_two]
+    expect(servers.map(&:id)).to contain_exactly(id_one, id_two)
   end
 
   it "sorts servers" do

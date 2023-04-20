@@ -36,7 +36,7 @@ RSpec.describe HCloud::PlacementGroup, integration: true, order: :defined do
     placement_groups = described_class.all
 
     expect(placement_groups.count).to eq 2
-    expect(placement_groups.map(&:id)).to match_array [id_one, id_two]
+    expect(placement_groups.map(&:id)).to contain_exactly(id_one, id_two)
   end
 
   it "sorts placement groups" do

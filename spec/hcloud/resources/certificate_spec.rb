@@ -46,7 +46,7 @@ RSpec.describe HCloud::Certificate, integration: true, order: :defined do
     certificates = described_class.all
 
     expect(certificates.count).to eq 2
-    expect(certificates.map(&:id)).to match_array [managed_certificate_id, uploaded_certificate_id]
+    expect(certificates.map(&:id)).to contain_exactly(managed_certificate_id, uploaded_certificate_id)
   end
 
   it "sorts certificates" do

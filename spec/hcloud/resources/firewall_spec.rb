@@ -47,7 +47,7 @@ RSpec.describe HCloud::Firewall, integration: true, order: :defined do
     firewalls = described_class.all
 
     expect(firewalls.count).to eq 2
-    expect(firewalls.map(&:id)).to match_array [firewall_server, firewall_label]
+    expect(firewalls.map(&:id)).to contain_exactly(firewall_server, firewall_label)
   end
 
   it "sorts firewalls" do

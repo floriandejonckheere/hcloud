@@ -55,7 +55,7 @@ RSpec.describe HCloud::LoadBalancer, integration: true, order: :defined do
     load_balancers = described_class.all
 
     expect(load_balancers.count).to eq 2
-    expect(load_balancers.map(&:id)).to match_array [id_one, id_two]
+    expect(load_balancers.map(&:id)).to contain_exactly(id_one, id_two)
   end
 
   it "sorts load balancers" do

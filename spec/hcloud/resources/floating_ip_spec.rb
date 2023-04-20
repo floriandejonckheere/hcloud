@@ -57,7 +57,7 @@ RSpec.describe HCloud::FloatingIP, integration: true, order: :defined do
     floating_ips = described_class.all
 
     expect(floating_ips.count).to eq 2
-    expect(floating_ips.map(&:id)).to match_array [id_one, id_two]
+    expect(floating_ips.map(&:id)).to contain_exactly(id_one, id_two)
   end
 
   it "sorts floating IPs" do
@@ -129,7 +129,7 @@ RSpec.describe HCloud::FloatingIP, integration: true, order: :defined do
     actions = described_class.find(id_two).actions.sort(command: :asc)
 
     expect(actions.count).to eq 2
-    expect(actions.map(&:command)).to match_array(["change_dns_ptr", "change_protection"])
+    expect(actions.map(&:command)).to contain_exactly("change_dns_ptr", "change_protection")
 
     action_id_one = actions.first.id
   end

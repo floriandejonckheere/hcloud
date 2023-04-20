@@ -15,7 +15,7 @@ RSpec.describe HCloud::Action, integration: true, order: :defined do
     actions = described_class.all
 
     expect(actions.count).to eq 1
-    expect(actions.map(&:id)).to match_array []
+    expect(actions.map(&:id)).to be_empty
   end
 
   # TODO: sorts actions

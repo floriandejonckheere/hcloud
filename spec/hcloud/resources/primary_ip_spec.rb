@@ -55,7 +55,7 @@ RSpec.describe HCloud::PrimaryIP, integration: true, order: :defined do
     primary_ips = described_class.all
 
     expect(primary_ips.count).to eq 2
-    expect(primary_ips.map(&:id)).to match_array [id_one, id_two]
+    expect(primary_ips.map(&:id)).to contain_exactly(id_one, id_two)
   end
 
   it "sorts primary IPs" do
@@ -128,7 +128,7 @@ RSpec.describe HCloud::PrimaryIP, integration: true, order: :defined do
       actions = described_class.find(id_two).actions.sort(command: :asc)
 
       expect(actions.count).to eq 2
-      expect(actions.map(&:command)).to match_array(["change_dns_ptr", "change_protection"])
+      expect(actions.map(&:command)).to contain_exactly("change_dns_ptr", "change_protection")
 
       action_id_one = actions.first.id
     end

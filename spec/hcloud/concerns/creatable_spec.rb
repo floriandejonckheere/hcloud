@@ -4,12 +4,12 @@ RSpec.describe HCloud::Creatable do
   subject(:resource) { ExampleResource.new }
 
   describe "#create" do
-    subject(:resource) { ExampleResource.new(id: nil, name: "my_resource", description: "my_description", created: nil, sibling: sibling, child: child1, children: [child0, child1]) }
+    subject(:resource) { ExampleResource.new(id: nil, name: "my_resource", description: "my_description", created: nil, sibling: sibling, child: second_child, children: [first_child, second_child]) }
 
-    let(:child0) { Child.new(id: 1) }
-    let(:child1) { Child.new(name: "name1") }
+    let(:first_child) { Child.new(id: 1) }
+    let(:second_child) { Child.new(name: "name1") }
 
-    let(:sibling) { Sibling.new(type: "sister", child: child0) }
+    let(:sibling) { Sibling.new(type: "sister", child: first_child) }
 
     it "creates the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/examples")

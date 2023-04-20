@@ -39,7 +39,7 @@ RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
     ssh_keys = described_class.all
 
     expect(ssh_keys.count).to eq 2
-    expect(ssh_keys.map(&:id)).to match_array [id_one, id_two]
+    expect(ssh_keys.map(&:id)).to contain_exactly(id_one, id_two)
   end
 
   it "sorts SSH keys" do
