@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
+## HCloud v1.5.1 (2023-04-20)
 
 - Add `Unavailable` error class
+- Add `architecture` attribute to `ServerType`
 
 ## HCloud v1.5.0 (2023-02-01)
 
