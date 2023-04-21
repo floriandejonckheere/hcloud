@@ -26,6 +26,7 @@ module HCloud
     attribute :name
     attribute :description
 
+    attribute :architecture
     attribute :type
     attribute :deprecated, :datetime
 
