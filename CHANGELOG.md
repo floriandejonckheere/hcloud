@@ -1,5 +1,9 @@
 # Changelog
 
+## HCloud v1.5.2 (2023-04-22)
+
+- Add `architecture` attribute to `Image` and `ISO`
+
 ## HCloud v1.5.1 (2023-04-20)
 
 - Add `Unavailable` error class
