@@ -23,6 +23,7 @@ RSpec.describe HCloud::ServerType, integration: true, order: :defined do
     expect(server_type.cores).to eq 1
     expect(server_type.disk).to eq 20
     expect(server_type.memory).to eq 2
+    expect(server_type.included_traffic).to eq 21_990_232_555_520
 
     expect(server_type.cpu_type).to eq "shared"
     expect(server_type.storage_type).to eq "local"

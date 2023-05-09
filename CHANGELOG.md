@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add `included_traffic` attribute to `ServerType`
+
 ## HCloud v1.5.2 (2023-04-22)
 
 - Add `architecture` attribute to `Image` and `ISO`

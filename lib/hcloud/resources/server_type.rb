@@ -30,6 +30,7 @@ module HCloud
     attribute :cores, :integer
     attribute :disk, :integer
     attribute :memory, :integer
+    attribute :included_traffic, :integer
 
     attribute :cpu_type
     attribute :storage_type
