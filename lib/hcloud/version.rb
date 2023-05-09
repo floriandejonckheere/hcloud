@@ -12,6 +12,6 @@ module HCloud
     STRING = [VERSION, PRE].compact.join("-")
   end
 
-  NAME = "hcloud"
+  NAME = "hetznercloud"
   VERSION = Version::STRING
 end
