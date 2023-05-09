@@ -10,8 +10,6 @@ Unofficial Ruby integration with the [Hetzner Cloud API](https://docs.hetzner.cl
 Add this line to your application's Gemfile:
 
 ```ruby
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
 gem "hetznercloud"
 ```
 
