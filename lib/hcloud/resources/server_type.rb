@@ -34,6 +34,7 @@ module HCloud
 
     attribute :cpu_type
     attribute :storage_type
+    attribute :included_traffic, :integer
 
     attribute :prices, :price, array: true, default: -> { [] }
 
