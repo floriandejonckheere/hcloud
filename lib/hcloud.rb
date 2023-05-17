@@ -4,8 +4,6 @@ require "active_model"
 require "active_support/all"
 require "zeitwerk"
 
-require "byebug" if ENV["ENV"] == "development"
-
 module HCloud
   class << self
     # Code loader instance

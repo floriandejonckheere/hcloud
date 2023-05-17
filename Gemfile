@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gemspec
 
 group :development, :test do
-  gem "byebug", require: false
+  gem "debug", require: false
   gem "dotenv", require: false
   gem "ffaker", require: false
   gem "rake", require: false
