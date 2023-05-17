@@ -7,6 +7,12 @@ RSpec.describe HCloud::Resource do
     expect(ExampleResource.new.labels).to eq({})
   end
 
+  it "allows dynamic attributes" do
+    resource.foo = "bar"
+
+    expect(resource.foo).to eq "bar"
+  end
+
   describe "#to_h" do
     it "serializes the identifier" do
       expect(resource.to_h).to eq({ id: resource.id })

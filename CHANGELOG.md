@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Allow defining attributes on the fly
+
 ## HCloud v1.5.3 (2023-05-09)
 
 - Add `included_traffic` attribute to `ServerType`

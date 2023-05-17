@@ -6,6 +6,7 @@ module HCloud
     include ActiveModel::AttributeAssignment
 
     include Concerns
+    include DynamicAttributes
 
     def initialize(attributes = {})
       super()
