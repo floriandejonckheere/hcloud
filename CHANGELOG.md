@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add `deprecation` attribute to `ServerType`
+
 ## HCloud v1.5.4 (2023-05-17)
 
 - Allow defining attributes on the fly

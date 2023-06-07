@@ -38,6 +38,7 @@ module HCloud
     attribute :prices, :price, array: true, default: -> { [] }
 
     attribute :deprecated, :boolean
+    attribute :deprecation, :deprecation
 
     alias deprecated? deprecated
   end
