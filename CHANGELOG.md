@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## HCloud v1.6.0 (2023-06-07)
 
 - Add `deprecation` attribute to `ServerType`
 - Parse `private_net` attribute on `Server` as array
