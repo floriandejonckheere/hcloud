@@ -116,7 +116,7 @@ module HCloud
     attribute :image, :image
 
     attribute :public_net, :public_net
-    attribute :private_net, :private_net
+    attribute :private_net, :private_net, array: true, default: -> { [] }
 
     attribute :placement_group, :placement_group
 
