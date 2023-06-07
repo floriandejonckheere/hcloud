@@ -123,6 +123,7 @@ ActiveModel::Type.register(:private_net, HCloud::ResourceType.Type("HCloud::Priv
 ActiveModel::Type.register(:private_network, HCloud::ResourceType.Type("HCloud::PrivateNetwork"))
 ActiveModel::Type.register(:protection, HCloud::ResourceType.Type("HCloud::Protection"))
 ActiveModel::Type.register(:public_net, HCloud::ResourceType.Type("HCloud::PublicNet"))
+ActiveModel::Type.register(:public_net_firewall, HCloud::ResourceType.Type("HCloud::PublicNetFirewall"))
 ActiveModel::Type.register(:resource, HCloud::ResourceType::GenericType)
 ActiveModel::Type.register(:route, HCloud::ResourceType.Type("HCloud::Route"))
 ActiveModel::Type.register(:rule, HCloud::ResourceType.Type("HCloud::Rule"))

@@ -4,6 +4,7 @@
 
 - Add `deprecation` attribute to `ServerType`
 - Parse `private_net` attribute on `Server` as array
+- Parse `public_net.firewalls` attribute on `Server` as array of objects with status (not array of `Firewall`s)
 
 ## HCloud v1.5.4 (2023-05-17)
 
