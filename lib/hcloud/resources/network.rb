@@ -116,6 +116,8 @@ module HCloud
 
     attribute :ip_range
 
+    attribute :expose_routes_to_vswitch, :boolean
+
     attribute :routes, :route, array: true, default: -> { [] }
     attribute :subnets, :subnet, array: true, default: -> { [] }
 
@@ -134,11 +136,11 @@ module HCloud
     action :delete_subnet
 
     def creatable_attributes
-      [:name, :labels, :ip_range, :routes, :subnets]
+      [:name, :labels, :ip_range, :expose_routes_to_vswitch, :routes, :subnets]
     end
 
     def updatable_attributes
-      [:name, :labels]
+      [:name, :expose_routes_to_vswitch, :labels]
     end
   end
 end

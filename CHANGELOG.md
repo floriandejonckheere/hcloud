@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add `expose_routes_to_vswitch` attribute to `Network`
+
 ## HCloud v1.6.0 (2023-06-07)
 
 - Add `deprecation` attribute to `ServerType`
