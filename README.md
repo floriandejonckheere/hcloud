@@ -98,7 +98,6 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [SSH Keys](lib/hcloud/resources/ssh_key.rb)                    | Implemented           |
 | [Volumes](lib/hcloud/resources/volume.rb)                      | Implemented           |
 | [Volume Actions](lib/hcloud/resources/volume.rb)               | Implemented           |
-|                                                                |                       |
 | [Metadata](lib/hcloud/resources/metadata.rb)                   | Implemented           |
 
 ### Pagination
