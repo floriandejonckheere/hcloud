@@ -83,7 +83,7 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [Image Actions](lib/hcloud/resources/image.rb)                 | Implemented           |
 | [ISOs](lib/hcloud/resources/iso.rb)                            | Implemented           |
 | [Load Balancers](lib/hcloud/resources/load_balancer.rb)        | Implemented           |
-| [Load Balancer Actions](lib/hcloud/resources/load_balancer.rb) | Not implemented       |
+| [Load Balancer Actions](lib/hcloud/resources/load_balancer.rb) | Implemented           |
 | [Load Balancer Types](lib/hcloud/resources/load_balancer.rb)   | Implemented           |
 | [Locations](lib/hcloud/resources/location.rb)                  | Implemented           |
 | [Primary IPs](lib/hcloud/resources/primary_ip.rb)              | Implemented           |

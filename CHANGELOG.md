@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add load balancer actions
+
 ## HCloud v1.6.1 (2023-06-22)
 
 - Add `expose_routes_to_vswitch` attribute to `Network`
