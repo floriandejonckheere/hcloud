@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## HCloud v1.7.1 (2023-07-25)
 
 - Add deprecation warning for `HCloud::Action.all`
 
