@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add deprecation warning for `HCloud::Action.all`
+
 ## HCloud v1.7.0 (2023-06-30)
 
 - Add load balancer actions

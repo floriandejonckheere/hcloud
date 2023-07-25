@@ -44,5 +44,13 @@ module HCloud
     attribute :error, :error
 
     attribute :resources, :resource, array: true, default: -> { [] }
+
+    class << self
+      def all
+        warn "[DEPRECATION] Starting on 1 October 2023, this endpoint will no longer be available. After that, it won't be possible anymore to list all actions across all resources. As an alternative, you can use the action endpoints of a specific resource to list all actions (e.g. of all servers or of all Load Balancers)."
+
+        super
+      end
+    end
   end
 end
