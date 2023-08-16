@@ -14,6 +14,12 @@ RSpec.describe HCloud::Location, integration: true, order: :defined do
     expect(locations.first.id).to eq 1
   end
 
+  it "sorts locations" do
+    locations = described_class.all.sort(name: :desc)
+
+    expect(locations.first.name).to eq "nbg1"
+  end
+
   it "finds locations" do
     location = described_class.find(1)
 

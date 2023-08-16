@@ -9,6 +9,14 @@ module HCloud
   #     HCloud::Location.all
   #     # => [#<HCloud::Location id: 1, ...>, ...]
   #
+  # == Sort locations
+  #
+  #     HCloud::Location.sort(name: :desc)
+  #     # => [#<HCloud::Location id: 1, ...>, ...]
+  #
+  #     HCloud::Location.sort(:id, name: :asc)
+  #     # => [#<HCloud::Location id: 1, ...>, ...]
+  #
   # == Search locations
   #
   #     HCloud::Location.where(name: "fsn1")
