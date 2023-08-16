@@ -7,6 +7,12 @@ RSpec.describe HCloud::Datacenter, integration: true, order: :defined do
     expect(datacenters.count).to be > 1
   end
 
+  it "sorts datacenters" do
+    datacenters = described_class.all.sort(name: :desc)
+
+    expect(datacenters.first.name).to eq "nbg1-dc3"
+  end
+
   it "filters datacenters" do
     datacenters = described_class.all.where(name: "nbg1-dc3")
 

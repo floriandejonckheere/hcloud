@@ -9,6 +9,14 @@ module HCloud
   #     HCloud::Datacenter.all
   #     # => [#<HCloud::Datacenter id: 2, ...>, ...]
   #
+  # == Sort datacenters
+  #
+  #     HCloud::Datacenter.sort(name: :desc)
+  #     # => [#<HCloud::Datacenter id: 1, ...>, ...]
+  #
+  #     HCloud::Datacenter.sort(:id, name: :asc)
+  #     # => [#<HCloud::Datacenter id: 1, ...>, ...]
+  #
   # == Search datacenters
   #
   #     HCloud::Datacenter.where(name: "fsn1-dc8")
