@@ -22,6 +22,9 @@ require "dotenv/load"
 
 require "timecop"
 
+require "simplecov"
+SimpleCov.start
+
 require "hcloud"
 
 Dir[File.join(__dir__, "support/**/*.rb")].sort.each { |f| require f }
