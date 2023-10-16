@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::Server, integration: true, order: :defined do
+RSpec.describe HCloud::Server, :integration, order: :defined do
   server = nil
 
   before(:all) do

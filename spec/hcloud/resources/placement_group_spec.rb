@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::PlacementGroup, integration: true, order: :defined do
+RSpec.describe HCloud::PlacementGroup, :integration, order: :defined do
   id_one, id_two = nil
 
   it "creates a placement group" do

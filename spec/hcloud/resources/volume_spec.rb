@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::Volume, integration: true, order: :defined do
+RSpec.describe HCloud::Volume, :integration, order: :defined do
   id_one, id_two = nil
 
   after(:all) do

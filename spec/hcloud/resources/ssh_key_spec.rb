@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::SSHKey, integration: true, order: :defined do
+RSpec.describe HCloud::SSHKey, :integration, order: :defined do
   let(:file_one) { File.read(HCloud.root.join("spec/fixtures/one.pub")) }
   let(:file_two) { File.read(HCloud.root.join("spec/fixtures/two.pub")) }
 

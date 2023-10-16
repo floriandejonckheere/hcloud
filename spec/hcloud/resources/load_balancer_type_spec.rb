@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::LoadBalancerType, integration: true, order: :defined do
+RSpec.describe HCloud::LoadBalancerType, :integration, order: :defined do
   it "lists load balancer types" do
     load_balancer_types = described_class.all
 

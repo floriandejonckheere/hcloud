@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::Network, integration: true, order: :defined do
+RSpec.describe HCloud::Network, :integration, order: :defined do
   network = nil
 
   before(:all) do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::Pricing, integration: true, order: :defined do
+RSpec.describe HCloud::Pricing, :integration, order: :defined do
   subject(:pricing) { described_class.find }
 
   it "finds the pricing" do

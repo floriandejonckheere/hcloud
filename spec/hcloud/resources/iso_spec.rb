@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::ISO, integration: true, order: :defined do
+RSpec.describe HCloud::ISO, :integration, order: :defined do
   it "lists ISOs" do
     isos = described_class.all
 

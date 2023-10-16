@@ -4,7 +4,7 @@ RSpec.configure do |config|
   logger = Logger.new($stdout)
   logger.level = ENV.fetch("LOG_LEVEL", "warn")
 
-  config.before(:context, integration: true) do
+  config.before(:context, :integration) do
     @client = HCloud::Client.connection
 
     # Set client
@@ -29,7 +29,7 @@ RSpec.configure do |config|
     logger.level = ENV.fetch("LOG_LEVEL", "warn")
   end
 
-  config.after(:context, integration: true) do
+  config.after(:context, :integration) do
     # Disable logging for cleanup
     logger.level = :warn
 

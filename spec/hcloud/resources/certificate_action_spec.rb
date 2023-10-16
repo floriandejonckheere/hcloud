@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::Certificate, integration: true, order: :defined do
+RSpec.describe HCloud::Certificate, :integration, order: :defined do
   let(:public_key) { File.read(HCloud.root.join("spec/fixtures/three.cert")) }
   let(:private_key) { File.read(HCloud.root.join("spec/fixtures/three.key")) }
 

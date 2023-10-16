@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::Action, integration: true, order: :defined do
+RSpec.describe HCloud::Action, :integration, order: :defined do
   id_one, id_two = nil
 
   # TODO: finds an action

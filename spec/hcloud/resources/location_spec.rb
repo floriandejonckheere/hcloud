@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::Location, integration: true, order: :defined do
+RSpec.describe HCloud::Location, :integration, order: :defined do
   it "lists locations" do
     locations = described_class.all
 

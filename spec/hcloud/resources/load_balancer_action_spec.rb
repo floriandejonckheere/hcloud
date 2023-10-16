@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::LoadBalancer, integration: true, order: :defined do
+RSpec.describe HCloud::LoadBalancer, :integration, order: :defined do
   # TODO: list actions
   xit "lists actions"
 

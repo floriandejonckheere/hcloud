@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::Firewall, integration: true, order: :defined do
+RSpec.describe HCloud::Firewall, :integration, order: :defined do
   firewall, server = nil
 
   before(:all) do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::LoadBalancer, integration: true, order: :defined do
+RSpec.describe HCloud::LoadBalancer, :integration, order: :defined do
   id_one, id_two = nil
 
   it "creates a load balancer" do

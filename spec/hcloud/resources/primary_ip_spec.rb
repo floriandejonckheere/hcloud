@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::PrimaryIP, integration: true, order: :defined do
+RSpec.describe HCloud::PrimaryIP, :integration, order: :defined do
   id_one, id_two = nil
 
   action_id_one = nil

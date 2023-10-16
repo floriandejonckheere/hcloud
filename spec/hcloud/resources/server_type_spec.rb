@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::ServerType, integration: true, order: :defined do
+RSpec.describe HCloud::ServerType, :integration, order: :defined do
   it "lists server types" do
     server_types = described_class.all
 

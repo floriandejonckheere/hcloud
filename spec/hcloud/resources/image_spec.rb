@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::Image, integration: true, order: :defined do
+RSpec.describe HCloud::Image, :integration, order: :defined do
   it "finds an image" do
     image = described_class.find(2)
 

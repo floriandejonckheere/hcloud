@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe HCloud::Datacenter, integration: true, order: :defined do
+RSpec.describe HCloud::Datacenter, :integration, order: :defined do
   it "lists datacenters" do
     datacenters = described_class.all
 
