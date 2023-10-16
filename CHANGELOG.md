@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## HCloud v1.7.2 (2023-10-16)
 
 - Add `deprecation` attribute to `ISO`
 
