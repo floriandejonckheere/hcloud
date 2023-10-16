@@ -47,6 +47,9 @@ RSpec/MultipleExpectations:
 RSpec/PendingWithoutReason:
   Enabled: false
 
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
