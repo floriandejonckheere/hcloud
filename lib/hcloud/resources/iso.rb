@@ -28,7 +28,9 @@ module HCloud
 
     attribute :architecture
     attribute :type
+
     attribute :deprecated, :datetime
+    attribute :deprecation, :deprecation
 
     def deprecated?
       deprecated.present?
