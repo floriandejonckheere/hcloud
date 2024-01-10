@@ -29,17 +29,10 @@ module HCloud
     attribute :architecture
     attribute :type
 
-    attribute :deprecated, :datetime
     attribute :deprecation, :deprecation
 
-    def deprecated
-      warn "[DEPRECATION] Field \"deprecated\" on ISOs is deprecated."
-
-      super
-    end
-
     def deprecated?
-      deprecated.present?
+      deprecation.present?
     end
   end
 end
