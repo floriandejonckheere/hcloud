@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## HCloud v2.0.0 (2024-01-10)
 
 - Remove `deprecated` attribute from `ISO`
 
