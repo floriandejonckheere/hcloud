@@ -8,7 +8,7 @@ module HCloud
       def initialize(data = {})
         @data = data
 
-        super [data[:message], full_messages&.join("\n")].compact.join("\n\n")
+        super([data[:message], full_messages&.join("\n")].compact.join("\n\n"))
       end
 
       def full_messages

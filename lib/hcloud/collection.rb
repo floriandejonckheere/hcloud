@@ -55,7 +55,7 @@ module HCloud
 
     def count
       # Fetch total_entries if not present
-      @count ||= (total_entries || proc.call(params.merge(page: 1)).last.dig(:pagination, :total_entries))
+      @count ||= total_entries || proc.call(params.merge(page: 1)).last.dig(:pagination, :total_entries)
     end
 
     def empty?

@@ -33,7 +33,7 @@ module HCloud
         attributes
           .slice(*simple_attributes.map(&:to_s))
           .transform_values { |v| v&.send_wrap { |o| o.try(:to_h) || o } || v&.send_wrap(:to_s) }
-          .merge(nested_attributes.reduce(&:merge)&.map { |k, v| [k.to_s, Array(v).filter_map { |w| send(k)&.send_wrap(w) }.first] }.to_h)
+          .merge(nested_attributes.reduce(&:merge).to_h { |k, v| [k.to_s, Array(v).filter_map { |w| send(k)&.send_wrap(w) }.first] })
           .compact_blank
       end
       # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
