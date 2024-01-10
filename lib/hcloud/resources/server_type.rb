@@ -40,6 +40,12 @@ module HCloud
     attribute :deprecated, :boolean
     attribute :deprecation, :deprecation
 
+    def deprecated
+      warn "[DEPRECATION] Field \"deprecated\" on server types is deprecated."
+
+      super
+    end
+
     alias deprecated? deprecated
   end
 end
