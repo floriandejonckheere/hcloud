@@ -1,6 +1,6 @@
 # HCloud
 
-![Continuous Integration](https://github.com/floriandejonckheere/hcloud/workflows/Continuous%20Integration/badge.svg)
+![Continuous Integration](https://github.com/floriandejonckheere/hcloud/actions/workflows/ci.yml/badge.svg)
 ![Release](https://img.shields.io/github/v/release/floriandejonckheere/hcloud?label=Latest%20release)
 
 Unofficial Ruby integration with the [Hetzner Cloud API](https://docs.hetzner.cloud/).
