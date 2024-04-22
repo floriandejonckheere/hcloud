@@ -31,7 +31,7 @@ GEM
     connection_pool (2.4.1)
     crack (0.4.5)
       rexml
-    debug (1.9.1)
+    debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
@@ -57,8 +57,8 @@ GEM
     http-form_data (2.3.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    io-console (0.7.1)
-    irb (1.11.1)
+    io-console (0.7.2)
+    irb (1.12.0)
       rdoc
       reline (>= 0.4.2)
     json (2.7.2)
@@ -81,7 +81,7 @@ GEM
     rdoc (6.6.3.1)
       psych (>= 4.0.0)
     regexp_parser (2.9.0)
-    reline (0.4.2)
+    reline (0.5.2)
       io-console (~> 0.5)
     rexml (3.2.6)
     rspec (3.13.0)
