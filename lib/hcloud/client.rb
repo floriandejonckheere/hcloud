@@ -19,13 +19,15 @@ module HCloud
 
     self.connection = NilConnection.new
 
-    attr_reader :access_token, :endpoint, :logger, :rate_limit
+    attr_reader :access_token, :endpoint, :logger, :rate_limit, :timeout, :encoding
 
-    def initialize(access_token:, endpoint: "https://api.hetzner.cloud/v1", logger: Logger.new("/dev/null"), rate_limit: false)
+    def initialize(access_token:, endpoint: "https://api.hetzner.cloud/v1", logger: Logger.new("/dev/null"), rate_limit: false, timeout: 10, encoding: nil)
       @access_token = access_token
       @endpoint = endpoint
       @logger = logger
       @rate_limit = rate_limit
+      @timeout = timeout
+      @encoding = encoding
     end
 
     delegate :get, :put, :post, :delete, to: :http
@@ -33,7 +35,7 @@ module HCloud
     private
 
     def http
-      @http ||= HTTP.new(access_token, endpoint, logger, rate_limit)
+      @http ||= HTTP.new(access_token, endpoint, logger, rate_limit, timeout, encoding)
     end
   end
 end

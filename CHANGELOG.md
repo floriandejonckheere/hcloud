@@ -7,6 +7,7 @@
 - Add deprecation warning for `Pricing#traffic`
 - Add deprecation warning for `ServerType#included_traffic`
 - Fix crash on prices when using `Pricing` API
+- Add support for (de-)compression of HTTP requests
 
 ## HCloud v2.0.0 (2024-01-10)
 

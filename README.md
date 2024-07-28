@@ -143,6 +143,16 @@ ssh_keys = HCloud::SSHKey.all # Will block until remaining requests have regener
 Since rate limits are per hour and per project, using multiple clients at the same time will interfere with the rate limiting mechanism.
 To prevent this, wrap client calls in a loop that retries the call after it fails with a `HCloud::RateLimitExceeded` error.
 
+### Compression
+
+Enable compression by passing an appropriate `encoding` option to `HCloud::Client.new`.
+Current supported options are `nil`, `gzip` and `brotli`.
+Compression is disabled by default.
+
+```ruby
+client = HCloud::Client.new(access_token: "my_access_token", encoding: "gzip")
+```
+
 ## Testing
 
 ```ssh
