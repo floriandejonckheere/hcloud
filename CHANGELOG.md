@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Add `included_traffic` attribute to `ServerType#prices` and `LoadBalancerType#prices`
+- Add `price_per_tb_traffic` attribute to `ServerType#prices` and `LoadBalancerType#prices`
+
 ## HCloud v2.0.0 (2024-01-10)
 
 - Remove `deprecated` attribute from `ISO`
