@@ -24,8 +24,8 @@ Gem::Specification.new do |spec|
   spec.executables   = []
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "activemodel"
-  spec.add_runtime_dependency "activesupport"
-  spec.add_runtime_dependency "http"
-  spec.add_runtime_dependency "zeitwerk"
+  spec.add_dependency "activemodel"
+  spec.add_dependency "activesupport"
+  spec.add_dependency "http"
+  spec.add_dependency "zeitwerk"
 end
