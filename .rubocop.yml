@@ -38,9 +38,6 @@ RSpec/BeforeAfterAll:
 RSpec/ExampleLength:
   Enabled: false
 
-RSpec/FilePath:
-  Enabled: false
-
 RSpec/MultipleExpectations:
   Enabled: false
 
@@ -48,6 +45,9 @@ RSpec/PendingWithoutReason:
   Enabled: false
 
 RSpec/SpecFilePathFormat:
+  Enabled: false
+
+RSpec/SpecFilePathSuffix:
   Enabled: false
 
 Style/Documentation:
