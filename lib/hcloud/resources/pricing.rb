@@ -27,18 +27,10 @@ module HCloud
 
     attribute :server_types, :server_type_price, array: true, default: -> { [] }
 
-    attribute :traffic, :traffic_price
+    attribute :traffic, :traffic_price, deprecated: true
 
     attribute :vat_rate
 
     attribute :volume, :volume_price
-
-    def traffic
-      # FIXME: Attribute will return null on 2024-08-05
-      # FIXME: Attribute will be removed on 2024-11-05
-      warn "[DEPRECATION] Field \"traffic\" on pricing is deprecated."
-
-      super
-    end
   end
 end

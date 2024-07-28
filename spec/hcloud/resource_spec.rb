@@ -13,6 +13,10 @@ RSpec.describe HCloud::Resource do
     expect(resource.foo).to eq "bar"
   end
 
+  it "allows deprecated attributes" do
+    expect { resource.deprecated }.to output("[DEPRECATION] Field \"deprecated\" on ExampleResource is deprecated.\n").to_stderr
+  end
+
   describe "#to_h" do
     it "serializes the identifier" do
       expect(resource.to_h).to eq({ id: resource.id })

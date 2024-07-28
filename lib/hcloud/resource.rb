@@ -30,6 +30,16 @@ module HCloud
       id && id == other.id
     end
 
+    def self.attribute(name, *args, deprecated: false, **kwargs)
+      super(name, *args, **kwargs)
+
+      define_method(name) do |**params|
+        warn "[DEPRECATION] Field \"#{name}\" on #{self.class.name} is deprecated." if deprecated
+
+        super(**params)
+      end
+    end
+
     def self.resource_name
       name.demodulize.underscore
     end

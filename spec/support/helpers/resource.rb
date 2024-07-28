@@ -31,6 +31,8 @@ class ExampleResource < HCloud::Resource
 
   attribute :sibling, :sibling
 
+  attribute :deprecated, deprecated: true
+
   attribute :labels, default: -> { {} }
 
   action :resize
