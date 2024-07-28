@@ -1,0 +1,59 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Documentation
+    runs-on: ubuntu-latest
+
+    container:
+      image: ruby:3.3-alpine
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          apk add build-base cmake git tar
+
+      - name: Cache Gems
+        uses: actions/cache@v4.0.2
+        with:
+          path: vendor/bundle
+          key: Linux-3.3-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            Linux-3.3-gem-
+
+      - name: Install Gems
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build YARD documentation
+        run: bundle exec yard doc
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: doc
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@main
