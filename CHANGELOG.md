@@ -4,6 +4,7 @@
 
 - Add `included_traffic` attribute to `ServerType#prices` and `LoadBalancerType#prices`
 - Add `price_per_tb_traffic` attribute to `ServerType#prices` and `LoadBalancerType#prices`
+- Add deprecation warning for `Pricing#traffic`
 
 ## HCloud v2.0.0 (2024-01-10)
 
