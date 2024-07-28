@@ -40,6 +40,14 @@ module HCloud
     attribute :deprecated, :boolean
     attribute :deprecation, :deprecation
 
+    def included_traffic
+      # FIXME: Attribute will return null on 2024-08-05
+      # FIXME: Attribute will be removed on 2024-11-05
+      warn "[DEPRECATION] Field \"included_traffic\" on server types is deprecated."
+
+      super
+    end
+
     def deprecated
       warn "[DEPRECATION] Field \"deprecated\" on server types is deprecated."
 
