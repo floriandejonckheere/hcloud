@@ -6,6 +6,7 @@
 - Add `price_per_tb_traffic` attribute to `ServerType#prices` and `LoadBalancerType#prices`
 - Add deprecation warning for `Pricing#traffic`
 - Add deprecation warning for `ServerType#included_traffic`
+- Fix crash on prices when using `Pricing` API
 
 ## HCloud v2.0.0 (2024-01-10)
 
