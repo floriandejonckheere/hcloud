@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## HCloud v2.1.0 (2024-07-28)
 
 - Add `included_traffic` attribute to `ServerType#prices` and `LoadBalancerType#prices`
 - Add `price_per_tb_traffic` attribute to `ServerType#prices` and `LoadBalancerType#prices`
