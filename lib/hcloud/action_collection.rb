@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module HCloud
+  # @!visibility private
   class ActionCollection < Collection
     attr_reader :resource
 

@@ -2,8 +2,11 @@
 
 require "yaml"
 
+# @!visibility private
 module HTTP
+  # @!visibility private
   module MimeType
+    # @!visibility private
     class YAML < Adapter
       def encode(obj)
         return obj.to_yaml if obj.respond_to?(:to_yaml)

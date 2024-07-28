@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+# @!visibility private
 module CoreExt
+  # @!visibility private
   module SendWrap
     # Send a message to self, or all objects contained in self (for arrays)
 

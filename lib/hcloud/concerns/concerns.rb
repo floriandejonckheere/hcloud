@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module HCloud
+  # @!visibility private
   module Concerns
     extend ActiveSupport::Concern
 

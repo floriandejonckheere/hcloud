@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+# @!visibility private
 module HTTP
+  # @!visibility private
   class RateLimiter < Feature
     attr_reader :limit, :remaining, :reset, :at, :rate
 

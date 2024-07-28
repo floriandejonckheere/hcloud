@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module HCloud
+  # @!visibility private
   module Version
     MAJOR = 2
     MINOR = 1

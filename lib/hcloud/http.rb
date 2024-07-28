@@ -3,6 +3,7 @@
 require "http"
 
 module HCloud
+  # @!visibility private
   class HTTP
     attr_reader :access_token, :endpoint, :logger, :rate_limit, :timeout, :encoding
 

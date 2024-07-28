@@ -2,6 +2,7 @@
 
 # rubocop:disable Metrics/CyclomaticComplexity,Metrics/AbcSize
 module HCloud
+  # @!visibility private
   class ResourceType
     class_attribute :resource_class_name
 
@@ -54,6 +55,7 @@ module HCloud
     end
     # rubocop:enable Naming/MethodName
 
+    # @!visibility private
     class GenericType < ResourceType
       def cast(value)
         case value

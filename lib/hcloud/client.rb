@@ -3,6 +3,7 @@
 require "logger"
 
 module HCloud
+  # @!visibility private
   class NilConnection
     def raise_error(...)
       raise ArgumentError, "no default client configured, set HCloud::Client.connection to an instance of HCloud::Client"
@@ -14,6 +15,7 @@ module HCloud
     alias delete raise_error
   end
 
+  # @!visibility private
   class Client
     class_attribute :connection
 
