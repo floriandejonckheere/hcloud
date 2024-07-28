@@ -32,6 +32,9 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Enabled: false
 
+Metrics/ParameterLists:
+  Enabled: false
+
 RSpec/BeforeAfterAll:
   Enabled: false
 
