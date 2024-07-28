@@ -5,6 +5,10 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in hcloud.gemspec
 gemspec
 
+group :development do
+  gem "yard", require: false
+end
+
 group :development, :test do
   gem "debug", require: false
   gem "dotenv", require: false
