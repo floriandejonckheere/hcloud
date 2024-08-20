@@ -1,7 +1,36 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::HTTP do
-  subject(:http) { described_class.new("access_token", "https://endpoint/", Logger.new("/dev/null")) }
+  subject(:http) { described_class.new("access_token", "https://endpoint/", Logger.new("/dev/null"), false, 10, compression) }
+
+  let(:compression) { nil }
+
+  describe "#initialize" do
+    it "initializes the HTTP client" do
+      expect(http.access_token).to eq "access_token"
+      expect(http.endpoint).to eq "https://endpoint/"
+      expect(http.logger).to be_a Logger
+      expect(http.rate_limit).to be false
+      expect(http.timeout).to eq 10
+      expect(http.compression).to be_nil
+    end
+
+    context "when compression is enabled (gzip)" do
+      let(:compression) { "gzip" }
+
+      it "initializes the HTTP client" do
+        expect(http.compression).to eq "gzip"
+      end
+    end
+
+    context "when compression is enabled (invalid)" do
+      let(:compression) { "invalid" }
+
+      it "raises an error for invalid compression algorithm" do
+        expect { http }.to raise_error(ArgumentError, "invalid compression algorithm: invalid")
+      end
+    end
+  end
 
   describe "#get" do
     it "performs a HTTP GET request and returns the response payload" do

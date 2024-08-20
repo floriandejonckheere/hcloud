@@ -5,9 +5,16 @@ require "http"
 module HCloud
   # @!visibility private
   class HTTP
+    # Supported compression algorithms
+    COMPRESSION_ALGORITHMS = [
+      "gzip",
+    ].freeze
+
     attr_reader :access_token, :endpoint, :logger, :rate_limit, :timeout, :compression
 
     def initialize(access_token, endpoint, logger, rate_limit = false, timeout = 10, compression = nil)
+      raise ArgumentError, "invalid compression algorithm: #{compression}" if compression && !COMPRESSION_ALGORITHMS.include?(compression)
+
       @access_token = access_token
       @endpoint = endpoint
       @logger = logger

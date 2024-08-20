@@ -146,7 +146,7 @@ To prevent this, wrap client calls in a loop that retries the call after it fail
 ### Compression
 
 Enable compression by passing an appropriate `compression` option to `HCloud::Client.new`.
-Current supported options are `nil`, `"gzip"` and `"brotli"`.
+Current supported options are `nil`, and `"gzip"`.
 Compression is disabled by default.
 
 ```ruby
