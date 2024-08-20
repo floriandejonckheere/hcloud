@@ -92,6 +92,7 @@ module HCloud
         .timeout(timeout)
         .use(logging: { logger: logger })
         .then { |h| rate_limit ? h.use(:rate_limiter) : h }
+        .then { |h| compression ? h.use(:auto_deflate, :auto_inflate) : h }
         .encoding("utf-8")
         .auth("Bearer #{access_token}")
     end

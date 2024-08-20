@@ -61,6 +61,21 @@ RSpec.describe HCloud::HTTP do
       expect { http.get("api", one: "two") }.to raise_error HCloud::Errors::ServerError
       expect(stub).to have_been_requested
     end
+
+    context "when compression is enabled (gzip)" do
+      let(:compression) { "gzip" }
+
+      it "performs a HTTP GET request and returns the response payload" do
+        stub = stub_request(:get, "https://endpoint/api")
+          .with(query: { one: "two" })
+          .to_return(body: compress({ foo: "bar" }.to_json), headers: { "Content-Encoding" => "gzip" })
+
+        response = http.get("api", one: "two")
+
+        expect(stub).to have_been_requested
+        expect(response).to eq({ foo: "bar" })
+      end
+    end
   end
 
   describe "#put" do
@@ -91,6 +106,21 @@ RSpec.describe HCloud::HTTP do
 
       expect { http.put("api", one: "two") }.to raise_error HCloud::Errors::ServerError
       expect(stub).to have_been_requested
+    end
+
+    context "when compression is enabled (gzip)" do
+      let(:compression) { "gzip" }
+
+      it "performs a HTTP PUT request" do
+        stub = stub_request(:put, "https://endpoint/api")
+          .with(body: compress({ one: "two" }.to_json), headers: { "Content-Encoding" => "gzip" })
+          .to_return(body: compress({ foo: "bar" }.to_json), headers: { "Content-Encoding" => "gzip" })
+
+        response = http.put("api", one: "two")
+
+        expect(stub).to have_been_requested
+        expect(response).to eq({ foo: "bar" })
+      end
     end
   end
 
@@ -123,6 +153,21 @@ RSpec.describe HCloud::HTTP do
       expect { http.post("api", one: "two") }.to raise_error HCloud::Errors::ServerError
       expect(stub).to have_been_requested
     end
+
+    context "when compression is enabled (gzip)" do
+      let(:compression) { "gzip" }
+
+      it "performs a HTTP POST request" do
+        stub = stub_request(:post, "https://endpoint/api")
+          .with(body: compress({ one: "two" }.to_json), headers: { "Content-Encoding" => "gzip" })
+          .to_return(body: compress({ foo: "bar" }.to_json), headers: { "Content-Encoding" => "gzip" })
+
+        response = http.post("api", one: "two")
+
+        expect(stub).to have_been_requested
+        expect(response).to eq({ foo: "bar" })
+      end
+    end
   end
 
   describe "#delete" do
@@ -148,6 +193,18 @@ RSpec.describe HCloud::HTTP do
 
       expect { http.delete("api") }.to raise_error HCloud::Errors::ServerError
       expect(stub).to have_been_requested
+    end
+
+    context "when compression is enabled (gzip)" do
+      let(:compression) { "gzip" }
+
+      it "performs a HTTP DELETE request" do
+        stub = stub_request(:delete, "https://endpoint/api")
+
+        http.delete("api")
+
+        expect(stub).to have_been_requested
+      end
     end
   end
 end
