@@ -25,7 +25,13 @@ RSpec.describe HCloud::LoadBalancerType, :integration, order: :defined do
     expect(load_balancer_type.max_services).not_to be_zero
     expect(load_balancer_type.max_targets).not_to be_zero
 
-    expect(load_balancer_type.prices.find { |p| p.location == "fsn1" }.price_hourly.net).not_to be_nil
+    price = load_balancer_type.prices.find { |p| p.location == "fsn1" }
+
+    expect(price.included_traffic).not_to be_nil
+    expect(price.price_per_tb_traffic.net).not_to be_nil
+
+    expect(price.price_monthly.net).not_to be_nil
+    expect(price.price_hourly.net).not_to be_nil
 
     expect(load_balancer_type.deprecated).to be_nil
   end

@@ -50,10 +50,6 @@ RSpec.describe HCloud::Pricing, :integration, order: :defined do
     expect(server_type_type_price.price_monthly.gross.to_f).not_to be_zero
     expect(server_type_type_price.price_monthly.net.to_f).not_to be_zero
 
-    # Traffic
-    expect(pricing.traffic.price_per_tb.gross.to_f).not_to be_zero
-    expect(pricing.traffic.price_per_tb.net.to_f).not_to be_zero
-
     # VAT rate
     expect(pricing.vat_rate.to_f).not_to be_zero
 

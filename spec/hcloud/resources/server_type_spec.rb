@@ -23,12 +23,17 @@ RSpec.describe HCloud::ServerType, :integration, order: :defined do
     expect(server_type.cores).to eq 1
     expect(server_type.disk).to eq 20
     expect(server_type.memory).to eq 2
-    expect(server_type.included_traffic).to eq 21_990_232_555_520
 
     expect(server_type.cpu_type).to eq "shared"
     expect(server_type.storage_type).to eq "local"
 
-    expect(server_type.prices.find { |p| p.location == "fsn1" }.price_hourly.net).not_to be_nil
+    price = server_type.prices.find { |p| p.location == "fsn1" }
+
+    expect(price.included_traffic).not_to be_nil
+    expect(price.price_per_tb_traffic.net).not_to be_nil
+
+    expect(price.price_monthly.net).not_to be_nil
+    expect(price.price_hourly.net).not_to be_nil
 
     expect(server_type).not_to be_deprecated
   end
