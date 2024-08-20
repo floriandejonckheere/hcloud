@@ -10,6 +10,7 @@ group :development do
 end
 
 group :development, :test do
+  gem "brotli"
   gem "debug", require: false
   gem "dotenv", require: false
   gem "ffaker", require: false

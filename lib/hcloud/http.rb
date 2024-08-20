@@ -8,6 +8,7 @@ module HCloud
     # Supported compression algorithms
     COMPRESSION_ALGORITHMS = [
       "gzip",
+      "brotli",
     ].freeze
 
     attr_reader :access_token, :endpoint, :logger, :rate_limit, :timeout, :compression
