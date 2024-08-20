@@ -5,15 +5,15 @@ require "http"
 module HCloud
   # @!visibility private
   class HTTP
-    attr_reader :access_token, :endpoint, :logger, :rate_limit, :timeout, :encoding
+    attr_reader :access_token, :endpoint, :logger, :rate_limit, :timeout, :compression
 
-    def initialize(access_token, endpoint, logger, rate_limit = false, timeout = 10, encoding = nil)
+    def initialize(access_token, endpoint, logger, rate_limit = false, timeout = 10, compression = nil)
       @access_token = access_token
       @endpoint = endpoint
       @logger = logger
       @rate_limit = rate_limit
       @timeout = timeout
-      @encoding = encoding
+      @compression = compression
     end
 
     def get(path, params = {})
@@ -80,7 +80,7 @@ module HCloud
 
     def http
       @http ||= ::HTTP
-        .headers(user_agent: "#{HCloud::NAME}/#{HCloud::VERSION}", "Accept-Encoding" => encoding)
+        .headers(user_agent: "#{HCloud::NAME}/#{HCloud::VERSION}", "Accept-Encoding" => compression)
         .accept("application/json")
         .timeout(timeout)
         .use(logging: { logger: logger })
