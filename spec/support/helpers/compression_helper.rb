@@ -1,28 +1,22 @@
 # frozen_string_literal: true
 
 module CompressionHelper
-  # lib/active_support/gzip.rb
-  class Stream < StringIO
-    def initialize(*)
-      super
-      set_encoding "BINARY"
+  def compress(source, method)
+    case method
+    when :gzip
+      Zlib.gzip(source)
+    when :brotli
+      Brotli.deflate(source)
     end
-
-    def close = rewind
   end
 
-  # Decompresses a gzipped string.
-  def decompress(source)
-    Zlib::GzipReader.wrap(StringIO.new(source), &:read)
-  end
-
-  # Compresses a string using gzip.
-  def compress(source, level = Zlib::DEFAULT_COMPRESSION, strategy = Zlib::DEFAULT_STRATEGY)
-    output = Stream.new
-    gz = Zlib::GzipWriter.new(output, level, strategy)
-    gz.write(source)
-    gz.close
-    output.string
+  def decompress(source, method)
+    case method
+    when :gzip
+      Zlib.gunzip(source)
+    when :brotli
+      Brotli.inflate(source)
+    end
   end
 end
 

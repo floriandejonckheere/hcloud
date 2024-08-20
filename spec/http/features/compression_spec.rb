@@ -14,7 +14,7 @@ RSpec.describe HTTP::Features::Compression do
   describe "gzip compression" do
     let(:options) { { method: "gzip" } }
 
-    let(:connection) { mock_connection }
+    let(:connection) { mock_connection(compress("Hello, World!", :gzip)) }
 
     let(:response) { HTTP::Response.new(version: "1.1", status: 200, headers: { "Content-Encoding" => "gzip" }, connection: connection, request: request) }
 
@@ -23,7 +23,7 @@ RSpec.describe HTTP::Features::Compression do
         wrapped_request = feature.wrap_request(request)
 
         expect(wrapped_request.headers["Content-Encoding"]).to eq "gzip"
-        expect(Zlib.gunzip(wrapped_request.body.each.to_a.join)).to eq "Hello, World!"
+        expect(decompress(wrapped_request.body.each.to_a.join, :gzip)).to eq "Hello, World!"
       end
     end
 
@@ -36,12 +36,12 @@ RSpec.describe HTTP::Features::Compression do
     end
   end
 
-  def mock_connection
+  def mock_connection(body)
     double.tap do |connection|
       allow(connection)
         .to receive(:readpartial)
         .and_return(
-          Zlib.gzip("Hello, World!"), # compressed
+          body, # first chunk
           false # end of stream
         )
     end

@@ -68,7 +68,7 @@ RSpec.describe HCloud::HTTP do
       it "performs a HTTP GET request and returns the response payload" do
         stub = stub_request(:get, "https://endpoint/api")
           .with(query: { one: "two" })
-          .to_return(body: compress({ foo: "bar" }.to_json), headers: { "Content-Encoding" => "gzip" })
+          .to_return(body: compress({ foo: "bar" }.to_json, :gzip), headers: { "Content-Encoding" => "gzip" })
 
         response = http.get("api", one: "two")
 
@@ -113,8 +113,8 @@ RSpec.describe HCloud::HTTP do
 
       it "performs a HTTP PUT request" do
         stub = stub_request(:put, "https://endpoint/api")
-          .with(body: compress({ one: "two" }.to_json), headers: { "Content-Encoding" => "gzip" })
-          .to_return(body: compress({ foo: "bar" }.to_json), headers: { "Content-Encoding" => "gzip" })
+          .with(body: compress({ one: "two" }.to_json, :gzip), headers: { "Content-Encoding" => "gzip" })
+          .to_return(body: compress({ foo: "bar" }.to_json, :gzip), headers: { "Content-Encoding" => "gzip" })
 
         response = http.put("api", one: "two")
 
@@ -159,8 +159,8 @@ RSpec.describe HCloud::HTTP do
 
       it "performs a HTTP POST request" do
         stub = stub_request(:post, "https://endpoint/api")
-          .with(body: compress({ one: "two" }.to_json), headers: { "Content-Encoding" => "gzip" })
-          .to_return(body: compress({ foo: "bar" }.to_json), headers: { "Content-Encoding" => "gzip" })
+          .with(body: compress({ one: "two" }.to_json, :gzip), headers: { "Content-Encoding" => "gzip" })
+          .to_return(body: compress({ foo: "bar" }.to_json, :gzip), headers: { "Content-Encoding" => "gzip" })
 
         response = http.post("api", one: "two")
 
