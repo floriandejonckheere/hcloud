@@ -42,7 +42,7 @@ RSpec.describe HTTP::Features::Compression do
         .to receive(:readpartial)
         .and_return(
           body, # first chunk
-          false # end of stream
+          false, # end of stream
         )
     end
   end

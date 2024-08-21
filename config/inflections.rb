@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 HCloud.loader.inflector.inflect(
+  "block_io" => "BlockIO",
   "dns_pointer" => "DNSPointer",
   "floating_ip" => "FloatingIP",
   "floating_ip_price" => "FloatingIPPrice",
