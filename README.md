@@ -153,7 +153,7 @@ Compression is disabled by default.
 client = HCloud::Client.new(access_token: "my_access_token", compression: "gzip")
 ```
 
-To use Brotli compression, you need to install the `brotli` gem:
+To use Brotli compression, you need to install the `brotli` gem (at least version 0.3.0):
 
 ```ruby
 gem "brotli"

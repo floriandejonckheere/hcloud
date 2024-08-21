@@ -14,10 +14,6 @@ RSpec.describe HTTP::Features::Compression do
   describe "gzip compression" do
     let(:options) { { method: "gzip" } }
 
-    let(:connection) { mock_connection(compress("Hello, World!", :gzip)) }
-
-    let(:response) { HTTP::Response.new(version: "1.1", status: 200, headers: { "Content-Encoding" => "gzip" }, connection: connection, request: request) }
-
     describe "#wrap_request" do
       it "compresses the request body" do
         wrapped_request = feature.wrap_request(request)
@@ -29,6 +25,33 @@ RSpec.describe HTTP::Features::Compression do
 
     describe "#wrap_response" do
       it "decompresses the response body" do
+        connection = mock_connection(compress("Hello, World!", :gzip))
+        response = HTTP::Response.new(version: "1.1", status: 200, headers: { "Content-Encoding" => "gzip" }, connection: connection, request: request)
+
+        wrapped_response = feature.wrap_response(response)
+
+        expect(wrapped_response.body.to_s).to eq "Hello, World!"
+      end
+    end
+  end
+
+  describe "brotli compression" do
+    let(:options) { { method: "brotli" } }
+
+    describe "#wrap_request" do
+      it "compresses the request body" do
+        wrapped_request = feature.wrap_request(request)
+
+        expect(wrapped_request.headers["Content-Encoding"]).to eq "brotli"
+        expect(decompress(wrapped_request.body.each.to_a.join, :brotli)).to eq "Hello, World!"
+      end
+    end
+
+    describe "#wrap_response" do
+      it "decompresses the response body" do
+        connection = mock_connection(compress("Hello, World!", :brotli))
+        response = HTTP::Response.new(version: "1.1", status: 200, headers: { "Content-Encoding" => "brotli" }, connection: connection, request: request)
+
         wrapped_response = feature.wrap_response(response)
 
         expect(wrapped_response.body.to_s).to eq "Hello, World!"

@@ -1,20 +1,12 @@
 # frozen_string_literal: true
 
-require "zlib"
-
-begin
-  require "brotli"
-rescue LoadError
-  # Ignore
-end
-
 # @!visibility private
 module HTTP
   # @!visibility private
   module Features
     # @!visibility private
     class Compression < Feature
-      SUPPORTED_ENCODING = ["gzip"].freeze
+      SUPPORTED_ENCODING = ["gzip", "brotli"].freeze
 
       HTTP::Options.register_feature(:compression, self)
 
@@ -25,7 +17,7 @@ module HTTP
 
         @method = @opts.fetch(:method, "gzip").to_s || "gzip"
 
-        raise Error, "Only gzip method is supported" unless SUPPORTED_ENCODING.include?(method)
+        raise Error, "Only gzip and brotli methods are supported" unless SUPPORTED_ENCODING.include?(method)
       end
 
       def wrap_request(request)
@@ -69,6 +61,8 @@ module HTTP
         case method
         when "gzip"
           Request::GzippedBody.new(body)
+        when "brotli"
+          Request::BrotliBody.new(body)
         end
       end
 
@@ -76,6 +70,8 @@ module HTTP
         case method
         when "gzip"
           HTTP::Response::Body.new(Response::GzipInflater.new(connection))
+        when "brotli"
+          HTTP::Response::Body.new(Response::BrotliInflater.new(connection))
         end
       end
     end
