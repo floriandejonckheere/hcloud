@@ -91,9 +91,9 @@ module HCloud
         .headers(user_agent: "#{HCloud::NAME}/#{HCloud::VERSION}", "Accept-Encoding" => compression)
         .accept("application/json")
         .timeout(timeout)
-        .use(logging: { logger: logger })
         .then { |h| rate_limit ? h.use(:rate_limiter) : h }
         .then { |h| compression ? h.use(compression: { method: compression }) : h }
+        .use(logging: { logger: logger })
         .encoding("utf-8")
         .auth("Bearer #{access_token}")
     end
