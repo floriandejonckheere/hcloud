@@ -88,7 +88,7 @@ module HCloud
 
     def http
       @http ||= ::HTTP
-        .headers(user_agent: "#{HCloud::NAME}/#{HCloud::VERSION}", "Accept-Encoding" => compression)
+        .headers(user_agent: "#{HCloud::NAME}/#{HCloud::VERSION}")
         .accept("application/json")
         .timeout(timeout)
         .then { |h| rate_limit ? h.use(:rate_limiter) : h }

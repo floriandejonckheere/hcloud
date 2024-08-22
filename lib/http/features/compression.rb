@@ -6,7 +6,10 @@ module HTTP
   module Features
     # @!visibility private
     class Compression < Feature
-      SUPPORTED_ENCODING = ["gzip", "brotli"].freeze
+      SUPPORTED_ENCODING = {
+        "gzip" => "gzip",
+        "brotli" => "br",
+      }.freeze
 
       HTTP::Options.register_feature(:compression, self)
 
@@ -17,18 +20,22 @@ module HTTP
 
         @method = @opts.fetch(:method, "gzip").to_s || "gzip"
 
-        raise Error, "Only gzip and brotli methods are supported" unless SUPPORTED_ENCODING.include?(method)
+        raise Error, "Only gzip and brotli methods are supported" unless SUPPORTED_ENCODING.key?(method)
       end
 
       def wrap_request(request)
         return request unless method
+
+        # Set Accept-Encoding header
+        request.headers[Headers::ACCEPT_ENCODING] = SUPPORTED_ENCODING[method]
+
         return request if request.body.size.zero? # rubocop:disable Style/ZeroLengthPredicate
 
         # Delete Content-Length header, it is set automatically by HTTP::Request::Writer
         request.headers.delete(Headers::CONTENT_LENGTH)
 
         # Set Content-Encoding header
-        request.headers[Headers::CONTENT_ENCODING] = method
+        request.headers[Headers::CONTENT_ENCODING] = SUPPORTED_ENCODING[method]
 
         HTTP::Request.new(
           version: request.version,
@@ -42,7 +49,7 @@ module HTTP
       end
 
       def wrap_response(response)
-        return response unless SUPPORTED_ENCODING.include? response.headers.get(Headers::CONTENT_ENCODING).first
+        return response unless SUPPORTED_ENCODING.value?(response.headers.get(Headers::CONTENT_ENCODING).first)
 
         HTTP::Response.new(
           status: response.status,
