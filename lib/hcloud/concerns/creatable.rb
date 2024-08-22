@@ -26,7 +26,7 @@ module HCloud
       end
 
       # Convert creatable_attributes into a key-value list
-      # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
+      # rubocop:disable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
       def creatable_params
         # Split simple and nested attributes
         nested_attributes, simple_attributes = creatable_attributes.partition { |a| a.respond_to? :each }
@@ -37,7 +37,7 @@ module HCloud
           .merge(nested_attributes.reduce(&:merge).to_h { |k, v| [k.to_s, Array(v).filter_map { |w| send(k)&.send_wrap(w) }.first] })
           .compact_blank
       end
-      # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
+      # rubocop:enable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
     end
 
     class_methods do

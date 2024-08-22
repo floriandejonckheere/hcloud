@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/CyclomaticComplexity,Metrics/AbcSize
+# rubocop:disable Metrics/CyclomaticComplexity
 module HCloud
   # @!visibility private
   class ResourceType
@@ -80,7 +80,7 @@ module HCloud
     end
   end
 end
-# rubocop:enable Metrics/CyclomaticComplexity,Metrics/AbcSize
+# rubocop:enable Metrics/CyclomaticComplexity
 
 ActiveModel::Type.register(:action, HCloud::ResourceType.Type("HCloud::Action"))
 ActiveModel::Type.register(:algorithm, HCloud::ResourceType.Type("HCloud::Algorithm"))
