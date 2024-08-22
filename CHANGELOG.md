@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## HCloud v2.2.0 (2024-08-22)
 
 - Add support for (de-)compression of HTTP requests
 
