@@ -14,7 +14,7 @@ module HCloud
 
     attribute :currency
 
-    attribute :floating_ip, :floating_ip_price
+    attribute :floating_ip, :floating_ip_price, deprecated: true
     attribute :floating_ips, :floating_ip_prices, array: true, default: -> { [] }
 
     attribute :image, :image_price

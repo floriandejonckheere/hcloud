@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add deprecation warning for `Pricing#floating_ip`
+
 ## HCloud v2.2.0 (2024-08-22)
 
 - Add support for (de-)compression of HTTP requests
