@@ -10,9 +10,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (7.1.4)
-      activesupport (= 7.1.4)
-    activesupport (7.1.4)
+    activemodel (7.1.4.1)
+      activesupport (= 7.1.4.1)
+    activesupport (7.1.4.1)
       base64
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -56,7 +56,7 @@ GEM
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    i18n (1.14.5)
+    i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
     irb (1.12.0)
