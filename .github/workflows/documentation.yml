@@ -31,7 +31,7 @@ jobs:
           apk add build-base cmake git tar
 
       - name: Cache Gems
-        uses: actions/cache@v4.1.0
+        uses: actions/cache@v4.1.2
         with:
           path: vendor/bundle
           key: Linux-3.3-gem-${{ hashFiles('**/Gemfile.lock') }}
