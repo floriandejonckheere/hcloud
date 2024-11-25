@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Removed `included_traffic` attribute from `ServerType`
+- Removed `traffic` attribute from `Pricing`
 
 ## HCloud v2.2.1 (2024-08-30)
 

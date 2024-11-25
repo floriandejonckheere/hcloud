@@ -27,7 +27,7 @@ module HCloud
 
     attribute :server_types, :server_type_price, array: true, default: -> { [] }
 
-    attribute :traffic, :traffic_price, deprecated: true
+    attribute :traffic_price, deprecated: true
 
     attribute :vat_rate
 
