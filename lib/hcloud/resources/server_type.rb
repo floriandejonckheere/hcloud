@@ -31,10 +31,6 @@ module HCloud
     attribute :disk, :integer
     attribute :memory, :integer
 
-    # FIXME: Attribute will return null on 2024-08-05
-    # FIXME: Attribute will be removed on 2024-11-05
-    attribute :included_traffic, :integer, deprecated: true
-
     attribute :cpu_type
     attribute :storage_type
 

@@ -29,7 +29,6 @@ RSpec.describe HCloud::ServerType, :integration, order: :defined do
 
     price = server_type.prices.find { |p| p.location == "fsn1" }
 
-    expect(price.included_traffic).not_to be_nil
     expect(price.price_per_tb_traffic.net).not_to be_nil
 
     expect(price.price_monthly.net).not_to be_nil

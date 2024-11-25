@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Removed `included_traffic` attribute from `ServerType`
+
 ## HCloud v2.2.1 (2024-08-30)
 
 - Add deprecation warning for `Pricing#floating_ip`
