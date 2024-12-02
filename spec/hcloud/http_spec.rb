@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::HTTP do
-  subject(:http) { described_class.new("access_token", "https://endpoint/", Logger.new("/dev/null"), false, 10, compression) }
+  subject(:http) { described_class.new("access_token", "https://endpoint/", Logger.new(File::NULL), false, 10, compression) }
 
   let(:compression) { nil }
 

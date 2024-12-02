@@ -23,7 +23,7 @@ module HCloud
 
     attr_reader :access_token, :endpoint, :logger, :rate_limit, :timeout, :compression
 
-    def initialize(access_token:, endpoint: "https://api.hetzner.cloud/v1", logger: Logger.new("/dev/null"), rate_limit: false, timeout: 10, compression: nil)
+    def initialize(access_token:, endpoint: "https://api.hetzner.cloud/v1", logger: Logger.new(File::NULL), rate_limit: false, timeout: 10, compression: nil)
       @access_token = access_token
       @endpoint = endpoint
       @logger = logger
