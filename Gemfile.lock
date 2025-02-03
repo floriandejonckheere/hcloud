@@ -46,7 +46,7 @@ GEM
     domain_name (0.6.20240107)
     dotenv (3.1.7)
     drb (2.2.1)
-    ffaker (2.23.0)
+    ffaker (2.24.0)
     ffi (1.16.3)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
