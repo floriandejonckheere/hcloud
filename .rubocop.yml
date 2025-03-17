@@ -1,5 +1,7 @@
 require:
   - rubocop-performance
+
+plugins:
   - rubocop-rspec
 
 AllCops:
