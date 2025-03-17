@@ -37,7 +37,11 @@ RSpec.describe CoreExt::SendWrap do
     subject(:object) { { foo: "bar" } }
 
     it "sends a message to the object" do
-      expect(object.send_wrap(:to_s)).to eq "{:foo=>\"bar\"}"
+      if RUBY_VERSION >= "3.4"
+        expect(object.send_wrap(:to_s)).to eq "{foo: \"bar\"}"
+      else
+        expect(object.send_wrap(:to_s)).to eq "{:foo=>\"bar\"}"
+      end
     end
 
     it "does not send a message to the objects in the hash" do
