@@ -4,7 +4,7 @@ begin
   require "brotli"
 
   version = Brotli::VERSION.split(".").map(&:to_i)
-  raise ArgumentError, "incompatible version of brotli: #{Brotli::VERSION}, needs to be at least 0.3.0" unless (version[0]).positive? || version[1] >= 3
+  raise ArgumentError, "incompatible version of brotli: #{Brotli::VERSION}, needs to be at least 0.3.0" unless version[0].positive? || version[1] >= 3
 rescue LoadError
   # Ignore
 end
