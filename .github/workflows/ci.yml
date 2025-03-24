@@ -30,7 +30,7 @@ jobs:
           apk add build-base cmake git tar yaml-dev libffi-dev
 
       - name: Cache Gems
-        uses: actions/cache@v4.2.2
+        uses: actions/cache@v4.2.3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-${{ matrix.ruby }}-gem-${{ hashFiles('**/Gemfile.lock') }}
