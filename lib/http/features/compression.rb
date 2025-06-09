@@ -18,7 +18,7 @@ module HTTP
       def initialize(**)
         super
 
-        @method = @opts.fetch(:method, "gzip").to_s || "gzip"
+        @method = @opts.fetch(:method, "gzip").to_s
 
         raise Error, "Only gzip and brotli methods are supported" unless SUPPORTED_ENCODING.key?(method)
       end
