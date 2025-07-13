@@ -23,6 +23,8 @@ module HTTP
     end
 
     def wrap_response(response)
+      return response if response["RateLimit-Limit"].nil? || response["RateLimit-Remaining"].nil? || response["RateLimit-Reset"].nil?
+
       # Extract rate limits
       @limit = response["RateLimit-Limit"].to_i
       @remaining = response["RateLimit-Remaining"].to_i

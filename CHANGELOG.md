@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Add `LoadBalancerPublicInterfaceDisabled` error class
+- Fix a zero divion error in the rate limiter when rate limit headers are not set
 
 ## HCloud v3.0.0 (2024-11-25)
 
