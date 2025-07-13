@@ -5,6 +5,7 @@
 - Add `LoadBalancerPublicInterfaceDisabled` error class
 - Fix a zero divion error in the rate limiter when rate limit headers are not set
 - Store total entries in collection when calling #count
+- Implement Storage Boxes
 
 ## HCloud v3.0.0 (2024-11-25)
 

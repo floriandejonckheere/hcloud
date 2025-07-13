@@ -96,6 +96,8 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [Server Actions](lib/hcloud/resources/server.rb)               | Not implemented       |
 | [Server Types](lib/hcloud/resources/server_type.rb)            | Implemented           |
 | [SSH Keys](lib/hcloud/resources/ssh_key.rb)                    | Implemented           |
+| [Storage Boxes](lib/hcloud/resources/storage_box.rb)           | Implemented           |
+| [Storage Box Actions](lib/hcloud/resources/storage_box.rb)     | Not implemented       |
 | [Volumes](lib/hcloud/resources/volume.rb)                      | Implemented           |
 | [Volume Actions](lib/hcloud/resources/volume.rb)               | Implemented           |
 | [Metadata](lib/hcloud/resources/metadata.rb)                   | Implemented           |
@@ -158,6 +160,12 @@ To use Brotli compression, you need to install the `brotli` gem (at least versio
 ```ruby
 gem "brotli"
 ```
+
+## Storage boxes
+
+Please note that storage boxes require a different API endpoint.
+The endpoint for **storage boxes** is `https://api.hetzner.com/v1`.
+The endpoint for **all other resources** is `https://api.hetzner.cloud/v1`.
 
 ## Testing
 
