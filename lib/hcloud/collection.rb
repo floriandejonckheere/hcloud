@@ -63,6 +63,14 @@ module HCloud
       count.zero?
     end
 
+    def inspect
+      filters = filter_by.any? ? "filters: (#{filter_by.map { |k, v| "#{k} = #{v.inspect}" }.join(', ')})" : nil
+      sort = sort_by ? "sort: (#{sort_by.join(', ')})" : nil
+      label_selector = label_selector ? "labels: (#{label_selector.map { |k, v| "#{k} = #{v.inspect}" }.join(', ')})" : nil
+
+      "#<#{self.class}#{[filters, sort, label_selector].compact.join(', ').presence&.prepend(' ')} page: #{page}, per_page: #{per_page}, total_entries: #{total_entries.inspect}>"
+    end
+
     delegate :[], :last, to: :to_a
 
     private
