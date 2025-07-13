@@ -166,6 +166,7 @@ gem "brotli"
 Please note that storage boxes require a different API endpoint.
 The endpoint for **storage boxes** is `https://api.hetzner.com/v1`.
 The endpoint for **all other resources** is `https://api.hetzner.cloud/v1`.
+The storage box endpoint is passed as an extra argument to the `HCloud::Client`, see [Endpoint](#endpoint) for more information.
 
 ## Testing
 
@@ -194,10 +195,14 @@ When executing the test suite, set `LOG_LEVEL` environment variable to `debug` i
 
 ### Endpoint
 
-`HCloud::Client` also accepts an alternate endpoint:
+`HCloud::Client` also accepts alternate endpoints:
 
 ```ruby
-client = HCloud::Client.new(access_token: "my_access_token", endpoint: "https://myproxy/v1")
+client = HCloud::Client.new(
+  endpoint: "https://myproxy/v1",
+  storage_box_endpoint: "https://myproxy/storage-box/v1",
+  access_token: "my_access_token",
+)
 ```
 
 ## Releasing

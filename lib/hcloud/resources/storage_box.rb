@@ -79,5 +79,9 @@ module HCloud
     def updatable_attributes
       [:name, :labels]
     end
+
+    def self.client
+      HCloud::Client.connection.storage_box_client
+    end
   end
 end
