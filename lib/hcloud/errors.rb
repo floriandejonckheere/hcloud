@@ -36,6 +36,7 @@ module HCloud
     class InvalidInput < Error; end
     class JSONError < Error; end
     class LoadBalancerNotAttachedToNetwork < Error; end
+    class LoadBalancerPublicInterfaceDisabled < Error; end
     class Locked < Error; end
     class Maintenance < Error; end
     class NetworksOverlap < Error; end

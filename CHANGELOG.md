@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add `LoadBalancerPublicInterfaceDisabled` error class
+
 ## HCloud v3.0.0 (2024-11-25)
 
 - Remove `included_traffic` attribute from `ServerType`
