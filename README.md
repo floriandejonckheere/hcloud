@@ -69,38 +69,42 @@ It expects you to use it in a sane way.
 
 The following table lists the Hetzner Cloud API endpoints that are currently implemented.
 
-| Resource                                                       | State                 |
-|----------------------------------------------------------------|-----------------------|
-| [Actions](lib/hcloud/resources/action.rb)                      | Implemented           |
-| [Certificates](lib/hcloud/resources/certificate.rb)            | Implemented           |
-| [Certificate Actions](lib/hcloud/resources/certificate.rb)     | Implemented           |
-| [Datacenters](lib/hcloud/resources/datacenter.rb)              | Implemented           |
-| [Firewalls](lib/hcloud/resources/firewall.rb)                  | Implemented           |
-| [Firewall Actions](lib/hcloud/resources/firewall.rb)           | Implemented           |
-| [Floating IPs](lib/hcloud/resources/floating_ip.rb)            | Implemented           |
-| [Floating IP Actions](lib/hcloud/resources/floating_ip.rb)     | Implemented           |
-| [Images](lib/hcloud/resources/image.rb)                        | Implemented           |
-| [Image Actions](lib/hcloud/resources/image.rb)                 | Implemented           |
-| [ISOs](lib/hcloud/resources/iso.rb)                            | Implemented           |
-| [Load Balancers](lib/hcloud/resources/load_balancer.rb)        | Implemented           |
-| [Load Balancer Actions](lib/hcloud/resources/load_balancer.rb) | Implemented           |
-| [Load Balancer Types](lib/hcloud/resources/load_balancer.rb)   | Implemented           |
-| [Locations](lib/hcloud/resources/location.rb)                  | Implemented           |
-| [Primary IPs](lib/hcloud/resources/primary_ip.rb)              | Implemented           |
-| [Primary IP Actions](lib/hcloud/resources/primary_ip.rb)       | Implemented           |
-| [Networks](lib/hcloud/resources/network.rb)                    | Implemented           |
-| [Network Actions](lib/hcloud/resources/network.rb)             | Implemented           |
-| [Placement Groups](lib/hcloud/resources/placement_group.rb)    | Implemented           |
-| [Pricing](lib/hcloud/resources/pricing.rb)                     | Implemented           |
-| [Servers](lib/hcloud/resources/server.rb)                      | Partially implemented |
-| [Server Actions](lib/hcloud/resources/server.rb)               | Not implemented       |
-| [Server Types](lib/hcloud/resources/server_type.rb)            | Implemented           |
-| [SSH Keys](lib/hcloud/resources/ssh_key.rb)                    | Implemented           |
-| [Storage Boxes](lib/hcloud/resources/storage_box.rb)           | Implemented           |
-| [Storage Box Actions](lib/hcloud/resources/storage_box.rb)     | Implemented           |
-| [Volumes](lib/hcloud/resources/volume.rb)                      | Implemented           |
-| [Volume Actions](lib/hcloud/resources/volume.rb)               | Implemented           |
-| [Metadata](lib/hcloud/resources/metadata.rb)                   | Implemented           |
+| Resource                                                                         | State                 |
+|----------------------------------------------------------------------------------|-----------------------|
+| [Actions](lib/hcloud/resources/action.rb)                                        | Implemented           |
+| [Certificates](lib/hcloud/resources/certificate.rb)                              | Implemented           |
+| [Certificate Actions](lib/hcloud/resources/certificate.rb)                       | Implemented           |
+| [Datacenters](lib/hcloud/resources/datacenter.rb)                                | Implemented           |
+| [Firewalls](lib/hcloud/resources/firewall.rb)                                    | Implemented           |
+| [Firewall Actions](lib/hcloud/resources/firewall.rb)                             | Implemented           |
+| [Floating IPs](lib/hcloud/resources/floating_ip.rb)                              | Implemented           |
+| [Floating IP Actions](lib/hcloud/resources/floating_ip.rb)                       | Implemented           |
+| [Images](lib/hcloud/resources/image.rb)                                          | Implemented           |
+| [Image Actions](lib/hcloud/resources/image.rb)                                   | Implemented           |
+| [ISOs](lib/hcloud/resources/iso.rb)                                              | Implemented           |
+| [Load Balancers](lib/hcloud/resources/load_balancer.rb)                          | Implemented           |
+| [Load Balancer Actions](lib/hcloud/resources/load_balancer.rb)                   | Implemented           |
+| [Load Balancer Types](lib/hcloud/resources/load_balancer.rb)                     | Implemented           |
+| [Locations](lib/hcloud/resources/location.rb)                                    | Implemented           |
+| [Primary IPs](lib/hcloud/resources/primary_ip.rb)                                | Implemented           |
+| [Primary IP Actions](lib/hcloud/resources/primary_ip.rb)                         | Implemented           |
+| [Networks](lib/hcloud/resources/network.rb)                                      | Implemented           |
+| [Network Actions](lib/hcloud/resources/network.rb)                               | Implemented           |
+| [Placement Groups](lib/hcloud/resources/placement_group.rb)                      | Implemented           |
+| [Pricing](lib/hcloud/resources/pricing.rb)                                       | Implemented           |
+| [Servers](lib/hcloud/resources/server.rb)                                        | Partially implemented |
+| [Server Actions](lib/hcloud/resources/server.rb)                                 | Not implemented       |
+| [Server Types](lib/hcloud/resources/server_type.rb)                              | Implemented           |
+| [SSH Keys](lib/hcloud/resources/ssh_key.rb)                                      | Implemented           |
+| [Storage Boxes](lib/hcloud/resources/storage_box.rb)                             | Implemented           |
+| [Storage Box Actions](lib/hcloud/resources/storage_box.rb)                       | Implemented           |
+| [Storage Box Subaccount](lib/hcloud/resources/storage_box/subaccount.rb)         | Not implemented       |
+| [Storage Box Subaccount Actions](lib/hcloud/resources/storage_box/subaccount.rb) | Not implemented       |
+| [Storage Box Snapshot](lib/hcloud/resources/storage_box/snapshot.rb)             | Not implemented       |
+| [Storage Box Snapshot Actions](lib/hcloud/resources/storage_box/snapshot.rb)     | Not implemented       |
+| [Volumes](lib/hcloud/resources/volume.rb)                                        | Implemented           |
+| [Volume Actions](lib/hcloud/resources/volume.rb)                                 | Implemented           |
+| [Metadata](lib/hcloud/resources/metadata.rb)                                     | Implemented           |
 
 ### Pagination
 
