@@ -45,6 +45,16 @@ module HCloud
   #     storage_box.deleted?
   #     # => true
   #
+  # == List storage box contents
+  #
+  #     storage_box = HCloud::StorageBox.find(1)
+  #     storage_box.contents
+  #     # => ["photos", "documents", ...]
+  #
+  #     storage_box = HCloud::StorageBox.find(1)
+  #     storage_box.contents(folder: "photos")
+  #     # => ["photo1.jpg", "photo2.jpg", ...]
+  #
   class StorageBox < Resource
     queryable
     creatable
@@ -71,6 +81,12 @@ module HCloud
     attribute :snapshot_plan, :storage_box_snapshot_plan
 
     attribute :protection, :protection
+
+    def contents(folder: nil)
+      client
+        .get("/#{resource_name.pluralize}/#{id}/folders", folder: folder)
+        .fetch(:folders)
+    end
 
     def creatable_attributes
       [:name, :storage_box_type, :password, :ssh_keys, :location, :access_settings, :labels]
