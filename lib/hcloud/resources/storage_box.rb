@@ -163,7 +163,7 @@ module HCloud
     end
 
     def creatable_attributes
-      [:name, :storage_box_type, :password, :ssh_keys, :location, :access_settings, :labels]
+      [:name, :storage_box_type, :password, :ssh_keys, :location, :labels, access_settings: [:samba_enabled, :ssh_enabled, :webdav_enabled, :zfs_enabled, :reachable_externally]]
     end
 
     def updatable_attributes
