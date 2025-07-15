@@ -55,6 +55,69 @@ module HCloud
   #     storage_box.contents(folder: "photos")
   #     # => ["photo1.jpg", "photo2.jpg", ...]
   #
+  # = Actions
+  # == List actions
+  #
+  #     actions = HCloud::StorageBox.find(1).actions
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  # == Sort actions
+  #
+  #     HCloud::StorageBox.find(1).actions.sort(finished: :desc)
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  #     HCloud::StorageBox.find(1).actions.sort(:command, finished: :asc)
+  #     # => [#<HCloud::Actions id: 1, ...>, ...]
+  #
+  # == Search actions
+  #
+  #     HCloud::StorageBox.find(1).actions.where(command: "start_resource")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     HCloud::StorageBox.find(1).actions.where(status: "success")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Find action by ID
+  #
+  #     HCloud::StorageBox.find(1).actions.find(1)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # = Resource-specific actions
+  # == Change type
+  #
+  #     HCloud::StorageBox.find(1).change_type(storage_box_type: "bx21")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Reset password
+  #
+  #     HCloud::StorageBox.find(1).reset_password(password: "mypassword")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Update access settings
+  #
+  #     HCloud::StorageBox.find(1).update_access_settings(samba_enabled: false, ssh_enabled: true, webdav_enabled: false, zfs_enabled: false, reachable_externally: false)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Enable snapshot plan
+  #
+  #     HCloud::StorageBox.find(1).enable_snapshot_plan(max_snapshots: 10, minute: 30, hour: 3, day_of_week: nil, day_of_month: nil)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Disable snapshot plan
+  #
+  #     HCloud::StorageBox.find(1).disable_snapshot_plan
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Rollback snapshot
+  #
+  #     HCloud::StorageBox.find(1).rollback_snapshot(snapshot_id: 42)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Change protection
+  #
+  #     HCloud::StorageBox.find(1).change_protection(delete: true)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   class StorageBox < Resource
     queryable
     creatable
@@ -81,6 +144,17 @@ module HCloud
     attribute :snapshot_plan, :storage_box_snapshot_plan
 
     attribute :protection, :protection
+
+    action :change_type
+    action :reset_password
+    action :update_access_settings
+
+    action :enable_snapshot_plan
+    action :disable_snapshot_plan
+
+    action :rollback_snapshot
+
+    action :change_protection
 
     def contents(folder: nil)
       client

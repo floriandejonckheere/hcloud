@@ -97,7 +97,7 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [Server Types](lib/hcloud/resources/server_type.rb)            | Implemented           |
 | [SSH Keys](lib/hcloud/resources/ssh_key.rb)                    | Implemented           |
 | [Storage Boxes](lib/hcloud/resources/storage_box.rb)           | Implemented           |
-| [Storage Box Actions](lib/hcloud/resources/storage_box.rb)     | Partially implemented |
+| [Storage Box Actions](lib/hcloud/resources/storage_box.rb)     | Implemented           |
 | [Volumes](lib/hcloud/resources/volume.rb)                      | Implemented           |
 | [Volume Actions](lib/hcloud/resources/volume.rb)               | Implemented           |
 | [Metadata](lib/hcloud/resources/metadata.rb)                   | Implemented           |
