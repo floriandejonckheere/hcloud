@@ -29,7 +29,7 @@ module HCloud
   #     storage_box.created?
   #     # => true
   #
-  #     firewall = HCloud::StorageBox.create(name: "my_storage_box", storage_box_type: "bx20", location: "fsn1", password: "my_password")
+  #     storage_box = HCloud::StorageBox.create(name: "my_storage_box", storage_box_type: "bx20", location: "fsn1", password: "my_password")
   #     # => #<HCloud::StorageBox id: 1, ...>
   #
   # == Update storage box

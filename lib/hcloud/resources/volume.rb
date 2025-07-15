@@ -40,7 +40,7 @@ module HCloud
   #     volume.created?
   #     # => true
   #
-  #     firewall = HCloud::Volume.create(name: "my_volume", size: 10, format: "ext4", automount: false, location: "fsn1")
+  #     volume = HCloud::Volume.create(name: "my_volume", size: 10, format: "ext4", automount: false, location: "fsn1")
   #     # => #<HCloud::Volume id: 1, ...>
   #
   # == Update volume
