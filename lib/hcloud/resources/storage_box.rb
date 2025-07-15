@@ -119,6 +119,7 @@ module HCloud
   #     # => #<HCloud::Action id: 1, ...>
   #
   class StorageBox < Resource
+    actionable
     queryable
     creatable
     updatable
