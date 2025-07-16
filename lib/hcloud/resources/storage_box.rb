@@ -157,9 +157,9 @@ module HCloud
 
     action :change_protection
 
-    def contents(folder: nil)
+    def contents(path: nil)
       client
-        .get("/#{resource_name.pluralize}/#{id}/folders", folder: folder)
+        .get("/#{resource_name.pluralize}/#{id}/folders", path: path)
         .fetch(:folders)
     end
 
