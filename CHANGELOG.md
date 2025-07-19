@@ -7,6 +7,7 @@
 - Fix an error in the error parsing code when the error details are not present
 - Store total entries in collection when calling #count
 - Implement Storage Boxes
+- Implement Storage Box Subaccounts
 
 ## HCloud v3.0.0 (2024-11-25)
 
