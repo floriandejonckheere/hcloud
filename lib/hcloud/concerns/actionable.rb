@@ -11,7 +11,7 @@ module HCloud
       self.action_names = []
 
       def actions
-        ActionCollection.new(:action, self)
+        ActionCollection.new(self)
       end
     end
 

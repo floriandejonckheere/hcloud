@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::ActionCollection do
-  let(:collection) { described_class.new(:action, resource) }
+  let(:collection) { described_class.new(resource) }
 
   let(:resource) { ExampleResource.new(id: 1) }
 

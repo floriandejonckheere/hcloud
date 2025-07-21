@@ -3,19 +3,18 @@
 module HCloud
   # @!visibility private
   class ActionCollection < Collection
-    attr_reader :name, :resource
+    attr_reader :resource
 
-    def initialize(name, resource)
+    def initialize(resource)
       super(&method(:all))
 
-      @name = name
       @resource = resource
     end
 
     def find(id)
-      resource_class.new resource
+      Action.new resource
         .client
-        .get("#{resource.resource_path}/#{resource.id}/#{name.to_s.pluralize}/#{id}")
+        .get("#{resource.resource_path}/#{resource.id}/actions/#{id}")
         .fetch(:action)
     end
 
@@ -24,33 +23,16 @@ module HCloud
     def all(params)
       response = resource
         .client
-        .get("#{resource.resource_path}/#{resource.id}/#{name.to_s.pluralize}", params)
+        .get("#{resource.resource_path}/#{resource.id}/actions", params)
 
       data = response
-        .fetch(name.to_s.pluralize.to_sym)
-        .map { |attrs| resource_class.new attrs }
+        .fetch(:actions)
+        .map { |attrs| Action.new attrs }
 
       meta = response
-        .fetch(:meta) do
-        {
-          pagination: {
-            page: 1,
-            per_page: 50,
-            previous_page: nil,
-            next_page: nil,
-            last_page: 1,
-            total_entries: data.size,
-          },
-        }
-      end
+        .fetch(:meta)
 
       [data, meta]
-    end
-
-    def resource_class
-      @resource_class ||= ActiveModel::Type
-        .lookup(name)
-        .resource_class
     end
   end
 end
