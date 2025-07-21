@@ -23,6 +23,8 @@ class ExampleResource < HCloud::Resource
   meterable
   labelable
 
+  subresource :subexample, :subexample_resource
+
   attribute :id, :integer
   attribute :name
   attribute :description
@@ -52,3 +54,19 @@ class ExampleResource < HCloud::Resource
 end
 
 ActiveModel::Type.register(:example_resource, HCloud::ResourceType.Type("ExampleResource"))
+
+class SubexampleResource < HCloud::Resource
+  queryable
+
+  subresource_of :example, :example_resource
+
+  attribute :id, :integer
+  attribute :name
+
+  # Override resource name
+  def self.resource_name
+    "subexample"
+  end
+end
+
+ActiveModel::Type.register(:subexample_resource, HCloud::ResourceType.Type("SubexampleResource"))

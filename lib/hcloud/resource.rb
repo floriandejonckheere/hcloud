@@ -7,6 +7,7 @@ module HCloud
 
     include Concerns
     include DynamicAttributes
+    include Subresource
 
     def initialize(attributes = {})
       super()
