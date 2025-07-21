@@ -22,7 +22,7 @@ module HCloud
   #     HCloud::LoadBalancer.where(name: "my_load_balancer")
   #     # => #<HCloud::LoadBalancer id: 1, ...>
   #
-  #     HCloud::LoadBalancer.where(label_selector: { environment: "production" })
+  #     HCloud::LoadBalancer.where(label_selector: "environment=production")
   #     # => #<HCloud::LoadBalancer id: 1, ...>
   #
   # == Find load balancer by ID

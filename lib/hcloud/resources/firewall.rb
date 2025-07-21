@@ -22,7 +22,7 @@ module HCloud
   #     HCloud::Firewall.where(name: "my_firewall")
   #     # => #<HCloud::Firewall id: 1, ...>
   #
-  #     HCloud::Firewall.where(label_selector: { environment: "production" })
+  #     HCloud::Firewall.where(label_selector: "environment=production")
   #     # => #<HCloud::Firewall id: 1, ...>
   #
   # == Find firewall by ID

@@ -25,7 +25,7 @@ module HCloud
   #     HCloud::Volume.where(status: "available")
   #     # => #<HCloud::Volume id: 1, ...>
   #
-  #     HCloud::Volume.where(label_selector: { environment: "production" })
+  #     HCloud::Volume.where(label_selector: "environment=production")
   #     # => #<HCloud::Volume id: 1, ...>
   #
   # == Find volume by ID

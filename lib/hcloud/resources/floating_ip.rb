@@ -22,7 +22,7 @@ module HCloud
   #     HCloud::FloatingIP.where(name: "my_floating_ip")
   #     # => #<HCloud::FloatingIP id: 1, ...>
   #
-  #     HCloud::FloatingIP.where(label_selector: { environment: "production" })
+  #     HCloud::FloatingIP.where(label_selector: "environment=production")
   #     # => #<HCloud::FloatingIP id: 1, ...>
   #
   # == Find floating IP by ID

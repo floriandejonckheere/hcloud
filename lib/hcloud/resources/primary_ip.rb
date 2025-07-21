@@ -25,7 +25,7 @@ module HCloud
   #     HCloud::PrimaryIP.where(ip: "1.2.3.4")
   #     # => #<HCloud::PrimaryIP id: 1, ...>
   #
-  #     HCloud::PrimaryIP.where(label_selector: { environment: "production" })
+  #     HCloud::PrimaryIP.where(label_selector: "environment=production")
   #     # => #<HCloud::PrimaryIP id: 1, ...>
   #
   # == Find primary IP by ID

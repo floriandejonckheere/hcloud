@@ -9,6 +9,8 @@
 - Implement Storage Boxes
 - Implement Storage Box Subaccounts
 - Implement Storage Box Subaccount actions
+- Change `HCloud::Collection#where` interface: now accepts a string instead of a hash to allow for more complex queries
+  - For example: `HCloud::Server.where(label_selector: "env=prod,app!=web")`
 
 ## HCloud v3.0.0 (2024-11-25)
 

@@ -14,7 +14,7 @@ module HCloud
   #     HCloud::StorageBox.where(name: "my_storage_box")
   #     # => #<HCloud::StorageBox id: 1, ...>
   #
-  #     HCloud::StorageBox.where(label_selector: { environment: "production" })
+  #     HCloud::StorageBox.where(label_selector: "environment=production")
   #     # => #<HCloud::StorageBox id: 1, ...>
   #
   # == Find storage box by ID

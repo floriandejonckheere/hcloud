@@ -25,7 +25,7 @@ module HCloud
   #     HCloud::Server.where(status: "running")
   #     # => #<HCloud::Server id: 1, ...>
   #
-  #     HCloud::Server.where(label_selector: { environment: "production" })
+  #     HCloud::Server.where(label_selector: "environment=production")
   #     # => #<HCloud::Server id: 1, ...>
   #
   # == Find server by ID

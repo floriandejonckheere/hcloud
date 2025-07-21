@@ -13,7 +13,7 @@ module HCloud
   # == Search subaccounts
   #
   #     storage_box = HCloud::StorageBox.find(1)
-  #     storage_box.subaccounts.where(label_selector: { environment: "production" })
+  #     storage_box.subaccounts.where(label_selector: "environment=production")
   #     # => #<HCloud::StorageBox::Subaccount id: 1, ...>
   #
   # == Find subaccount by ID

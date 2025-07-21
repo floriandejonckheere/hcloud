@@ -22,7 +22,7 @@ module HCloud
   #     HCloud::PlacementGroup.where(name: "my_placement_group")
   #     # => #<HCloud::PlacementGroup id: 2, ...>
   #
-  #     HCloud::PlacementGroup.where(label_selector: { environment: "production" })
+  #     HCloud::PlacementGroup.where(label_selector: "environment=production")
   #     # => #<HCloud::PlacementGroup id: 2, ...>
   #
   # == Find placement group by ID

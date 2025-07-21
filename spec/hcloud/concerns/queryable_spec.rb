@@ -73,7 +73,7 @@ RSpec.describe HCloud::Queryable do
         .with(query: { page: 1, per_page: 50, label_selector: "foo=bar,baz=bat" })
         .to_return(body: { examples: [resource.attributes.merge(id: 1, labels: { foo: "bar", baz: "bat" })], meta: { pagination: { total_entries: 1 } } }.to_json)
 
-      models = ExampleResource.all.where(label_selector: { foo: "bar", baz: "bat" })
+      models = ExampleResource.all.where(label_selector: "foo=bar,baz=bat")
 
       expect(models.count).to eq 1
     end
