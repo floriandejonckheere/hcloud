@@ -10,7 +10,7 @@ module HCloud
         raise Errors::MissingIDError unless id
 
         assign_attributes client
-          .get("/#{resource_name.pluralize}/#{id}")
+          .get("#{resource_path}/#{id}")
           .fetch(resource_name.to_sym)
 
         self
@@ -24,14 +24,14 @@ module HCloud
         raise Errors::MissingIDError unless id
 
         new client
-          .get("/#{resource_name.pluralize}/#{id}")
+          .get("#{resource_path}/#{id}")
           .fetch(resource_name.to_sym)
       end
 
       def all
         Collection.new do |params|
           response = client
-            .get("/#{resource_name.pluralize}", params)
+            .get(resource_path, params)
 
           data = response
             .fetch(resource_name.pluralize.to_sym)

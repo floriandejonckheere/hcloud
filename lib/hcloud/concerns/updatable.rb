@@ -12,7 +12,7 @@ module HCloud
         assign_attributes attributes
 
         assign_attributes client
-          .put("/#{resource_name.pluralize}/#{id}", updatable_params)
+          .put("#{resource_path}/#{id}", updatable_params)
           .fetch(resource_name.to_sym)
 
         self

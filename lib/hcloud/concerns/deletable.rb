@@ -10,7 +10,7 @@ module HCloud
         raise Errors::MissingIDError unless id
 
         client
-          .delete("/#{resource_name.pluralize}/#{id}")
+          .delete("#{resource_path}/#{id}")
 
         @deleted = true
 

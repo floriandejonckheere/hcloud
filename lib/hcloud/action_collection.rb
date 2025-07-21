@@ -14,7 +14,7 @@ module HCloud
     def find(id)
       Action.new resource
         .client
-        .get("/#{resource.resource_name.pluralize}/#{resource.id}/actions/#{id}")
+        .get("#{resource.resource_path}/#{resource.id}/#{name.to_s.pluralize}/#{id}")
         .fetch(:action)
     end
 
@@ -23,7 +23,7 @@ module HCloud
     def all(params)
       response = resource
         .client
-        .get("/#{resource.resource_name.pluralize}/#{resource.id}/actions", params)
+        .get("#{resource.resource_path}/#{resource.id}/#{name.to_s.pluralize}", params)
 
       data = response
         .fetch(:actions)

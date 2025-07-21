@@ -10,7 +10,7 @@ module HCloud
 
       def create
         assign_attributes client
-          .post("/#{resource_name.pluralize}", creatable_params)
+          .post(resource_path, creatable_params)
           .tap { |r| r[resource_name.to_sym].merge!(r.slice(:root_password)) }
           .fetch(resource_name.to_sym)
 

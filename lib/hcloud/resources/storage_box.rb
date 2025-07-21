@@ -159,7 +159,7 @@ module HCloud
 
     def contents(path: nil)
       client
-        .get("/#{resource_name.pluralize}/#{id}/folders", path: path)
+        .get("#{resource_path}/#{id}/folders", path: path)
         .fetch(:folders)
     end
 

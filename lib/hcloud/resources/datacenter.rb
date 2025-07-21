@@ -44,7 +44,7 @@ module HCloud
 
     def self.recommendation
       find client
-        .get("/#{resource_name.pluralize}")
+        .get(resource_path)
         .fetch(:recommendation)
     end
   end

@@ -23,7 +23,7 @@ module HCloud
           raise Errors::MissingIDError unless id
 
           response = client
-            .post("/#{resource_name.pluralize}/#{id}/actions/#{name}", params)
+            .post("#{resource_path}/#{id}/actions/#{name}", params)
 
           if response.key?(:actions)
             response[:actions].map { |r| Action.new r }
