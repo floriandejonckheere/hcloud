@@ -4,6 +4,7 @@
 
 - Add `LoadBalancerPublicInterfaceDisabled` error class
 - Fix a zero divion error in the rate limiter when rate limit headers are not set
+- Fix an error in the error parsing code when the error details are not present
 - Store total entries in collection when calling #count
 - Implement Storage Boxes
 

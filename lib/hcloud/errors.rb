@@ -12,7 +12,7 @@ module HCloud
       end
 
       def full_messages
-        return unless data[:details]
+        return unless data[:details] && data[:details][:fields]
 
         data[:details][:fields].flat_map do |field|
           Array(field.fetch(:messages, data[:message])).map do |detail|

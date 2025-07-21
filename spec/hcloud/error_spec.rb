@@ -4,6 +4,19 @@ RSpec.describe HCloud::Errors::Error do
   subject(:error) { described_class.new }
 
   describe ".from_h" do
+    it "creates an error from only the message" do
+      data = {
+        code: "uniqueness_error",
+        message: "SSH key with the same fingerprint already exists",
+        details: {},
+      }
+
+      error = described_class.new(data)
+
+      expect(error.message).to include "SSH key with the same fingerprint already exists"
+      expect(error.full_messages).to be_nil
+    end
+
     it "creates an error from simple data" do
       data = {
         code: "uniqueness_error",
