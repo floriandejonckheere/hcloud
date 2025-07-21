@@ -99,7 +99,7 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [Storage Boxes](lib/hcloud/resources/storage_box.rb)                             | Implemented           |
 | [Storage Box Actions](lib/hcloud/resources/storage_box.rb)                       | Implemented           |
 | [Storage Box Subaccount](lib/hcloud/resources/storage_box_subaccount.rb)         | Implemented           |
-| [Storage Box Subaccount Actions](lib/hcloud/resources/storage_box_subaccount.rb) | Not implemented       |
+| [Storage Box Subaccount Actions](lib/hcloud/resources/storage_box_subaccount.rb) | Implemented           |
 | [Storage Box Snapshot](lib/hcloud/resources/storage_box/snapshot.rb)             | Not implemented       |
 | [Storage Box Snapshot Actions](lib/hcloud/resources/storage_box/snapshot.rb)     | Not implemented       |
 | [Volumes](lib/hcloud/resources/volume.rb)                                        | Implemented           |

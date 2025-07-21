@@ -8,6 +8,7 @@
 - Store total entries in collection when calling #count
 - Implement Storage Boxes
 - Implement Storage Box Subaccounts
+- Implement Storage Box Subaccount actions
 
 ## HCloud v3.0.0 (2024-11-25)
 

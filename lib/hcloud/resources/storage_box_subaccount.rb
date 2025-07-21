@@ -58,9 +58,25 @@ module HCloud
   #     subaccount.deleted?
   #     # => true
   #
+  # = Resource-specific actions
+  # == Reset password
+  #
+  #     storage_box = HCloud::StorageBox.find(1)
+  #     subaccount = storage_box.subaccounts.find(1)
+  #     subaccount.reset_subaccount_password(password: "mypassword")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Update access settings
+  #
+  #     storage_box = HCloud::StorageBox.find(1)
+  #     subaccount = storage_box.subaccounts.find(1)
+  #     subaccount.update_access_settings(samba_enabled: false, ssh_enabled: true, webdav_enabled: false, zfs_enabled: false, reachable_externally: false)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   class StorageBoxSubaccount < Resource
     subresource_of :storage_box
 
+    actionable
     queryable
     creatable
     updatable
@@ -82,6 +98,9 @@ module HCloud
 
     # Creatable attributes
     attribute :password
+
+    action :reset_subaccount_password
+    action :update_access_settings
 
     def creatable_attributes
       [:password, :home_directory, :description, :labels, :access_settings]
