@@ -118,6 +118,10 @@ module HCloud
   #     HCloud::StorageBox.find(1).change_protection(delete: true)
   #     # => #<HCloud::Action id: 1, ...>
   #
+  # = Subaccounts
+  #
+  # See {HCloud::StorageBoxSubaccount} for more information on subaccounts.
+  #
   class StorageBox < Resource
     actionable
     queryable
@@ -125,6 +129,8 @@ module HCloud
     updatable
     deletable
     labelable
+
+    subresource :subaccount, :storage_box_subaccount
 
     attribute :id, :integer
     attribute :name
