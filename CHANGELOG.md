@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## HCloud v4.0.0 (2025-07-26)
 
 ### Added
 
@@ -15,8 +15,6 @@
 - Change `HCloud::Collection#where` interface: now accepts a string instead of a hash to allow for more complex queries
   - For example: `HCloud::Server.where(label_selector: "env=prod,app!=web")`
 - Cache total entries in `HCloud::Collection` when calling #count
-
-### Removed
 
 ### Fixed
 
