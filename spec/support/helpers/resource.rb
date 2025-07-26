@@ -56,12 +56,17 @@ end
 ActiveModel::Type.register(:example_resource, HCloud::ResourceType.Type("ExampleResource"))
 
 class SubexampleResource < HCloud::Resource
+  creatable
   queryable
 
   subresource_of :example, :example_resource
 
   attribute :id, :integer
   attribute :name
+
+  def creatable_attributes
+    [:name]
+  end
 
   # Override resource name
   def self.resource_name
