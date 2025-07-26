@@ -120,6 +120,10 @@ module HCloud
   #     HCloud::StorageBox.find(1).change_protection(delete: true)
   #     # => #<HCloud::Action id: 1, ...>
   #
+  # = Snapshots
+  #
+  # See {HCloud::StorageBoxSnapshot} for more information on snapshots.
+  #
   # = Subaccounts
   #
   # See {HCloud::StorageBoxSubaccount} for more information on subaccounts.
@@ -132,6 +136,7 @@ module HCloud
     deletable
     labelable
 
+    subresource :snapshot, :storage_box_snapshot
     subresource :subaccount, :storage_box_subaccount
 
     attribute :id, :integer
