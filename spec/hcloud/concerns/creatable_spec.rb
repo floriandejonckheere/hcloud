@@ -29,6 +29,24 @@ RSpec.describe HCloud::Creatable do
 
       expect(resource.create).to be_a described_class
     end
+
+    context "when the API return an action" do
+      it "returns the action" do
+        stub_request(:post, "https://api.hetzner.cloud/v1/examples")
+          .with(body: { name: "my_resource", description: "my_description", sibling: { type: "sister", child: { id: 1 } }, child: "name1", children: [1, nil] })
+          .to_return(body: { action: { id: 1, status: "running", command: "create_resource", resources: [{ id: 2, type: "example" }] } }.to_json)
+
+        action = resource.create
+
+        expect(action).to be_a HCloud::Action
+
+        expect(action.id).to eq 1
+        expect(action.status).to eq "running"
+        expect(action.command).to eq "create_resource"
+
+        expect(resource.id).to eq 2
+      end
+    end
   end
 
   describe ".create" do

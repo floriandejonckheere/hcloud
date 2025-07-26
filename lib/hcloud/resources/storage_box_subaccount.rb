@@ -38,10 +38,14 @@ module HCloud
   #     # => true
   #
   #     subaccount = storage_box.subaccounts.create(password: "my_password", description: "my_subaccount", home_directory: "backup/", access_settings: { samba_enabled: false, ssh_enabled: true, webdav_enabled: false, readonly: false, reachable_externally: false })
-  #     # => #<HCloud::StorageBox::Subaccount id: 1, ...>
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     Note: this endpoint returns an Action rather than the created resource itself
   #
   #     subaccount = HCloud::StorageBox::Subaccount.create(storage_box: 1, password: "my_password", description: "my_subaccount", home_directory: "backup/", access_settings: { samba_enabled: false, ssh_enabled: true, webdav_enabled: false, readonly: false, reachable_externally: false })
-  #     # => #<HCloud::StorageBox::Subaccount id: 1, ...>
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     Note: this endpoint returns an Action rather than the created resource itself
   #
   # == Update subaccount
   #

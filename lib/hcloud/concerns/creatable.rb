@@ -5,16 +5,31 @@ module HCloud
   module Creatable
     extend ActiveSupport::Concern
 
-    included do
+    included do # rubocop:disable Metrics/BlockLength
       attribute :created, :datetime
 
       def create
-        assign_attributes client
+        response = client
           .post(resource_path, creatable_params)
-          .tap { |r| r[resource_name.to_sym].merge!(r.slice(:root_password)) }
-          .fetch(resource_name.to_sym)
 
-        self
+        # Some resources return an action instead of the resource itself (e.g. Storage Box API)
+        if response.key?(:action)
+          # Set the ID from the action response
+          self.id = response
+            .dig(:action, :resources)
+            .find { |r| r[:type] == [resource_class&.resource_name, resource_name].compact.join("_") }
+            .fetch(:id)
+
+          # Return an Action instance
+          Action.new response[:action]
+        else
+          # Set the attributes from the response
+          assign_attributes response[resource_name.to_sym]
+            .merge!(response.slice(:root_password))
+
+          # Return the resource instance
+          self
+        end
       end
 
       def created?

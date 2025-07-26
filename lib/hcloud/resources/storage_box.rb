@@ -30,7 +30,9 @@ module HCloud
   #     # => true
   #
   #     storage_box = HCloud::StorageBox.create(name: "my_storage_box", storage_box_type: "bx20", location: "fsn1", password: "my_password")
-  #     # => #<HCloud::StorageBox id: 1, ...>
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     Note: this endpoint returns an Action rather than the created resource itself
   #
   # == Update storage box
   #
