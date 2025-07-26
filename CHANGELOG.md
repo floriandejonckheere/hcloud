@@ -6,6 +6,7 @@
 
 - Add `LoadBalancerPublicInterfaceDisabled` error class
 - Implement Storage Boxes
+- Implement Storage Box Types
 - Implement Storage Box Subaccounts
 - Implement Storage Box Subaccount actions
 

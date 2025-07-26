@@ -98,6 +98,7 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [SSH Keys](lib/hcloud/resources/ssh_key.rb)                                      | Implemented           |
 | [Storage Boxes](lib/hcloud/resources/storage_box.rb)                             | Implemented           |
 | [Storage Box Actions](lib/hcloud/resources/storage_box.rb)                       | Implemented           |
+| [Storage Box Types](lib/hcloud/resources/storage_box_type.rb)                    | Implemented           |
 | [Storage Box Subaccount](lib/hcloud/resources/storage_box_subaccount.rb)         | Implemented           |
 | [Storage Box Subaccount Actions](lib/hcloud/resources/storage_box_subaccount.rb) | Implemented           |
 | [Storage Box Snapshot](lib/hcloud/resources/storage_box/snapshot.rb)             | Not implemented       |
