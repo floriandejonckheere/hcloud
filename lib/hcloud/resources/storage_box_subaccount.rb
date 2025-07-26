@@ -114,6 +114,10 @@ module HCloud
       [:description, :labels]
     end
 
+    def self.resource_name
+      "subaccount"
+    end
+
     def self.client
       HCloud::Client.connection.storage_box_client
     end

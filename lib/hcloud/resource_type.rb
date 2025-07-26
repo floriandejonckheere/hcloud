@@ -143,6 +143,8 @@ ActiveModel::Type.register(:storage_box_price, HCloud::ResourceType.Type("HCloud
 ActiveModel::Type.register(:storage_box_snapshot_plan, HCloud::ResourceType.Type("HCloud::StorageBoxSnapshotPlan"))
 ActiveModel::Type.register(:storage_box_stats, HCloud::ResourceType.Type("HCloud::StorageBoxStats"))
 ActiveModel::Type.register(:storage_box_type, HCloud::ResourceType.Type("HCloud::StorageBoxType"))
+ActiveModel::Type.register(:storage_box_snapshot, HCloud::ResourceType.Type("HCloud::StorageBoxSnapshot"))
+ActiveModel::Type.register(:storage_box_snapshot_stats, HCloud::ResourceType.Type("HCloud::StorageBoxSnapshotStats"))
 ActiveModel::Type.register(:storage_box_subaccount, HCloud::ResourceType.Type("HCloud::StorageBoxSubaccount"))
 ActiveModel::Type.register(:storage_box_subaccount_access_settings, HCloud::ResourceType.Type("HCloud::StorageBoxSubaccountAccessSettings"))
 ActiveModel::Type.register(:subnet, HCloud::ResourceType.Type("HCloud::Subnet"))
