@@ -73,13 +73,15 @@ module HCloud
       response = http
         .delete(url_for(path))
 
-      return if response.status.success?
-
       raise Errors::ServerError, response if response.status.server_error?
+
+      return if response.status.success? && response.body.empty?
 
       data = response
         .parse(:json)
         .deep_symbolize_keys
+
+      return data if response.status.success?
 
       raise Errors.const_get(data.dig(:error, :code).camelize), data[:error]
     end

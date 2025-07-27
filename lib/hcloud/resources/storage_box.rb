@@ -32,7 +32,7 @@ module HCloud
   #     storage_box = HCloud::StorageBox.create(name: "my_storage_box", storage_box_type: "bx20", location: "fsn1", password: "my_password")
   #     # => #<HCloud::Action id: 1, ...>
   #
-  #     Note: this endpoint returns an Action rather than the created resource itself
+  #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself
   #
   # == Update storage box
   #
@@ -44,8 +44,12 @@ module HCloud
   #
   #     storage_box = HCloud::StorageBox.find(1)
   #     storage_box.delete
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   #     storage_box.deleted?
   #     # => true
+  #
+  #     Note: this method returns a {HCloud::Action} instance rather than the deleted resource itself
   #
   # == List storage box contents
   #

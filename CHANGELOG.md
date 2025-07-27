@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+### Changed
+
+- Allow certain `create` and `delete` methods to return a `HCloud::Action` instance instead of a resource, as returned by the API (e.g. Storage Box API)
+
+### Removed
+
+### Fixed
+
 ## HCloud v4.0.0 (2025-07-26)
 
 ### Added

@@ -34,7 +34,7 @@ module HCloud
   #     snapshot.created?
   #     # => false
   #
-  #     Note: this endpoint returns an Action rather than the created resource itself, as the snapshot is created asynchronously.
+  #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself, as the snapshot is created asynchronously.
   #     Reload the snapshot to check if it was created successfully.
   #
   #     snapshot.reload
@@ -44,12 +44,12 @@ module HCloud
   #     snapshot = storage_box.snapshots.create(description: "my_snapshot")
   #     # => #<HCloud::Action id: 1, ...>
   #
-  #     Note: this endpoint returns an Action rather than the created resource itself
+  #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself
   #
   #     snapshot = HCloud::StorageBox::Snapshot.create(storage_box: 1, description: "my_snapshot")
   #     # => #<HCloud::Action id: 1, ...>
   #
-  #     Note: this endpoint returns an Action rather than the created resource itself
+  #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself
   #
   # == Update snapshot
   #
@@ -63,8 +63,12 @@ module HCloud
   #     storage_box = HCloud::StorageBox.find(1)
   #     snapshot = storage_box.snapshots.find(1)
   #     snapshot.delete
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   #     snapshot.deleted?
   #     # => true
+  #
+  #     Note: this method returns a {HCloud::Action} instance rather than the deleted resource itself
   #
   class StorageBoxSnapshot < Resource
     subresource_of :storage_box

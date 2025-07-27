@@ -30,7 +30,7 @@ module HCloud
   #     subaccount.created?
   #     # => false
   #
-  #     Note: this endpoint returns an Action rather than the created resource itself, as the subaccount is created asynchronously.
+  #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself, as the subaccount is created asynchronously.
   #     Reload the subaccount to check if it was created successfully.
   #
   #     subaccount.reload
@@ -40,12 +40,12 @@ module HCloud
   #     subaccount = storage_box.subaccounts.create(password: "my_password", description: "my_subaccount", home_directory: "backup/", access_settings: { samba_enabled: false, ssh_enabled: true, webdav_enabled: false, readonly: false, reachable_externally: false })
   #     # => #<HCloud::Action id: 1, ...>
   #
-  #     Note: this endpoint returns an Action rather than the created resource itself
+  #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself
   #
   #     subaccount = HCloud::StorageBox::Subaccount.create(storage_box: 1, password: "my_password", description: "my_subaccount", home_directory: "backup/", access_settings: { samba_enabled: false, ssh_enabled: true, webdav_enabled: false, readonly: false, reachable_externally: false })
   #     # => #<HCloud::Action id: 1, ...>
   #
-  #     Note: this endpoint returns an Action rather than the created resource itself
+  #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself
   #
   # == Update subaccount
   #
@@ -59,8 +59,12 @@ module HCloud
   #     storage_box = HCloud::StorageBox.find(1)
   #     subaccount = storage_box.subaccounts.find(1)
   #     subaccount.delete
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   #     subaccount.deleted?
   #     # => true
+  #
+  #     Note: this method returns a {HCloud::Action} instance rather than the deleted resource itself
   #
   # = Resource-specific actions
   # == Reset password
