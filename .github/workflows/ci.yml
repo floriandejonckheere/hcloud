@@ -23,7 +23,7 @@ jobs:
       image: ruby:${{ matrix.ruby }}-alpine
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install dependencies
         run: |
@@ -61,7 +61,7 @@ jobs:
     needs: build
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set version
         run: |
