@@ -25,6 +25,7 @@ module HCloud
     attribute :id, :integer
     attribute :name
     attribute :description
+    attribute :category
 
     attribute :architecture
     attribute :cores, :integer
