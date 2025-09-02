@@ -4,15 +4,21 @@
 
 ### Added
 
+### Changed
+
+### Removed
+
+### Fixed
+
+## HCloud v4.1.0 (2025-09-02)
+
+### Added
+
 - Add `category` attribute to `ServerType`
 
 ### Changed
 
 - Allow certain `create` and `delete` methods to return a `HCloud::Action` instance instead of a resource, as returned by the API (e.g. Storage Box API)
-
-### Removed
-
-### Fixed
 
 ## HCloud v4.0.0 (2025-07-26)
 
