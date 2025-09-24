@@ -37,6 +37,8 @@ module HCloud
 
     attribute :prices, :price, array: true, default: -> { [] }
 
+    attribute :locations, :server_type_location, array: true, default: -> { [] }
+
     attribute :deprecation, :deprecation
 
     attribute :deprecated, :boolean, deprecated: true

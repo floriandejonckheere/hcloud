@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add `locations` attribute to `ServerType`
+
 ### Changed
 
 ### Removed
