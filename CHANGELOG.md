@@ -8,6 +8,8 @@
 
 ### Changed
 
+- Add deprecation warning for `ServerType#deprecation`
+
 ### Removed
 
 ### Fixed
