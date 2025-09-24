@@ -4,15 +4,21 @@
 
 ### Added
 
+### Changed
+
+### Removed
+
+### Fixed
+
+## HCloud v4.2.0 (2025-09-24)
+
+### Added
+
 - Add `locations` attribute to `ServerType`
 
 ### Changed
 
 - Add deprecation warning for `ServerType#deprecation`
-
-### Removed
-
-### Fixed
 
 ## HCloud v4.1.0 (2025-09-02)
 
