@@ -62,7 +62,56 @@ module HCloud
   #     zone.export
   #     # => "$ORIGIN\texample.com.\n$TTL\t3600\n\n@\tIN\tSOA\thydrogen.ns.hetzner.com. dns.hetzner.com. ..."
   #
+  # = Actions
+  # == List actions
+  #
+  #     actions = HCloud::Zone.find(1).actions
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  # == Sort actions
+  #
+  #     HCloud::Zone.find(1).actions.sort(finished: :desc)
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  #     HCloud::Zone.find(1).actions.sort(:command, finished: :asc)
+  #     # => [#<HCloud::Actions id: 1, ...>, ...]
+  #
+  # == Search actions
+  #
+  #     HCloud::Zone.find(1).actions.where(command: "import_zonefile")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     HCloud::Zone.find(1).actions.where(status: "success")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Find action by ID
+  #
+  #     HCloud::Zone.find(1).actions.find(1)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # = Resource-specific actions
+  # == Change a zone's primary nameservers
+  #
+  #     HCloud::Zone.find(1).change_primary_nameservers(primary_nameservers: [{ address: "198.51.100.1", port: 53 }, { address: "203.0.113.1", port: 53 }])
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Change protection
+  #
+  #     HCloud::Zone.find(1).change_protection(delete: true)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Change default TTL
+  #
+  #     HCloud::Zone.find(1).change_ttl(ttl: 10800)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Import zone file
+  #
+  #     HCloud::Zone.find(1).import_zonefile(zonefile: "$ORIGIN\texample.com.\n$TTL\t3600\n\n@\tIN\tSOA\thydrogen.ns.hetzner.com. dns.hetzner.com. ...")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   class Zone < Resource
+    actionable
     queryable
     creatable
     updatable
@@ -83,6 +132,11 @@ module HCloud
     attribute :registrar
 
     attribute :protection, :protection
+
+    action :change_primary_nameservers
+    action :change_protection
+    action :change_ttl
+    action :import_zonefile
 
     def export
       client
