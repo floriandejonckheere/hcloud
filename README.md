@@ -92,6 +92,8 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [Network Actions](lib/hcloud/resources/network.rb)                               | Implemented           |
 | [Placement Groups](lib/hcloud/resources/placement_group.rb)                      | Implemented           |
 | [Pricing](lib/hcloud/resources/pricing.rb)                                       | Implemented           |
+| [RRSets](lib/hcloud/resources/rrset.rb)                                          | Not implemented       |
+| [RRSet Actions](lib/hcloud/resources/rrset.rb)                                   | Not implemented       |
 | [Servers](lib/hcloud/resources/server.rb)                                        | Partially implemented |
 | [Server Actions](lib/hcloud/resources/server.rb)                                 | Not implemented       |
 | [Server Types](lib/hcloud/resources/server_type.rb)                              | Implemented           |
@@ -105,6 +107,8 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [Volumes](lib/hcloud/resources/volume.rb)                                        | Implemented           |
 | [Volume Actions](lib/hcloud/resources/volume.rb)                                 | Implemented           |
 | [Metadata](lib/hcloud/resources/metadata.rb)                                     | Implemented           |
+| [Zones](lib/hcloud/resources/zone.rb)                                            | Not implemented       |
+| [Zone Actions](lib/hcloud/resources/zone.rb)                                     | Not implemented       |
 
 ### Pagination
 
