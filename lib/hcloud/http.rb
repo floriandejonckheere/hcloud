@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "http"
+require "openssl"
 
 module HCloud
   # @!visibility private
@@ -26,7 +27,7 @@ module HCloud
 
     def get(path, params = {})
       response = http
-        .get(url_for(path), params: transform_params(params))
+        .get(url_for(path), params: transform_params(params), ssl_context: ssl_context)
 
       raise Errors::ServerError, response if response.status.server_error?
 
@@ -41,7 +42,7 @@ module HCloud
 
     def put(path, body = {})
       response = http
-        .put(url_for(path), json: body)
+        .put(url_for(path), json: body, ssl_context: ssl_context)
 
       raise Errors::ServerError, response if response.status.server_error?
 
@@ -56,7 +57,7 @@ module HCloud
 
     def post(path, body = {})
       response = http
-        .post(url_for(path), json: body)
+        .post(url_for(path), json: body, ssl_context: ssl_context)
 
       raise Errors::ServerError, response if response.status.server_error?
 
@@ -71,7 +72,7 @@ module HCloud
 
     def delete(path)
       response = http
-        .delete(url_for(path))
+        .delete(url_for(path), ssl_context: ssl_context)
 
       raise Errors::ServerError, response if response.status.server_error?
 
@@ -119,6 +120,12 @@ module HCloud
         end
       end
         .compact
+    end
+
+    def ssl_context
+      OpenSSL::SSL::SSLContext.new.tap do |context|
+        context.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      end
     end
   end
 end
