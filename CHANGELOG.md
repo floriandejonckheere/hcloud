@@ -5,6 +5,7 @@
 ### Added
 
 - Implement Zones
+- Implement Zone actions
 
 ### Changed
 
