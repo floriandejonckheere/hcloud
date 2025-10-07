@@ -4,6 +4,8 @@
 
 ### Added
 
+- Implement Zones
+
 ### Changed
 
 ### Removed

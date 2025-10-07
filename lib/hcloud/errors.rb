@@ -29,6 +29,7 @@ module HCloud
     class FirewallAlreadyRemoved < Error; end
     class FirewallResourceNotFound < Error; end
     class Forbidden < Error; end
+    class IncorrectZoneMode < Error; end
     class IPNotAvailable < Error; end
     class IPNotOwned < Error; end
     class IncompatibleNetworkType < Error; end
