@@ -107,7 +107,7 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [Volumes](lib/hcloud/resources/volume.rb)                                        | Implemented           |
 | [Volume Actions](lib/hcloud/resources/volume.rb)                                 | Implemented           |
 | [Metadata](lib/hcloud/resources/metadata.rb)                                     | Implemented           |
-| [Zones](lib/hcloud/resources/zone.rb)                                            | Not implemented       |
+| [Zones](lib/hcloud/resources/zone.rb)                                            | Implemented           |
 | [Zone Actions](lib/hcloud/resources/zone.rb)                                     | Not implemented       |
 
 ### Pagination
