@@ -12,6 +12,10 @@ module HCloud
       @array = array
     end
 
+    def mutable?
+      true
+    end
+
     def cast(value)
       case value
       when nil, []

@@ -15,6 +15,10 @@ module HCloud
       assign_attributes(attributes) if attributes
     end
 
+    def mutable?
+      true
+    end
+
     delegate :[], to: :attributes
 
     def inspect
