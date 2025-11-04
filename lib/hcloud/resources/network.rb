@@ -48,28 +48,28 @@ module HCloud
   # = Actions
   # == List actions
   #
-  #     actions = HCloud::FloatingIP.find(1).actions
+  #     actions = HCloud::Network.find(1).actions
   #     # => [#<HCloud::Action id: 1, ...>, ...]
   #
   # == Sort actions
   #
-  #     HCloud::FloatingIP.find(1).actions.sort(finished: :desc)
+  #     HCloud::Network.find(1).actions.sort(finished: :desc)
   #     # => [#<HCloud::Action id: 1, ...>, ...]
   #
-  #     HCloud::FloatingIP.find(1).actions.sort(:command, finished: :asc)
+  #     HCloud::Network.find(1).actions.sort(:command, finished: :asc)
   #     # => [#<HCloud::Actions id: 1, ...>, ...]
   #
   # == Search actions
   #
-  #     HCloud::FloatingIP.find(1).actions.where(command: "assign_floating_ip")
+  #     HCloud::Network.find(1).actions.where(command: "assign_floating_ip")
   #     # => #<HCloud::Action id: 1, ...>
   #
-  #     HCloud::FloatingIP.find(1).actions.where(status: "success")
+  #     HCloud::Network.find(1).actions.where(status: "success")
   #     # => #<HCloud::Action id: 1, ...>
   #
   # == Find action by ID
   #
-  #     HCloud::FloatingIP.find(1).actions.find(1)
+  #     HCloud::Network.find(1).actions.find(1)
   #     # => #<HCloud::Action id: 1, ...>
   #
   # = Resource-specific actions
