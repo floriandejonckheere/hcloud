@@ -8,19 +8,19 @@ module HCloud
   #
   #     storage_box = HCloud::StorageBox.find(1)
   #     storage_box.subaccounts
-  #     # => [#<HCloud::StorageBox::Subaccount id: 1, ...>, ...]
+  #     # => [#<HCloud::StorageBoxSubaccount id: 1, ...>, ...]
   #
   # == Search subaccounts
   #
   #     storage_box = HCloud::StorageBox.find(1)
   #     storage_box.subaccounts.where(label_selector: "environment=production")
-  #     # => #<HCloud::StorageBox::Subaccount id: 1, ...>
+  #     # => #<HCloud::StorageBoxSubaccount id: 1, ...>
   #
   # == Find subaccount by ID
   #
   #     storage_box = HCloud::StorageBox.find(1)
   #     storage_box.subaccounts.find(1)
-  #     # => #<HCloud::StorageBox::Subaccount id: 1, ...>
+  #     # => #<HCloud::StorageBoxSubaccount id: 1, ...>
   #
   # == Create subaccount
   #
@@ -42,7 +42,7 @@ module HCloud
   #
   #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself
   #
-  #     subaccount = HCloud::StorageBox::Subaccount.create(storage_box: 1, password: "my_password", description: "my_subaccount", home_directory: "backup/", access_settings: { samba_enabled: false, ssh_enabled: true, webdav_enabled: false, readonly: false, reachable_externally: false })
+  #     subaccount = HCloud::StorageBoxSubaccount.create(storage_box: 1, password: "my_password", description: "my_subaccount", home_directory: "backup/", access_settings: { samba_enabled: false, ssh_enabled: true, webdav_enabled: false, readonly: false, reachable_externally: false })
   #     # => #<HCloud::Action id: 1, ...>
   #
   #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself
