@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apk add build-base cmake git tar yaml-dev libffi-dev
+          apk add build-base cmake git tar yaml-dev libffi-dev openssl-dev
 
       - name: Cache Gems
         uses: actions/cache@v4.3.0
