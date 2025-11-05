@@ -6,6 +6,7 @@
 
 - Implement Zones
 - Implement Zone actions
+- Implement RRSets
 
 ### Changed
 
