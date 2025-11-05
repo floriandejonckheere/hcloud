@@ -17,6 +17,7 @@ HCloud.loader.inflector.inflect(
   "iso_type" => "ISOType",
   "primary_ip" => "PrimaryIP",
   "primary_ip_prices" => "PrimaryIPPrices",
+  "rrset" => "RRSet",
   "service_http" => "ServiceHTTP",
   "ssh_key" => "SSHKey",
   "target_ip" => "TargetIP",

@@ -35,7 +35,7 @@ module HCloud
   #
   # == Create zone
   #
-  #     zone = HCloud::Zone.new(name: "my_zone", mode: "primary", ttl: 10800)
+  #     zone = HCloud::Zone.new(name: "my_zone", mode: "primary", ttl: 10800, rrsets: [{ name: "www", type: "A", records: [{ value: "198.51.100.1", comment: "My web server at Hetzner Cloud" }] }])
   #     zone.create
   #     zone.created?
   #     # => true
@@ -117,6 +117,8 @@ module HCloud
     updatable
     deletable
     labelable
+
+    subresource :rrset, :rrset
 
     attribute :id, :integer
     attribute :name
