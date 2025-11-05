@@ -62,9 +62,74 @@ module HCloud
   #     rrset.deleted?
   #     # => true
   #
+  # = Actions
+  # == List actions
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     actions = zone.rrsets.find(1).actions
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  # == Sort actions
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).actions.sort(finished: :desc)
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).actions.sort(:command, finished: :asc)
+  #     # => [#<HCloud::Action id: 1, ...>, ...]
+  #
+  # == Search actions
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).actions.where(command: "change_protection")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).actions.where(status: "success")
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Find action by ID
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).actions.find(1)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # = Resource-specific actions
+  # == Change protection
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).change_protection(change: true)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Change TTL
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).change_ttl(ttl: 10800)
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Set records
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).set_records(records: [{ value: "198.51.100.1", comment: "My web server at Hetzner Cloud" }])
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Add records
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).add_records(ttl: 10800, records: [{ value: "198.51.100.1", comment: "My web server at Hetzner Cloud" }])
+  #     # => #<HCloud::Action id: 1, ...>
+  #
+  # == Remove records
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).remove_records(records: [{ value: "198.51.100.1", comment: "My web server at Hetzner Cloud" }])
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   class RRSet < Resource
     subresource_of :zone
 
+    actionable
     queryable
     creatable
     updatable
@@ -83,6 +148,12 @@ module HCloud
     attribute :records, :record, array: true, default: -> { [] }
 
     attribute :zone, :zone
+
+    action :change_protection
+    action :change_ttl
+    action :set_records
+    action :add_records
+    action :remove_records
 
     def creatable_attributes
       [:name, :type, :ttl, :records, :labels]
