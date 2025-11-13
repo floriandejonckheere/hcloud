@@ -23,14 +23,3 @@ HCloud.loader.inflector.inflect(
   "target_ip" => "TargetIP",
   "yaml" => "YAML",
 )
-
-ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.acronym "DNS"
-  inflect.acronym "HTTP"
-  inflect.acronym "IP"
-  inflect.acronym "IPv4"
-  inflect.acronym "IPv6"
-  inflect.acronym "ISO"
-  inflect.acronym "JSON"
-  inflect.acronym "YAML"
-end

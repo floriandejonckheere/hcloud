@@ -13,6 +13,8 @@
 
 ### Removed
 
+- Removed global `ActiveSupport::Inflector` inflections 
+
 ### Fixed
 
 ## HCloud v4.2.0 (2025-09-24)
