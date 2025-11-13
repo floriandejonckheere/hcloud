@@ -17,19 +17,9 @@ HCloud.loader.inflector.inflect(
   "iso_type" => "ISOType",
   "primary_ip" => "PrimaryIP",
   "primary_ip_prices" => "PrimaryIPPrices",
+  "rrset" => "RRSet",
   "service_http" => "ServiceHTTP",
   "ssh_key" => "SSHKey",
   "target_ip" => "TargetIP",
   "yaml" => "YAML",
 )
-
-ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.acronym "DNS"
-  inflect.acronym "HTTP"
-  inflect.acronym "IP"
-  inflect.acronym "IPv4"
-  inflect.acronym "IPv6"
-  inflect.acronym "ISO"
-  inflect.acronym "JSON"
-  inflect.acronym "YAML"
-end

@@ -6,10 +6,14 @@
 
 - Implement Zones
 - Implement Zone actions
+- Implement RRSets
+- Implement RRSet actions
 
 ### Changed
 
 ### Removed
+
+- Removed global `ActiveSupport::Inflector` inflections 
 
 ### Fixed
 

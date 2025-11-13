@@ -8,23 +8,23 @@ module HCloud
   #
   #     storage_box = HCloud::StorageBox.find(1)
   #     storage_box.snapshots
-  #     # => [#<HCloud::StorageBox::Snapshot id: 1, ...>, ...]
+  #     # => [#<HCloud::StorageBoxSnapshot id: 1, ...>, ...]
   #
   # == Search snapshots
   #
   #     storage_box = HCloud::StorageBox.find(1)
   #     storage_box.snapshots.where(name: "monthly_backup")
-  #     # => #<HCloud::StorageBox::Snapshot id: 1, ...>
+  #     # => #<HCloud::StorageBoxSnapshot id: 1, ...>
   #
   #     storage_box = HCloud::StorageBox.find(1)
   #     storage_box.snapshots.where(label_selector: "environment=production")
-  #     # => #<HCloud::StorageBox::Snapshot id: 1, ...>
+  #     # => #<HCloud::StorageBoxSnapshot id: 1, ...>
   #
   # == Find snapshot by ID
   #
   #     storage_box = HCloud::StorageBox.find(1)
   #     storage_box.snapshots.find(1)
-  #     # => #<HCloud::StorageBox::Snapshot id: 1, ...>
+  #     # => #<HCloud::StorageBoxSnapshot id: 1, ...>
   #
   # == Create snapshot
   #
@@ -46,7 +46,7 @@ module HCloud
   #
   #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself
   #
-  #     snapshot = HCloud::StorageBox::Snapshot.create(storage_box: 1, description: "my_snapshot")
+  #     snapshot = HCloud::StorageBoxSnapshot.create(storage_box: 1, description: "my_snapshot")
   #     # => #<HCloud::Action id: 1, ...>
   #
   #     Note: this method returns a {HCloud::Action} instance rather than the created resource itself
