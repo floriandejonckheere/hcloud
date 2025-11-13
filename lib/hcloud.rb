@@ -4,6 +4,8 @@ require "active_model"
 require "active_support/all"
 require "zeitwerk"
 
+require_relative "hcloud/inflector"
+
 module HCloud
   class << self
     # Code loader instance
@@ -15,6 +17,9 @@ module HCloud
 
     def setup
       @loader = Zeitwerk::Loader.for_gem(warn_on_extra_files: false)
+
+      # Set up inflector
+      loader.inflector = Inflector.new
 
       # Register inflections
       require root.join("config/inflections.rb")

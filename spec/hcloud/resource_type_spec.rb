@@ -53,7 +53,7 @@ RSpec.describe HCloud::ResourceType do
   describe "a type registration exists for every resource" do
     HCloud::Resource.subclasses.each do |subclass|
       it "has a type registration for #{subclass}" do
-        expect { ActiveModel::Type.lookup subclass.name.demodulize.underscore.to_sym }.not_to raise_error
+        expect { ActiveModel::Type.lookup HCloud.loader.inflector.underscore(subclass.name.demodulize).to_sym }.not_to raise_error
       end
     end
   end
