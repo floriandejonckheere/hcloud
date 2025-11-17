@@ -40,7 +40,7 @@ module HCloud
   # == Create RRSet
   #
   #     zone = HCloud::Zone.find(1)
-  #     rrset = zone.rrsets.new(name: "my_rrset", type: "AAAA", ttl: 10800, records: [{ value: "198.51.100.1", comment: "My web server at Hetzner Cloud" }])
+  #     rrset = zone.rrsets.new(name: "my_rrset", type: "A", ttl: 10800, records: [{ value: "198.51.100.1", comment: "My web server at Hetzner Cloud" }])
   #     rrset.create
   #     rrset.created?
   #     # => true
