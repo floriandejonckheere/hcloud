@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe HCloud::Action, :integration, order: :defined do
-  id_one, id_two = nil
+  id_one, id_two = nil # rubocop:disable RSpec/LeakyLocalVariable
 
   # TODO: finds an action
   xit "finds an action" do
