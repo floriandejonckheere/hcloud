@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hetznercloud (4.2.0)
+    hetznercloud (4.3.0)
       activemodel
       activesupport
       http

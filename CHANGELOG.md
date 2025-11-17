@@ -4,18 +4,24 @@
 
 ### Added
 
+### Changed
+
+### Removed
+
+### Fixed
+
+## HCloud v4.3.0 (2025-11-17)
+
+### Added
+
 - Implement Zones
 - Implement Zone actions
 - Implement RRSets
 - Implement RRSet actions
 
-### Changed
-
 ### Removed
 
 - Removed global `ActiveSupport::Inflector` inflections 
-
-### Fixed
 
 ## HCloud v4.2.0 (2025-09-24)
 
