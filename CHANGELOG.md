@@ -4,13 +4,17 @@
 
 ### Added
 
-- Add `update_records` action to `HCloud::RRSet`
-
 ### Changed
 
 ### Removed
 
 ### Fixed
+
+## HCloud v4.4.0 (2025-11-25)
+
+### Added
+
+- Add `update_records` action to `HCloud::RRSet`
 
 ## HCloud v4.3.0 (2025-11-17)
 
