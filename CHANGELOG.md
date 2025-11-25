@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add `update_records` action to `HCloud::RRSet`
+
 ### Changed
 
 ### Removed

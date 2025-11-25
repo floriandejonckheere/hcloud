@@ -120,6 +120,12 @@ module HCloud
   #     zone.rrsets.find(1).add_records(ttl: 10800, records: [{ value: "198.51.100.1", comment: "My web server at Hetzner Cloud" }])
   #     # => #<HCloud::Action id: 1, ...>
   #
+  # == Update records
+  #
+  #     zone = HCloud::Zone.find(1)
+  #     zone.rrsets.find(1).update_records(records: [{ value: "198.51.100.1", comment: "My web server at Hetzner Cloud" }])
+  #     # => #<HCloud::Action id: 1, ...>
+  #
   # == Remove records
   #
   #     zone = HCloud::Zone.find(1)
@@ -153,6 +159,7 @@ module HCloud
     action :change_ttl
     action :set_records
     action :add_records
+    action :update_records
     action :remove_records
 
     def creatable_attributes
