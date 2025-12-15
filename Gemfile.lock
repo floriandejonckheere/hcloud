@@ -86,7 +86,7 @@ GEM
       rake (~> 13.0)
     logger (1.7.0)
     minitest (5.26.0)
-    openssl (3.3.2)
+    openssl (4.0.0)
     parallel (1.27.0)
     parser (3.3.10.0)
       ast (~> 2.4.1)
