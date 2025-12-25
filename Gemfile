@@ -14,6 +14,7 @@ group :development, :test do
   gem "debug", require: false
   gem "dotenv", require: false
   gem "ffaker", require: false
+  gem "iconv", require: false
   gem "rake", require: false
   gem "rspec", require: false
   gem "rubocop", require: false

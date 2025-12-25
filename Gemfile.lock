@@ -75,6 +75,7 @@ GEM
     http-form_data (2.3.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
+    iconv (1.1.1)
     io-console (0.8.2)
     irb (1.16.0)
       pp (>= 0.6.0)
@@ -190,6 +191,7 @@ DEPENDENCIES
   dotenv
   ffaker
   hetznercloud!
+  iconv
   rake
   rspec
   rubocop
