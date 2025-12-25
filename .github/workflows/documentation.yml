@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: ruby:3.3-alpine
+      image: ruby:4.0-rc-alpine
 
     steps:
       - uses: actions/checkout@v6
@@ -34,9 +34,9 @@ jobs:
         uses: actions/cache@v5.0.1
         with:
           path: vendor/bundle
-          key: Linux-3.3-gem-${{ hashFiles('**/Gemfile.lock') }}
+          key: Linux-4.0-gem-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
-            Linux-3.3-gem-
+            Linux-4.0-gem-
 
       - name: Install Gems
         run: |
