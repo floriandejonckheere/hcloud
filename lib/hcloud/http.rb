@@ -107,16 +107,16 @@ module HCloud
     def transform_params(params)
       params
         .transform_values do |value|
-        # Don't transform if value is single argument: { sort: :id }
-        next value unless value.respond_to?(:each)
+          # Don't transform if value is single argument: { sort: :id }
+          next value unless value.respond_to?(:each)
 
-        value.map do |element|
-          # Don't transform if element is single argument: { sort: [:id] }
-          next element unless element.respond_to?(:each)
+          value.map do |element|
+            # Don't transform if element is single argument: { sort: [:id] }
+            next element unless element.respond_to?(:each)
 
-          # Join elements with : { sort: [id: :asc] }
-          element.to_a.join(":")
-        end
+            # Join elements with : { sort: [id: :asc] }
+            element.to_a.join(":")
+          end
       end
         .compact
     end
