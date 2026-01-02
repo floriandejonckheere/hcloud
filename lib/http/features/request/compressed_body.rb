@@ -30,7 +30,7 @@ module HTTP
           self
         end
 
-        def compress(&_block)
+        def compress(&)
           raise NotImplementedError
         end
 

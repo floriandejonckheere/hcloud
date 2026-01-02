@@ -17,10 +17,10 @@ module HTTP
     module Response
       # @!visibility private
       class BrotliInflater < HTTP::Response::Inflater
-        def readpartial(*args)
+        def readpartial(*)
           chunks = []
 
-          while (chunk = @connection.readpartial(*args))
+          while (chunk = @connection.readpartial(*))
             chunks << chunk
           end
 

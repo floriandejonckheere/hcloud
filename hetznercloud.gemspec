@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Native Ruby integration with the Hetzner Cloud API"
   spec.homepage      = "https://github.com/floriandejonckheere/hcloud"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 3.2")
 
   spec.metadata["source_code_uri"] = "https://github.com/floriandejonckheere/hcloud.git"
   spec.metadata["rubygems_mfa_required"] = "true"

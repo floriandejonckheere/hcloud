@@ -8,6 +8,8 @@
 
 ### Removed
 
+- Remove support for Ruby 3.0 and 3.1
+
 ### Fixed
 
 ## HCloud v4.4.0 (2025-11-25)
