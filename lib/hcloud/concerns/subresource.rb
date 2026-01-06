@@ -5,6 +5,12 @@ module HCloud
   module Subresource
     extend ActiveSupport::Concern
 
+    delegate :resource_path, to: :class
+
+    def instance_path
+      resource_path(id: id)
+    end
+
     included do
       # For super resources
       class_attribute :subresource_names
@@ -35,27 +41,30 @@ module HCloud
 
       # For subresources
       def subresource_of(name, type = name)
+        raise ArgumentError, "Resource already a subresource of #{resource_class}" if resource_class.present?
+
         self.resource_class = ActiveModel::Type
           .lookup(type)
           .resource_class
 
-        attribute name, :integer
+        attribute name, :integer # TODO: override that returns the resource class instance instead of the ID?
 
-        # TODO: override that returns the resource class instance instead of the ID?
-      end
-
-      def resource_path
-        "/#{resource_name.pluralize}"
-      end
-    end
-
-    def resource_path
-      if resource_class && (id = send(resource_class.resource_name)).present?
         # Nested resources (e.g. /storage_boxes/123/subaccounts)
-        "/#{resource_class.resource_name.pluralize}/#{id}/#{resource_name.pluralize}"
-      else
-        # Top-level resources (e.g. /servers)
-        "/#{resource_name.pluralize}"
+        define_method(:resource_path) do |id: nil|
+          super_instance = public_send(resource_class.resource_name)
+
+          return super() if super_instance.blank?
+
+          if super_instance.respond_to?(:instance_path)
+            [super_instance.instance_path, super(id: id)].join
+          else
+            [resource_class.resource_path(id: super_instance), super(id: id)].join
+          end
+        end
+      end
+
+      def resource_path(id: nil)
+        ["", resource_name.pluralize, id].compact.join("/")
       end
     end
   end

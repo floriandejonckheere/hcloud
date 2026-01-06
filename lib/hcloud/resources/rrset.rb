@@ -169,5 +169,9 @@ module HCloud
     def updatable_attributes
       [:labels]
     end
+
+    def self.resource_name
+      "rrset"
+    end
   end
 end
