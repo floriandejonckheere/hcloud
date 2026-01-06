@@ -9,10 +9,12 @@ RSpec.describe HCloud::Zone, :integration, order: :defined do
 
   it "creates a primary IP" do
     zone = described_class.new(name: "#{SecureRandom.hex}.com", mode: "primary")
-    zone.create
+
+    expect(zone.create).to be_an(HCloud::Action)
+
     zone_id = zone.id
 
-    expect(zone).not_to be_created
+    expect(zone).to be_created
     expect(zone.id).not_to be_nil
   end
 
@@ -26,7 +28,7 @@ RSpec.describe HCloud::Zone, :integration, order: :defined do
                               { value: "127.0.0.1", comment: "localhost" },
                             ],)
 
-    rrset.create
+    expect(rrset.create).to be_an(HCloud::Action)
 
     expect(rrset).not_to be_created
     expect(rrset.id).not_to be_nil
