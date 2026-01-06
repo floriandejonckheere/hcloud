@@ -52,12 +52,6 @@ RSpec.describe HCloud::Subresource do
         expect(resource.resource_path).to eq "/examples"
       end
     end
-
-    describe ".resource_path" do
-      it "returns the resource path" do
-        expect(ExampleResource.resource_path).to eq "/examples"
-      end
-    end
   end
 
   describe "subresource" do
@@ -88,6 +82,48 @@ RSpec.describe HCloud::Subresource do
     describe ".resource_path" do
       it "returns the resource path" do
         expect(subresource.resource_path).to eq "/examples/#{resource.id}/subexamples"
+      end
+    end
+
+    context "when subresource has a defined resource type" do
+      let(:subresource) do
+        Class.new(HCloud::Resource) do
+          subresource_of :example, :example_resource
+
+          attribute :id, :integer
+          attribute :example, :example_resource
+
+          # Override resource name
+          def self.resource_name
+            "subexample"
+          end
+        end.new(example: 1)
+      end
+
+      it "returns the resource path" do
+        expect(subresource.resource_path).to eq "/examples/1/subexamples"
+        expect(subresource.resource_path(id: "2")).to eq "/examples/1/subexamples/2"
+      end
+    end
+
+    context "when subresource is defined as a simple type" do
+      let(:subresource) do
+        Class.new(HCloud::Resource) do
+          subresource_of :example, :example_resource
+
+          attribute :id, :integer
+          attribute :example, :string
+
+          # Override resource name
+          def self.resource_name
+            "subexample"
+          end
+        end.new(example: "simple")
+      end
+
+      it "returns the resource path" do
+        expect(subresource.resource_path).to eq "/examples/simple/subexamples"
+        expect(subresource.resource_path(id: "2")).to eq "/examples/simple/subexamples/2"
       end
     end
   end
