@@ -12,24 +12,26 @@ module HCloud
         response = client
           .post(resource_path, creatable_params)
 
-        # Some resources return an action instead of the resource itself (e.g. Storage Box API, RRSet creation)
+        resource_key = resource_name.to_sym
+
+        if response.key?(resource_key)
+          # Set the attributes from the response
+          assign_attributes(response[resource_name.to_sym].merge(response.slice(:root_password)))
+        end
+
+        # Some resources return an action instead of the resource itself
         if response.key?(:action)
           # Set the ID from the action response
-          self.id = response.dig(resource_name.to_sym, :id).presence ||
-                    response.dig(:action, :resources)
-                      .find { |r| r[:type] == [resource_class&.resource_name, resource_name].compact.join("_") }
-                      .fetch(:id)
+          self.id ||= response
+            .dig(:action, :resources)
+            .find { |r| r[:type] == [resource_class&.resource_name, resource_name].compact.join("_") }
+            .fetch(:id)
 
           # Return an Action instance
-          Action.new response[:action]
-        else
-          # Set the attributes from the response
-          assign_attributes response[resource_name.to_sym]
-            .merge!(response.slice(:root_password))
-
-          # Return the resource instance
-          self
+          return Action.new(response[:action])
         end
+
+        self
       end
 
       def created?
