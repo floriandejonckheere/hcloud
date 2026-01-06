@@ -42,6 +42,7 @@ RSpec.configure do |config|
     HCloud::Firewall.all.each(&:delete)
     HCloud::SSHKey.all.each(&:delete)
     HCloud::Volume.all.each(&:delete)
+    HCloud::Zone.all.each(&:delete)
 
     # Unset client
     HCloud::Client.connection = @client
