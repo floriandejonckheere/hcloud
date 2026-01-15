@@ -10,6 +10,12 @@
 
 ### Fixed
 
+## HCloud v5.0.1 (2026-01-15)
+
+### Fixed
+
+- Fix wrong version number in pushed gem
+
 ## HCloud v5.0.0 (2026-01-15)
 
 ### Added
