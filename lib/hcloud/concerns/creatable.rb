@@ -8,7 +8,7 @@ module HCloud
     included do # rubocop:disable Metrics/BlockLength
       attribute :created, :datetime
 
-      def create
+      def create # rubocop:disable Metrics/AbcSize
         response = client
           .post(resource_path, creatable_params)
 

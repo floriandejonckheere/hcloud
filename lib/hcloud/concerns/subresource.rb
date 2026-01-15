@@ -21,7 +21,7 @@ module HCloud
       class_attribute :resource_class
     end
 
-    class_methods do
+    class_methods do # rubocop:disable Metrics/BlockLength
       def inherited(subclass)
         super
 
