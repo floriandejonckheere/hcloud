@@ -16,7 +16,7 @@ module HCloud
 
         if response.key?(resource_key)
           # Set the attributes from the response
-          assign_attributes(response[resource_name.to_sym].merge(response.slice(:root_password)))
+          assign_attributes(response[resource_key].merge(response.slice(:root_password)))
         end
 
         # Some resources return an action instead of the resource itself
