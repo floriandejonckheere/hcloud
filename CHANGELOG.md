@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add `name` attribute to `HCloud::StorageBoxSubaccount`
+
 ### Changed
 
 ### Removed

@@ -111,11 +111,11 @@ module HCloud
     action :update_access_settings
 
     def creatable_attributes
-      [:password, :home_directory, :description, :labels, :access_settings]
+      [:password, :home_directory, :name, :description, :labels, :access_settings]
     end
 
     def updatable_attributes
-      [:description, :labels]
+      [:name, :description, :labels]
     end
 
     def self.resource_name
