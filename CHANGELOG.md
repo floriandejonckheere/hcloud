@@ -4,15 +4,25 @@
 
 ### Added
 
-- Add `name` attribute to `HCloud::StorageBoxSubaccount`
-
 ### Changed
 
 ### Removed
 
-- Remove support for Ruby 3.0 and 3.1
-
 ### Fixed
+
+## HCloud v5.0.0 (2026-01-15)
+
+### Added
+
+- Add `name` attribute to `HCloud::StorageBoxSubaccount`
+
+### Changed
+
+- Rework RRSet resource handler
+
+### Removed
+
+- Remove support for Ruby 3.0 and 3.1
 
 ## HCloud v4.4.0 (2025-11-25)
 
