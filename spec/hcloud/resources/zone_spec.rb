@@ -25,7 +25,7 @@ RSpec.describe HCloud::Zone, :integration, order: :defined do
                             type: "A",
                             ttl: 60,
                             records: [
-                              { value: "127.0.0.1", comment: "localhost" },
+                              value: "127.0.0.1", comment: "localhost",
                             ],)
 
     expect(rrset.create).to be_an(HCloud::Action)

@@ -8,7 +8,7 @@ RSpec.describe HCloud::Firewall, :integration, order: :defined do
   it "creates a firewall applied to a label" do
     server = HCloud::Server.create(name: "first", server_type: "cx11", image: "debian-11", labels: { environment: "production" })
 
-    firewall = described_class.create(name: "firewall_applied_to_a_label", apply_to: [{ type: "label_selector", label_selector: { selector: "environment=production" } }])
+    firewall = described_class.create(name: "firewall_applied_to_a_label", apply_to: [type: "label_selector", label_selector: { selector: "environment=production" }])
 
     firewall.reload
 
@@ -24,7 +24,7 @@ RSpec.describe HCloud::Firewall, :integration, order: :defined do
   end
 
   it "creates a firewall applied to a server" do
-    firewall = described_class.create(name: "firewall_applied_to_a_server", apply_to: [{ type: "server", server: server }])
+    firewall = described_class.create(name: "firewall_applied_to_a_server", apply_to: [type: "server", server: server])
 
     firewall.reload
 

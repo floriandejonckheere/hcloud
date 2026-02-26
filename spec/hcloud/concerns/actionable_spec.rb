@@ -13,7 +13,7 @@ RSpec.describe HCloud::Actionable do
     it "returns a collection of actions" do
       stub_request(:get, "https://api.hetzner.cloud/v1/examples/#{resource.id}/actions")
         .with(query: { page: 1, per_page: 50 })
-        .to_return(body: { actions: [{ id: 1, command: "create_resource" }], meta: { pagination: { total_entries: 1 } } }.to_json)
+        .to_return(body: { actions: [id: 1, command: "create_resource"], meta: { pagination: { total_entries: 1 } } }.to_json)
 
       actions = resource.actions
 
