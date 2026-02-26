@@ -34,7 +34,7 @@ RSpec.describe HCloud::Creatable do
       it "returns the action" do
         stub_request(:post, "https://api.hetzner.cloud/v1/examples")
           .with(body: { name: "my_resource", description: "my_description", sibling: { type: "sister", child: { id: 1 } }, child: "name1", children: [1, nil] })
-          .to_return(body: { action: { id: 1, status: "running", command: "create_resource", resources: [{ id: 2, type: "example" }] } }.to_json)
+          .to_return(body: { action: { id: 1, status: "running", command: "create_resource", resources: [id: 2, type: "example"] } }.to_json)
 
         action = resource.create
 

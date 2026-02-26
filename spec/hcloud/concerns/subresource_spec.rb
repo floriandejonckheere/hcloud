@@ -27,7 +27,7 @@ RSpec.describe HCloud::Subresource do
 
       it "returns a collection of subresources" do
         stub_request(:get, "https://api.hetzner.cloud/v1/examples/#{resource.id}/subexamples")
-          .to_return(body: { subexamples: [{ id: 2, name: "subexample" }] }.to_json)
+          .to_return(body: { subexamples: [id: 2, name: "subexample"] }.to_json)
 
         subresources = resource.subexamples
 

@@ -23,7 +23,7 @@ RSpec.describe HCloud::Firewall, :integration, order: :defined do
   end
 
   it "applies to resources" do
-    firewall.apply_to_resources(apply_to: [{ type: "server", server: { id: server.id } }])
+    firewall.apply_to_resources(apply_to: [type: "server", server: { id: server.id }])
 
     sleep 1
     firewall.reload
@@ -33,7 +33,7 @@ RSpec.describe HCloud::Firewall, :integration, order: :defined do
   end
 
   it "sets rules" do
-    firewall.set_rules(rules: [{ direction: "in", protocol: "tcp", port: "22", source_ips: ["0.0.0.0/0"] }])
+    firewall.set_rules(rules: [direction: "in", protocol: "tcp", port: "22", source_ips: ["0.0.0.0/0"]])
 
     sleep 1
     firewall.reload
@@ -45,7 +45,7 @@ RSpec.describe HCloud::Firewall, :integration, order: :defined do
   end
 
   it "removes from resources" do
-    firewall.remove_from_resources(remove_from: [{ type: "server", server: { id: server.id } }])
+    firewall.remove_from_resources(remove_from: [type: "server", server: { id: server.id }])
 
     sleep 1
     firewall.reload

@@ -23,9 +23,9 @@ RSpec.describe HCloud::Errors::Error do
         message: "SSH key with the same fingerprint already exists",
         details: {
           fields: [
-            {
-              name: "public_key",
-            },
+
+            name: "public_key",
+
           ],
         },
       }
@@ -42,10 +42,10 @@ RSpec.describe HCloud::Errors::Error do
         message: "invalid input in field 'broken_field': is too long",
         details: {
           fields: [
-            {
-              name: "broken_field",
-              messages: ["is too long"],
-            },
+
+            name: "broken_field",
+            messages: ["is too long"],
+
           ],
         },
       }
@@ -62,10 +62,10 @@ RSpec.describe HCloud::Errors::Error do
         message: "invalid input in field 'broken_field': is too long",
         details: {
           fields: [
-            {
-              name: "broken_field",
-              messages: ["is too long", "is invalid"],
-            },
+
+            name: "broken_field",
+            messages: ["is too long", "is invalid"],
+
           ],
         },
       }
