@@ -62,6 +62,10 @@ Style/FrozenStringLiteralComment:
 Style/HashAsLastArrayItem:
   EnforcedStyle: no_braces
 
+Style/OneClassPerFile:
+  Exclude:
+    - spec/support/**/*.rb
+
 Style/OptionalBooleanParameter:
   Enabled: false
 
