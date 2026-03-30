@@ -45,7 +45,7 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Build YARD documentation
         run: bundle exec yard doc
