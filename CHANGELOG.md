@@ -4,15 +4,21 @@
 
 ### Added
 
+### Changed
+
+### Removed
+
+### Fixed
+
+## HCloud v5.1.0 (2026-03-03)
+
+### Added
+
 - Add `recommended` and `available` attributes to `HCloud::ServerTypeLocation`
 
 ### Changed
 
 - Deprecate `HCloud::DatacenterServerType#available`, `#available_for_migration`, `#supported` and `HCloud::Datacenter.recommendation`
- 
-### Removed
-
-### Fixed
 
 ## HCloud v5.0.1 (2026-01-15)
 
