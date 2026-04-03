@@ -6,6 +6,7 @@ module HCloud
     include ActiveModel::AttributeAssignment
 
     include Concerns
+    include DeprecatedAttributes
     include DynamicAttributes
     include Subresource
 
@@ -33,16 +34,6 @@ module HCloud
 
     def ==(other)
       id && id == other.id
-    end
-
-    def self.attribute(name, *, deprecated: false, **)
-      super(name, *, **)
-
-      define_method(name) do |**params|
-        warn "[DEPRECATION] Field \"#{name}\" on #{self.class.name} is deprecated." if deprecated
-
-        super(**params)
-      end
     end
 
     def self.resource_name

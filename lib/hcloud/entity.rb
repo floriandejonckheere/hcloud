@@ -6,6 +6,7 @@ module HCloud
     include ActiveModel::Attributes
     include ActiveModel::AttributeAssignment
 
+    include DeprecatedAttributes
     include DynamicAttributes
 
     def initialize(attributes = {})
