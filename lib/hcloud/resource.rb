@@ -23,7 +23,14 @@ module HCloud
     delegate :[], to: :attributes
 
     def inspect
-      "#<#{self.class} #{attributes.filter_map { |name, value| "#{name}: #{value.inspect}" }.join(', ')}>"
+      "#<#{self.class} #{attributes.filter_map do |name, value|
+        "#{name}: #{
+          if value.is_a?(Resource) || value.is_a?(Entity)
+            '<...>'
+          else
+            value.is_a?(Enumerable) ? '[...]' : value.inspect
+          end}"
+      end.join(', ')}>"
     end
 
     def to_h
