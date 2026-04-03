@@ -5,5 +5,8 @@ module HCloud
     attribute :id, :integer
     attribute :name
     attribute :deprecation, :deprecation
+
+    attribute :available, :boolean
+    attribute :recommended, :boolean
   end
 end

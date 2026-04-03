@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add `recommended` and `available` attributes to `HCloud::ServerTypeLocation`
+
 ### Changed
 
 ### Removed
