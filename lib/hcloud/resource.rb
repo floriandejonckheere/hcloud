@@ -8,6 +8,7 @@ module HCloud
     include Concerns
     include DeprecatedAttributes
     include DynamicAttributes
+    include InspectAttributes
     include Subresource
 
     def initialize(attributes = {})
@@ -21,17 +22,6 @@ module HCloud
     end
 
     delegate :[], to: :attributes
-
-    def inspect
-      "#<#{self.class} #{attributes.filter_map do |name, value|
-        "#{name}: #{
-          if value.is_a?(Resource) || value.is_a?(Entity)
-            '<...>'
-          else
-            value.is_a?(Enumerable) ? '[...]' : value.inspect
-          end}"
-      end.join(', ')}>"
-    end
 
     def to_h
       {
