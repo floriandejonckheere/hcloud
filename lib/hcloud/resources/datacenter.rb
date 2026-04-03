@@ -43,6 +43,8 @@ module HCloud
     attribute :server_types, :datacenter_server_type
 
     def self.recommendation
+      warn "[DEPRECATION] Field \"recommendation\" on #{self.class.name} is deprecated."
+
       find client
         .get(resource_path)
         .fetch(:recommendation)

@@ -8,6 +8,8 @@
 
 ### Changed
 
+- Deprecate `HCloud::DatacenterServerType#available`, `#available_for_migration`, `#supported` and `HCloud::Datacenter.recommendation`
+ 
 ### Removed
 
 ### Fixed
