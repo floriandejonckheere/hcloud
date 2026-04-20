@@ -106,7 +106,7 @@ GEM
     public_suffix (7.0.5)
     racc (1.8.1)
     rainbow (3.1.1)
-    rake (13.3.1)
+    rake (13.4.2)
     rdoc (7.0.2)
       erb
       psych (>= 4.0.0)
@@ -170,7 +170,7 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    yard (0.9.42)
+    yard (0.9.43)
     zeitwerk (2.7.5)
 
 PLATFORMS
