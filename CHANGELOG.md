@@ -6,6 +6,8 @@
 
 ### Changed
 
+- Deprecate `HCloud::LoadBalancerType#deprecated`
+
 ### Removed
 
 ### Fixed
