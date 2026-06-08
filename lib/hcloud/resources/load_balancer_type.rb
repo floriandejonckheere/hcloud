@@ -33,6 +33,8 @@ module HCloud
 
     attribute :prices, :price, array: true, default: -> { [] }
 
+    attribute :deprecation, :deprecation
+
     attribute :deprecated, :datetime, deprecated: true
   end
 end

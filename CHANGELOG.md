@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add `deprecation` attribute to `HCloud::LoadBalancerType`
+
 ### Changed
 
 - Deprecate `HCloud::LoadBalancerType#deprecated`
