@@ -33,6 +33,8 @@ module HCloud
   #     # => #<HCloud::Datacenter id: 2, ...>
   #
   class Datacenter < Resource
+    deprecated since: "2026-10-01"
+
     queryable
 
     attribute :id, :integer

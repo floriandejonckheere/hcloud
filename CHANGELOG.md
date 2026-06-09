@@ -10,6 +10,7 @@
 ### Changed
 
 - Deprecate `HCloud::LoadBalancerType#deprecated`
+- Deprecate `HCloud::Datacenter`
 
 ### Removed
 
