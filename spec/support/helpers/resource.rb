@@ -75,3 +75,17 @@ class SubexampleResource < HCloud::Resource
 end
 
 ActiveModel::Type.register(:subexample_resource, HCloud::ResourceType.Type("SubexampleResource"))
+
+class DeprecatedExampleResource < HCloud::Resource
+  deprecated since: "2026-01-01"
+
+  queryable
+  creatable
+  updatable
+  deletable
+
+  attribute :id, :integer
+  attribute :name
+end
+
+ActiveModel::Type.register(:deprecated_example_resource, HCloud::ResourceType.Type("DeprecatedExampleResource"))

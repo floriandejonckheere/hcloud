@@ -7,6 +7,7 @@ module HCloud
 
     include Concerns
     include DeprecatedAttributes
+    include DeprecatedResource
     include DynamicAttributes
     include InspectAttributes
     include Subresource
