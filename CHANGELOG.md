@@ -15,6 +15,8 @@
 
 ### Removed
 
+- Remove `HCloud::Action.all`, `.first`, `.last`, `.count`, `.where`, `.sort`, `.each`, `.empty?`, `.any?`
+
 ### Fixed
 
 ## HCloud v5.1.0 (2026-03-03)
