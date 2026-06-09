@@ -14,7 +14,7 @@ module HCloud
     def find(id)
       Action.new resource
         .client
-        .get("#{resource.resource_path}/#{resource.id}/actions/#{id}")
+        .get("/actions/#{id}")
         .fetch(:action)
     end
 

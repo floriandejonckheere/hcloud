@@ -12,6 +12,7 @@
 
 - Deprecate `HCloud::LoadBalancerType#deprecated`
 - Deprecate `HCloud::Datacenter`
+- Replace `GET /<resource>/{id}/actions/{action_id}` with `GET /actions/{action_id}`
 
 ### Removed
 

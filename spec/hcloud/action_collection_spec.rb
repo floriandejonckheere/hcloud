@@ -7,7 +7,7 @@ RSpec.describe HCloud::ActionCollection do
 
   describe "#find" do
     it "finds an action" do
-      stub_request(:get, "https://api.hetzner.cloud/v1/examples/#{resource.id}/actions/1")
+      stub_request(:get, "https://api.hetzner.cloud/v1/actions/1")
         .to_return(body: { action: { id: 1, command: "create_resource" } }.to_json)
 
       actions = collection.find(1)
