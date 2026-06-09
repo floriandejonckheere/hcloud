@@ -4,6 +4,16 @@
 
 ### Added
 
+### Changed
+
+### Removed
+
+### Fixed
+
+## HCloud v6.0.0 (2026-06-09)
+
+### Added
+
 - Add `deprecation` attribute to `HCloud::LoadBalancerType`
 - Add `MustBeUnassigned` error class
 - Add `DeprecatedApiEndpoint` error class
