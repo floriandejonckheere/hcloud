@@ -25,6 +25,7 @@ module HCloud
     class ActionFailed < Error; end
     class CloudResourceIPNotAllowed < Error; end
     class Conflict < Error; end
+    class DeprecatedApiEndpoint < Error; end
     class FirewallAlreadyApplied < Error; end
     class FirewallAlreadyRemoved < Error; end
     class FirewallResourceNotFound < Error; end
