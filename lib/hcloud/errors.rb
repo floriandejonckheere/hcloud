@@ -40,6 +40,7 @@ module HCloud
     class LoadBalancerPublicInterfaceDisabled < Error; end
     class Locked < Error; end
     class Maintenance < Error; end
+    class MustBeUnassigned < Error; end
     class NetworksOverlap < Error; end
     class NoSpaceLeftInLocation < Error; end
     class NoSubnetAvailable < Error; end

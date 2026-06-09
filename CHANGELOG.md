@@ -5,6 +5,7 @@
 ### Added
 
 - Add `deprecation` attribute to `HCloud::LoadBalancerType`
+- Add `MustBeUnassigned` error class
 
 ### Changed
 
