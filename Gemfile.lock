@@ -33,7 +33,7 @@ GEM
     bigdecimal (4.1.0)
     brotli (0.8.0)
     cgi (0.5.1)
-    concurrent-ruby (1.3.6)
+    concurrent-ruby (1.3.7)
     connection_pool (3.0.2)
     crack (1.0.1)
       bigdecimal
