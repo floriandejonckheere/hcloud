@@ -13,7 +13,7 @@ RSpec.describe HCloud::Creatable do
 
     it "creates the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/examples")
-        .with(body: { name: "my_resource", description: "my_description", sibling: { type: "sister", child: { id: 1 } }, child: "name1", children: [1, nil] })
+        .with(body: { name: "my_resource", description: "my_description", sibling: { type: "sister", child: { id: 1 } }, child: "name1", children: [1, "name1"] })
         .to_return(body: { example: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
 
       resource.create
@@ -24,7 +24,7 @@ RSpec.describe HCloud::Creatable do
 
     it "returns the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/examples")
-        .with(body: { name: "my_resource", description: "my_description", sibling: { type: "sister", child: { id: 1 } }, child: "name1", children: [1, nil] })
+        .with(body: { name: "my_resource", description: "my_description", sibling: { type: "sister", child: { id: 1 } }, child: "name1", children: [1, "name1"] })
         .to_return(body: { example: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
 
       expect(resource.create).to be_a described_class
@@ -33,7 +33,7 @@ RSpec.describe HCloud::Creatable do
     context "when the API return an action" do
       it "returns the action" do
         stub_request(:post, "https://api.hetzner.cloud/v1/examples")
-          .with(body: { name: "my_resource", description: "my_description", sibling: { type: "sister", child: { id: 1 } }, child: "name1", children: [1, nil] })
+          .with(body: { name: "my_resource", description: "my_description", sibling: { type: "sister", child: { id: 1 } }, child: "name1", children: [1, "name1"] })
           .to_return(body: { action: { id: 1, status: "running", command: "create_resource", resources: [id: 2, type: "example"] } }.to_json)
 
         action = resource.create

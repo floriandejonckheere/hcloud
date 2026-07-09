@@ -3,7 +3,7 @@
 ![Continuous Integration](https://github.com/floriandejonckheere/hcloud/actions/workflows/ci.yml/badge.svg)
 ![Release](https://img.shields.io/github/v/release/floriandejonckheere/hcloud?label=Latest%20release)
 
-Unofficial Ruby integration with the [Hetzner Cloud API](https://docs.hetzner.cloud/).
+Unofficial Ruby integration with the [Hetzner Cloud API](https://docs.hetzner.cloud/). Refer to the [API specification](https://docs.hetzner.cloud/reference/cloud) for more details.
 
 ## Installation
 
@@ -94,8 +94,8 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [Pricing](lib/hcloud/resources/pricing.rb)                                       | Implemented           |
 | [RRSets](lib/hcloud/resources/rrset.rb)                                          | Implemented           |
 | [RRSet Actions](lib/hcloud/resources/rrset.rb)                                   | Implemented           |
-| [Servers](lib/hcloud/resources/server.rb)                                        | Partially implemented |
-| [Server Actions](lib/hcloud/resources/server.rb)                                 | Not implemented       |
+| [Servers](lib/hcloud/resources/server.rb)                                        | Implemented           |
+| [Server Actions](lib/hcloud/resources/server.rb)                                 | Implemented           |
 | [Server Types](lib/hcloud/resources/server_type.rb)                              | Implemented           |
 | [SSH Keys](lib/hcloud/resources/ssh_key.rb)                                      | Implemented           |
 | [Storage Boxes](lib/hcloud/resources/storage_box.rb)                             | Implemented           |

@@ -42,19 +42,38 @@ module HCloud
         []
       end
 
-      # Convert creatable_attributes into a key-value list
-      # rubocop:disable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
       def creatable_params
         # Split simple and nested attributes
         nested_attributes, simple_attributes = creatable_attributes.partition { |a| a.respond_to? :each }
 
+        serialize_simple_attributes(simple_attributes)
+          .merge(serialize_nested_attributes(nested_attributes))
+          .compact_blank
+      end
+
+      private
+
+      def serialize_simple_attributes(simple_attributes)
         attributes
           .slice(*simple_attributes.map(&:to_s))
           .transform_values { |v| v&.send_wrap { |o| o.try(:to_h) || o } || v&.send_wrap(:to_s) }
-          .merge(nested_attributes.reduce(&:merge).to_h { |k, v| [k.to_s, Array(v).filter_map { |w| send(k)&.send_wrap(w) }.first] })
-          .compact_blank
       end
-      # rubocop:enable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
+
+      def serialize_nested_attributes(nested_attributes)
+        return {} if nested_attributes.empty?
+
+        nested_attributes.reduce(&:merge).to_h do |k, v|
+          [k.to_s, serialize_nested_attribute(send(k), v)]
+        end
+      end
+
+      def serialize_nested_attribute(value, fallbacks)
+        if value.is_a?(Array)
+          value.map { |item| Array(fallbacks).filter_map { |w| item&.send_wrap(w) }.first }
+        else
+          Array(fallbacks).filter_map { |w| value&.send_wrap(w) }.first
+        end
+      end
     end
 
     class_methods do
