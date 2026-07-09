@@ -184,7 +184,7 @@ module HCloud
     # TODO: use only for creation
     attribute :public_interface, :boolean
 
-    attribute :private_net, :load_balancer_private_net
+    attribute :private_net, :load_balancer_private_net, array: true, default: -> { [] }
     attribute :public_net, :load_balancer_public_net
 
     attribute :services, :service, array: true, default: -> { [] }

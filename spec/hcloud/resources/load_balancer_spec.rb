@@ -39,7 +39,7 @@ RSpec.describe HCloud::LoadBalancer, :integration, order: :defined do
 
     expect(load_balancer.location.name).to eq "nbg1"
 
-    expect(load_balancer.private_net).to be_nil
+    expect(load_balancer.private_net).to be_empty
     expect(load_balancer.public_net).to be_enabled
 
     # TODO: create services and targets
