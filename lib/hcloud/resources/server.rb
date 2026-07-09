@@ -44,6 +44,9 @@ module HCloud
   #     firewall = HCloud::Server.create(name: "my_server", image: "debian-11", server_type: "cx11")
   #     # => #<HCloud::Server id: 1, ...>
   #
+  #     # Create a server with a private IP only
+  #     server = HCloud::Server.create(name: "my_server", image: "debian-11", server_type: "cx11", public_net: { enable_ipv4: false, enable_ipv6: false }, networks: [network_id])
+  #
   # == Update server
   #
   #     server = HCloud::Server.find(1)
@@ -168,7 +171,7 @@ module HCloud
     action :request_console
 
     def creatable_attributes
-      [:name, :automount, :start_after_create, :user_data, :labels, datacenter: [:id, :name], image: [:id, :name], location: [:id, :name], server_type: [:id, :name], ssh_keys: [:id, :name], firewalls: :id, networks: :id, volumes: :id]
+      [:name, :automount, :start_after_create, :user_data, :labels, :public_net, datacenter: [:id, :name], image: [:id, :name], location: [:id, :name], server_type: [:id, :name], ssh_keys: [:id, :name], firewalls: :id, networks: :id, volumes: :id]
     end
 
     def updatable_attributes
