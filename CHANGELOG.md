@@ -10,6 +10,17 @@
 
 ### Fixed
 
+## HCloud v6.1.0 (2026-07-10)
+
+### Added
+
+- Add `enable_ipv4` and `enable_ipv6` attributes to `HCloud::PublicNet`
+- Add `public_net` to `HCloud::Server` creatable attributes
+
+### Fixed
+
+- Fix a bug where name-only SSH keys serialize incorrectly
+
 ## HCloud v6.0.0 (2026-06-09)
 
 ### Added

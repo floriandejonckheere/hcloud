@@ -4,7 +4,7 @@ module HCloud
   # @!visibility private
   module Version
     MAJOR = 6
-    MINOR = 0
+    MINOR = 1
     PATCH = 0
     PRE   = nil
 
