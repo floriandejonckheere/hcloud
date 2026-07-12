@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add `location` to `HCloud::PrimaryIP`
+
 ### Changed
 
 ### Removed
