@@ -35,7 +35,7 @@ module HCloud
   #
   # == Create primary IP
   #
-  #     primary IP = HCloud::PrimaryIP.new(name: "my_primary_ip", type: "ipv4", datacenter: "fsn1-dc8")
+  #     primary IP = HCloud::PrimaryIP.new(name: "my_primary_ip", type: "ipv4")
   #     primary IP.create
   #     primary IP.created?
   #     # => true
@@ -125,8 +125,6 @@ module HCloud
     attribute :auto_delete, :boolean
     attribute :blocked, :boolean
 
-    attribute :datacenter, :datacenter
-
     attribute :protection, :protection
 
     alias auto_delete? auto_delete
@@ -140,7 +138,7 @@ module HCloud
     action :change_protection
 
     def creatable_attributes
-      [:name, :type, :assignee_id, :assignee_type, :auto_delete, :labels, datacenter: [:id, :name]]
+      [:name, :type, :assignee_id, :assignee_type, :auto_delete, :labels]
     end
 
     def updatable_attributes

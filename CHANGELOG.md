@@ -8,6 +8,8 @@
 
 ### Removed
 
+- Remove `datacenter` from `HCloud::Server` and `HCloud::PrimaryIP`
+
 ### Fixed
 
 ## HCloud v6.1.0 (2026-07-10)
