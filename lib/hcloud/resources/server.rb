@@ -168,7 +168,7 @@ module HCloud
     action :request_console
 
     def creatable_attributes
-      [:name, :automount, :start_after_create, :user_data, :labels, :public_net, image: [:id, :name], location: [:id, :name], server_type: [:id, :name], ssh_keys: [:id, :name], firewalls: :id, networks: :id, volumes: :id]
+      [:name, :automount, :start_after_create, :user_data, :labels, :public_net, image: [:id, :name], location: [:id, :name], server_type: [:id, :name], ssh_keys: [:id, :name], firewalls: :id, networks: :id, volumes: :id, placement_group: :id]
     end
 
     def updatable_attributes

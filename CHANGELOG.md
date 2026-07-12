@@ -5,6 +5,7 @@
 ### Added
 
 - Add `location` to `HCloud::PrimaryIP`
+- Add `placement_group` to `HCloud::Server` creatable attributes
 
 ### Changed
 
