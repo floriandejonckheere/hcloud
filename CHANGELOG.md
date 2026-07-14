@@ -10,6 +10,8 @@
 
 ### Changed
 
+- Change `HCloud::Image#image_size` type from integer to float
+
 ### Removed
 
 - Remove `datacenter` from `HCloud::Server` and `HCloud::PrimaryIP`
