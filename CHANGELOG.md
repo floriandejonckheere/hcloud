@@ -6,6 +6,7 @@
 
 - Add `location` to `HCloud::PrimaryIP`
 - Add `placement_group` to `HCloud::Server` creatable attributes
+- Add `description` to `HCloud::FloatingIP` updatable attributes
 
 ### Changed
 
