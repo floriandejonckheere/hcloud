@@ -188,7 +188,7 @@ module HCloud
     attribute :public_net, :load_balancer_public_net
 
     attribute :services, :service, array: true, default: -> { [] }
-    attribute :targets, :target, array: true, default: -> { [] }
+    attribute :targets, :targets, array: true, default: -> { [] }
 
     attribute :protection, :protection
 

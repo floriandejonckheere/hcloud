@@ -11,6 +11,7 @@
 ### Changed
 
 - Change `HCloud::Image#image_size` type from integer to float
+- Change `HCloud::LoadBalancer#targets` type to support label selector and IP targets
 
 ### Removed
 
