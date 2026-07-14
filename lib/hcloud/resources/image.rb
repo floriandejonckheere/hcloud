@@ -95,8 +95,6 @@ module HCloud
     attribute :type
     attribute :status
 
-    attribute :build_id
-
     attribute :disk_size, :integer
     attribute :image_size, :float
 

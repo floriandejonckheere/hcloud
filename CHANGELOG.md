@@ -15,6 +15,7 @@
 ### Removed
 
 - Remove `datacenter` from `HCloud::Server` and `HCloud::PrimaryIP`
+- Remove `build_id` from `HCloud::Image` (not present in API)
 
 ### Fixed
 

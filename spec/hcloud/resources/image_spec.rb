@@ -10,7 +10,6 @@ RSpec.describe HCloud::Image, :integration, order: :defined do
     expect(image.type).to eq "system"
     expect(image.status).to eq "available"
 
-    expect(image.build_id).to be_nil
     expect(image.disk_size).to eq 5
     expect(image.image_size).to be_nil
 
@@ -38,7 +37,6 @@ RSpec.describe HCloud::Image, :integration, order: :defined do
     expect(image.type).to eq "app"
     expect(image.status).to eq "available"
 
-    expect(image.build_id).to be_nil
     expect(image.disk_size).to eq 20
     expect(image.image_size).to be_nil
 
