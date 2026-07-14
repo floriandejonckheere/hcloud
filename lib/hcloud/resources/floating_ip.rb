@@ -139,7 +139,7 @@ module HCloud
     end
 
     def updatable_attributes
-      [:name, :labels]
+      [:name, :description, :labels]
     end
   end
 end
