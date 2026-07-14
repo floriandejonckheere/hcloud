@@ -98,7 +98,7 @@ module HCloud
     attribute :build_id
 
     attribute :disk_size, :integer
-    attribute :image_size, :integer
+    attribute :image_size, :float
 
     attribute :os_flavor
     attribute :os_version
