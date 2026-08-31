@@ -29,9 +29,8 @@ RSpec.describe HCloud::Resource do
     end
 
     it "is equal when id matches" do
-      # rubocop:disable RSpec/IdenticalEqualityAssertion
+      # rubocop:disable-next RSpec/IdenticalEqualityAssertion
       expect(ExampleResource.new(id: 123)).to eq ExampleResource.new(id: 123)
-      # rubocop:enable RSpec/IdenticalEqualityAssertion
     end
   end
 end
