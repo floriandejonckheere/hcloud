@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/SubjectStub
+# rubocop:disable-next RSpec/SubjectStub
 RSpec.describe HTTP::RateLimiter do
   subject(:rate_limiter) { http.default_options.features.fetch(:rate_limiter) }
 
@@ -70,4 +70,3 @@ RSpec.describe HTTP::RateLimiter do
     }
   end
 end
-# rubocop:enable RSpec/SubjectStub
