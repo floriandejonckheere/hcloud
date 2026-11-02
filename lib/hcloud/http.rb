@@ -36,7 +36,7 @@ module HCloud
 
       return data if response.status.success?
 
-      raise Errors.const_get(data.dig(:error, :code).camelize), data[:error]
+      raise Errors.for(data.dig(:error, :code)), data[:error]
     end
 
     def put(path, body = {})
@@ -51,7 +51,7 @@ module HCloud
 
       return data if response.status.success?
 
-      raise Errors.const_get(data.dig(:error, :code).camelize), data[:error]
+      raise Errors.for(data.dig(:error, :code)), data[:error]
     end
 
     def post(path, body = {})
@@ -66,7 +66,7 @@ module HCloud
 
       return data if response.status.success?
 
-      raise Errors.const_get(data.dig(:error, :code).camelize), data[:error]
+      raise Errors.for(data.dig(:error, :code)), data[:error]
     end
 
     def delete(path)
@@ -83,7 +83,7 @@ module HCloud
 
       return data if response.status.success?
 
-      raise Errors.const_get(data.dig(:error, :code).camelize), data[:error]
+      raise Errors.for(data.dig(:error, :code)), data[:error]
     end
 
     private

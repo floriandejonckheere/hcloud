@@ -37,6 +37,8 @@
 
 ### Fixed
 
+- Fix error class lookup for error codes containing `ip`, `ipv4` or `ipv6` (e.g. `HCloud::Errors::PrimaryIPAssigned`)
+
 ## HCloud v6.1.0 (2026-07-10)
 
 ### Added
