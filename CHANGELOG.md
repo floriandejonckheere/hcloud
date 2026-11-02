@@ -14,6 +14,7 @@
 - Add `public_net` to `HCloud::LoadBalancer` creatable attributes (assign existing primary IPs)
 - Add `id` and `blocked` to `HCloud::LoadBalancer#public_net` IPs
 - Add `PrimaryIPBlocked` and `PrimaryIPLocationMismatch` error classes
+- Add `HCloud::Network#members`
 
 ### Changed
 
