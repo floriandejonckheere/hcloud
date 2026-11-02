@@ -11,6 +11,8 @@
 - Add `detail` and `http_status_code` to `HCloud::HealthStatus`
 - Add `deprecation` to `HCloud::Image`
 - Add `assignee` to `HCloud::Volume`
+- Add `public_net` to `HCloud::LoadBalancer` creatable attributes (assign existing primary IPs)
+- Add `id` and `blocked` to `HCloud::LoadBalancer#public_net` IPs
 
 ### Changed
 
