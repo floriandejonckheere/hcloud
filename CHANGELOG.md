@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Added
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## HCloud v7.0.0 (2026-11-02)
+
 ### Upgrading
 
 This release contains breaking changes, following changes in the Hetzner Cloud API.
