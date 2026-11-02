@@ -13,7 +13,7 @@ RSpec.describe HCloud::Updatable do
     it "updates the resource" do
       stub_request(:put, "https://api.hetzner.cloud/v1/examples/#{resource.id}")
         .with(body: resource.attributes.slice(*resource.updatable_attributes.map(&:to_s)))
-        .to_return(body: { example: resource.attributes.merge(name: "my_name") }.to_json)
+        .to_return(body: { example: resource.attributes.symbolize_keys.merge(name: "my_name") }.to_json)
 
       resource.update
 
@@ -23,7 +23,7 @@ RSpec.describe HCloud::Updatable do
     it "updates the resource with the given attributes" do
       stub_request(:put, "https://api.hetzner.cloud/v1/examples/#{resource.id}")
         .with(body: resource.attributes.slice(*resource.updatable_attributes.map(&:to_s)).merge("name" => "MY_NAME"))
-        .to_return(body: { example: resource.attributes.merge(name: "my_name") }.to_json)
+        .to_return(body: { example: resource.attributes.symbolize_keys.merge(name: "my_name") }.to_json)
 
       resource.update(name: "MY_NAME")
 
@@ -33,7 +33,7 @@ RSpec.describe HCloud::Updatable do
     it "returns the resource" do
       stub_request(:put, "https://api.hetzner.cloud/v1/examples/#{resource.id}")
         .with(body: resource.attributes.slice(*resource.updatable_attributes.map(&:to_s)))
-        .to_return(body: { example: resource.attributes.merge(name: "my_name") }.to_json)
+        .to_return(body: { example: resource.attributes.symbolize_keys.merge(name: "my_name") }.to_json)
 
       expect(resource.update).to be_a described_class
     end

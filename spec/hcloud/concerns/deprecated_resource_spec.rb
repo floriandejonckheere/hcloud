@@ -13,7 +13,7 @@ RSpec.describe HCloud::DeprecatedResource do
     [[:find, 1], [:all], [:create]].each do |method, *args|
       it "redefines #{method.inspect}" do
         stub_request(:get, "https://api.hetzner.cloud/v1/deprecated_example_resources/1")
-          .to_return(body: { deprecated_example_resource: resource.attributes.merge(id: 1) }.to_json)
+          .to_return(body: { deprecated_example_resource: resource.attributes.symbolize_keys.merge(id: 1) }.to_json)
 
         stub_request(:get, "https://api.hetzner.cloud/v1/deprecated_example_resources")
           .to_return(body: { deprecated_example_resources: [resource.attributes], meta: { pagination: { total_entries: 1 } } }.to_json)
@@ -32,10 +32,10 @@ RSpec.describe HCloud::DeprecatedResource do
     [:reload, :update, :delete].each do |method|
       it "redefines #{method.inspect}" do
         stub_request(:get, "https://api.hetzner.cloud/v1/deprecated_example_resources/1")
-          .to_return(body: { deprecated_example_resource: resource.attributes.merge(id: 1) }.to_json)
+          .to_return(body: { deprecated_example_resource: resource.attributes.symbolize_keys.merge(id: 1) }.to_json)
 
         stub_request(:put, "https://api.hetzner.cloud/v1/deprecated_example_resources/1")
-          .to_return(body: { deprecated_example_resource: resource.attributes.merge(id: 1) }.to_json)
+          .to_return(body: { deprecated_example_resource: resource.attributes.symbolize_keys.merge(id: 1) }.to_json)
 
         stub_request(:delete, "https://api.hetzner.cloud/v1/deprecated_example_resources/1")
 
