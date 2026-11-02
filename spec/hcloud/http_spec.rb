@@ -53,6 +53,15 @@ RSpec.describe HCloud::HTTP do
       expect(stub).to have_been_requested
     end
 
+    it "raises a client error with an acronym in the code" do
+      stub = stub_request(:get, "https://endpoint/api")
+        .with(query: { one: "two" })
+        .to_return(status: 422, body: { error: { code: "primary_ip_assigned", message: "Primary IP assigned" } }.to_json)
+
+      expect { http.get("api", one: "two") }.to raise_error HCloud::Errors::PrimaryIPAssigned
+      expect(stub).to have_been_requested
+    end
+
     it "raises a server error" do
       stub = stub_request(:get, "https://endpoint/api")
         .with(query: { one: "two" })

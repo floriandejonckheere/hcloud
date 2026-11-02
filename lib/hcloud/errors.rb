@@ -2,6 +2,20 @@
 
 module HCloud
   module Errors
+    # Acronyms used in error class names
+    ACRONYMS = {
+      "ip" => "IP",
+      "ipv4" => "IPv4",
+      "ipv6" => "IPv6",
+    }.freeze
+
+    ##
+    # Look up the error class for an API error code (e.g. "primary_ip_assigned" => PrimaryIPAssigned)
+    #
+    def self.for(code)
+      const_get(code.to_s.split("_").map { |word| ACRONYMS.fetch(word) { word.capitalize } }.join)
+    end
+
     class Error < StandardError
       attr_reader :data
 
