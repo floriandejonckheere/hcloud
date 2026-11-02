@@ -14,7 +14,7 @@ RSpec.describe HCloud::Creatable do
     it "creates the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/examples")
         .with(body: { name: "my_resource", description: "my_description", sibling: { type: "sister", child: { id: 1 } }, child: "name1", children: [1, "name1"] })
-        .to_return(body: { example: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
+        .to_return(body: { example: resource.attributes.symbolize_keys.merge(id: 1, created: 1.second.ago) }.to_json)
 
       resource.create
 
@@ -25,7 +25,7 @@ RSpec.describe HCloud::Creatable do
     it "returns the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/examples")
         .with(body: { name: "my_resource", description: "my_description", sibling: { type: "sister", child: { id: 1 } }, child: "name1", children: [1, "name1"] })
-        .to_return(body: { example: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
+        .to_return(body: { example: resource.attributes.symbolize_keys.merge(id: 1, created: 1.second.ago) }.to_json)
 
       expect(resource.create).to be_a described_class
     end
@@ -53,7 +53,7 @@ RSpec.describe HCloud::Creatable do
     it "creates the resource" do
       stub_request(:post, "https://api.hetzner.cloud/v1/examples")
         .with(body: { name: "my_resource", description: "my_description" })
-        .to_return(body: { example: resource.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
+        .to_return(body: { example: resource.attributes.symbolize_keys.merge(id: 1, created: 1.second.ago) }.to_json)
 
       resource = ExampleResource.create(name: "my_resource", description: "my_description")
 

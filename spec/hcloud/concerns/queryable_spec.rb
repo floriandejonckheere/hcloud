@@ -12,7 +12,7 @@ RSpec.describe HCloud::Queryable do
 
     it "reloads the resource" do
       stub_request(:get, "https://api.hetzner.cloud/v1/examples/#{resource.id}")
-        .to_return(body: { example: resource.attributes.merge(name: "new_name") }.to_json)
+        .to_return(body: { example: resource.attributes.symbolize_keys.merge(name: "new_name") }.to_json)
 
       expect(resource.reload.name).to eq "new_name"
     end
@@ -50,7 +50,7 @@ RSpec.describe HCloud::Queryable do
     it "returns resources sorted by name" do
       stub_request(:get, "https://api.hetzner.cloud/v1/examples")
         .with(query: { page: 1, per_page: 50, sort: "name:desc" })
-        .to_return(body: { examples: [resource.attributes.merge(id: 1, name: "aaa"), resource.attributes.merge(id: 2, name: "bbb")], meta: { pagination: { page: 1, last_page: 1, total_entries: 2 } } }.to_json)
+        .to_return(body: { examples: [resource.attributes.symbolize_keys.merge(id: 1, name: "aaa"), resource.attributes.symbolize_keys.merge(id: 2, name: "bbb")], meta: { pagination: { page: 1, last_page: 1, total_entries: 2 } } }.to_json)
 
       models = ExampleResource.all.sort(name: :desc)
 
@@ -61,7 +61,7 @@ RSpec.describe HCloud::Queryable do
     it "returns resources filtered by name" do
       stub_request(:get, "https://api.hetzner.cloud/v1/examples")
         .with(query: { page: 1, per_page: 50, name: "aaa" })
-        .to_return(body: { examples: [resource.attributes.merge(id: 1, name: "aaa")], meta: { pagination: { total_entries: 1 } } }.to_json)
+        .to_return(body: { examples: [resource.attributes.symbolize_keys.merge(id: 1, name: "aaa")], meta: { pagination: { total_entries: 1 } } }.to_json)
 
       models = ExampleResource.all.where(name: "aaa")
 
@@ -71,7 +71,7 @@ RSpec.describe HCloud::Queryable do
     it "returns resources selected by label" do
       stub_request(:get, "https://api.hetzner.cloud/v1/examples")
         .with(query: { page: 1, per_page: 50, label_selector: "foo=bar,baz=bat" })
-        .to_return(body: { examples: [resource.attributes.merge(id: 1, labels: { foo: "bar", baz: "bat" })], meta: { pagination: { total_entries: 1 } } }.to_json)
+        .to_return(body: { examples: [resource.attributes.symbolize_keys.merge(id: 1, labels: { foo: "bar", baz: "bat" })], meta: { pagination: { total_entries: 1 } } }.to_json)
 
       models = ExampleResource.all.where(label_selector: "foo=bar,baz=bat")
 
@@ -83,7 +83,7 @@ RSpec.describe HCloud::Queryable do
     it "delegates to .all" do
       stub_request(:get, "https://api.hetzner.cloud/v1/examples")
         .with(query: { page: 1, per_page: 50 })
-        .to_return(body: { examples: [resource.attributes.merge(id: 1), resource.attributes.merge(id: 2)], meta: { pagination: { total_entries: 2, last_page: 1 } } }.to_json)
+        .to_return(body: { examples: [resource.attributes.symbolize_keys.merge(id: 1), resource.attributes.symbolize_keys.merge(id: 2)], meta: { pagination: { total_entries: 2, last_page: 1 } } }.to_json)
 
       expect(ExampleResource.first.id).to eq 1
       expect(ExampleResource.last.id).to eq 2

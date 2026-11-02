@@ -33,7 +33,7 @@ RSpec.describe HCloud::Server do
                 },
                 ssh_keys: ["my-key-name", 12_345, 67_890],
               })
-        .to_return(body: { server: server.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
+        .to_return(body: { server: server.attributes.symbolize_keys.merge(id: 1, created: 1.second.ago) }.to_json)
 
       server.create
 
@@ -67,7 +67,7 @@ RSpec.describe HCloud::Server do
                   ipv6: 222,
                 },
               })
-        .to_return(body: { server: server.attributes.merge(id: 1, created: 1.second.ago) }.to_json)
+        .to_return(body: { server: server.attributes.symbolize_keys.merge(id: 1, created: 1.second.ago) }.to_json)
 
       server.create
 
