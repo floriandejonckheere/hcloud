@@ -50,7 +50,7 @@ RSpec.describe HCloud::Server, :integration, order: :defined do
     expect(server.status).to eq "initializing"
 
     expect(server.backup_window).to be_nil
-    expect(server.datacenter.location.name).to eq "nbg1"
+    expect(server.location.name).to eq "nbg1"
 
     expect(server.included_traffic).not_to be_zero
     expect(server.ingoing_traffic).to be_nil

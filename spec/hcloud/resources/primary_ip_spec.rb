@@ -10,7 +10,7 @@ RSpec.describe HCloud::PrimaryIP, :integration, order: :defined do
   end
 
   it "creates a primary IP" do
-    primary_ip = described_class.new(name: "first_primary_ip", type: "ipv4", datacenter: "fsn1-dc14")
+    primary_ip = described_class.new(name: "first_primary_ip", type: "ipv4", location: "fsn1")
 
     primary_ip.create
 
@@ -21,7 +21,7 @@ RSpec.describe HCloud::PrimaryIP, :integration, order: :defined do
   end
 
   it "creates another primary IP" do
-    primary_ip = described_class.new(name: "second_primary_ip", type: "ipv4", datacenter: "fsn1-dc14")
+    primary_ip = described_class.new(name: "second_primary_ip", type: "ipv4", location: "fsn1")
 
     primary_ip.create
 
@@ -46,7 +46,7 @@ RSpec.describe HCloud::PrimaryIP, :integration, order: :defined do
     expect(primary_ip.dns_ptr.first.dns_ptr).not_to be_blank
     expect(primary_ip.dns_ptr.first.ip).not_to be_blank
 
-    expect(primary_ip.datacenter.name).to eq "fsn1-dc14"
+    expect(primary_ip.location.name).to eq "fsn1"
 
     expect(primary_ip.protection).not_to be_delete
   end
