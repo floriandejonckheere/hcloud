@@ -34,6 +34,6 @@ RSpec.describe HCloud::ServerType, :integration, order: :defined do
     expect(price.price_monthly.net).not_to be_nil
     expect(price.price_hourly.net).not_to be_nil
 
-    expect(server_type).not_to be_deprecated
+    expect(server_type.locations).to all(have_attributes(deprecation: nil))
   end
 end

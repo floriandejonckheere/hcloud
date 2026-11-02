@@ -40,9 +40,5 @@ module HCloud
     attribute :locations, :server_type_location, array: true, default: -> { [] }
 
     attribute :deprecation, :deprecation, deprecated: true
-
-    attribute :deprecated, :boolean, deprecated: true
-
-    alias deprecated? deprecated
   end
 end

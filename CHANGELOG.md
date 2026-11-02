@@ -23,6 +23,8 @@
 - Remove `datacenter` from `HCloud::Server` and `HCloud::PrimaryIP`
 - Remove `build_id` from `HCloud::Image` (not present in API)
 - Remove `deprecated` from `HCloud::Image` (use `deprecation` instead)
+- Remove `deprecated` from `HCloud::ServerType` (use `locations[].deprecation` instead)
+- Remove `deprecated` from `HCloud::LoadBalancerType` (use `deprecation` instead)
 
 ### Fixed
 
