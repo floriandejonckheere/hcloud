@@ -4,7 +4,7 @@ PATH
     hetznercloud (6.1.0)
       activemodel
       activesupport
-      http
+      http (~> 6.0)
       openssl
       zeitwerk
 

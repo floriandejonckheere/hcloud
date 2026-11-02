@@ -12,6 +12,7 @@
 
 - Change `HCloud::Image#image_size` type from integer to float
 - Change `HCloud::LoadBalancer#targets` type to support label selector and IP targets
+- Upgrade `http` dependency to 6.0
 - Set `HCloud::Errors::ServerError` message to the HTTP status line
 
 ### Removed
