@@ -45,6 +45,26 @@ module HCloud
   #     network.deleted?
   #     # => true
   #
+  # == List network members
+  #
+  #     HCloud::Network.find(1).members
+  #     # => [#<HCloud::NetworkMember type: "server", id: 1, ...>, ...]
+  #
+  # == Sort network members
+  #
+  #     HCloud::Network.find(1).members.sort(ip: :asc)
+  #     # => [#<HCloud::NetworkMember type: "server", id: 1, ...>, ...]
+  #
+  # == Search network members
+  #
+  #     HCloud::Network.find(1).members.where(type: "load_balancer", status: "ok")
+  #     # => [#<HCloud::NetworkMember type: "load_balancer", id: 1, ...>, ...]
+  #
+  # == Get the attached resource of a network member
+  #
+  #     HCloud::Network.find(1).members.first.resource
+  #     # => #<HCloud::Server id: 1, ...>
+  #
   # = Actions
   # == List actions
   #
@@ -134,6 +154,24 @@ module HCloud
     action :change_ip_range
     action :delete_route
     action :delete_subnet
+
+    def members
+      raise Errors::MissingIDError unless id
+
+      Collection.new do |params|
+        response = client
+          .get("#{resource_path}/#{id}/members", params)
+
+        data = response
+          .fetch(:members)
+          .map { |attrs| NetworkMember.new attrs }
+
+        meta = response
+          .fetch(:meta)
+
+        [data, meta]
+      end
+    end
 
     def creatable_attributes
       [:name, :labels, :ip_range, :expose_routes_to_vswitch, :routes, :subnets]
