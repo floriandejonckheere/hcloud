@@ -24,6 +24,7 @@
 - Set `HCloud::Errors::ServerError` message to the HTTP status line
 - Remove default value of `HCloud::PrimaryIP#assignee_type` (API defaults to `unassigned`)
 - Deprecate `HCloud::Volume#server` (use `assignee` instead)
+- `HCloud::LoadBalancer#delete` now returns an `HCloud::Action`
 
 ### Removed
 

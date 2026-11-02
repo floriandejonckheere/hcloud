@@ -55,6 +55,7 @@ module HCloud
   #
   #     load_balancer = HCloud::LoadBalancer.find(1)
   #     load_balancer.delete
+  #     # => #<HCloud::Action id: 1, command: "delete_load_balancer", ...>
   #     load_balancer.deleted?
   #     # => true
   #

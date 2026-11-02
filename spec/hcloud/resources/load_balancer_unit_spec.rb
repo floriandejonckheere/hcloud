@@ -47,4 +47,19 @@ RSpec.describe HCloud::LoadBalancer do
       expect(load_balancer.creatable_params).not_to have_key("public_net")
     end
   end
+
+  describe "#delete" do
+    it "returns an action" do
+      load_balancer = described_class.new(id: 1)
+
+      stub_request(:delete, "https://api.hetzner.cloud/v1/load_balancers/1")
+        .to_return(status: 201, body: { action: { id: 2, command: "delete_load_balancer", status: "running" } }.to_json)
+
+      action = load_balancer.delete
+
+      expect(load_balancer).to be_deleted
+      expect(action).to be_a HCloud::Action
+      expect(action.command).to eq "delete_load_balancer"
+    end
+  end
 end
