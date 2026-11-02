@@ -9,6 +9,7 @@
 - Add `description` to `HCloud::FloatingIP` updatable attributes
 - Add `timeout_idle` to `HCloud::ServiceHTTP`
 - Add `detail` and `http_status_code` to `HCloud::HealthStatus`
+- Add `deprecation` to `HCloud::Image`
 
 ### Changed
 
@@ -21,6 +22,7 @@
 
 - Remove `datacenter` from `HCloud::Server` and `HCloud::PrimaryIP`
 - Remove `build_id` from `HCloud::Image` (not present in API)
+- Remove `deprecated` from `HCloud::Image` (use `deprecation` instead)
 
 ### Fixed
 

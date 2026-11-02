@@ -109,7 +109,8 @@ module HCloud
     # Explicitly specify created attribute, because resource is not Creatable
     attribute :created, :datetime
     attribute :deleted, :datetime
-    attribute :deprecated, :datetime
+
+    attribute :deprecation, :deprecation
 
     attribute :rapid_deploy
 
@@ -124,7 +125,7 @@ module HCloud
     end
 
     def deprecated?
-      deprecated.present?
+      deprecation.present?
     end
 
     def rapid_deploy?
