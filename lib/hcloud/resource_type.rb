@@ -95,8 +95,6 @@ ActiveModel::Type.register(:authoritative_nameservers, HCloud::ResourceType.Type
 ActiveModel::Type.register(:certificate, HCloud::ResourceType.Type("HCloud::Certificate"))
 ActiveModel::Type.register(:certificate_status, HCloud::ResourceType.Type("HCloud::CertificateStatus"))
 ActiveModel::Type.register(:change_protection, HCloud::ResourceType.Type("HCloud::ChangeProtection"))
-ActiveModel::Type.register(:datacenter, HCloud::ResourceType.Type("HCloud::Datacenter"))
-ActiveModel::Type.register(:datacenter_server_type, HCloud::ResourceType.Type("HCloud::DatacenterServerType"))
 ActiveModel::Type.register(:deprecation, HCloud::ResourceType.Type("HCloud::Deprecation"))
 ActiveModel::Type.register(:dns_pointer, HCloud::ResourceType.Type("HCloud::DNSPointer"))
 ActiveModel::Type.register(:error, HCloud::ResourceType.Type("HCloud::Error"))
