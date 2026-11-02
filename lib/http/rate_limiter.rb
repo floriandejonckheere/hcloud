@@ -6,7 +6,7 @@ module HTTP
   class RateLimiter < Feature
     attr_reader :limit, :remaining, :reset, :at, :rate
 
-    def initialize(...)
+    def initialize
       super
 
       @limit = Float::INFINITY
@@ -23,15 +23,17 @@ module HTTP
     end
 
     def wrap_response(response)
-      return response if response["RateLimit-Limit"].nil? || response["RateLimit-Remaining"].nil? || response["RateLimit-Reset"].nil?
+      headers = response.headers
+
+      return response if headers["RateLimit-Limit"].nil? || headers["RateLimit-Remaining"].nil? || headers["RateLimit-Reset"].nil?
 
       # Extract rate limits
-      @limit = response["RateLimit-Limit"].to_i
-      @remaining = response["RateLimit-Remaining"].to_i
-      @reset = Time.at(response["RateLimit-Reset"].to_i)
+      @limit = headers["RateLimit-Limit"].to_i
+      @remaining = headers["RateLimit-Remaining"].to_i
+      @reset = Time.at(headers["RateLimit-Reset"].to_i)
 
       # Extract request date
-      @at = Time.parse(response.headers["Date"])
+      @at = Time.parse(headers["Date"])
 
       # Calculate remaining increment rate
       @rate = 3600 / limit

@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 
-require "zlib"
-
 # @!visibility private
 module HTTP
   # @!visibility private
   module Features
     # @!visibility private
-    module Response
+    class Compression < Feature
       # @!visibility private
-      class GzipInflater < HTTP::Response::Inflater
+      class BlockIO
+        def initialize(block)
+          @block = block
+        end
+
+        def write(data)
+          @block.call(data)
+        end
       end
     end
   end

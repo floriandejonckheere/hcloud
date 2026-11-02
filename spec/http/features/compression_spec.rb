@@ -65,9 +65,9 @@ RSpec.describe HTTP::Features::Compression do
     double.tap do |connection|
       allow(connection)
         .to receive(:readpartial)
-        .and_return(
-          body, # first chunk
-          false, # end of stream
+        .and_invoke(
+          -> { body }, # first chunk
+          -> { raise EOFError }, # end of stream
         )
     end
   end
