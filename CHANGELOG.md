@@ -8,6 +8,7 @@
 - Add `placement_group` to `HCloud::Server` creatable attributes
 - Add `description` to `HCloud::FloatingIP` updatable attributes
 - Add `timeout_idle` to `HCloud::ServiceHTTP`
+- Add `detail` and `http_status_code` to `HCloud::HealthStatus`
 
 ### Changed
 
