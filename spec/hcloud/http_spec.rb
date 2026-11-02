@@ -58,7 +58,7 @@ RSpec.describe HCloud::HTTP do
         .with(query: { one: "two" })
         .to_return(status: 503, body: nil)
 
-      expect { http.get("api", one: "two") }.to raise_error HCloud::Errors::ServerError
+      expect { http.get("api", one: "two") }.to raise_error HCloud::Errors::ServerError, "503 Service Unavailable"
       expect(stub).to have_been_requested
     end
 

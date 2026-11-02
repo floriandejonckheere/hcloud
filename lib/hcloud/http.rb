@@ -28,7 +28,7 @@ module HCloud
       response = http
         .get(url_for(path), params: transform_params(params))
 
-      raise Errors::ServerError, response if response.status.server_error?
+      raise Errors::ServerError, { message: response.status.to_s } if response.status.server_error?
 
       data = response
         .parse(:json)
@@ -43,7 +43,7 @@ module HCloud
       response = http
         .put(url_for(path), json: body)
 
-      raise Errors::ServerError, response if response.status.server_error?
+      raise Errors::ServerError, { message: response.status.to_s } if response.status.server_error?
 
       data = response
         .parse(:json)
@@ -58,7 +58,7 @@ module HCloud
       response = http
         .post(url_for(path), json: body)
 
-      raise Errors::ServerError, response if response.status.server_error?
+      raise Errors::ServerError, { message: response.status.to_s } if response.status.server_error?
 
       data = response
         .parse(:json)
@@ -73,7 +73,7 @@ module HCloud
       response = http
         .delete(url_for(path))
 
-      raise Errors::ServerError, response if response.status.server_error?
+      raise Errors::ServerError, { message: response.status.to_s } if response.status.server_error?
 
       return if response.status.success? && response.body.empty?
 
