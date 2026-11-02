@@ -5,10 +5,12 @@ module HTTP
   # @!visibility private
   module Features
     # @!visibility private
-    module Request
+    class Compression < Feature
       # @!visibility private
       class CompressedBody < HTTP::Request::Body
-        def initialize(uncompressed_body) # rubocop:disable Lint/MissingSuper
+        def initialize(uncompressed_body)
+          super(nil)
+
           @body = uncompressed_body
           @compressed = nil
         end

@@ -7,7 +7,7 @@ module HTTP
   # @!visibility private
   module Features
     # @!visibility private
-    module Request
+    class Compression < Feature
       # @!visibility private
       class GzippedBody < CompressedBody
         def compress(&block)

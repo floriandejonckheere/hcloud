@@ -15,10 +15,10 @@ module HTTP
 
       attr_reader :method
 
-      def initialize(**)
-        super
+      def initialize(method: "gzip")
+        super()
 
-        @method = @opts.fetch(:method, "gzip").to_s
+        @method = method.to_s
 
         raise Error, "Only gzip and brotli methods are supported" unless SUPPORTED_ENCODING.key?(method)
       end
@@ -67,18 +67,18 @@ module HTTP
       def compress(body)
         case method
         when "gzip"
-          Request::GzippedBody.new(body)
+          GzippedBody.new(body)
         when "brotli"
-          Request::BrotliBody.new(body)
+          BrotliBody.new(body)
         end
       end
 
       def decompress(connection)
         case method
         when "gzip"
-          HTTP::Response::Body.new(Response::GzipInflater.new(connection))
+          HTTP::Response::Body.new(GzipInflater.new(connection))
         when "brotli"
-          HTTP::Response::Body.new(Response::BrotliInflater.new(connection))
+          HTTP::Response::Body.new(BrotliInflater.new(connection))
         end
       end
     end

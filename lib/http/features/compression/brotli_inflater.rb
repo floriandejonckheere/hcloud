@@ -14,14 +14,22 @@ module HTTP
   # @!visibility private
   module Features
     # @!visibility private
-    module Request
+    class Compression < Feature
       # @!visibility private
-      class BrotliBody < CompressedBody
-        def compress(&block)
-          brotli = Brotli::Writer.new(BlockIO.new(block))
-          @body.each { |chunk| brotli.write(chunk) }
-        ensure
-          brotli.finish
+      class BrotliInflater < HTTP::Response::Inflater
+        def readpartial(*)
+          chunks = []
+
+          loop do
+            chunks << @connection.readpartial(*)
+          rescue EOFError
+            break
+          end
+
+          # Signal end of stream when no more data is left
+          raise EOFError if chunks.empty?
+
+          Brotli.inflate(chunks.join)
         end
       end
     end
