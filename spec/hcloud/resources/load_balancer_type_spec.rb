@@ -33,6 +33,6 @@ RSpec.describe HCloud::LoadBalancerType, :integration, order: :defined do
     expect(price.price_monthly.net).not_to be_nil
     expect(price.price_hourly.net).not_to be_nil
 
-    expect(load_balancer_type.deprecated).to be_nil
+    expect(load_balancer_type.deprecation).to be_nil
   end
 end
