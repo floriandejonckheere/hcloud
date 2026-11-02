@@ -94,4 +94,3 @@ RSpec.describe HCloud::Queryable do
     end
   end
 end
-# frozen_string_literal: true
