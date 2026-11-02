@@ -16,5 +16,9 @@ RSpec.describe HCloud::Errors do
       expect(described_class.for("server_has_ipv4")).to eq HCloud::Errors::ServerHasIPv4
       expect(described_class.for("server_has_ipv6")).to eq HCloud::Errors::ServerHasIPv6
     end
+
+    it "looks up error classes containing JSON acronym" do
+      expect(described_class.for("json_error")).to eq HCloud::Errors::JSONError
+    end
   end
 end

@@ -38,6 +38,7 @@
 ### Fixed
 
 - Fix error class lookup for error codes containing `ip`, `ipv4` or `ipv6` (e.g. `HCloud::Errors::PrimaryIPAssigned`)
+- Fix error class lookup for the `json_error` error code (`HCloud::Errors::JSONError`)
 
 ## HCloud v6.1.0 (2026-07-10)
 
