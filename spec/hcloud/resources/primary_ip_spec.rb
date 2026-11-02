@@ -40,7 +40,7 @@ RSpec.describe HCloud::PrimaryIP, :integration, order: :defined do
     expect(primary_ip.ip).not_to be_nil
 
     expect(primary_ip.assignee_id).to be_blank
-    expect(primary_ip.assignee_type).to eq "server"
+    expect(primary_ip.assignee_type).to eq "unassigned"
 
     expect(primary_ip.dns_ptr).not_to be_empty
     expect(primary_ip.dns_ptr.first.dns_ptr).not_to be_blank
