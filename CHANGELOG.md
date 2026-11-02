@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+### Upgrading
+
+This release contains breaking changes, following changes in the Hetzner Cloud API.
+
+- The `http` dependency now requires version 6.0 or higher.
+- `HCloud::Datacenter` and `HCloud::DatacenterServerType` have been removed, because the API endpoints were removed. Use `HCloud::Location` instead.
+- `HCloud::Server#datacenter` and `HCloud::PrimaryIP#datacenter` have been removed. Use `#location` instead, and pass `location:` instead of `datacenter:` when creating primary IPs.
+- `HCloud::Image#deprecated` and `HCloud::LoadBalancerType#deprecated` have been removed. Use `#deprecation` instead. `HCloud::Image#deprecated?` is still available.
+- `HCloud::ServerType#deprecated` and `HCloud::ServerType#deprecated?` have been removed. Use `#deprecation` on each of the server type's `locations` instead.
+- `HCloud::Image#build_id` has been removed, because it is not present in the API.
+- `HCloud::Image#image_size` is now a float instead of an integer.
+- `HCloud::LoadBalancer#delete` now returns an `HCloud::Action` instead of the load balancer itself.
+- `HCloud::PrimaryIP#assignee_type` no longer defaults to `"server"`. Pass `assignee_type: "server"` explicitly when creating a primary IP assigned to a server.
+- `HCloud::Volume#server` is deprecated and will be removed when the API removes it (27 October 2027). Use `#assignee` instead, and pass `assignee: { id: 1, type: "server" }` instead of `server: 1` when creating or attaching volumes.
+
 ### Added
 
 - Add `location` to `HCloud::PrimaryIP`
