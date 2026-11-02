@@ -17,6 +17,7 @@
 - Change `HCloud::LoadBalancer#targets` type to support label selector and IP targets
 - Upgrade `http` dependency to 6.0
 - Set `HCloud::Errors::ServerError` message to the HTTP status line
+- Remove default value of `HCloud::PrimaryIP#assignee_type` (API defaults to `unassigned`)
 
 ### Removed
 

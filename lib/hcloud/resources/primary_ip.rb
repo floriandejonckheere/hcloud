@@ -120,7 +120,7 @@ module HCloud
     attribute :dns_ptr, :dns_pointer, array: true, default: -> { [] }
 
     attribute :assignee_id
-    attribute :assignee_type, default: "server"
+    attribute :assignee_type
 
     attribute :location, :location
 
