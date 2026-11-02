@@ -74,7 +74,6 @@ The following table lists the Hetzner Cloud API endpoints that are currently imp
 | [Actions](lib/hcloud/resources/action.rb)                                        | Implemented           |
 | [Certificates](lib/hcloud/resources/certificate.rb)                              | Implemented           |
 | [Certificate Actions](lib/hcloud/resources/certificate.rb)                       | Implemented           |
-| [Datacenters](lib/hcloud/resources/datacenter.rb)                                | Implemented           |
 | [Firewalls](lib/hcloud/resources/firewall.rb)                                    | Implemented           |
 | [Firewall Actions](lib/hcloud/resources/firewall.rb)                             | Implemented           |
 | [Floating IPs](lib/hcloud/resources/floating_ip.rb)                              | Implemented           |

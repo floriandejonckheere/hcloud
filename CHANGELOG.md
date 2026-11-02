@@ -25,6 +25,7 @@
 - Remove `deprecated` from `HCloud::Image` (use `deprecation` instead)
 - Remove `deprecated` from `HCloud::ServerType` (use `locations[].deprecation` instead)
 - Remove `deprecated` from `HCloud::LoadBalancerType` (use `deprecation` instead)
+- Remove `HCloud::Datacenter` (endpoints removed from API)
 
 ### Fixed
 
