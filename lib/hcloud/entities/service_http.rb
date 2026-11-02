@@ -7,6 +7,8 @@ module HCloud
     attribute :cookie_lifetime, :integer
     attribute :cookie_name
 
+    attribute :timeout_idle, :integer
+
     attribute :redirect_http, :boolean
     attribute :sticky_sessions, :boolean
 
