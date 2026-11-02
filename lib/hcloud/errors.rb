@@ -50,7 +50,9 @@ module HCloud
     class PlacementError < Error; end
     class PrimaryIPAssigned < Error; end
     class PrimaryIPAlreadyAssigned < Error; end
+    class PrimaryIPBlocked < Error; end
     class PrimaryIPDatacenterMismatch < Error; end
+    class PrimaryIPLocationMismatch < Error; end
     class PrimaryIPVersionMismatch < Error; end
     class Protected < Error; end
     class RateLimitExceeded < Error; end
