@@ -15,6 +15,7 @@ HCloud.loader.inflector.inflect(
   "ipv6" => "IPv6",
   "iso" => "ISO",
   "iso_type" => "ISOType",
+  "load_balancer_public_net_ip" => "LoadBalancerPublicNetIP",
   "primary_ip" => "PrimaryIP",
   "primary_ip_prices" => "PrimaryIPPrices",
   "rrset" => "RRSet",

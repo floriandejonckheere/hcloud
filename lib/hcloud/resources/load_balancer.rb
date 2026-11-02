@@ -40,6 +40,11 @@ module HCloud
   #     load_balancer = HCloud::LoadBalancer.create(name: "my_load_balancer", algorithm: { type: "round_robin" }, load_balancer_type: "lb11", location: "nbg1")
   #     # => #<HCloud::LoadBalancer id: 1, ...>
   #
+  # == Create load balancer with existing primary IPs
+  #
+  #     load_balancer = HCloud::LoadBalancer.create(name: "my_load_balancer", load_balancer_type: "lb11", location: "nbg1", public_net: { ipv4: 1, ipv6: 2 })
+  #     # => #<HCloud::LoadBalancer id: 1, ...>
+  #
   # == Update load balancer
   #
   #     load_balancer = HCloud::LoadBalancer.find(1)
@@ -212,7 +217,7 @@ module HCloud
     action :disable_public_interface
 
     def creatable_attributes
-      [:name, :labels, :algorithm, :network_zone, :public_interface, :services, :targets, load_balancer_type: [:id, :name], location: [:id, :name], network: [:id, :name]]
+      [:name, :labels, :algorithm, :network_zone, :public_interface, :public_net, :services, :targets, load_balancer_type: [:id, :name], location: [:id, :name], network: [:id, :name]]
     end
 
     def updatable_attributes

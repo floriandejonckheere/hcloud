@@ -115,6 +115,7 @@ ActiveModel::Type.register(:label_selector, HCloud::ResourceType.Type("HCloud::L
 ActiveModel::Type.register(:load_balancer, HCloud::ResourceType.Type("HCloud::LoadBalancer"))
 ActiveModel::Type.register(:load_balancer_private_net, HCloud::ResourceType.Type("HCloud::LoadBalancerPrivateNet"))
 ActiveModel::Type.register(:load_balancer_public_net, HCloud::ResourceType.Type("HCloud::LoadBalancerPublicNet"))
+ActiveModel::Type.register(:load_balancer_public_net_ip, HCloud::ResourceType.Type("HCloud::LoadBalancerPublicNetIP"))
 ActiveModel::Type.register(:load_balancer_type, HCloud::ResourceType.Type("HCloud::LoadBalancerType"))
 ActiveModel::Type.register(:load_balancer_type_price, HCloud::ResourceType.Type("HCloud::LoadBalancerTypePrice"))
 ActiveModel::Type.register(:location, HCloud::ResourceType.Type("HCloud::Location"))
