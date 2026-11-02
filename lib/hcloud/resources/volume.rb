@@ -84,12 +84,12 @@ module HCloud
   #     # => #<HCloud::Action id: 1, ...>
   #
   # = Resource-specific actions
-  # == Attach a volume to a server
+  # == Attach a volume
   #
-  #     HCloud::Volume.find(1).attach(server: 1, automount: false)
+  #     HCloud::Volume.find(1).attach(assignee: { id: 1, type: "server" }, automount: false)
   #     # => #<HCloud::Action id: 1, ...>
   #
-  # == Detach a volume from a server
+  # == Detach a volume
   #
   #     HCloud::Volume.find(1).detach
   #     # => #<HCloud::Action id: 1, ...>
@@ -126,7 +126,9 @@ module HCloud
     attribute :location, :location
     attribute :protection, :protection
 
-    attribute :server, :server
+    attribute :assignee, :assignee
+
+    attribute :server, :server, deprecated: true
 
     alias automount? automount
 
@@ -138,7 +140,7 @@ module HCloud
     action :change_protection
 
     def creatable_attributes
-      [:name, :format, :size, :server, :automount, :labels, location: [:id, :name]]
+      [:name, :format, :size, :assignee, :server, :automount, :labels, location: [:id, :name]]
     end
 
     def updatable_attributes

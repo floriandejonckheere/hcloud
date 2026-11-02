@@ -41,7 +41,7 @@ RSpec.describe HCloud::Volume, :integration, order: :defined do
     expect(volume.location.name).to eq "fsn1"
     expect(volume.protection).not_to be_delete
 
-    expect(volume.server).to be_nil
+    expect(volume.assignee).to be_nil
   end
 
   it "lists volumes" do
