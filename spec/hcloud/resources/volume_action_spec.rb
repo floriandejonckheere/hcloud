@@ -23,12 +23,12 @@ RSpec.describe HCloud::Volume, :integration, order: :defined do
   end
 
   xit "attaches a volume" do
-    volume.attach(server: server.id, automount: false)
+    volume.attach(assignee: { id: server.id, type: "server" }, automount: false)
 
     sleep 1
     volume.reload
 
-    expect(volume.server).to eq server
+    expect(volume.assignee.id).to eq server.id
   end
 
   xit "detaches a volume" do
@@ -37,7 +37,7 @@ RSpec.describe HCloud::Volume, :integration, order: :defined do
     sleep 1
     volume.reload
 
-    expect(volume.server).to be_nil
+    expect(volume.assignee).to be_nil
   end
 
   it "resizes the volume" do

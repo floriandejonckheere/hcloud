@@ -10,6 +10,7 @@
 - Add `timeout_idle` to `HCloud::ServiceHTTP`
 - Add `detail` and `http_status_code` to `HCloud::HealthStatus`
 - Add `deprecation` to `HCloud::Image`
+- Add `assignee` to `HCloud::Volume`
 
 ### Changed
 
@@ -18,6 +19,7 @@
 - Upgrade `http` dependency to 6.0
 - Set `HCloud::Errors::ServerError` message to the HTTP status line
 - Remove default value of `HCloud::PrimaryIP#assignee_type` (API defaults to `unassigned`)
+- Deprecate `HCloud::Volume#server` (use `assignee` instead)
 
 ### Removed
 
